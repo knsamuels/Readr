@@ -16,15 +16,15 @@ class Bookclub {
     var adminContactInfo: String
     var members: [User]
     var profilePicture: UIImage
-    var currentlyReading: [Book]
-    var pastReads: [Book]
+    var currentlyReading: [String]
+    var pastReads: [String]
     var memberMessages: [Message]
     var meetingInfo: String
     var memberCapacity: Int
     
     
     
-    init(name: String, admin: [User], adminContactInfo: String, members: [User], description: String, profilePicture: UIImage, currentlyReading: [Book], pastReads: [Book], memberMessages: [Message], meetingInfo: String, memberCapacity: Int) {
+    init(name: String, admin: [User], adminContactInfo: String, members: [User], description: String, profilePicture: UIImage, currentlyReading: [String], pastReads: [String], memberMessages: [Message], meetingInfo: String, memberCapacity: Int) {
         self.name = name
         self.admin = admin
         self.adminContactInfo = adminContactInfo

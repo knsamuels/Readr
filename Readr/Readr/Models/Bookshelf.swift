@@ -10,9 +10,9 @@ import Foundation
 
 class Bookshelf {
     var title: String
-    var books: [Book]
+    var books: [String]
     
-    init(title:String, books: [Book] = []) {
+    init(title:String, books: [String] = []) {
         self.title = title
         self.books = books
     }
