@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct test {
+    static var marcusWasHere = "Hi guys"
+    static var marcusIsStillHere = "Something"
+}
+
 class Message {
     var timestamp: Date
     var body: String
