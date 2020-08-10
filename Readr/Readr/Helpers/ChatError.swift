@@ -7,3 +7,21 @@
 //
 
 import Foundation
+
+enum ChatError: LocalizedError {
+    
+    case ckError(Error)
+    case couldNotUnwarp
+    case unableToDeleteRecord
+    
+    var errorDescription: String {
+        switch self {
+        case .ckError(let error):
+            return error.localizedDescription
+        case . couldNotUnwarp :
+            return "Unable to unwarp this post"
+        case . unableToDeleteRecord:
+            return "Unable to delete record from CloudKit"
+        }
+    }
+}
