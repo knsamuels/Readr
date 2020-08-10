@@ -52,4 +52,46 @@ class BookshelfController {
             completion(.success(true))
         }
     }
+
+    func updateBookshelf(bookshelf: Bookshelf, completion: @escaping (Result<Bookshelf, BookshelfError>) -> Void) {
+        
+        let record = CKRecord(bookshelf: bookshelf)
+        let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+        
+        operation.savePolicy = .changedKeys
+        operation.qualityOfService = .userInteractive
+        operation.modifyRecordsCompletionBlock = {(records, _, error) in
+            if let error = error {
+            print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+            return completion(.failure(.ckError(error)))
+            }
+        guard let record = records?.first,
+            let updateBookshelf = Bookshelf(ckRecord: record) else { return
+                completion(.failure(.couldNotUnwarp))}
+            print("Successfully updated the record with ID: \(updateBookshelf.recordID)")
+            completion(.success(updateBookshelf))
+        }
+        publicDB.add(operation)
+    }
+    
+    func deleteBookshelf(bookshelf: Bookshelf, completion: @escaping (Result<Bool, BookshelfError>) -> Void) {
+        
+        let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [bookshelf.recordID])
+        
+        operation.savePolicy = .changedKeys
+        operation.qualityOfService = .userInteractive
+        operation.modifyRecordsCompletionBlock = {(records, _, error) in
+            if let error = error {
+                print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                completion(.failure(.ckError(error)))
+            }
+            if records?.count == 0 {
+                print("Successfully deleted records from CloudKit")
+                completion(.success(true))
+            } else {
+                return completion(.failure(.unableToDeleteRecord))
+            }
+        }
+        publicDB.add(operation)
+    }
 }
