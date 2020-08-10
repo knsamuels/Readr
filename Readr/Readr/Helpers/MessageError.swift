@@ -7,3 +7,24 @@
 //
 
 import Foundation
+
+enum MessageError: LocalizedError {
+    
+    case ckError(Error)
+    case couldNotUnwrap
+    case unableToDeleteRecord
+    case noUserLoggedIn
+    
+    var errorDescription: String? {
+        switch self {
+        case .ckError(let error):
+            return error.localizedDescription
+        case .couldNotUnwrap:
+            return "Unable to get a message from the data found."
+        case .unableToDeleteRecord:
+            return "Unable to delete a message from the cloud."
+        case .noUserLoggedIn:
+            return "There is no user currently logged in."
+        }
+    }
+} //End enum
