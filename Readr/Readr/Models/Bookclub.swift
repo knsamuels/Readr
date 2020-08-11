@@ -12,7 +12,7 @@ import CloudKit
 
 struct BookclubConstants {
     static let recordTypeKey = "Bookclub"
-    fileprivate static let nameKey = "name"
+    static let nameKey = "name"
     fileprivate static let descriptionKey = "description"
     fileprivate static let adminKey = "admin"
     fileprivate static let adminContactInfoKey = "adminContactInfo"
