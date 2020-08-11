@@ -25,6 +25,7 @@ class Message {
     var user: User
     var chat: Chat
     var timestamp: Date
+//    var bookclubReferance: CKRecord.Reference
     var image: UIImage? {
         get {
             guard let photoData = photoData else {return nil}

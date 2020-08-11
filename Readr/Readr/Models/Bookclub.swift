@@ -83,21 +83,22 @@ class Bookclub {
 extension CKRecord {
     
     convenience init(bookclub: Bookclub)  {
-        self.init(recordType: BookclubConstants.recordTypeKey)
+        self.init(recordType: BookclubConstants.recordTypeKey, recordID: bookclub.recordID)
         
         self.setValuesForKeys([
             BookclubConstants.nameKey : bookclub.name,
-            BookclubConstants.adminKey : bookclub.admin,
+//        BookclubConstants.adminKey : bookclub.admin,
             BookclubConstants.adminContactInfoKey: bookclub.adminContactInfo,
-            BookclubConstants.membersKey : bookclub.members,
-            BookclubConstants.descriptionKey : bookclub.description,
-            BookclubConstants.profilePictureKey : bookclub.profilePicture,
-            BookclubConstants.currentlyReadingKey : bookclub.currentlyReading,
-            BookclubConstants.pastReadsKey : bookclub.pastReads,
-            BookclubConstants.memberMessagesKey : bookclub.memberMessages,
-            BookclubConstants.meetingInfoKey : bookclub.meetingInfo,
+//            BookclubConstants.membersKey : bookclub.members,
+           BookclubConstants.descriptionKey : bookclub.description,
+//            BookclubConstants.profilePictureKey : bookclub.profilePicture,
+//            BookclubConstants.currentlyReadingKey : bookclub.currentlyReading,
+//            BookclubConstants.pastReadsKey : bookclub.pastReads,
+//            BookclubConstants.memberMessagesKey : bookclub.memberMessages,
+//            BookclubConstants.meetingInfoKey : bookclub.meetingInfo,
             BookclubConstants.memberCapacityKey : bookclub.memberCapacity
         ])
+        
     }
 }
 

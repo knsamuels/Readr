@@ -14,7 +14,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+//        BookclubController.shared.createBookClub(name: "Lord of the rings",
+//                                                 adminContactInfo: "123",
+//                                                 description: "We are awesome",
+//                                                 profilePic: nil,
+//                                                 meetingInfo: "Every week",
+//                                                 memberCapacity: 10) { (result) in
+//                                                    switch result {
+//                                                    case .success(_):
+//                                                        print("success")
+//                                                    case .failure(_):
+//                                                        print("failure")
+//                                                    }
+//        }
+        BookclubController.shared.fetchBookclubs(searchTerm: "awesome") { (result) in
+            print("result")
+        }
         return true
     }
 

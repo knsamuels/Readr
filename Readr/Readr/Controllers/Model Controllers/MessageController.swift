@@ -129,5 +129,6 @@ class MessageController {
         }
         publicDB.add(operation)
     }
+//     func messagesForBookClub(bookclub: Bookclub)
     
 } //End class
