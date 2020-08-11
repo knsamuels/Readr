@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+enum BookclubError: LocalizedError {
+    case ckError(Error)
+    case couldNotUnwrap
+}
