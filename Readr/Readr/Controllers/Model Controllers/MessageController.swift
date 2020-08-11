@@ -22,12 +22,12 @@ class MessageController {
     //MARK: - CRUD Methods
     
     //Create
-    func saveMessage(text: String?, image: UIImage?, chat: Chat, completion: @escaping (Result<Bool, MessageError>) -> Void) {
+    func saveMessage(text: String?, image: UIImage?, bookclub: Bookclub, completion: @escaping (Result<Bool, MessageError>) -> Void) {
         
         guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
         let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
-        let chatRef = CKRecord.Reference(recordID: chat.recordID , action: .deleteSelf)
-        let newMessage = Message(text: text, user: user, chat: chat, image: image, userReference: userRef, chatReference: chatRef) 
+        let clubRef = CKRecord.Reference(recordID: bookclub.recordID , action: .deleteSelf)
+        let newMessage = Message(text: text, user: user, bookclub: bookclub, image: image, userReference: userRef, bookclubReference: clubRef)
         
         let messageRecord = CKRecord(message: newMessage)
         
@@ -42,19 +42,19 @@ class MessageController {
             
             print("Saved Message Successfully")
             //self.messages.insert(savedMessage, at: 0)
-            chat.messages.insert(savedMessage, at: 0)
+            bookclub.memberMessages.insert(savedMessage, at: 0)
             completion(.success(true))
         }
     }
     
     //Read(Fetch)
-    func fetchMessages(for chat: Chat, completion: @escaping (Result<[Message]?, MessageError>) -> Void) {
+    func fetchMessages(for bookclub: Bookclub, completion: @escaping (Result<[Message]?, MessageError>) -> Void) {
         
-        let chatReference = chat.recordID
+        let bookclubReference = bookclub.recordID
         
-        let predicate = NSPredicate(format: "%K == %@", MessageStrings.chatReferenceKey, chatReference)
+        let predicate = NSPredicate(format: "%K == %@", MessageStrings.bookclubReferenceKey, bookclubReference)
         
-        let messageIDs = chat.messages.compactMap({$0.recordID})
+        let messageIDs = bookclub.memberMessages.compactMap({$0.recordID})
         
         let predicate2 = NSPredicate(format: "NOT(recordID IN %@)", messageIDs)
         

@@ -13,19 +13,19 @@ struct MessageStrings {
     static let recordTypeKey = "Message"
     fileprivate static let textKey = "text"
     fileprivate static let userKey = "user"
-    fileprivate static let chatKey = "chat"
+    fileprivate static let bookclubKey = "bookclub"
     fileprivate static let timestampKey = "timestamp"
     fileprivate static let photoAsset = "photoAsset"
     fileprivate static let userReferenceKey = "userReference"
-    static let chatReferenceKey = "chatReference"
+    static let bookclubReferenceKey = "bookclubReference"
 }
 
 class Message {
     var text: String?
     var user: User
-    var chat: Chat
     var timestamp: Date
-//    var bookclubReferance: CKRecord.Reference
+    var bookclub: Bookclub
+    var bookclubReference: CKRecord.Reference?
     var image: UIImage? {
         get {
             guard let photoData = photoData else {return nil}
@@ -52,16 +52,15 @@ class Message {
     }
     var recordID: CKRecord.ID
     var userReference: CKRecord.Reference?
-    var chatReference: CKRecord.Reference?
     
-    init(text: String?, user: User, chat: Chat, timestamp: Date = Date(), image: UIImage?, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), userReference: CKRecord.Reference?, chatReference: CKRecord.Reference?) {
+    init(text: String?, user: User, bookclub: Bookclub, timestamp: Date = Date(), image: UIImage?, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), userReference: CKRecord.Reference?, bookclubReference: CKRecord.Reference?) {
         self.text = text
         self.user = user
-        self.chat = chat
+        self.bookclub = bookclub
         self.timestamp = timestamp
         self.recordID = recordID
         self.userReference = userReference
-        self.chatReference = chatReference
+        self.bookclubReference = bookclubReference
     }
 } //End of class
 
@@ -69,14 +68,14 @@ extension Message {
     
     convenience init?(ckRecord: CKRecord){
         guard let user = ckRecord[MessageStrings.userKey] as? User,
-            let chat = ckRecord[MessageStrings.chatKey] as? Chat,
+            let bookclub = ckRecord[MessageStrings.bookclubKey] as? Bookclub,
             let timestamp = ckRecord[MessageStrings.timestampKey] as? Date else {return nil}
         
         let text = ckRecord[MessageStrings.textKey] as? String
         
         let userReference = ckRecord[MessageStrings.userReferenceKey] as? CKRecord.Reference
         
-        let chatReference = ckRecord[MessageStrings.chatReferenceKey] as? CKRecord.Reference
+        let bookclubReference = ckRecord[MessageStrings.bookclubReferenceKey] as? CKRecord.Reference
         
         var image: UIImage?
         if let photoAsset = ckRecord[MessageStrings.photoAsset] as? CKAsset {
@@ -89,7 +88,7 @@ extension Message {
             }
         }
         
-        self.init(text: text, user: user, chat: chat, timestamp: timestamp, image: image, recordID: ckRecord.recordID, userReference: userReference, chatReference: chatReference)
+        self.init(text: text, user: user, bookclub: bookclub, timestamp: timestamp, image: image, recordID: ckRecord.recordID, userReference: userReference, bookclubReference: bookclubReference)
     }
 } //End of extension
 
@@ -100,7 +99,7 @@ extension CKRecord {
         
         self.setValuesForKeys([
             MessageStrings.userKey : message.user,
-            MessageStrings.chatKey : message.chat,
+            MessageStrings.bookclubKey : message.bookclub,
             MessageStrings.timestampKey : message.timestamp
         ])
         
@@ -116,8 +115,8 @@ extension CKRecord {
             self.setValue(userRef, forKey: MessageStrings.userReferenceKey)
         }
         
-        if let chatRef = message.chatReference {
-            self.setValue(chatRef, forKey: MessageStrings.chatReferenceKey)
+        if let clubRef = message.bookclubReference {
+            self.setValue(clubRef, forKey: MessageStrings.bookclubReferenceKey)
         }
     }
 } //End of extension
