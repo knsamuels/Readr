@@ -21,14 +21,14 @@ class BookclubController {
     let publicDB = CKContainer.default().publicCloudDatabase
     
     //MARK: - CRUD
-   
+    
     //Create
     func createBookClub(name: String, admin: [User], adminContactInfo: String, description: String, profilePic: UIImage?, meetingInfo: String, memberCapacity: Int, completion: @escaping(Result<Bookclub, BookclubError>) -> Void) {
-       
+        
         let newBC = Bookclub(name: name, admin: admin, adminContactInfo: adminContactInfo, description: description, profilePicture: profilePic, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
         
         let bcRecord = CKRecord(bookclub: newBC)
-      
+        
         publicDB.save(bcRecord) { (record, error) in
             if let error = error {
                 print("There was an error creating a bookclub -\(error) - \(error.localizedDescription)")
@@ -36,15 +36,21 @@ class BookclubController {
             }
             
             guard let record = record, let savedBC = Bookclub(ckRecord: record) else { return completion(.failure(.couldNotUnwrap))}
-           
+            
             completion(.success(savedBC))
         }
     }
     
     //Read
-    func fetchBookclubs(completion: @escaping(Result<[Bookclub], BookclubError>) -> Void) {
+    func fetchBookclubs(searchTerm: String?, completion: @escaping(Result<[Bookclub], BookclubError>) -> Void) {
         
-        let predicate = NSPredicate(value: true)
+        var predicate: NSPredicate
+        
+        if let searchTerm = searchTerm {
+            predicate = NSPredicate(format: "%K == %@", argumentArray: [BookclubConstants.nameKey, searchTerm])
+        } else {
+            predicate = NSPredicate(value: true)
+        }
         
         let query = CKQuery(recordType: BookclubConstants.recordTypeKey, predicate: predicate)
         publicDB.perform(query, inZoneWith: nil) { (records, error) in
@@ -63,8 +69,6 @@ class BookclubController {
         }
         
     }
-    
-    
     
     //Update
     func update(bookclub: Bookclub, completion: @escaping(Result<Bookclub, BookclubError>) -> Void) {
@@ -91,7 +95,7 @@ class BookclubController {
     func delete(bookclub: Bookclub, completion: @escaping(Result<Bool, BookclubError>) -> Void) {
         
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [bookclub.recordID])
-       
+        
         operation.savePolicy = .changedKeys
         operation.qualityOfService = .userInteractive
         operation.modifyRecordsCompletionBlock = { (_, recordIDs, error) in
