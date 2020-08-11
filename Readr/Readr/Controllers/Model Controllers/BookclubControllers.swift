@@ -23,9 +23,12 @@ class BookclubController {
     //MARK: - CRUD
     
     //Create
-    func createBookClub(name: String, admin: [User], adminContactInfo: String, description: String, profilePic: UIImage?, meetingInfo: String, memberCapacity: Int, completion: @escaping(Result<Bookclub, BookclubError>) -> Void) {
-        
-        let newBC = Bookclub(name: name, admin: admin, adminContactInfo: adminContactInfo, description: description, profilePicture: profilePic, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
+    func createBookClub(name: String, adminContactInfo: String, description: String, profilePic: UIImage?, meetingInfo: String, memberCapacity: Int, completion: @escaping(Result<Bookclub, BookclubError>) -> Void) {
+        let recordID = CKRecord.ID(recordName: "acb123")
+        let ckReference = CKRecord.Reference(recordID: recordID, action: .none)
+        //guard let user = UserController.shared.currentUser else {return completion(.failure(.couldNotUnwrap))}
+        let user = User(username: "iamtoks", firstName: "toks", lastName: "babatunde", password: "", bio: "from dc", favoriteBooks: ["a"], bookclub: [], friendList: [], followerList: [], favoriteGenres: [], bookshelves: [], recordID: recordID, appleUserRef: ckReference, profilePhoto: nil)
+        let newBC = Bookclub(name: name, admin: [user], adminContactInfo: adminContactInfo, description: description, profilePicture: profilePic, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
         
         let bcRecord = CKRecord(bookclub: newBC)
         
@@ -47,7 +50,7 @@ class BookclubController {
         var predicate: NSPredicate
         
         if let searchTerm = searchTerm {
-            predicate = NSPredicate(format: "%K == %@", argumentArray: [BookclubConstants.nameKey, searchTerm])
+            predicate = NSPredicate(format: "self CONTAINS %@", argumentArray: [searchTerm])
         } else {
             predicate = NSPredicate(value: true)
         }
