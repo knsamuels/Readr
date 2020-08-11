@@ -29,7 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                                                    }
 //        }
         BookclubController.shared.fetchBookclubs(searchTerm: "awesome") { (result) in
-            print("result")
+            switch result {
+            case .success(_):
+                print("success")
+            case .failure(_):
+                print("failure")
+            }
+            
+           
         }
         return true
     }

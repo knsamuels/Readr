@@ -13,7 +13,6 @@ struct MessageStrings {
     static let recordTypeKey = "Message"
     fileprivate static let textKey = "text"
     fileprivate static let userKey = "user"
-    fileprivate static let bookclubKey = "bookclub"
     fileprivate static let timestampKey = "timestamp"
     fileprivate static let photoAsset = "photoAsset"
     fileprivate static let userReferenceKey = "userReference"
@@ -24,7 +23,7 @@ class Message {
     var text: String?
     var user: User
     var timestamp: Date
-    var bookclub: Bookclub
+//    var bookclub: Bookclub
     var bookclubReference: CKRecord.Reference?
     var image: UIImage? {
         get {
@@ -53,10 +52,9 @@ class Message {
     var recordID: CKRecord.ID
     var userReference: CKRecord.Reference?
     
-    init(text: String?, user: User, bookclub: Bookclub, timestamp: Date = Date(), image: UIImage?, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), userReference: CKRecord.Reference?, bookclubReference: CKRecord.Reference?) {
+    init(text: String?, user: User, timestamp: Date = Date(), image: UIImage?, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), userReference: CKRecord.Reference?, bookclubReference: CKRecord.Reference?) {
         self.text = text
         self.user = user
-        self.bookclub = bookclub
         self.timestamp = timestamp
         self.recordID = recordID
         self.userReference = userReference
@@ -68,7 +66,6 @@ extension Message {
     
     convenience init?(ckRecord: CKRecord){
         guard let user = ckRecord[MessageStrings.userKey] as? User,
-            let bookclub = ckRecord[MessageStrings.bookclubKey] as? Bookclub,
             let timestamp = ckRecord[MessageStrings.timestampKey] as? Date else {return nil}
         
         let text = ckRecord[MessageStrings.textKey] as? String
@@ -88,7 +85,7 @@ extension Message {
             }
         }
         
-        self.init(text: text, user: user, bookclub: bookclub, timestamp: timestamp, image: image, recordID: ckRecord.recordID, userReference: userReference, bookclubReference: bookclubReference)
+        self.init(text: text, user: user, timestamp: timestamp, image: image, recordID: ckRecord.recordID, userReference: userReference, bookclubReference: bookclubReference)
     }
 } //End of extension
 
@@ -99,7 +96,6 @@ extension CKRecord {
         
         self.setValuesForKeys([
             MessageStrings.userKey : message.user,
-            MessageStrings.bookclubKey : message.bookclub,
             MessageStrings.timestampKey : message.timestamp
         ])
         

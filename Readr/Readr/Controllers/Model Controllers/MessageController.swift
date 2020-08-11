@@ -27,7 +27,7 @@ class MessageController {
         guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
         let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
         let clubRef = CKRecord.Reference(recordID: bookclub.recordID , action: .deleteSelf)
-        let newMessage = Message(text: text, user: user, bookclub: bookclub, image: image, userReference: userRef, bookclubReference: clubRef)
+        let newMessage = Message(text: text, user: user, image: image, userReference: userRef, bookclubReference: clubRef)
         
         let messageRecord = CKRecord(message: newMessage)
         
@@ -42,7 +42,7 @@ class MessageController {
             
             print("Saved Message Successfully")
             //self.messages.insert(savedMessage, at: 0)
-            bookclub.memberMessages.insert(savedMessage, at: 0)
+//            bookclub.memberMessages.insert(savedMessage, at: 0)
             completion(.success(true))
         }
     }
@@ -54,13 +54,13 @@ class MessageController {
         
         let predicate = NSPredicate(format: "%K == %@", MessageStrings.bookclubReferenceKey, bookclubReference)
         
-        let messageIDs = bookclub.memberMessages.compactMap({$0.recordID})
+//        let messageIDs = bookclub.memberMessages.compactMap({$0.recordID})
         
-        let predicate2 = NSPredicate(format: "NOT(recordID IN %@)", messageIDs)
+//        let predicate2 = NSPredicate(format: "NOT(recordID IN %@)", messageIDs)
         
-        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, predicate2])
+//        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, predicate2])
         
-        let query = CKQuery(recordType: MessageStrings.recordTypeKey, predicate: compoundPredicate)
+        let query = CKQuery(recordType: MessageStrings.recordTypeKey, predicate: predicate)
         
         publicDB.perform(query, inZoneWith: nil) { (records, error) in
             if let error = error {
