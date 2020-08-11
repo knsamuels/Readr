@@ -28,7 +28,8 @@ class BookclubController {
         let ckReference = CKRecord.Reference(recordID: recordID, action: .none)
         //guard let user = UserController.shared.currentUser else {return completion(.failure(.couldNotUnwrap))}
         let user = User(username: "iamtoks", firstName: "toks", lastName: "babatunde", password: "", bio: "from dc", favoriteBooks: ["a"], bookclub: [], friendList: [], followerList: [], favoriteGenres: [], bookshelves: [], recordID: recordID, appleUserRef: ckReference, profilePhoto: nil)
-        let newBC = Bookclub(name: name, admin: [user], adminContactInfo: adminContactInfo, description: description, profilePicture: profilePic, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
+        let referance = CKRecord.Reference(recordID: user.recordID, action: .none)
+        let newBC = Bookclub(name: name, admin: [referance], adminContactInfo: adminContactInfo, members: [referance], description: description, profilePicture: profilePic, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
         
         let bcRecord = CKRecord(bookclub: newBC)
         
@@ -67,7 +68,10 @@ class BookclubController {
             print("Fetched all Bookclubs successfully.")
             
             let fetchBC = records.compactMap { Bookclub(ckRecord: $0) }
-            
+            print(fetchBC.count)
+            for bookclub in fetchBC {
+                print(bookclub.name)
+            }
             return completion(.success(fetchBC))
         }
         
