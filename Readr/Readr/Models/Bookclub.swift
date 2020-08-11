@@ -31,27 +31,52 @@ class Bookclub {
     var admin: [User]
     var adminContactInfo: String
     var members: [User]
-    var profilePicture: UIImage
     var currentlyReading: [String]
     var pastReads: [String]
     var memberMessages: [Message]
     var meetingInfo: String
     var memberCapacity: Int
+    var recordID: CKRecord.ID
+    var profilePicture: UIImage? {
+        get {
+            guard let photoData = photoData else { return nil }
+            return UIImage(data: photoData)
+        } set {
+            photoData = newValue?.jpegData(compressionQuality: 0.5)
+        }
+    }
     
+    var photoData: Data?
     
+    var photoAsset: CKAsset? {
+        get {
+            guard photoData != nil else { return nil }
+            let tempDirectory = NSTemporaryDirectory()
+            let tempDirectoryURL = URL(fileURLWithPath: tempDirectory)
+            let finalURL = tempDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("jpg")
+            
+            do {
+                try photoData?.write(to: finalURL)
+            } catch {
+                print("There was an error writing our photo data to a file url - \(error) - \(error.localizedDescription)")
+            }
+            return CKAsset(fileURL: finalURL)
+        }
+    }
     
-    init(name: String, admin: [User], adminContactInfo: String, members: [User], description: String, profilePicture: UIImage, currentlyReading: [String], pastReads: [String], memberMessages: [Message], meetingInfo: String, memberCapacity: Int) {
+    init(name: String, admin: [User], adminContactInfo: String, members: [User] = [], description: String, profilePicture: UIImage?, currentlyReading: [String] = [], pastReads: [String] = [], memberMessages: [Message] = [], meetingInfo: String, memberCapacity: Int, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
         self.name = name
         self.admin = admin
         self.adminContactInfo = adminContactInfo
         self.members = members
         self.description = description
-        self.profilePicture = profilePicture
         self.currentlyReading = currentlyReading
         self.pastReads = pastReads
         self.memberMessages = memberMessages
         self.meetingInfo = meetingInfo
         self.memberCapacity = memberCapacity
+        self.recordID = recordID
+        self.profilePicture = profilePicture
     }
 }
 
@@ -84,15 +109,29 @@ extension Bookclub {
             let adminContactInfo = ckRecord[BookclubConstants.adminContactInfoKey] as? String,
             let members = ckRecord[BookclubConstants.membersKey] as? [User],
             let description = ckRecord[BookclubConstants.descriptionKey] as? String,
-            let profilePicture = ckRecord[BookclubConstants.profilePictureKey] as? UIImage,
             let currentlyReading = ckRecord[BookclubConstants.currentlyReadingKey] as? [String],
             let pastReads = ckRecord[BookclubConstants.pastReadsKey] as? [String],
             let memberMessages = ckRecord[BookclubConstants.memberMessagesKey] as? [Message],
             let meetingInfo = ckRecord[BookclubConstants.meetingInfoKey] as? String,
             let memberCapacity = ckRecord[BookclubConstants.memberCapacityKey] as? Int else {return nil}
         
-        self.init(name: name, admin: admin, adminContactInfo: adminContactInfo, members: members, description: description, profilePicture: profilePicture, currentlyReading: currentlyReading, pastReads: pastReads, memberMessages: memberMessages, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
+        var foundPhoto: UIImage?
+        if let photoAsset = ckRecord[BookclubConstants.profilePictureKey] as? CKAsset {
+            do {
+                let data = try Data(contentsOf: photoAsset.fileURL!)
+                foundPhoto = UIImage(data: data)
+            } catch {
+                print("Failed to transform asset to data - \(error) - \(error.localizedDescription)")
+            }
+        }
+        
+        self.init(name: name, admin: admin, adminContactInfo: adminContactInfo, members: members, description: description, profilePicture: foundPhoto, currentlyReading: currentlyReading, pastReads: pastReads, memberMessages: memberMessages, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
         
     }
 }
 
+extension Bookclub: Equatable {
+    static func == (lhs: Bookclub, rhs: Bookclub) -> Bool {
+        return lhs.recordID == rhs.recordID
+    }
+}
