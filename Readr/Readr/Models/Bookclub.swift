@@ -18,7 +18,7 @@ struct BookclubConstants {
     fileprivate static let adminContactInfoKey = "adminContactInfo"
     static let membersKey = "members"
     fileprivate static let profilePictureKey = "profilePicture"
-    fileprivate static let currentlyReadingKey = "currentlyReading"
+    static let currentlyReadingKey = "currentlyReading"
     fileprivate static let pastReadsKey = "pastReads"
     fileprivate static let meetingInfoKey = "meetingInfo"
     fileprivate static let memberCapacityKey = "memberCapacity"
@@ -88,7 +88,7 @@ extension CKRecord {
             BookclubConstants.adminContactInfoKey: bookclub.adminContactInfo,
             BookclubConstants.membersKey : bookclub.members,
             BookclubConstants.descriptionKey : bookclub.description,
-            //            BookclubConstants.profilePictureKey : bookclub.profilePicture,
+            //BookclubConstants.profilePictureKey : bookclub.profilePicture,
             BookclubConstants.currentlyReadingKey : bookclub.currentlyReading,
             BookclubConstants.pastReadsKey : bookclub.pastReads,
             BookclubConstants.meetingInfoKey : bookclub.meetingInfo,
