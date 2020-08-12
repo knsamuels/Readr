@@ -31,6 +31,11 @@
 		C98FC7EA24E1B4BB00C27CBF /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E924E1B4BB00C27CBF /* UserError.swift */; };
 		C98FC7EC24E1B4C900C27CBF /* ChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7EB24E1B4C900C27CBF /* ChatError.swift */; };
 		C98FC7F424E3182600C27CBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98FC7F324E3182600C27CBF /* CloudKit.framework */; };
+		F31A488524E480A80071652A /* BookshelfListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488424E480A80071652A /* BookshelfListTableViewController.swift */; };
+		F31A488724E480CA0071652A /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488624E480CA0071652A /* UserDetailViewController.swift */; };
+		F31A488924E480DA0071652A /* BookclubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488824E480DA0071652A /* BookclubViewController.swift */; };
+		F31A488C24E485880071652A /* BookshelfCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488B24E485880071652A /* BookshelfCellTableViewCell.swift */; };
+		F31A488E24E4A83C0071652A /* JoinBCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488D24E4A83C0071652A /* JoinBCViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +66,11 @@
 		C98FC7EB24E1B4C900C27CBF /* ChatError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatError.swift; sourceTree = "<group>"; };
 		C98FC7F124E3181F00C27CBF /* Readr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Readr.entitlements; sourceTree = "<group>"; };
 		C98FC7F324E3182600C27CBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		F31A488424E480A80071652A /* BookshelfListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfListTableViewController.swift; sourceTree = "<group>"; };
+		F31A488624E480CA0071652A /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		F31A488824E480DA0071652A /* BookclubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubViewController.swift; sourceTree = "<group>"; };
+		F31A488B24E485880071652A /* BookshelfCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfCellTableViewCell.swift; sourceTree = "<group>"; };
+		F31A488D24E4A83C0071652A /* JoinBCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinBCViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				C98FC7D524DDD4F500C27CBF /* Model Controllers */,
+				F31A488324E480540071652A /* View Controllers */,
+				F31A488A24E485670071652A /* Cells */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -178,6 +190,25 @@
 				C98FC7F324E3182600C27CBF /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F31A488324E480540071652A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F31A488424E480A80071652A /* BookshelfListTableViewController.swift */,
+				F31A488624E480CA0071652A /* UserDetailViewController.swift */,
+				F31A488824E480DA0071652A /* BookclubViewController.swift */,
+				F31A488D24E4A83C0071652A /* JoinBCViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F31A488A24E485670071652A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F31A488B24E485880071652A /* BookshelfCellTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +284,8 @@
 			files = (
 				C98FC7EC24E1B4C900C27CBF /* ChatError.swift in Sources */,
 				9304463E24E1ABBC00FBEEF2 /* MessageController.swift in Sources */,
+				F31A488924E480DA0071652A /* BookclubViewController.swift in Sources */,
+				F31A488524E480A80071652A /* BookshelfListTableViewController.swift in Sources */,
 				C98FC7DC24E19D3900C27CBF /* BookshelfController.swift in Sources */,
 				C98FC7C824DDCB1300C27CBF /* Book.swift in Sources */,
 				C98FC7EA24E1B4BB00C27CBF /* UserError.swift in Sources */,
@@ -260,6 +293,7 @@
 				C98FC7CA24DDCB4100C27CBF /* Bookclub.swift in Sources */,
 				C98FC7CC24DDCB6400C27CBF /* Message.swift in Sources */,
 				C98FC7E624E1B49200C27CBF /* BookclubError.swift in Sources */,
+				F31A488724E480CA0071652A /* UserDetailViewController.swift in Sources */,
 				C98FC7D224DDCBCA00C27CBF /* Chat.swift in Sources */,
 				C98FC7E024E1B42000C27CBF /* BookclubControllers.swift in Sources */,
 				C98FC7B024DDC71000C27CBF /* AppDelegate.swift in Sources */,
@@ -270,6 +304,8 @@
 				C98FC7CE24DDCB7800C27CBF /* User.swift in Sources */,
 				C98FC7E224E1B46200C27CBF /* UserController.swift in Sources */,
 				C98FC7D024DDCBB100C27CBF /* Bookshelf.swift in Sources */,
+				F31A488E24E4A83C0071652A /* JoinBCViewController.swift in Sources */,
+				F31A488C24E485880071652A /* BookshelfCellTableViewCell.swift in Sources */,
 				C98FC7DA24DDD55700C27CBF /* BookError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
