@@ -9,6 +9,7 @@ struct BookshelfStrings {
     static let recordTypeKey = "Bookshelf"
     static let titleKey = "Title"
     static let booksKey = "Books"
+    static let userRefKey = "userReference"
 }
 
 import Foundation
@@ -19,11 +20,13 @@ class Bookshelf {
     var title: String
     var books: [String]
     let recordID: CKRecord.ID
+    let userReference: CKRecord.Reference?
     
-    init(title:String, books: [String] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
+    init(title:String, books: [String] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), userReference: CKRecord.Reference?) {
         self.title = title
         self.books = books
         self.recordID = recordID
+        self.userReference = userReference
     }
 }
 
@@ -33,7 +36,9 @@ extension Bookshelf {
         guard let title = ckRecord[BookshelfStrings.titleKey] as? String,
             let books = ckRecord[BookshelfStrings.booksKey] as? [String] else {return nil}
         
-        self.init(title: title, books: books, recordID: ckRecord.recordID)
+        let userReference = ckRecord[BookshelfStrings.userRefKey] as? CKRecord.Reference
+        
+        self.init(title: title, books: books, recordID: ckRecord.recordID, userReference: userReference)
     }
 }
 
@@ -45,6 +50,10 @@ extension CKRecord {
             BookshelfStrings.titleKey : bookshelf.title,
             BookshelfStrings.booksKey : bookshelf.books
         ])
+        
+        if let reference = bookshelf.userReference {
+            self.setValue(reference, forKey: BookshelfStrings.userRefKey)
+        }
     }
 }
 

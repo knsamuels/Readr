@@ -20,7 +20,11 @@ class BookshelfController {
     
     
     func createBookshelf(title: String, completion: @escaping (Result<Bool, BookshelfError>) -> Void ) {
-        let newBookshelf = Bookshelf(title: title)
+        
+        guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
+        let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
+        
+        let newBookshelf = Bookshelf(title: title, userReference: userRef)
         let newBookshelfRecord = CKRecord(bookshelf: newBookshelf)
         publicDB.save(newBookshelfRecord) { (record, error) in
             if let error = error {
@@ -37,7 +41,10 @@ class BookshelfController {
     }
     
     func fetchAllBookshelfs(completion: @escaping (Result<Bool, BookshelfError>) -> Void) {
-        let predicate = NSPredicate(value: true)
+        guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
+        let userRef = user.recordID
+        //let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
+        let predicate = NSPredicate(format: "%K == %@", BookshelfStrings.userRefKey, userRef)
         let query = CKQuery(recordType: BookshelfStrings.recordTypeKey, predicate: predicate)
         publicDB.perform(query, inZoneWith: nil) { (records, error) in
             if let error = error {

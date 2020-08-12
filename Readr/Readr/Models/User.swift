@@ -15,14 +15,14 @@ struct UserStrings {
     fileprivate static let firstNameKey = "firstName"
     fileprivate static let lastNameKey = "lastName" 
     fileprivate static let bioKey = "bio"
+    fileprivate static let favoriteAuthorKey = "favoriteAuthor"
     fileprivate static let favoriteBooksKey = "favoriteBooks"
     fileprivate static let bookclubKey = "bookClub"
     fileprivate static let friendListKey = "friendList"
     fileprivate static let followerListKey = "followerList"
+    fileprivate static let blockedUserKey = "blockedUsers"
     fileprivate static let favoriteGenresKey = "favoriteGenres"
     fileprivate static let bookshelvesKey = "Bookshelf"
-    //fileprivate static let bookclubReferenceKey = "bookclubReference"
-    //fileprivate static let bookshelfReferenceKey = "bookshelfReference"
     static let appleUserRefKey = "appleUserRef"
     fileprivate static let photoAssetKey = "photoAsset"
 }
@@ -32,6 +32,7 @@ class User {
     var firstName: String
     var lastName: String
     var bio: String
+    var favoriteAuthor: String
     var favoriteBooks: [String]
     var bookclub: [Bookclub]
     var friendList: [String]
@@ -40,8 +41,6 @@ class User {
     var favoriteGenres: [String]
     var bookshelves: [Bookshelf]
     var recordID: CKRecord.ID
-    //var bookclubReference: CKRecord.Reference?
-    //var bookshelfReference: CKRecord.Reference?
     var appleUserRef: CKRecord.Reference
     
     var profilePhoto: UIImage? {
@@ -70,11 +69,12 @@ class User {
         }
     }
     
-    init(username: String, firstName: String, lastName: String, bio: String = "", favoriteBooks: [String] = [], bookclub: [Bookclub] = [], friendList: [String] = [], followerList: [String] = [], blockedUsers: [String] = [], favoriteGenres: [String] = [], bookshelves: [Bookshelf] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), /*bookclubReference: CKRecord.Reference?, bookshelfReference: CKRecord.Reference?,*/ appleUserRef: CKRecord.Reference, profilePhoto: UIImage? = nil) {
+    init(username: String, firstName: String, lastName: String, bio: String = "", favoriteAuthor: String, favoriteBooks: [String] = [], bookclub: [Bookclub] = [], friendList: [String] = [], followerList: [String] = [], blockedUsers: [String] = [], favoriteGenres: [String] = [], bookshelves: [Bookshelf] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), appleUserRef: CKRecord.Reference, profilePhoto: UIImage? = nil) {
         self.username = username
         self.firstName = firstName
         self.lastName = lastName
         self.bio = bio
+        self.favoriteAuthor = favoriteAuthor
         self.favoriteBooks = favoriteBooks
         self.bookclub = bookclub
         self.friendList = friendList
@@ -83,8 +83,6 @@ class User {
         self.favoriteGenres = favoriteGenres
         self.bookshelves = bookshelves
         self.recordID = recordID
-        //self.bookclubReference = bookclubReference
-        //self.bookshelfReference = bookshelfReference
         self.appleUserRef = appleUserRef
         self.profilePhoto = profilePhoto
     }
@@ -97,11 +95,23 @@ extension User {
             let firstName = ckRecord[UserStrings.firstNameKey] as? String,
             let lastName = ckRecord[UserStrings.lastNameKey] as? String,
             let bio = ckRecord[UserStrings.bioKey] as? String,
+            let favoriteAuthor = ckRecord[UserStrings.favoriteAuthorKey] as? String,
             let appleUserRef = ckRecord[UserStrings.appleUserRefKey] as? CKRecord.Reference else {return nil}
         
-        //let bookclubReference = ckRecord[UserStrings.bookclubReferenceKey] as? CKRecord.Reference
-        //let bookshelfReference = ckRecord[UserStrings.bookshelfReferenceKey] as? CKRecord.Reference
-            
+        
+//        var favoriteBooks: [String]
+//        if let result = ckRecord[UserStrings.favoriteBooksKey] as? [String] {
+//            favoriteBooks = result
+//        }
+        
+        /*
+         var pastReads: [String]?
+            if let result = ckRecord[BookclubConstants.pastReadsKey] as? [String] {
+                pastReads = result
+            }
+         
+         */
+        
         var foundPhoto: UIImage?
         if let photoAsset = ckRecord[UserStrings.photoAssetKey] as? CKAsset {
             do {
@@ -113,7 +123,7 @@ extension User {
             }
         }
         
-        self.init(username: username, firstName: firstName, lastName: lastName, bio: bio, favoriteBooks: [], bookclub: [], friendList: [], followerList: [], blockedUsers: [], favoriteGenres: [], bookshelves: [],  recordID: ckRecord.recordID,  /*bookclubReference: bookclubReference, bookshelfReference: bookshelfReference,*/ appleUserRef: appleUserRef, profilePhoto: foundPhoto)
+        self.init(username: username, firstName: firstName, lastName: lastName, bio: bio, favoriteAuthor: favoriteAuthor, favoriteBooks: [], bookclub: [], friendList: [], followerList: [], blockedUsers: [], favoriteGenres: [], bookshelves: [],  recordID: ckRecord.recordID, appleUserRef: appleUserRef, profilePhoto: foundPhoto)
     }
     
 } //End of extension
@@ -126,6 +136,7 @@ extension CKRecord {
             UserStrings.lastNameKey : user.lastName,
             UserStrings.usernameKey : user.username,
             UserStrings.bioKey : user.bio,
+            UserStrings.favoriteAuthorKey : user.favoriteAuthor,
             //UserStrings.favoriteBooksKey : user.favoriteBooks,
             //UserStrings.bookclubKey : user.bookclub,
             //UserStrings.friendListKey : user.friendList,
@@ -135,14 +146,7 @@ extension CKRecord {
             //UserStrings.bookshelvesKey : user.bookshelves,
             UserStrings.appleUserRefKey : user.appleUserRef
         ])
-        
-       /* if let clubRef = user.bookclubReference {
-            self.setValue(clubRef, forKey: UserStrings.bookclubReferenceKey)
-        }
-        
-        if let shelfRef = user.bookshelfReference {
-            self.setValue(shelfRef, forKey: UserStrings.bookshelfReferenceKey)
-        }*/
+
         
         if let photoAsset = user.photoAsset {
             self.setValue(photoAsset, forKey: UserStrings.photoAssetKey)
