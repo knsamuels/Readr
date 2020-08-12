@@ -20,7 +20,7 @@ struct UserStrings {
     fileprivate static let bookclubKey = "bookClub"
     fileprivate static let friendListKey = "friendList"
     fileprivate static let followerListKey = "followerList"
-    fileprivate static let blockedUserKey = "blockedUsers"
+    fileprivate static let blockedUsersKey = "blockedUsers"
     fileprivate static let favoriteGenresKey = "favoriteGenres"
     fileprivate static let bookshelvesKey = "Bookshelf"
     static let appleUserRefKey = "appleUserRef"
@@ -98,19 +98,20 @@ extension User {
             let favoriteAuthor = ckRecord[UserStrings.favoriteAuthorKey] as? String,
             let appleUserRef = ckRecord[UserStrings.appleUserRefKey] as? CKRecord.Reference else {return nil}
         
+        var favoriteBooks: [String] = []
+        if let result = ckRecord[UserStrings.favoriteBooksKey] as? [String] {
+            favoriteBooks = result
+        }
         
-//        var favoriteBooks: [String]
-//        if let result = ckRecord[UserStrings.favoriteBooksKey] as? [String] {
-//            favoriteBooks = result
-//        }
+        var favoriteGenres: [String] = []
+        if let result = ckRecord[UserStrings.favoriteGenresKey] as? [String] {
+            favoriteGenres = result
+        }
         
-        /*
-         var pastReads: [String]?
-            if let result = ckRecord[BookclubConstants.pastReadsKey] as? [String] {
-                pastReads = result
-            }
-         
-         */
+        var blockedUsers: [String] = []
+        if let result = ckRecord[UserStrings.blockedUsersKey] as? [String] {
+            blockedUsers = result
+        }
         
         var foundPhoto: UIImage?
         if let photoAsset = ckRecord[UserStrings.photoAssetKey] as? CKAsset {
@@ -123,7 +124,7 @@ extension User {
             }
         }
         
-        self.init(username: username, firstName: firstName, lastName: lastName, bio: bio, favoriteAuthor: favoriteAuthor, favoriteBooks: [], bookclub: [], friendList: [], followerList: [], blockedUsers: [], favoriteGenres: [], bookshelves: [],  recordID: ckRecord.recordID, appleUserRef: appleUserRef, profilePhoto: foundPhoto)
+        self.init(username: username, firstName: firstName, lastName: lastName, bio: bio, favoriteAuthor: favoriteAuthor, favoriteBooks: favoriteBooks, bookclub: [], friendList: [], followerList: [], blockedUsers: blockedUsers, favoriteGenres: favoriteGenres, bookshelves: [], recordID: ckRecord.recordID, appleUserRef: appleUserRef, profilePhoto: foundPhoto)
     }
     
 } //End of extension
@@ -137,12 +138,12 @@ extension CKRecord {
             UserStrings.usernameKey : user.username,
             UserStrings.bioKey : user.bio,
             UserStrings.favoriteAuthorKey : user.favoriteAuthor,
-            //UserStrings.favoriteBooksKey : user.favoriteBooks,
-            //UserStrings.bookclubKey : user.bookclub,
-            //UserStrings.friendListKey : user.friendList,
+            UserStrings.favoriteBooksKey : user.favoriteBooks,
+//            UserStrings.bookclubKey : user.bookclub,
+//            UserStrings.friendListKey : user.friendList,
             
             //UserStrings.followerListKey : user.followerList,
-            //UserStrings.favoriteGenresKey : user.favoriteGenres,
+            UserStrings.favoriteGenresKey : user.favoriteGenres,
             //UserStrings.bookshelvesKey : user.bookshelves,
             UserStrings.appleUserRefKey : user.appleUserRef
         ])
