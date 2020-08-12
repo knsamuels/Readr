@@ -27,9 +27,9 @@ class BookclubController {
         let recordID = CKRecord.ID(recordName: "acb123")
         let ckReference = CKRecord.Reference(recordID: recordID, action: .none)
         //guard let user = UserController.shared.currentUser else {return completion(.failure(.couldNotUnwrap))}
-        let user = User(username: "iamtoks", firstName: "toks", lastName: "babatunde", password: "", bio: "from dc", favoriteBooks: ["a"], bookclub: [], friendList: [], followerList: [], favoriteGenres: [], bookshelves: [], recordID: recordID, appleUserRef: ckReference, profilePhoto: nil)
+        let user = User(username: "iamtoks", firstName: "toks", lastName: "babatunde", bio: "from dc", favoriteBooks: ["a"], bookclub: [], friendList: [], followerList: [], favoriteGenres: [], bookshelves: [], recordID: recordID, appleUserRef: ckReference, profilePhoto: nil)
         let referance = CKRecord.Reference(recordID: user.recordID, action: .none)
-        let newBC = Bookclub(name: name, admin: [referance], adminContactInfo: adminContactInfo, members: [referance], description: description, profilePicture: profilePic, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
+        let newBC = Bookclub(name: name, admin: referance, adminContactInfo: adminContactInfo, members: [referance], description: description, profilePicture: profilePic, currentlyReading: nil, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
         
         let bcRecord = CKRecord(bookclub: newBC)
         
@@ -66,6 +66,33 @@ class BookclubController {
             guard let records = records else {return completion(.failure(.couldNotUnwrap))}
             
             print("Fetched all Bookclubs successfully.")
+            
+            let fetchBC = records.compactMap { Bookclub(ckRecord: $0) }
+            print(fetchBC.count)
+            for bookclub in fetchBC {
+                print(bookclub.name)
+            }
+            return completion(.success(fetchBC))
+        }
+        
+    }
+    
+    func fetchUsersBookClub(completion: @escaping(Result<[Bookclub], BookclubError>) -> Void) {
+        guard let userReferance = UserController.shared.currentUser else {return completion(.failure(.couldNotUnwrap))}
+        
+        // come back and check this
+        let predicate = NSPredicate(format: "%K CONTAINS %@", argumentArray: [BookclubConstants.membersKey, userReferance.recordID])
+        
+        let query = CKQuery(recordType: BookclubConstants.recordTypeKey, predicate: predicate)
+        publicDB.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print("There was an error fetching all Bookclubs - \(error) - \(error.localizedDescription)")
+                return completion(.failure(.ckError(error)))
+            }
+            
+            guard let records = records else {return completion(.failure(.couldNotUnwrap))}
+            
+            print("Fetched all Bookclubs User is in successfully.")
             
             let fetchBC = records.compactMap { Bookclub(ckRecord: $0) }
             print(fetchBC.count)

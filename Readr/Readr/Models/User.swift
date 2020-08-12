@@ -13,8 +13,7 @@ struct UserStrings {
     static let recordTypeKey = "User"
     fileprivate static let usernameKey = "username"
     fileprivate static let firstNameKey = "firstName"
-    fileprivate static let lastNameKey = "lastName"
-    fileprivate static let passwordKey = "password"
+    fileprivate static let lastNameKey = "lastName" 
     fileprivate static let bioKey = "bio"
     fileprivate static let favoriteBooksKey = "favoriteBooks"
     fileprivate static let bookclubKey = "bookClub"
@@ -32,12 +31,12 @@ class User {
     var username: String
     var firstName: String
     var lastName: String
-    var password: String
     var bio: String
     var favoriteBooks: [String]
     var bookclub: [Bookclub]
-    var friendList: [User]
-    var followerList: [User]
+    var friendList: [String]
+    var followerList: [String]
+    var blockedUsers: [String]
     var favoriteGenres: [String]
     var bookshelves: [Bookshelf]
     var recordID: CKRecord.ID
@@ -71,16 +70,16 @@ class User {
         }
     }
     
-    init(username: String, firstName: String, lastName: String, password: String, bio: String = "", favoriteBooks: [String] = [], bookclub: [Bookclub] = [], friendList: [User] = [], followerList: [User] = [], favoriteGenres: [String] = [], bookshelves: [Bookshelf] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), /*bookclubReference: CKRecord.Reference?, bookshelfReference: CKRecord.Reference?,*/ appleUserRef: CKRecord.Reference, profilePhoto: UIImage? = nil) {
+    init(username: String, firstName: String, lastName: String, bio: String = "", favoriteBooks: [String] = [], bookclub: [Bookclub] = [], friendList: [String] = [], followerList: [String] = [], blockedUsers: [String] = [], favoriteGenres: [String] = [], bookshelves: [Bookshelf] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), /*bookclubReference: CKRecord.Reference?, bookshelfReference: CKRecord.Reference?,*/ appleUserRef: CKRecord.Reference, profilePhoto: UIImage? = nil) {
         self.username = username
         self.firstName = firstName
         self.lastName = lastName
-        self.password = password
         self.bio = bio
         self.favoriteBooks = favoriteBooks
         self.bookclub = bookclub
         self.friendList = friendList
         self.followerList = followerList
+        self.blockedUsers = blockedUsers
         self.favoriteGenres = favoriteGenres
         self.bookshelves = bookshelves
         self.recordID = recordID
@@ -97,7 +96,6 @@ extension User {
         guard let username = ckRecord[UserStrings.usernameKey] as? String,
             let firstName = ckRecord[UserStrings.firstNameKey] as? String,
             let lastName = ckRecord[UserStrings.lastNameKey] as? String,
-            let password = ckRecord[UserStrings.passwordKey] as? String,
             let bio = ckRecord[UserStrings.bioKey] as? String,
             let appleUserRef = ckRecord[UserStrings.appleUserRefKey] as? CKRecord.Reference else {return nil}
         
@@ -115,7 +113,7 @@ extension User {
             }
         }
         
-        self.init(username: username, firstName: firstName, lastName: lastName, password: password, bio: bio, favoriteBooks: [], bookclub: [], friendList: [], followerList: [], favoriteGenres: [], bookshelves: [],  recordID: ckRecord.recordID,  /*bookclubReference: bookclubReference, bookshelfReference: bookshelfReference,*/ appleUserRef: appleUserRef, profilePhoto: foundPhoto)
+        self.init(username: username, firstName: firstName, lastName: lastName, bio: bio, favoriteBooks: [], bookclub: [], friendList: [], followerList: [], blockedUsers: [], favoriteGenres: [], bookshelves: [],  recordID: ckRecord.recordID,  /*bookclubReference: bookclubReference, bookshelfReference: bookshelfReference,*/ appleUserRef: appleUserRef, profilePhoto: foundPhoto)
     }
     
 } //End of extension
@@ -127,11 +125,11 @@ extension CKRecord {
             UserStrings.firstNameKey : user.firstName,
             UserStrings.lastNameKey : user.lastName,
             UserStrings.usernameKey : user.username,
-            UserStrings.passwordKey : user.password,
             UserStrings.bioKey : user.bio,
             //UserStrings.favoriteBooksKey : user.favoriteBooks,
             //UserStrings.bookclubKey : user.bookclub,
             //UserStrings.friendListKey : user.friendList,
+            
             //UserStrings.followerListKey : user.followerList,
             //UserStrings.favoriteGenresKey : user.favoriteGenres,
             //UserStrings.bookshelvesKey : user.bookshelves,

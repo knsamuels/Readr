@@ -62,6 +62,41 @@ class BookController {
         }.resume()
     }
     
+    static func fetchOneBookWith(ISBN: String, completion: @escaping(Result<Book, BookError>) -> Void) {
+        
+        guard let baseURL = URL(string: StringConstants.baseURLString) else {return completion(.failure(.invaildURL))}
+        let volumeURL = baseURL.appendingPathComponent(StringConstants.volumeComponentString)
+        
+        var compnents = URLComponents(url: volumeURL, resolvingAgainstBaseURL: true)
+        //let apiQuery = URLQueryItem(name: StringConstants.apiKey, value: StringConstants.apiValue)
+        let searchQuery = URLQueryItem(name: StringConstants.queryKey, value: ISBN)
+        
+        compnents?.queryItems = [searchQuery]
+        guard let finalURL = compnents?.url else {return completion(.failure(.invaildURL))}
+        
+        print(finalURL)
+        
+        URLSession.shared.dataTask(with: finalURL) {(data, _, error) in
+            if let error = error {
+                return completion(.failure(.thrownError(error)))
+            }
+            
+            guard let data = data else {return completion(.failure(.noData))}
+            do {
+                let topLevelObject = try JSONDecoder().decode(TopLevelObject.self, from: data)
+                guard let item = topLevelObject.items.first else {return completion(.failure(.unableToDecode))}
+                let book = item.book
+                
+                return completion(.success(book))
+                
+            } catch {
+                print(error.localizedDescription)
+                print(error)
+                return completion(.failure(.unableToDecode))
+            }
+        }.resume()
+    }
+    
     static func fetchImage(book: ImageLinks, completion: @escaping(Result<UIImage, BookError>) -> Void) {
         guard  let url = book.thumbnail else {return}
         print(url)
