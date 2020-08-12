@@ -33,12 +33,13 @@ class Bookshelf {
 extension Bookshelf {
     convenience init?(ckRecord: CKRecord) {
         
-        guard let title = ckRecord[BookshelfStrings.titleKey] as? String,
-            let books = ckRecord[BookshelfStrings.booksKey] as? [String] else {return nil}
+        guard let title = ckRecord[BookshelfStrings.titleKey] as? String else {return nil}
+        
+        var books = ckRecord[BookshelfStrings.booksKey] as? [String]
         
         let userReference = ckRecord[BookshelfStrings.userRefKey] as? CKRecord.Reference
         
-        self.init(title: title, books: books, recordID: ckRecord.recordID, userReference: userReference)
+        self.init(title: title, books: books ?? [], recordID: ckRecord.recordID, userReference: userReference)
     }
 }
 
@@ -47,9 +48,12 @@ extension CKRecord {
         self.init(recordType: BookshelfStrings.recordTypeKey, recordID: bookshelf.recordID)
         
         self.setValuesForKeys([
-            BookshelfStrings.titleKey : bookshelf.title,
-            BookshelfStrings.booksKey : bookshelf.books
+            BookshelfStrings.titleKey : bookshelf.title
         ])
+        
+        if !bookshelf.books.isEmpty {
+            self.setValue(bookshelf.books, forKey: BookshelfStrings.booksKey)
+        }
         
         if let reference = bookshelf.userReference {
             self.setValue(reference, forKey: BookshelfStrings.userRefKey)

@@ -28,16 +28,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                                                        print("failure")
 //                                                    }
 //        }
-        BookclubController.shared.fetchBookclubs(searchTerm: "awesome") { (result) in
+//        BookclubController.shared.fetchBookclubs(searchTerm: "awesome") { (result) in
+//            switch result {
+//            case .success(_):
+//                print("success")
+//            case .failure(_):
+//                print("failure")
+//            }
+//
+//
+//        }
+//        UserController.shared.createUser(username: "bwork35", firstName: "Bryan", lastName: "Workman", favoriteAuthor: "JK Rowling") { (result) in
+//            switch result {
+//            case .success(_):
+//                print("success")
+//            case .failure(_):
+//                print("failure")
+//            }
+//        }
+        
+        UserController.shared.fetchUser { (result) in
             switch result {
-            case .success(_):
-                print("success")
+            case .success(let user):
+                UserController.shared.currentUser = user
+                BookshelfController.sharedInstance.fetchAllBookshelfs { (result) in
+                    switch result {
+                    case .success(let bookshelves):
+                        print(bookshelves)
+                    case .failure(_):
+                        print("failure")
+                    }
+                }
             case .failure(_):
                 print("failure")
             }
-            
-           
         }
+        
+//        BookshelfController.sharedInstance.createBookshelf(title: "Hunger Games") { (result) in
+//            switch result {
+//            case .success(_):
+//                print("success")
+//            case .failure(_):
+//                print("failure")
+//            }
+//        }
+        
+        
+        
         return true
     }
 

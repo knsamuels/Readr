@@ -28,8 +28,8 @@ class BookclubController {
         let ckReference = CKRecord.Reference(recordID: recordID, action: .none)
         //guard let user = UserController.shared.currentUser else {return completion(.failure(.couldNotUnwrap))}
         let user = User(username: "iamtoks", firstName: "toks", lastName: "babatunde", bio: "from dc", favoriteAuthor: "JK Rowling", favoriteBooks: ["a"], bookclub: [], friendList: [], followerList: [], favoriteGenres: [], bookshelves: [], recordID: recordID, appleUserRef: ckReference, profilePhoto: nil)
-        let referance = CKRecord.Reference(recordID: user.recordID, action: .none)
-        let newBC = Bookclub(name: name, admin: referance, adminContactInfo: adminContactInfo, members: [referance], description: description, profilePicture: profilePic, currentlyReading: nil, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
+        let reference = CKRecord.Reference(recordID: user.recordID, action: .none)
+        let newBC = Bookclub(name: name, admin: reference, adminContactInfo: adminContactInfo, members: [reference], description: description, profilePicture: profilePic, currentlyReading: nil, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
         
         let bcRecord = CKRecord(bookclub: newBC)
         
@@ -80,7 +80,7 @@ class BookclubController {
     
     //fetch current user or other users
     func fetchUsersBookClub(user: User, completion: @escaping(Result<[Bookclub], BookclubError>) -> Void) {
-        //guard let userReferance = UserController.shared.currentUser else {return completion(.failure(.couldNotUnwrap))}
+        //guard let userReference = UserController.shared.currentUser else {return completion(.failure(.couldNotUnwrap))}
         
         // come back and check this
         let predicate = NSPredicate(format: "%K CONTAINS %@", argumentArray: [BookclubConstants.membersKey, user.recordID])
