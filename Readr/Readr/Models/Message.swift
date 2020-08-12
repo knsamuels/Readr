@@ -21,7 +21,7 @@ struct MessageStrings {
 
 class Message {
     var text: String?
-    var user: User
+    var user: String
     var timestamp: Date
 //    var bookclub: Bookclub
     var bookclubReference: CKRecord.Reference?
@@ -52,7 +52,7 @@ class Message {
     var recordID: CKRecord.ID
     var userReference: CKRecord.Reference?
     
-    init(text: String?, user: User, timestamp: Date = Date(), image: UIImage?, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), userReference: CKRecord.Reference?, bookclubReference: CKRecord.Reference?) {
+    init(text: String?, user: String, timestamp: Date = Date(), image: UIImage?, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), userReference: CKRecord.Reference?, bookclubReference: CKRecord.Reference?) {
         self.text = text
         self.user = user
         self.timestamp = timestamp
@@ -65,7 +65,7 @@ class Message {
 extension Message {
     
     convenience init?(ckRecord: CKRecord){
-        guard let user = ckRecord[MessageStrings.userKey] as? User,
+        guard let user = ckRecord[MessageStrings.userKey] as? String,
             let timestamp = ckRecord[MessageStrings.timestampKey] as? Date else {return nil}
         
         let text = ckRecord[MessageStrings.textKey] as? String

@@ -27,7 +27,7 @@ class MessageController {
         guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
         let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
         let clubRef = CKRecord.Reference(recordID: bookclub.recordID , action: .deleteSelf)
-        let newMessage = Message(text: text, user: user, image: image, userReference: userRef, bookclubReference: clubRef)
+        let newMessage = Message(text: text, user: user.username, image: image, userReference: userRef, bookclubReference: clubRef)
         
         let messageRecord = CKRecord(message: newMessage)
         
