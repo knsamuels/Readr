@@ -20,7 +20,7 @@ struct StringConstants {
 
 class BookController {
     
-    static func fetchBookWith(searchTerm: String, completion: @escaping(Result<[Book], BookError>) -> Void) {
+    static func fetchBooksWith(searchTerm: String, completion: @escaping(Result<[Book], BookError>) -> Void) {
         
         guard let baseURL = URL(string: StringConstants.baseURLString) else {return completion(.failure(.invaildURL))}
         let volumeURL = baseURL.appendingPathComponent(StringConstants.volumeComponentString)
