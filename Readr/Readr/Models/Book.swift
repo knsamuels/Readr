@@ -6,7 +6,7 @@
 //  Copyright © 2020 Kristin Samuels . All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct TopLevelObject: Decodable {
     let items: [Items]
@@ -27,6 +27,11 @@ struct Book: Decodable {
     let authors: [String]?
     let imageLinks: ImageLinks?
     let industryIdentifiers: [IndustryIdentifiers]?
+    var coverImage: UIImage? = nil
+    
+    enum CodingKeys: String, CodingKey {
+        case title, description, averageRating, authors, imageLinks, industryIdentifiers
+    }
 }
 
 struct ImageLinks: Decodable {
