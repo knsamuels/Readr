@@ -12,13 +12,44 @@ import CloudKit
 class UserController {
     
     //MARK: - Properties
-    
     static let shared = UserController()
     
     var currentUser: User?
     
     let publicDB = CKContainer.default().publicCloudDatabase
     
+    
+    init() {
+        createUser(username: "ksam17", firstName: "Kristin", lastName: "Samuels", favoriteAuthor: "Stephen King") { (result) in
+            switch result {
+            case .success(let user):
+                UserController.shared.currentUser = user
+            case .failure(_):
+                print("error!")
+            }
+        }
+       currentUser?.favoriteBooks = ["9780399230035", "9781441738707","9781405507677"]
+       currentUser?.favoriteGenres = ["Romance", "Comedy", "Children's"]
+        currentUser?.bio = "I love to read"
+        
+    
+        BookclubController.shared.createBookClub(name: "Harry Potter Fans", adminContactInfo: "kristin@email.com", description: "We love Harry Potter", profilePic: nil, meetingInfo: "Once a month", memberCapacity: 10) { (result) in
+            switch result {
+            case .success(let bookclub):
+                self.currentUser?.bookclub.append(bookclub)
+            case .failure(_):
+                print("oh no the bookclub didn't work")
+            }
+        }
+        BookclubController.shared.createBookClub(name: "We love the Notebook", adminContactInfo: "kristin@email.com", description: "Talk about romance movies", profilePic: nil, meetingInfo: " first Monday of the month", memberCapacity: 15) { (result) in
+            switch result {
+            case .success(let bookclub):
+                self.currentUser?.bookclub.append(bookclub)
+            case .failure(_):
+                print("oh no the bookclub didn't work")
+            }
+        }        
+    }
     //MARK: - CRUD
     
     //Create

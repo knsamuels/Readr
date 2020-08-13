@@ -10,6 +10,12 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
 
+    // MARK: Properties:
+    
+
+    //Landing pad:
+
+
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var followerLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
@@ -43,8 +49,14 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
 
         // Do any additional setup after loading the view.
+    }
+    
+    //helper functions
+    func updateViews() {
+          
     }
     
 
