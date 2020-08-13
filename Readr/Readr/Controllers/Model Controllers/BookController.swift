@@ -20,6 +20,8 @@ struct StringConstants {
 
 class BookController {
     
+    static let shared = BookController()
+    
     static func fetchBooksWith(searchTerm: String, completion: @escaping(Result<[Book], BookError>) -> Void) {
         
         guard let baseURL = URL(string: StringConstants.baseURLString) else {return completion(.failure(.invaildURL))}
@@ -63,7 +65,7 @@ class BookController {
     }
     
     static func fetchOneBookWith(ISBN: String, completion: @escaping(Result<Book, BookError>) -> Void) {
-        
+        print("")
         guard let baseURL = URL(string: StringConstants.baseURLString) else {return completion(.failure(.invaildURL))}
         let volumeURL = baseURL.appendingPathComponent(StringConstants.volumeComponentString)
         
@@ -77,6 +79,7 @@ class BookController {
         print(finalURL)
         
         URLSession.shared.dataTask(with: finalURL) {(data, _, error) in
+            print("")
             if let error = error {
                 return completion(.failure(.thrownError(error)))
             }
@@ -85,10 +88,22 @@ class BookController {
             do {
                 let topLevelObject = try JSONDecoder().decode(TopLevelObject.self, from: data)
                 guard let item = topLevelObject.items.first else {return completion(.failure(.unableToDecode))}
-                let book = item.book
-                
-                return completion(.success(book))
-                
+                var book = item.book
+                guard let imageLinks = book.imageLinks else {
+                    return completion(.success(book))
+                }
+                print("")
+                self.fetchImage(imageLinks: imageLinks) { (result) in
+                    print("")
+                    switch result {
+                    case .success(let image):
+                        book.coverImage = image
+                        return completion(.success(book))
+                    case .failure(_):
+                        print("We were not able to find an image for the book")
+                        return completion(.failure(.invaildURL))
+                    }
+                }
             } catch {
                 print(error.localizedDescription)
                 print(error)
@@ -97,11 +112,12 @@ class BookController {
         }.resume()
     }
     
-    static func fetchImage(book: ImageLinks, completion: @escaping(Result<UIImage, BookError>) -> Void) {
-        guard  let url = book.thumbnail else {return}
+    static func fetchImage(imageLinks: ImageLinks, completion: @escaping(Result<UIImage, BookError>) -> Void) {
+        guard  let url = imageLinks.thumbnail else {return}
         print(url)
-        
+        print("")
         URLSession.shared.dataTask(with: url) {(data, _, error) in
+            print("")
             if let error = error {
                 return completion(.failure(.thrownError(error)))
             }
@@ -110,6 +126,29 @@ class BookController {
             guard let thumbnailImage = UIImage(data: data) else {return completion(.failure(.unableToDecode))}
             completion(.success(thumbnailImage))
         }.resume()
+    }
+    
+    func fetchFavoriteBooks(forUser user: User, completion: @escaping (Result<[Book], BookError>) -> Void) {
+        let group = DispatchGroup()
+        var books: [Book] = []
+        print("")
+        for i in user.favoriteBooks {
+            group.enter()
+            BookController.fetchOneBookWith(ISBN: i) { (result) in
+              print("yeah the book is back!")
+                switch result {
+                case .success(let book):
+                    books.append(book)
+                case .failure(_):
+                    print("error fetching user's fav books")
+                }
+                group.leave()
+            }
+        }
+        group.notify(queue: .main) {
+            print("")
+            completion(.success(books))
+        }
     }
 }
 

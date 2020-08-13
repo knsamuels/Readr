@@ -47,22 +47,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
 //        }
         
-        UserController.shared.fetchUser { (result) in
-            switch result {
-            case .success(let user):
-                UserController.shared.currentUser = user
-                BookshelfController.sharedInstance.fetchAllBookshelfs { (result) in
-                    switch result {
-                    case .success(let bookshelves):
-                        print(bookshelves)
-                    case .failure(_):
-                        print("failure")
-                    }
-                }
-            case .failure(_):
-                print("failure")
-            }
-        }
+//        UserController.shared.fetchUser { (result) in
+//            switch result {
+//            case .success(let user):
+//                UserController.shared.currentUser = user
+//                BookshelfController.sharedInstance.fetchAllBookshelfs { (result) in
+//                    switch result {
+//                    case .success(let bookshelves):
+//                        print(bookshelves)
+//                    case .failure(_):
+//                        print("failure")
+//                    }
+//                }
+//            case .failure(_):
+//                print("failure")
+//            }
+//        }
         
 //        BookshelfController.sharedInstance.createBookshelf(title: "Hunger Games") { (result) in
 //            switch result {

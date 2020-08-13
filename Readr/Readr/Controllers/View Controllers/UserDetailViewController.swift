@@ -9,13 +9,13 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
-
-    // MARK: Properties:
     
-
+    // MARK: Properties:
+    var userFavBooks: [Book] = []
+    var userFavBooksImages: [UIImage] = []
     //Landing pad:
-
-
+    
+    
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var followerLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
@@ -49,25 +49,122 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateViews()
-
-        // Do any additional setup after loading the view.
+        fetchUser()
+        
     }
     
     //helper functions
-    func updateViews() {
-          
+    
+    func fetchUser() {
+        print("")
+        UserController.shared.createUser(username: "ksam17", firstName: "Kristin", lastName: "Samuels", favoriteAuthor: "Stephen King" ) { (result) in
+            print("")
+            switch result {
+            case .success(let user):
+                user.favoriteBooks = ["9780399230035", "9780007158447", "9781478937968"]
+                user.favoriteGenres = ["Romance", "Comedy", "Children's"]
+                user.bio = "I love to read"
+                UserController.shared.currentUser = user
+                print("")
+                BookController.shared.fetchFavoriteBooks(forUser: user) { (result) in
+                    print("")
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(let books):
+                            self.userFavBooks = books
+                            self.updateViews()
+                        case .failure(_):
+                            print("failed getting user's favorite books")
+                        }
+                    }
+                }
+            case .failure(_):
+                print("error!")
+            }
+        }
+        print("something")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateViews() {
+        DispatchQueue.main.async {
+            self.favBookPic1.image = self.userFavBooks[0].coverImage
+                self.favBookPic2.image = self.userFavBooks[1].coverImage
+                self.favBookPic3.image = self.userFavBooks[2].coverImage
+                self.titleLabel1.text = self.userFavBooks[0].title
+                self.titleLabel2.text = self.userFavBooks[1].title
+                self.titleLabel3.text = self.userFavBooks[2].title
+        }
     }
-    */
-
+    
+    
+    //        BookController.fetchOneBookWith(ISBN: UserController.shared.currentUser?.favoriteBooks[0] ?? "9780007158447") { (result) in
+    //            switch result {
+    //            case .success(let book):
+    //                self.book1 = book
+    //                self.fetchBookImage()
+    //            case .failure(_):
+    //                print("anything here")
+    //            }
+    //        }
+    //        BookController.fetchOneBookWith(ISBN: UserController.shared.currentUser?.favoriteBooks[1] ?? "9780007158447") { (result) in
+    //            switch result {
+    //            case .success(let book):
+    //                self.book2 = book
+    //            case .failure(_):
+    //                print("anything here")
+    //            }
+    //        }
+    //        BookController.fetchOneBookWith(ISBN: UserController.shared.currentUser?.favoriteBooks[2] ?? "9780007158447") { (result) in
+    //            switch result {
+    //            case .success(let book):
+    //                self.book3 = book
+    //            case .failure(_):
+    //                print("anything here")
+    //            }
+    //        }
+    //    }
+    //
+    //        BookController.fetchImage(book: book2ImageLinks) { (result) in
+    //            switch result {
+    //            case .success(let image):
+    //                self.book2Image = image
+    //            case .failure(_):
+    //                print("anything here")
+    //            }
+    //        }
+    //        BookController.fetchImage(book: book3ImageLinks) { (result) in
+    //            switch result {
+    //            case .success(let image):
+    //                self.book3Image = image
+    //            case .failure(_):
+    //                print("anything here")
+    //            }
+    //        }
+    //func fetchBookImage() {
+    //        guard let book1ImageLinks = book1?.imageLinks else {return}
+    ////        guard let book2ImageLinks = book2?.imageLinks else {return}
+    ////        guard let book3ImageLinks = book3?.imageLinks else {return}
+    //        BookController.fetchImage(book: book1ImageLinks) { (result) in
+    //            switch result {
+    //            case .success(let image):
+    //                self.book1Image = image
+    //                self.updateViews()
+    //            case .failure(_):
+    //                print("anything here")
+    //            }
+    //        }
+    //    }
+    
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

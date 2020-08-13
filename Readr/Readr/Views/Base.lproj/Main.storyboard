@@ -132,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2k-55-0YQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157" y="830"/>
+            <point key="canvasLocation" x="-109" y="818"/>
         </scene>
         <!--JoinBC View Controller-->
         <scene sceneID="Wqe-zc-9iq">
@@ -282,6 +282,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="gFe-QI-9yi"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Jv3-U4-nwv"/>
                     <connections>
                         <outlet property="PastReadsAuthorLabel2" destination="2D3-5e-KTc" id="kvL-j6-jU4"/>
                         <outlet property="adminContactInfoLabel" destination="xab-rk-txq" id="6zj-WQ-cxX"/>
@@ -305,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjI-Mq-ohl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="571.01449275362324" y="1497.9910714285713"/>
+            <point key="canvasLocation" x="428" y="1479"/>
         </scene>
         <!--Bookshelf List Table View Controller-->
         <scene sceneID="6mh-RX-ImH">
@@ -346,7 +347,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ehe-hT-5pr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1093" y="831"/>
+            <point key="canvasLocation" x="1370" y="889"/>
         </scene>
         <!--User Detail View Controller-->
         <scene sceneID="94Q-M8-USP">
@@ -564,7 +565,7 @@
                             </barButtonItem>
                             <barButtonItem title="Item" id="Hfk-U8-HZj">
                                 <connections>
-                                    <segue destination="H6T-ob-m4V" kind="show" id="emM-vX-2TI"/>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" id="Om8-1V-eTS"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
