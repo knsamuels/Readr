@@ -10,23 +10,50 @@ import UIKit
 
 class BookshelfListTableViewController: UITableViewController {
     
+    var userBookshelves: [Bookshelf] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        createBookshelf()
+        fetchAllUsersFavorites()
     }
-
+    //Mark: - Helper Functions
+    
+    func createBookshelf() {
+        BookshelfController.shared.createBookshelf(title: "favorites") { (result) in
+            switch result {
+            case .success(_):
+                print("We created a bookshelf")
+            case .failure(_):
+                print("We could not create a bookshelf")
+            }
+        }
+    }
+    
+    func fetchAllUsersFavorites() {
+        BookshelfController.shared.fetchAllBookshelfs { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let bookshelves):
+                    self.userBookshelves = bookshelves
+                    self.tableView.reloadData()
+                case .failure(_):
+                    print("we could not fetch the users bookshelves")
+                }
+            }
+        }
+    }
+    
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return userBookshelves.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfCell", for: indexPath)
-
-        // Configure the cell...
-
+        let bookshelf = userBookshelves[indexPath.row]
+        cell.textLabel?.text = bookshelf.title
+        cell.detailTextLabel?.text = "\(bookshelf.books.count)"
         return cell
     }
 

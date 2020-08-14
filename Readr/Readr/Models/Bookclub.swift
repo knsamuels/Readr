@@ -30,8 +30,8 @@ class Bookclub {
     var admin: CKRecord.Reference
     var adminContactInfo: String
     var members: [CKRecord.Reference]
-    var currentlyReading: String?
-    var pastReads: [String]?
+    var currentlyReading: String
+    var pastReads: [String]
     var meetingInfo: String
     var memberCapacity: Int
     var recordID: CKRecord.ID
@@ -62,7 +62,7 @@ class Bookclub {
         }
     }
     
-    init(name: String, admin: CKRecord.Reference, adminContactInfo: String, members: [CKRecord.Reference], description: String, profilePicture: UIImage?, currentlyReading: String?, pastReads: [String]? = [],  meetingInfo: String = "", memberCapacity: Int, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
+    init(name: String, admin: CKRecord.Reference, adminContactInfo: String, members: [CKRecord.Reference], description: String, profilePicture: UIImage?, currentlyReading: String, pastReads: [String] = [],  meetingInfo: String = "", memberCapacity: Int, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
         self.name = name
         self.admin = admin
         self.adminContactInfo = adminContactInfo
@@ -90,11 +90,12 @@ extension CKRecord {
             BookclubConstants.descriptionKey : bookclub.description,
             //BookclubConstants.profilePictureKey : bookclub.profilePicture,
             BookclubConstants.currentlyReadingKey : bookclub.currentlyReading,
-            BookclubConstants.pastReadsKey : bookclub.pastReads,
             BookclubConstants.meetingInfoKey : bookclub.meetingInfo,
             BookclubConstants.memberCapacityKey : bookclub.memberCapacity
         ])
-        
+        if bookclub.pastReads.count > 0 {
+            self.setValue(bookclub.pastReads, forKey: BookclubConstants.pastReadsKey)
+               }
     }
 }
 
@@ -106,13 +107,10 @@ extension Bookclub {
             let adminContactInfo = ckRecord[BookclubConstants.adminContactInfoKey] as? String,
             let members = ckRecord[BookclubConstants.membersKey] as? [CKRecord.Reference],
             let description = ckRecord[BookclubConstants.descriptionKey] as? String,
+            let currentlyReading = ckRecord[BookclubConstants.currentlyReadingKey] as? String,
             let meetingInfo = ckRecord[BookclubConstants.meetingInfoKey] as? String,
             let memberCapacity = ckRecord[BookclubConstants.memberCapacityKey] as? Int else {return nil}
-        var currentlyReading: String?
-        if let result = ckRecord[BookclubConstants.currentlyReadingKey] as? String {
-            currentlyReading = result
-        }
-        var pastReads: [String]?
+        var pastReads: [String] = []
         if let result = ckRecord[BookclubConstants.pastReadsKey] as? [String] {
             pastReads = result
         }
