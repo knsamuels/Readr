@@ -35,8 +35,8 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var favGenreName2: UILabel!
     @IBOutlet weak var favGenrePic3: UIImageView!
     @IBOutlet weak var favGenreName3: UILabel!
-    @IBOutlet weak var bookClubImage1: UIImageView!
-    @IBOutlet weak var bookcluName1: UILabel!
+    @IBOutlet weak var bookclubImage1: UIImageView!
+    @IBOutlet weak var bookclubName1: UILabel!
     @IBOutlet weak var bookclubName2: UILabel!
     @IBOutlet weak var bookclubImage2: UIImageView!
     @IBOutlet weak var bookclubImage3: UIImageView!
@@ -94,18 +94,8 @@ class UserDetailViewController: UIViewController {
     
     func updateViews() {
         DispatchQueue.main.async {
-//            self.favBookPic1.isHidden = false
-//            self.titleLabel1.isHidden = false
-//            self.authorLabel1.isHidden = false
-//            self.favBookPic2.isHidden = false
-//            self.titleLabel2.isHidden = false
-//            self.authorLabel2.isHidden = false
-//            self.favBookPic3.isHidden = false
-//            self.titleLabel3.isHidden = false
-//            self.authorLabel3.isHidden = false
-//            self.favBookPic4.isHidden = false
-//            self.titleLabel4.isHidden = false
-//            self.authorLabel4.isHidden = false
+            self.title = UserController.shared.currentUser?.username
+            self.bioLabel.text = UserController.shared.currentUser?.bio
             let numberOfBooks = self.userFavBooks.count
             switch numberOfBooks {
             case 0:
@@ -209,8 +199,8 @@ class UserDetailViewController: UIViewController {
             let numberOfBookClubs = self.userBookClubs.count
             switch numberOfBookClubs {
             case 0:
-                self.bookClubImage1.isHidden = true
-                self.bookcluName1.isHidden = true
+                self.bookclubImage1.isHidden = true
+                self.bookclubName1.isHidden = true
                 self.bookclubImage2.isHidden = true
                 self.bookclubName2.isHidden = true
                 self.bookclubImage3.isHidden = true
@@ -218,8 +208,8 @@ class UserDetailViewController: UIViewController {
                 self.bookclubImage4.isHidden = true
                 self.bookclubName4.isHidden = true
             case 1:
-                self.bookClubImage1.image = self.userBookClubs[0].profilePicture
-                self.bookcluName1.text = self.userBookClubs[0].name
+                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
+                self.bookclubName1.text = self.userBookClubs[0].name
                 self.bookclubImage2.isHidden = true
                 self.bookclubName2.isHidden = true
                 self.bookclubImage3.isHidden = true
@@ -227,8 +217,8 @@ class UserDetailViewController: UIViewController {
                 self.bookclubImage4.isHidden = true
                 self.bookclubName4.isHidden = true
             case 2:
-                self.bookClubImage1.image = self.userBookClubs[0].profilePicture
-                self.bookcluName1.text = self.userBookClubs[0].name
+                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
+                self.bookclubName1.text = self.userBookClubs[0].name
                 self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                 self.bookclubName2.text = self.userBookClubs[1].name
                 self.bookclubImage3.isHidden = true
@@ -236,8 +226,8 @@ class UserDetailViewController: UIViewController {
                 self.bookclubImage4.isHidden = true
                 self.bookclubName4.isHidden = true
             case 3:
-                self.bookClubImage1.image = self.userBookClubs[0].profilePicture
-                self.bookcluName1.text = self.userBookClubs[0].name
+                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
+                self.bookclubName1.text = self.userBookClubs[0].name
                 self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                 self.bookclubName2.text = self.userBookClubs[1].name
                 self.bookclubImage3.image = self.userBookClubs[2].profilePicture
@@ -245,8 +235,8 @@ class UserDetailViewController: UIViewController {
                 self.bookclubImage4.isHidden = true
                 self.bookclubName4.isHidden = true
             default:
-                self.bookClubImage1.image = self.userBookClubs[0].profilePicture
-                self.bookcluName1.text = self.userBookClubs[0].name
+                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
+                self.bookclubName1.text = self.userBookClubs[0].name
                 self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                 self.bookclubName2.text = self.userBookClubs[1].name
                 self.bookclubImage3.image = self.userBookClubs[2].profilePicture
@@ -254,11 +244,7 @@ class UserDetailViewController: UIViewController {
                 self.bookclubImage4.image = self.userBookClubs[3].profilePicture
                 self.bookclubName4.text = self.userBookClubs[3].name
             }
-            self.bioLabel.text = UserController.shared.currentUser?.bio
-            self.bookcluName1.text = self.userBookClubs[0].name
-            self.favGenreName1.text = UserController.shared.currentUser?.favoriteGenres[0]
-            self.favGenreName2.text = UserController.shared.currentUser?.favoriteGenres[1]
-            self.favGenreName3.text = UserController.shared.currentUser?.favoriteGenres[2]
+           
         }
     }
     func getUsersBookclubs() {
