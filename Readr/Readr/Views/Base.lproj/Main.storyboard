@@ -259,14 +259,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2U-JU-Gs4">
-                                <rect key="frame" x="354" y="44" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="JOIN"/>
-                                <connections>
-                                    <action selector="joinButtonTapped:" destination="ZEJ-Jj-dV8" eventType="touchUpInside" id="weH-wo-SgA"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xyc-yg-YXu">
                                 <rect key="frame" x="119" y="625" width="75" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -286,7 +278,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="gFe-QI-9yi"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Jv3-U4-nwv"/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="YgO-FQ-wEn"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="Jv3-U4-nwv">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="4lX-ey-BHA"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="ImageForCurrentlyReading" destination="KSN-wE-uTC" id="rSh-F6-zfU"/>
                         <outlet property="adminContactInfoLabel" destination="xab-rk-txq" id="xEA-ni-0GI"/>
@@ -298,7 +296,6 @@
                         <outlet property="image1ForPastReads" destination="MKp-s1-zcr" id="TcD-ir-28L"/>
                         <outlet property="image2ForPastReads" destination="Xyc-yg-YXu" id="9ZF-d0-S7t"/>
                         <outlet property="imageOfBookClub" destination="he2-hu-3P2" id="BFq-0s-Zuo"/>
-                        <outlet property="joinButton" destination="f2U-JU-Gs4" id="yom-Mi-F7w"/>
                         <outlet property="meetingInfoForBookClub" destination="OuF-re-nWW" id="kIr-3w-9pi"/>
                         <outlet property="nameOfBookClub" destination="Uec-c1-hou" id="AYA-cr-eMd"/>
                         <outlet property="rating1ForPastReads" destination="uhB-l5-NJo" id="McU-qe-t2I"/>
@@ -352,7 +349,13 @@
                             <outlet property="delegate" destination="SEJ-cH-CT6" id="Sfu-0s-hMG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="f02-Rh-Hxf"/>
+                    <navigationItem key="navigationItem" id="f02-Rh-Hxf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fX1-VH-vya">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="SEJ-cH-CT6" id="Zzs-kr-DxT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ehe-hT-5pr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
