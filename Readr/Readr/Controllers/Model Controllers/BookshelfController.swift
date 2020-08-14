@@ -12,14 +12,14 @@ import CloudKit
 class BookshelfController {
     
     
-    static let sharedInstance = BookshelfController()
+    static let shared = BookshelfController()
     
     var bookshelf: [Bookshelf] = []
     
     let publicDB = CKContainer.default().publicCloudDatabase
     
     
-    func createBookshelf(title: String, completion: @escaping (Result<Bool, BookshelfError>) -> Void ) {
+    func createBookshelf(title: String, completion: @escaping (Result<Bookshelf, BookshelfError>) -> Void ) {
         
         guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
         let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
@@ -34,13 +34,13 @@ class BookshelfController {
             guard let record = record,
                 let savedBookshelf = Bookshelf(ckRecord: record) else { return completion(.failure(.couldNotUnwarp))}
             
-            self.bookshelf.append(savedBookshelf)
-            completion(.success(true))
+            UserController.shared.currentUser?.bookshelves.append(savedBookshelf)
+            completion(.success(savedBookshelf))
             
         }
     }
     
-    func fetchAllBookshelfs(completion: @escaping (Result<Bool, BookshelfError>) -> Void) {
+    func fetchAllBookshelfs(completion: @escaping (Result<[Bookshelf], BookshelfError>) -> Void) {
         guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
         let userRef = user.recordID
         //let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
@@ -56,7 +56,7 @@ class BookshelfController {
             let bookshelf: [Bookshelf] = records.compactMap { Bookshelf(ckRecord: $0)}
             self.bookshelf = bookshelf
             
-            completion(.success(true))
+            completion(.success(bookshelf))
         }
     }
 

@@ -34,8 +34,8 @@ class BookclubViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        fetchBookClubs()
-        createBookClub()
+        fetchBookClubs()
+//        createBookClub()
         
     }
     
@@ -47,6 +47,10 @@ class BookclubViewController: UIViewController {
         DispatchQueue.main.async {
             guard let user = UserController.shared.currentUser else {return}
             self.descriptionOfBookClub.text = user.bookclubs[0].description
+            self.nameOfBookClub.text = user.bookclubs[0].name
+            self.meetingInfoForBookClub.text = user.bookclubs[0].meetingInfo
+            self.adminNameLabel.text = user.username
+            self.adminContactInfoLabel.text = user.bookclubs[0].adminContactInfo
         }
     }
     
@@ -64,11 +68,17 @@ class BookclubViewController: UIViewController {
         }
     }
     
+//    func addBookClub() {
+//        UserController.shared.currentUser
+//
+//    }
+    
     func fetchBookClubs () {
         guard let user = UserController.shared.currentUser else { return}
-        BookclubController.shared.fetchUsersBookClub(user: user) { (result) in
+        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
             switch result {
-            case .success(_):
+            case .success(let bookclubs):
+                UserController.shared.currentUser?.bookclubs.append(contentsOf: bookclubs)
                 self.updateViews()
                 print("we were able to get the user's bookclubs")
             case .failure(_):
