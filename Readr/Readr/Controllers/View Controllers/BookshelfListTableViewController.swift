@@ -17,6 +17,9 @@ class BookshelfListTableViewController: UITableViewController {
         createBookshelf()
         fetchAllUsersFavorites()
     }
+    @IBAction func addButtonTapped(_ sender: Any) {
+        presentBookshelfAlert(bookshelf: nil)
+    }
     //Mark: - Helper Functions
     
     func createBookshelf() {
@@ -45,11 +48,46 @@ class BookshelfListTableViewController: UITableViewController {
         }
     }
     
+    func presentBookshelfAlert(bookshelf: Bookshelf?) {
+        let alertController = UIAlertController(title: "Create Bookshelf", message: "", preferredStyle: .actionSheet)
+        
+        alertController.addTextField { (textfield) in
+            textfield.placeholder = "Name of bookshelf..."
+            textfield.autocorrectionType = .yes
+            textfield.autocapitalizationType = .words
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        let addBookclubAction = UIAlertAction(title: "Create", style: .default) { (_) in
+            guard let text = alertController.textFields?.first?.text, !text.isEmpty else { return }
+            
+            if let bookshelf =  bookshelf {
+                BookshelfController.shared.createBookshelf(title: bookshelf.title) { (result) in
+                    switch result {
+                    case .success(let bookshelf):
+                        self.userBookshelves.append(bookshelf)
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    case .failure(let error):
+                        print(error.errorDescription)
+                    }
+                }
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(addBookclubAction)
+        
+        self.present(alertController, animated: true)
+    }
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userBookshelves.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfCell", for: indexPath)
         let bookshelf = userBookshelves[indexPath.row]
@@ -57,8 +95,8 @@ class BookshelfListTableViewController: UITableViewController {
         cell.detailTextLabel?.text = "\(bookshelf.books.count)"
         return cell
     }
-
-   
+    
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
@@ -67,7 +105,7 @@ class BookshelfListTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
- 
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
