@@ -9,14 +9,14 @@
 import Foundation
 
 enum BookError: LocalizedError {
-    case invaildURL
+    case invalidURL
     case thrownError(Error)
     case noData
     case unableToDecode
 
     var errorDescription: String? {
         switch self {
-        case .invaildURL:
+        case .invalidURL:
             return "Unable to reach the server"
         case .thrownError(let error):
             return error.localizedDescription

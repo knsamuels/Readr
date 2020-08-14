@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Bookclub View Controller-->
+        <!--CreateBC View Controller-->
         <scene sceneID="gVh-ll-gT8">
             <objects>
-                <viewController id="H6T-ob-m4V" customClass="BookclubViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="H6T-ob-m4V" customClass="CreateBCViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i6a-oG-BLL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,6 +109,9 @@
                                 <rect key="frame" x="146" y="796" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create Bookclub"/>
+                                <connections>
+                                    <action selector="createBookclubButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="dwP-sk-4FN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -116,28 +119,29 @@
                     </view>
                     <navigationItem key="navigationItem" id="UFt-H5-d3g"/>
                     <connections>
-                        <outlet property="bookClubMainImage" destination="bhR-w8-l4M" id="OQp-GG-u6K"/>
-                        <outlet property="currentlyReadingAuthor" destination="veX-aW-i3P" id="vci-ZL-ovI"/>
-                        <outlet property="currentlyReadingImage" destination="q2Y-Nn-bvf" id="ZCc-E8-wib"/>
-                        <outlet property="currentlyReadingRating" destination="i0A-Cw-mij" id="C5J-Qt-P0Q"/>
-                        <outlet property="currentlyReadingTitle" destination="nM7-Q3-BSg" id="qMA-WN-EQu"/>
-                        <outlet property="descriptionTextView" destination="nv1-BD-ce8" id="Hbt-0O-i1B"/>
-                        <outlet property="meetingInfoTextView" destination="pOQ-I2-3nw" id="4yC-LH-due"/>
-                        <outlet property="pastReadsAuthor" destination="kIo-HT-E0Z" id="WsD-bd-jQj"/>
-                        <outlet property="pastReadsImage" destination="f5H-Kr-t9v" id="bSn-hV-qV0"/>
-                        <outlet property="pastReadsRating" destination="kHP-Q8-kWA" id="jLU-Ek-Vtn"/>
-                        <outlet property="pastReadsTitle" destination="f2o-Pu-Ger" id="hGs-V8-4ef"/>
-                        <outlet property="titleTextField" destination="eAK-vu-HVB" id="mts-rt-jBQ"/>
+                        <outlet property="createBookclubButton" destination="L59-XB-aFb" id="c9S-ym-ZLz"/>
+                        <outlet property="currentlyReadingAuthorLabel" destination="veX-aW-i3P" id="OzO-y2-yvq"/>
+                        <outlet property="currentlyReadingImage" destination="q2Y-Nn-bvf" id="L1Z-41-zjL"/>
+                        <outlet property="currentlyReadingRatingLabel" destination="i0A-Cw-mij" id="guG-NJ-Hf2"/>
+                        <outlet property="currentlyReadingTitleLabel" destination="nM7-Q3-BSg" id="PYY-Xa-Dic"/>
+                        <outlet property="descriptionOfBookClub" destination="nv1-BD-ce8" id="07l-X2-ZIe"/>
+                        <outlet property="imageOfBookClub" destination="bhR-w8-l4M" id="F6H-5w-UrF"/>
+                        <outlet property="meetingInfoForBookBlub" destination="pOQ-I2-3nw" id="BJR-1E-A4T"/>
+                        <outlet property="nameOfBookClub" destination="eAK-vu-HVB" id="lFP-xt-6Vb"/>
+                        <outlet property="pastReadsAuthorLabel" destination="kIo-HT-E0Z" id="IzF-Gg-Gfk"/>
+                        <outlet property="pastReadsImage" destination="f5H-Kr-t9v" id="wjQ-vf-MBB"/>
+                        <outlet property="pastReadsRatingLabel" destination="kHP-Q8-kWA" id="Kwu-dG-xHf"/>
+                        <outlet property="pastReadsTitleLabel" destination="f2o-Pu-Ger" id="wuT-FW-bfd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2k-55-0YQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-109" y="818"/>
+            <point key="canvasLocation" x="-110.14492753623189" y="817.63392857142856"/>
         </scene>
-        <!--JoinBC View Controller-->
+        <!--Bookclub View Controller-->
         <scene sceneID="Wqe-zc-9iq">
             <objects>
-                <viewController id="ZEJ-Jj-dV8" customClass="JoinBCViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZEJ-Jj-dV8" customClass="BookclubViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VQs-3E-Ioz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -260,7 +264,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="JOIN"/>
                                 <connections>
-                                    <action selector="joinButtonTapped:" destination="ZEJ-Jj-dV8" eventType="touchUpInside" id="V29-uR-WHe"/>
+                                    <action selector="joinButtonTapped:" destination="ZEJ-Jj-dV8" eventType="touchUpInside" id="weH-wo-SgA"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xyc-yg-YXu">
@@ -284,29 +288,30 @@
                     </view>
                     <navigationItem key="navigationItem" id="Jv3-U4-nwv"/>
                     <connections>
-                        <outlet property="PastReadsAuthorLabel2" destination="2D3-5e-KTc" id="kvL-j6-jU4"/>
-                        <outlet property="adminContactInfoLabel" destination="xab-rk-txq" id="6zj-WQ-cxX"/>
-                        <outlet property="adminNameLabel" destination="SDB-d1-LLY" id="Ffr-gy-hhc"/>
-                        <outlet property="currentlyReadingAuthorLabel" destination="uEm-YE-MuU" id="mP8-H7-sxb"/>
-                        <outlet property="currentlyReadingImage" destination="KSN-wE-uTC" id="BP6-SA-eHn"/>
-                        <outlet property="currentlyReadingRatingLabel" destination="EIc-TM-2HY" id="L9U-il-vLj"/>
-                        <outlet property="currentlyReadingTiltleLabel" destination="9AE-aK-kgj" id="e7S-zb-bnE"/>
-                        <outlet property="descriptionLabel" destination="rDd-b0-krF" id="dpi-7h-OVr"/>
-                        <outlet property="joinBCImage" destination="he2-hu-3P2" id="BlY-N7-ArA"/>
-                        <outlet property="meetingInfoLabel" destination="OuF-re-nWW" id="fK7-zv-eOl"/>
-                        <outlet property="nameLabel" destination="Uec-c1-hou" id="aqU-95-fny"/>
-                        <outlet property="pastReadsAuthorLabel1" destination="eTx-4i-g7c" id="pIA-Rd-xiw"/>
-                        <outlet property="pastReadsImageLabel1" destination="MKp-s1-zcr" id="H5E-vR-cMl"/>
-                        <outlet property="pastReadsImageLabel2" destination="Xyc-yg-YXu" id="biH-4O-tI6"/>
-                        <outlet property="pastReadsRatingLabel1" destination="uhB-l5-NJo" id="1p9-9z-TBI"/>
-                        <outlet property="pastReadsRatingLabel2" destination="3lJ-Uw-X88" id="Ixz-d4-mgH"/>
-                        <outlet property="pastReadsTitleLabel1" destination="Esc-Bl-JPI" id="cO3-kQ-rcO"/>
-                        <outlet property="pastReadsTitleLabel2" destination="nb6-yC-RCG" id="RuY-ml-xcl"/>
+                        <outlet property="ImageForCurrentlyReading" destination="KSN-wE-uTC" id="rSh-F6-zfU"/>
+                        <outlet property="adminContactInfoLabel" destination="xab-rk-txq" id="xEA-ni-0GI"/>
+                        <outlet property="adminNameLabel" destination="SDB-d1-LLY" id="he5-UW-tzA"/>
+                        <outlet property="author1ForPastReads" destination="eTx-4i-g7c" id="UZ2-cz-slo"/>
+                        <outlet property="author2ForPastReads" destination="2D3-5e-KTc" id="u3u-OQ-sPM"/>
+                        <outlet property="authorForCurrentlyReading" destination="uEm-YE-MuU" id="815-Os-sh2"/>
+                        <outlet property="descriptionOfBookClub" destination="rDd-b0-krF" id="Q42-sm-LaT"/>
+                        <outlet property="image1ForPastReads" destination="MKp-s1-zcr" id="TcD-ir-28L"/>
+                        <outlet property="image2ForPastReads" destination="Xyc-yg-YXu" id="9ZF-d0-S7t"/>
+                        <outlet property="imageOfBookClub" destination="he2-hu-3P2" id="BFq-0s-Zuo"/>
+                        <outlet property="joinButton" destination="f2U-JU-Gs4" id="yom-Mi-F7w"/>
+                        <outlet property="meetingInfoForBookClub" destination="OuF-re-nWW" id="kIr-3w-9pi"/>
+                        <outlet property="nameOfBookClub" destination="Uec-c1-hou" id="AYA-cr-eMd"/>
+                        <outlet property="rating1ForPastReads" destination="uhB-l5-NJo" id="McU-qe-t2I"/>
+                        <outlet property="rating2ForPastReads" destination="3lJ-Uw-X88" id="LkM-jf-w09"/>
+                        <outlet property="ratingForCurrentlyReading" destination="EIc-TM-2HY" id="0lj-xb-N0l"/>
+                        <outlet property="title1ForPastReads" destination="Esc-Bl-JPI" id="lRU-Md-e2G"/>
+                        <outlet property="title2ForPastReads" destination="nb6-yC-RCG" id="I6w-UK-Y8f"/>
+                        <outlet property="titleForCurrentlyReading" destination="9AE-aK-kgj" id="yHe-dM-dsU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjI-Mq-ohl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="428" y="1479"/>
+            <point key="canvasLocation" x="427.536231884058" y="1478.5714285714284"/>
         </scene>
         <!--Bookshelf List Table View Controller-->
         <scene sceneID="6mh-RX-ImH">
@@ -565,7 +570,7 @@
                             </barButtonItem>
                             <barButtonItem title="Item" id="Hfk-U8-HZj">
                                 <connections>
-                                    <segue destination="ZEJ-Jj-dV8" kind="show" id="Om8-1V-eTS"/>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" id="Fvt-p3-Kqo"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
