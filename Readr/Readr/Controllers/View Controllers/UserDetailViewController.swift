@@ -56,18 +56,18 @@ class UserDetailViewController: UIViewController {
     //helper functions
     
     func fetchUser() {
-        print("")
+        print("1")
         UserController.shared.createUser(username: "ksam17", firstName: "Kristin", lastName: "Samuels", favoriteAuthor: "Stephen King" ) { (result) in
-            print("")
+            print("2")
             switch result {
             case .success(let user):
-                user.favoriteBooks = ["9780399230035", "9780007158447", "9781478937968"]
+                user.favoriteBooks = ["9780399230035", "9780394800011", "9781478937968"]
                 user.favoriteGenres = ["Romance", "Comedy", "Children's"]
                 user.bio = "I love to read"
                 UserController.shared.currentUser = user
-                print("")
+                print("3")
                 BookController.shared.fetchFavoriteBooks(forUser: user) { (result) in
-                    print("")
+                    print("12")
                     DispatchQueue.main.async {
                         switch result {
                         case .success(let books):
@@ -88,11 +88,14 @@ class UserDetailViewController: UIViewController {
     func updateViews() {
         DispatchQueue.main.async {
             self.favBookPic1.image = self.userFavBooks[0].coverImage
-                self.favBookPic2.image = self.userFavBooks[1].coverImage
-                self.favBookPic3.image = self.userFavBooks[2].coverImage
-                self.titleLabel1.text = self.userFavBooks[0].title
-                self.titleLabel2.text = self.userFavBooks[1].title
-                self.titleLabel3.text = self.userFavBooks[2].title
+            self.favBookPic2.image = self.userFavBooks[1].coverImage
+            self.favBookPic3.image = self.userFavBooks[2].coverImage
+            self.titleLabel1.text = self.userFavBooks[0].title
+            self.titleLabel2.text = self.userFavBooks[1].title
+            self.titleLabel3.text = self.userFavBooks[2].title
+            self.authorLabel1.text = self.userFavBooks[0].authors?.first
+            self.authorLabel2.text = self.userFavBooks[1].authors?.first
+            self.authorLabel3.text = self.userFavBooks[2].authors?.first
         }
     }
     

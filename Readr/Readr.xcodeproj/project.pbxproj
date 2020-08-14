@@ -35,7 +35,7 @@
 		F31A488724E480CA0071652A /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488624E480CA0071652A /* UserDetailViewController.swift */; };
 		F31A488924E480DA0071652A /* BookclubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488824E480DA0071652A /* BookclubViewController.swift */; };
 		F31A488C24E485880071652A /* BookshelfCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488B24E485880071652A /* BookshelfCellTableViewCell.swift */; };
-		F31A488E24E4A83C0071652A /* JoinBCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488D24E4A83C0071652A /* JoinBCViewController.swift */; };
+		F31A488E24E4A83C0071652A /* CreateBCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488D24E4A83C0071652A /* CreateBCViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,7 +70,7 @@
 		F31A488624E480CA0071652A /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		F31A488824E480DA0071652A /* BookclubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubViewController.swift; sourceTree = "<group>"; };
 		F31A488B24E485880071652A /* BookshelfCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfCellTableViewCell.swift; sourceTree = "<group>"; };
-		F31A488D24E4A83C0071652A /* JoinBCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinBCViewController.swift; sourceTree = "<group>"; };
+		F31A488D24E4A83C0071652A /* CreateBCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBCViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +198,7 @@
 				F31A488424E480A80071652A /* BookshelfListTableViewController.swift */,
 				F31A488624E480CA0071652A /* UserDetailViewController.swift */,
 				F31A488824E480DA0071652A /* BookclubViewController.swift */,
-				F31A488D24E4A83C0071652A /* JoinBCViewController.swift */,
+				F31A488D24E4A83C0071652A /* CreateBCViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -304,7 +304,7 @@
 				C98FC7CE24DDCB7800C27CBF /* User.swift in Sources */,
 				C98FC7E224E1B46200C27CBF /* UserController.swift in Sources */,
 				C98FC7D024DDCBB100C27CBF /* Bookshelf.swift in Sources */,
-				F31A488E24E4A83C0071652A /* JoinBCViewController.swift in Sources */,
+				F31A488E24E4A83C0071652A /* CreateBCViewController.swift in Sources */,
 				F31A488C24E485880071652A /* BookshelfCellTableViewCell.swift in Sources */,
 				C98FC7DA24DDD55700C27CBF /* BookError.swift in Sources */,
 			);

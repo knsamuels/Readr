@@ -24,7 +24,7 @@ class BookController {
     
     static func fetchBooksWith(searchTerm: String, completion: @escaping(Result<[Book], BookError>) -> Void) {
         
-        guard let baseURL = URL(string: StringConstants.baseURLString) else {return completion(.failure(.invaildURL))}
+        guard let baseURL = URL(string: StringConstants.baseURLString) else {return completion(.failure(.invalidURL))}
         let volumeURL = baseURL.appendingPathComponent(StringConstants.volumeComponentString)
         
         var compnents = URLComponents(url: volumeURL, resolvingAgainstBaseURL: true)
@@ -32,7 +32,7 @@ class BookController {
         let searchQuery = URLQueryItem(name: StringConstants.queryKey, value: searchTerm)
         
         compnents?.queryItems = [searchQuery]
-        guard let finalURL = compnents?.url else {return completion(.failure(.invaildURL))}
+        guard let finalURL = compnents?.url else {return completion(.failure(.invalidURL))}
         
         print(finalURL)
         
@@ -65,8 +65,8 @@ class BookController {
     }
     
     static func fetchOneBookWith(ISBN: String, completion: @escaping(Result<Book, BookError>) -> Void) {
-        print("")
-        guard let baseURL = URL(string: StringConstants.baseURLString) else {return completion(.failure(.invaildURL))}
+        print("5")
+        guard let baseURL = URL(string: StringConstants.baseURLString) else {return completion(.failure(.invalidURL))}
         let volumeURL = baseURL.appendingPathComponent(StringConstants.volumeComponentString)
         
         var compnents = URLComponents(url: volumeURL, resolvingAgainstBaseURL: true)
@@ -74,12 +74,12 @@ class BookController {
         let searchQuery = URLQueryItem(name: StringConstants.queryKey, value: ISBN)
         
         compnents?.queryItems = [searchQuery]
-        guard let finalURL = compnents?.url else {return completion(.failure(.invaildURL))}
+        guard let finalURL = compnents?.url else {return completion(.failure(.invalidURL))}
         
         print(finalURL)
         
         URLSession.shared.dataTask(with: finalURL) {(data, _, error) in
-            print("")
+            print("6")
             if let error = error {
                 return completion(.failure(.thrownError(error)))
             }
@@ -92,16 +92,16 @@ class BookController {
                 guard let imageLinks = book.imageLinks else {
                     return completion(.success(book))
                 }
-                print("")
+                print("7")
                 self.fetchImage(imageLinks: imageLinks) { (result) in
-                    print("")
+                    print("10")
                     switch result {
                     case .success(let image):
                         book.coverImage = image
                         return completion(.success(book))
                     case .failure(_):
                         print("We were not able to find an image for the book")
-                        return completion(.failure(.invaildURL))
+                        return completion(.failure(.invalidURL))
                     }
                 }
             } catch {
@@ -115,9 +115,9 @@ class BookController {
     static func fetchImage(imageLinks: ImageLinks, completion: @escaping(Result<UIImage, BookError>) -> Void) {
         guard  let url = imageLinks.thumbnail else {return}
         print(url)
-        print("")
+        print("8")
         URLSession.shared.dataTask(with: url) {(data, _, error) in
-            print("")
+            print("9")
             if let error = error {
                 return completion(.failure(.thrownError(error)))
             }
@@ -131,7 +131,7 @@ class BookController {
     func fetchFavoriteBooks(forUser user: User, completion: @escaping (Result<[Book], BookError>) -> Void) {
         let group = DispatchGroup()
         var books: [Book] = []
-        print("")
+        print("4")
         for i in user.favoriteBooks {
             group.enter()
             BookController.fetchOneBookWith(ISBN: i) { (result) in
@@ -146,7 +146,7 @@ class BookController {
             }
         }
         group.notify(queue: .main) {
-            print("")
+            print("11")
             completion(.success(books))
         }
     }
