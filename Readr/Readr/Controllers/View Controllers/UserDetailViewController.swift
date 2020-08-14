@@ -174,7 +174,86 @@ class UserDetailViewController: UIViewController {
                 self.titleLabel4.text = self.userFavBooks[3].title
                 self.authorLabel4.text = self.userFavBooks[3].authors?.first
             }
+            let numberOfGenres = UserController.shared.currentUser?.favoriteGenres.count
+            switch numberOfGenres {
+            case 0:
+                self.favGenrePic1.isHidden = true
+                self.favGenreName1.isHidden = true
+                self.favGenrePic2.isHidden = true
+                self.favGenreName2.isHidden = true
+                self.favGenrePic3.isHidden = true
+                self.favGenreName3.isHidden = true
+            case 1:
+                self.favGenrePic1.isHidden = true
+                self.favGenreName1.text = UserController.shared.currentUser?.favoriteGenres[0]
+                self.favGenrePic2.isHidden = true
+                self.favGenreName2.isHidden = true
+                self.favGenrePic3.isHidden = true
+                self.favGenreName3.isHidden = true
+            case 2:
+                self.favGenrePic1.isHidden = true
+                self.favGenreName1.text = UserController.shared.currentUser?.favoriteGenres[0]
+                self.favGenrePic2.isHidden = true
+                self.favGenreName2.text = UserController.shared.currentUser?.favoriteGenres[1]
+                self.favGenrePic3.isHidden = true
+                self.favGenreName3.isHidden = true
+            default:
+                self.favGenrePic1.isHidden = true
+                self.favGenreName1.text = UserController.shared.currentUser?.favoriteGenres[0]
+                self.favGenrePic2.isHidden = true
+                self.favGenreName2.text = UserController.shared.currentUser?.favoriteGenres[1]
+                self.favGenrePic3.isHidden = true
+                self.favGenreName3.text = UserController.shared.currentUser?.favoriteGenres[2]
+            }
             
+            let numberOfBookClubs = self.userBookClubs.count
+            switch numberOfBookClubs {
+            case 0:
+                self.bookClubImage1.isHidden = true
+                self.bookcluName1.isHidden = true
+                self.bookclubImage2.isHidden = true
+                self.bookclubName2.isHidden = true
+                self.bookclubImage3.isHidden = true
+                self.bookclubName3.isHidden = true
+                self.bookclubImage4.isHidden = true
+                self.bookclubName4.isHidden = true
+            case 1:
+                self.bookClubImage1.image = self.userBookClubs[0].profilePicture
+                self.bookcluName1.text = self.userBookClubs[0].name
+                self.bookclubImage2.isHidden = true
+                self.bookclubName2.isHidden = true
+                self.bookclubImage3.isHidden = true
+                self.bookclubName3.isHidden = true
+                self.bookclubImage4.isHidden = true
+                self.bookclubName4.isHidden = true
+            case 2:
+                self.bookClubImage1.image = self.userBookClubs[0].profilePicture
+                self.bookcluName1.text = self.userBookClubs[0].name
+                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
+                self.bookclubName2.text = self.userBookClubs[1].name
+                self.bookclubImage3.isHidden = true
+                self.bookclubName3.isHidden = true
+                self.bookclubImage4.isHidden = true
+                self.bookclubName4.isHidden = true
+            case 3:
+                self.bookClubImage1.image = self.userBookClubs[0].profilePicture
+                self.bookcluName1.text = self.userBookClubs[0].name
+                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
+                self.bookclubName2.text = self.userBookClubs[1].name
+                self.bookclubImage3.image = self.userBookClubs[2].profilePicture
+                self.bookclubName3.text = self.userBookClubs[2].name
+                self.bookclubImage4.isHidden = true
+                self.bookclubName4.isHidden = true
+            default:
+                self.bookClubImage1.image = self.userBookClubs[0].profilePicture
+                self.bookcluName1.text = self.userBookClubs[0].name
+                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
+                self.bookclubName2.text = self.userBookClubs[1].name
+                self.bookclubImage3.image = self.userBookClubs[2].profilePicture
+                self.bookclubName3.text = self.userBookClubs[2].name
+                self.bookclubImage4.image = self.userBookClubs[3].profilePicture
+                self.bookclubName4.text = self.userBookClubs[3].name
+            }
             self.bioLabel.text = UserController.shared.currentUser?.bio
             self.bookcluName1.text = self.userBookClubs[0].name
             self.favGenreName1.text = UserController.shared.currentUser?.favoriteGenres[0]
