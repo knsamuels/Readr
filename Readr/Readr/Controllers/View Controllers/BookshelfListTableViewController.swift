@@ -14,7 +14,7 @@ class BookshelfListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createBookshelf()
+        //        createBookshelf()
         fetchAllUsersFavorites()
     }
     @IBAction func addButtonTapped(_ sender: Any) {
@@ -49,7 +49,7 @@ class BookshelfListTableViewController: UITableViewController {
     }
     
     func presentBookshelfAlert(bookshelf: Bookshelf?) {
-        let alertController = UIAlertController(title: "Create Bookshelf", message: "", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Create Bookshelf", message: "", preferredStyle: .alert)
         
         alertController.addTextField { (textfield) in
             textfield.placeholder = "Name of bookshelf..."
@@ -62,17 +62,17 @@ class BookshelfListTableViewController: UITableViewController {
         let addBookclubAction = UIAlertAction(title: "Create", style: .default) { (_) in
             guard let text = alertController.textFields?.first?.text, !text.isEmpty else { return }
             
-            if let bookshelf =  bookshelf {
-                BookshelfController.shared.createBookshelf(title: bookshelf.title) { (result) in
-                    switch result {
-                    case .success(let bookshelf):
-                        self.userBookshelves.append(bookshelf)
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    case .failure(let error):
-                        print(error.errorDescription)
+            
+            BookshelfController.shared.createBookshelf(title: text) { (result) in
+                switch result {
+                case .success(let bookshelf):
+                    self.userBookshelves.append(bookshelf)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
                     }
+                case .failure(let error):
+                    print(error.errorDescription)
+                    
                 }
             }
         }
