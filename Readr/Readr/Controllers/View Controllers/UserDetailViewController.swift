@@ -12,7 +12,7 @@ class UserDetailViewController: UIViewController {
     
     // MARK: Properties:
     var userFavBooks: [Book] = []
-    
+    var userBookClubs: [Bookclub] = []
     
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var followerLabel: UILabel!
@@ -34,6 +34,7 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var favGenrePic2: UIImageView!
     @IBOutlet weak var favGenreName2: UILabel!
     @IBOutlet weak var favGenrePic3: UIImageView!
+    @IBOutlet weak var favGenreName3: UILabel!
     @IBOutlet weak var bookClubImage1: UIImageView!
     @IBOutlet weak var bookcluName1: UILabel!
     @IBOutlet weak var bookclubName2: UILabel!
@@ -41,14 +42,12 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var bookclubImage3: UIImageView!
     @IBOutlet weak var bookclubName3: UILabel!
     @IBOutlet weak var bookclubImage4: UIImageView!
-    
     @IBOutlet weak var bookclubName4: UILabel!
-    
     @IBOutlet weak var bioLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        createUser()
+        //        createUser()
         fetchUser()
     }
     
@@ -85,99 +84,126 @@ class UserDetailViewController: UIViewController {
                 switch result {
                 case .success(let books):
                     self.userFavBooks = books
-                    self.updateViews()
+                    self.getUsersBookclubs()
                 case .failure(_):
                     print("failed getting user's favorite books")
                 }
             }
         }
     }
-
-
-func updateViews() {
-    DispatchQueue.main.async {
-        self.favBookPic1.image = self.userFavBooks[0].coverImage
-        self.favBookPic2.image = self.userFavBooks[1].coverImage
-        self.favBookPic3.image = self.userFavBooks[2].coverImage
-        self.titleLabel1.text = self.userFavBooks[0].title
-        self.titleLabel2.text = self.userFavBooks[1].title
-        self.titleLabel3.text = self.userFavBooks[2].title
-        self.authorLabel1.text = self.userFavBooks[0].authors?.first
-        self.authorLabel2.text = self.userFavBooks[1].authors?.first
-        self.authorLabel3.text = self.userFavBooks[2].authors?.first
-        self.bioLabel.text = UserController.shared.currentUser?.bio
+    
+    func updateViews() {
+        DispatchQueue.main.async {
+//            self.favBookPic1.isHidden = false
+//            self.titleLabel1.isHidden = false
+//            self.authorLabel1.isHidden = false
+//            self.favBookPic2.isHidden = false
+//            self.titleLabel2.isHidden = false
+//            self.authorLabel2.isHidden = false
+//            self.favBookPic3.isHidden = false
+//            self.titleLabel3.isHidden = false
+//            self.authorLabel3.isHidden = false
+//            self.favBookPic4.isHidden = false
+//            self.titleLabel4.isHidden = false
+//            self.authorLabel4.isHidden = false
+            let numberOfBooks = self.userFavBooks.count
+            switch numberOfBooks {
+            case 0:
+                self.favBookPic1.isHidden = true
+                self.titleLabel1.isHidden = true
+                self.authorLabel1.isHidden = true
+                self.favBookPic2.isHidden = true
+                self.titleLabel2.isHidden = true
+                self.authorLabel2.isHidden = true
+                self.favBookPic3.isHidden = true
+                self.titleLabel3.isHidden = true
+                self.authorLabel3.isHidden = true
+                self.favBookPic4.isHidden = true
+                self.titleLabel4.isHidden = true
+                self.authorLabel4.isHidden = true
+            case 1:
+                self.favBookPic1.image = self.userFavBooks[0].coverImage
+                self.titleLabel1.text = self.userFavBooks[0].title
+                self.authorLabel1.text = self.userFavBooks[0].authors?.first
+                self.favBookPic2.isHidden = true
+                self.titleLabel2.isHidden = true
+                self.authorLabel2.isHidden = true
+                self.favBookPic3.isHidden = true
+                self.titleLabel3.isHidden = true
+                self.authorLabel3.isHidden = true
+                self.favBookPic4.isHidden = true
+                self.titleLabel4.isHidden = true
+                self.authorLabel4.isHidden = true
+            case 2:
+                self.favBookPic1.image = self.userFavBooks[0].coverImage
+                self.titleLabel1.text = self.userFavBooks[0].title
+                self.authorLabel1.text = self.userFavBooks[0].authors?.first
+                self.favBookPic2.image = self.userFavBooks[1].coverImage
+                self.titleLabel2.text = self.userFavBooks[1].title
+                self.authorLabel2.text = self.userFavBooks[1].authors?.first
+                self.favBookPic3.isHidden = true
+                self.titleLabel3.isHidden = true
+                self.authorLabel3.isHidden = true
+                self.favBookPic4.isHidden = true
+                self.titleLabel4.isHidden = true
+                self.authorLabel4.isHidden = true
+            case 3:
+                self.favBookPic1.image = self.userFavBooks[0].coverImage
+                self.titleLabel1.text = self.userFavBooks[0].title
+                self.authorLabel1.text = self.userFavBooks[0].authors?.first
+                self.favBookPic2.image = self.userFavBooks[1].coverImage
+                self.titleLabel2.text = self.userFavBooks[1].title
+                self.authorLabel2.text = self.userFavBooks[1].authors?.first
+                self.favBookPic3.image = self.userFavBooks[2].coverImage
+                self.titleLabel3.text = self.userFavBooks[2].title
+                self.authorLabel3.text = self.userFavBooks[2].authors?.first
+                self.favBookPic4.isHidden = true
+                self.titleLabel4.isHidden = true
+                self.authorLabel4.isHidden = true
+            default:
+                self.favBookPic1.image = self.userFavBooks[0].coverImage
+                self.titleLabel1.text = self.userFavBooks[0].title
+                self.authorLabel1.text = self.userFavBooks[0].authors?.first
+                self.favBookPic2.image = self.userFavBooks[1].coverImage
+                self.titleLabel2.text = self.userFavBooks[1].title
+                self.authorLabel2.text = self.userFavBooks[1].authors?.first
+                self.favBookPic3.image = self.userFavBooks[2].coverImage
+                self.titleLabel3.text = self.userFavBooks[2].title
+                self.authorLabel3.text = self.userFavBooks[2].authors?.first
+                self.favBookPic4.image = self.userFavBooks[3].coverImage
+                self.titleLabel4.text = self.userFavBooks[3].title
+                self.authorLabel4.text = self.userFavBooks[3].authors?.first
+            }
+            
+            self.bioLabel.text = UserController.shared.currentUser?.bio
+            self.bookcluName1.text = self.userBookClubs[0].name
+            self.favGenreName1.text = UserController.shared.currentUser?.favoriteGenres[0]
+            self.favGenreName2.text = UserController.shared.currentUser?.favoriteGenres[1]
+            self.favGenreName3.text = UserController.shared.currentUser?.favoriteGenres[2]
+        }
     }
-}
-
-
-//        BookController.fetchOneBookWith(ISBN: UserController.shared.currentUser?.favoriteBooks[0] ?? "9780007158447") { (result) in
-//            switch result {
-//            case .success(let book):
-//                self.book1 = book
-//                self.fetchBookImage()
-//            case .failure(_):
-//                print("anything here")
-//            }
-//        }
-//        BookController.fetchOneBookWith(ISBN: UserController.shared.currentUser?.favoriteBooks[1] ?? "9780007158447") { (result) in
-//            switch result {
-//            case .success(let book):
-//                self.book2 = book
-//            case .failure(_):
-//                print("anything here")
-//            }
-//        }
-//        BookController.fetchOneBookWith(ISBN: UserController.shared.currentUser?.favoriteBooks[2] ?? "9780007158447") { (result) in
-//            switch result {
-//            case .success(let book):
-//                self.book3 = book
-//            case .failure(_):
-//                print("anything here")
-//            }
-//        }
-//    }
-//
-//        BookController.fetchImage(book: book2ImageLinks) { (result) in
-//            switch result {
-//            case .success(let image):
-//                self.book2Image = image
-//            case .failure(_):
-//                print("anything here")
-//            }
-//        }
-//        BookController.fetchImage(book: book3ImageLinks) { (result) in
-//            switch result {
-//            case .success(let image):
-//                self.book3Image = image
-//            case .failure(_):
-//                print("anything here")
-//            }
-//        }
-//func fetchBookImage() {
-//        guard let book1ImageLinks = book1?.imageLinks else {return}
-////        guard let book2ImageLinks = book2?.imageLinks else {return}
-////        guard let book3ImageLinks = book3?.imageLinks else {return}
-//        BookController.fetchImage(book: book1ImageLinks) { (result) in
-//            switch result {
-//            case .success(let image):
-//                self.book1Image = image
-//                self.updateViews()
-//            case .failure(_):
-//                print("anything here")
-//            }
-//        }
-//    }
-
-
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */
-
+    func getUsersBookclubs() {
+        guard let user = UserController.shared.currentUser else {return}
+        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
+            switch result {
+            case .success(let bookclubs):
+                self.userBookClubs = bookclubs
+                self.updateViews()
+            case .failure(_):
+                print("we could not get the user's bookclubs")
+            }
+        }
+    }
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

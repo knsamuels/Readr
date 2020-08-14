@@ -606,6 +606,7 @@
                         <outlet property="favBookPic4" destination="cBp-hr-3FG" id="F2N-by-bOl"/>
                         <outlet property="favGenreName1" destination="nx9-es-wwO" id="d7K-r6-Y67"/>
                         <outlet property="favGenreName2" destination="BOP-1c-vh0" id="gs2-Ey-c9O"/>
+                        <outlet property="favGenreName3" destination="gtO-xf-SIH" id="hQv-vg-9IM"/>
                         <outlet property="favGenrePic1" destination="Ace-Yi-xoy" id="5fQ-3S-Thd"/>
                         <outlet property="favGenrePic2" destination="7r4-FD-dHh" id="VbT-ZR-a96"/>
                         <outlet property="favGenrePic3" destination="zF9-8U-6PR" id="dDx-dq-xUB"/>
