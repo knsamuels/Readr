@@ -14,13 +14,13 @@ class BookshelfListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        createBookshelf()
+        createBookshelf()
         fetchAllUsersFavorites()
     }
     //Mark: - Helper Functions
     
     func createBookshelf() {
-        BookshelfController.shared.createBookshelf(title: "favorites") { (result) in
+        BookshelfController.shared.createBookshelf(title: "Harry Potter Rocks") { (result) in
             switch result {
             case .success(_):
                 print("We created a bookshelf")
@@ -29,6 +29,7 @@ class BookshelfListTableViewController: UITableViewController {
             }
         }
     }
+    
     
     func fetchAllUsersFavorites() {
         BookshelfController.shared.fetchAllBookshelfs { (result) in
