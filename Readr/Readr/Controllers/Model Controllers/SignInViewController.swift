@@ -26,6 +26,9 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         toggleToLogIn()
         fetchUser()
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
     
     //MARK: - Actions
