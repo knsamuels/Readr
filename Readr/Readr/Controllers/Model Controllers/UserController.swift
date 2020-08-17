@@ -27,9 +27,9 @@ class UserController {
             case .success(let reference):
                 // remove 29-32
                 let newUser = User(username: username, firstName: firstName, lastName: lastName, favoriteAuthor: favoriteAuthor, appleUserRef: reference)
-                newUser.favoriteBooks = ["9780399230035", "9780394800011", "9781478937968"]
-                newUser.favoriteGenres = ["Romance", "Comedy", "Children's"]
-                newUser.bio = "I love to read"
+//                newUser.favoriteBooks = ["9780399230035", "9780394800011", "9781478937968"]
+//                newUser.favoriteGenres = ["Romance", "Comedy", "Children's"]
+//                newUser.bio = "I love to read"
                 let userRecord = CKRecord(user: newUser)
                 
                 self.publicDB.save(userRecord) { (record, error) in

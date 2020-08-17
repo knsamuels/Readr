@@ -48,7 +48,8 @@ class UserDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //        createUser()
-        fetchUser()
+//        fetchUser()
+        fetchUserBooks()
     }
     
     //helper functions
