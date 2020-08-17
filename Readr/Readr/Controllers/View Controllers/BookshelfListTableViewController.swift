@@ -99,15 +99,27 @@ class BookshelfListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
+            let bookshelfToDelete = userBookshelves[indexPath.row]
+            guard let index = userBookshelves.firstIndex(of: bookshelfToDelete) else { return}
+            
+            BookshelfController.shared.deleteBookshelf(bookshelf: bookshelfToDelete) { (result) in
+                DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    self.userBookshelves.remove(at: index)
+                    self.tableView.reloadData()
+                case .failure(_):
+                    print("no - error")
+                }
+            }
+        }
+        
+    } else if editingStyle == .insert {
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
+}
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // Get the new view controller using segue.destination.
+    // Pass the selected object to the new view controller.
+}
 }
