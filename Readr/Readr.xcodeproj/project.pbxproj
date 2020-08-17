@@ -38,6 +38,7 @@
 		F31A488924E480DA0071652A /* BookclubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488824E480DA0071652A /* BookclubViewController.swift */; };
 		F31A488C24E485880071652A /* BookshelfCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488B24E485880071652A /* BookshelfCellTableViewCell.swift */; };
 		F31A488E24E4A83C0071652A /* CreateBCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488D24E4A83C0071652A /* CreateBCViewController.swift */; };
+		F3C608B224EB1C1600E4F26F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C608B124EB1C1500E4F26F /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		F31A488824E480DA0071652A /* BookclubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubViewController.swift; sourceTree = "<group>"; };
 		F31A488B24E485880071652A /* BookshelfCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfCellTableViewCell.swift; sourceTree = "<group>"; };
 		F31A488D24E4A83C0071652A /* CreateBCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBCViewController.swift; sourceTree = "<group>"; };
+		F3C608B124EB1C1500E4F26F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				F31A488624E480CA0071652A /* UserDetailViewController.swift */,
 				F31A488824E480DA0071652A /* BookclubViewController.swift */,
 				F31A488D24E4A83C0071652A /* CreateBCViewController.swift */,
+				F3C608B124EB1C1500E4F26F /* SearchViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				C98FC7EC24E1B4C900C27CBF /* ChatError.swift in Sources */,
 				9304463E24E1ABBC00FBEEF2 /* MessageController.swift in Sources */,
 				F31A488924E480DA0071652A /* BookclubViewController.swift in Sources */,
+				F3C608B224EB1C1600E4F26F /* SearchViewController.swift in Sources */,
 				F31A488524E480A80071652A /* BookshelfListTableViewController.swift in Sources */,
 				C98FC7DC24E19D3900C27CBF /* BookshelfController.swift in Sources */,
 				C98FC7C824DDCB1300C27CBF /* Book.swift in Sources */,

@@ -78,7 +78,7 @@ class UserController {
         }
     }
     
-    func fetchUsersWith(searchTerm: String?, completion: @escaping (Result<User, UserError>) -> Void) {
+    func fetchUsersWith(searchTerm: String?, completion: @escaping (Result<[User], UserError>) -> Void) {
         
         var predicate: NSPredicate
         
@@ -96,11 +96,10 @@ class UserController {
                 return completion(.failure(.ckError(error)))
             }
             
-            guard let record = records?.first,
-                let fetchedUser = User(ckRecord: record) else {return completion(.failure(.couldNotUnwrap))}
+            guard let records = records else {return completion(.failure(.couldNotUnwrap))}
+            let fetchedUsers = records.compactMap { User(ckRecord: $0) }
             
-            print("Fetched User: \(fetchedUser.username)")
-            completion(.success(fetchedUser))
+            completion(.success(fetchedUsers))
         }
     }
     
