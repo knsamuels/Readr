@@ -26,14 +26,8 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var favBookPic3: UIImageView!
     @IBOutlet weak var titleLabel3: UILabel!
     @IBOutlet weak var authorLabel3: UILabel!
-    @IBOutlet weak var favBookPic4: UIImageView!
-    @IBOutlet weak var titleLabel4: UILabel!
-    @IBOutlet weak var authorLabel4: UILabel!
     @IBOutlet weak var favGenreName1: UILabel!
-    @IBOutlet weak var favGenrePic1: UIImageView!
-    @IBOutlet weak var favGenrePic2: UIImageView!
     @IBOutlet weak var favGenreName2: UILabel!
-    @IBOutlet weak var favGenrePic3: UIImageView!
     @IBOutlet weak var favGenreName3: UILabel!
     @IBOutlet weak var bookclubImage1: UIImageView!
     @IBOutlet weak var bookclubName1: UILabel!
@@ -109,9 +103,7 @@ class UserDetailViewController: UIViewController {
                 self.favBookPic3.isHidden = true
                 self.titleLabel3.isHidden = true
                 self.authorLabel3.isHidden = true
-                self.favBookPic4.isHidden = true
-                self.titleLabel4.isHidden = true
-                self.authorLabel4.isHidden = true
+              
             case 1:
                 self.favBookPic1.image = self.userFavBooks[0].coverImage
                 self.titleLabel1.text = self.userFavBooks[0].title
@@ -122,9 +114,6 @@ class UserDetailViewController: UIViewController {
                 self.favBookPic3.isHidden = true
                 self.titleLabel3.isHidden = true
                 self.authorLabel3.isHidden = true
-                self.favBookPic4.isHidden = true
-                self.titleLabel4.isHidden = true
-                self.authorLabel4.isHidden = true
             case 2:
                 self.favBookPic1.image = self.userFavBooks[0].coverImage
                 self.titleLabel1.text = self.userFavBooks[0].title
@@ -135,22 +124,6 @@ class UserDetailViewController: UIViewController {
                 self.favBookPic3.isHidden = true
                 self.titleLabel3.isHidden = true
                 self.authorLabel3.isHidden = true
-                self.favBookPic4.isHidden = true
-                self.titleLabel4.isHidden = true
-                self.authorLabel4.isHidden = true
-            case 3:
-                self.favBookPic1.image = self.userFavBooks[0].coverImage
-                self.titleLabel1.text = self.userFavBooks[0].title
-                self.authorLabel1.text = self.userFavBooks[0].authors?.first
-                self.favBookPic2.image = self.userFavBooks[1].coverImage
-                self.titleLabel2.text = self.userFavBooks[1].title
-                self.authorLabel2.text = self.userFavBooks[1].authors?.first
-                self.favBookPic3.image = self.userFavBooks[2].coverImage
-                self.titleLabel3.text = self.userFavBooks[2].title
-                self.authorLabel3.text = self.userFavBooks[2].authors?.first
-                self.favBookPic4.isHidden = true
-                self.titleLabel4.isHidden = true
-                self.authorLabel4.isHidden = true
             default:
                 self.favBookPic1.image = self.userFavBooks[0].coverImage
                 self.titleLabel1.text = self.userFavBooks[0].title
@@ -161,39 +134,24 @@ class UserDetailViewController: UIViewController {
                 self.favBookPic3.image = self.userFavBooks[2].coverImage
                 self.titleLabel3.text = self.userFavBooks[2].title
                 self.authorLabel3.text = self.userFavBooks[2].authors?.first
-                self.favBookPic4.image = self.userFavBooks[3].coverImage
-                self.titleLabel4.text = self.userFavBooks[3].title
-                self.authorLabel4.text = self.userFavBooks[3].authors?.first
             }
             let numberOfGenres = UserController.shared.currentUser?.favoriteGenres.count
             switch numberOfGenres {
             case 0:
-                self.favGenrePic1.isHidden = true
                 self.favGenreName1.isHidden = true
-                self.favGenrePic2.isHidden = true
                 self.favGenreName2.isHidden = true
-                self.favGenrePic3.isHidden = true
                 self.favGenreName3.isHidden = true
             case 1:
-                self.favGenrePic1.isHidden = true
                 self.favGenreName1.text = UserController.shared.currentUser?.favoriteGenres[0]
-                self.favGenrePic2.isHidden = true
                 self.favGenreName2.isHidden = true
-                self.favGenrePic3.isHidden = true
                 self.favGenreName3.isHidden = true
             case 2:
-                self.favGenrePic1.isHidden = true
                 self.favGenreName1.text = UserController.shared.currentUser?.favoriteGenres[0]
-                self.favGenrePic2.isHidden = true
                 self.favGenreName2.text = UserController.shared.currentUser?.favoriteGenres[1]
-                self.favGenrePic3.isHidden = true
                 self.favGenreName3.isHidden = true
             default:
-                self.favGenrePic1.isHidden = true
                 self.favGenreName1.text = UserController.shared.currentUser?.favoriteGenres[0]
-                self.favGenrePic2.isHidden = true
                 self.favGenreName2.text = UserController.shared.currentUser?.favoriteGenres[1]
-                self.favGenrePic3.isHidden = true
                 self.favGenreName3.text = UserController.shared.currentUser?.favoriteGenres[2]
             }
             

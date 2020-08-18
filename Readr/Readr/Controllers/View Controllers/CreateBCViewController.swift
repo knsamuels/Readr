@@ -18,10 +18,6 @@ class CreateBCViewController: UIViewController {
     @IBOutlet weak var currentlyReadingTitleLabel: UILabel!
     @IBOutlet weak var currentlyReadingAuthorLabel: UILabel!
     @IBOutlet weak var currentlyReadingRatingLabel: UILabel!
-    @IBOutlet weak var pastReadsImage: UIImageView!
-    @IBOutlet weak var pastReadsTitleLabel: UILabel!
-    @IBOutlet weak var pastReadsAuthorLabel: UILabel!
-    @IBOutlet weak var pastReadsRatingLabel: UILabel!
     @IBOutlet weak var createBookclubButton: UIButton!
     
     
