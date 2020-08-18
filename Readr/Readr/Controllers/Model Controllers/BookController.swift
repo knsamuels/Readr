@@ -48,11 +48,20 @@ class BookController {
                 var books: [Book] = []
                 
                 for item in items {
-                    //    let newBook = VolumeInfo(title: item.volumeInfo.title, description: item.volumeInfo.description, averageRating: item.volumeInfo.averageRating)
-                    //  books.append(newBook)
-                    let newBook = item.book
+                    var newBook = item.book
+                    if let imageLinks = newBook.imageLinks {
+                        self.fetchImage(imageLinks: imageLinks) { (result) in
+                            switch result {
+                            case .success(let image):
+                                newBook.coverImage = image
+                            case .failure(_):
+                                print("We were not able to find an image for the book")
+                            }
+                        }
+                    }
                     books.append(newBook)
                 }
+    
                 
                 return completion(.success(books))
                 
@@ -135,7 +144,7 @@ class BookController {
         for i in user.favoriteBooks {
             group.enter()
             BookController.fetchOneBookWith(ISBN: i) { (result) in
-              print("yeah the book is back!")
+                print("yeah the book is back!")
                 switch result {
                 case .success(let book):
                     books.append(book)
