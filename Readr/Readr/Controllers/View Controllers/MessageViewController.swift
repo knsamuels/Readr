@@ -34,6 +34,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // MARK: - Actions
+    @IBAction func sendButtonTapped(_ sender: Any) {
+    }
     
     
     // MARK: - Helper Methods
