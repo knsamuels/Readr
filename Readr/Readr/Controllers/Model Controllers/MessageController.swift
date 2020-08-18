@@ -48,17 +48,11 @@ class MessageController {
     }
     
     //Read(Fetch)
-    func fetchMessages(for bookclub: Bookclub, completion: @escaping (Result<[Message]?, MessageError>) -> Void) {
+    func fetchMessages(for bookclub: Bookclub, completion: @escaping (Result<[Message], MessageError>) -> Void) {
         
         let bookclubReference = bookclub.recordID
         
         let predicate = NSPredicate(format: "%K == %@", MessageStrings.bookclubReferenceKey, bookclubReference)
-        
-//        let messageIDs = bookclub.memberMessages.compactMap({$0.recordID})
-        
-//        let predicate2 = NSPredicate(format: "NOT(recordID IN %@)", messageIDs)
-        
-//        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, predicate2])
         
         let query = CKQuery(recordType: MessageStrings.recordTypeKey, predicate: predicate)
         
