@@ -35,6 +35,22 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - Actions
     @IBAction func sendButtonTapped(_ sender: Any) {
+        guard let text = messageTextView.text, !text.isEmpty else {return}
+        guard let bookclub = bookclub else {return}
+        
+        MessageController.shared.saveMessage(text: text, image: nil, bookclub: bookclub) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let message):
+                    self.messagesArray.insert(message, at: 0)
+                    self.tableView.reloadData()
+                case .failure(_):
+                    print("Error saving message.")
+                }
+            }
+        }
+        messageTextView.text = ""
+        messageTextView.resignFirstResponder()
     }
     
     

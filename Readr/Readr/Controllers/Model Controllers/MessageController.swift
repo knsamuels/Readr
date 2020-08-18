@@ -22,7 +22,7 @@ class MessageController {
     //MARK: - CRUD Methods
     
     //Create
-    func saveMessage(text: String?, image: UIImage?, bookclub: Bookclub, completion: @escaping (Result<Bool, MessageError>) -> Void) {
+    func saveMessage(text: String?, image: UIImage?, bookclub: Bookclub, completion: @escaping (Result<Message, MessageError>) -> Void) {
         
         guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
         let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
@@ -43,7 +43,7 @@ class MessageController {
             print("Saved Message Successfully")
             //self.messages.insert(savedMessage, at: 0)
 //            bookclub.memberMessages.insert(savedMessage, at: 0)
-            completion(.success(true))
+            completion(.success(savedMessage))
         }
     }
     
