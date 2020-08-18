@@ -23,6 +23,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
+   
+    
     
     //MARK: - Lifecycles
     override func viewDidLoad() {
@@ -137,7 +139,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? SearchTableViewCell else { return UITableViewCell()}
+        if peopleIsSelected == true {
+            let user = peopleArray[indexPath.row]
+            cell.user = user
+        } else {
+            let bookclub = clubsArray[indexPath.row]
+            cell.bookclub = bookclub
+        }
+        
         
         return cell
     }
