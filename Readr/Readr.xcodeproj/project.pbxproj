@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9304463E24E1ABBC00FBEEF2 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9304463D24E1ABBC00FBEEF2 /* MessageController.swift */; };
+		937640D024EC36CF00B51DEC /* BookclubListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640CF24EC36CF00B51DEC /* BookclubListTableViewController.swift */; };
+		937640D224EC3BFE00B51DEC /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640D124EC3BFE00B51DEC /* SearchTableViewCell.swift */; };
+		937640D424EC3C1900B51DEC /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640D324EC3C1900B51DEC /* SearchCollectionViewCell.swift */; };
 		938A2DA324EAE6B8002119E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938A2DA224EAE6B8002119E1 /* Main.storyboard */; };
 		938A2DA524EAE724002119E1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938A2DA424EAE724002119E1 /* SignInViewController.swift */; };
 		C98FC7B024DDC71000C27CBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7AF24DDC71000C27CBF /* AppDelegate.swift */; };
@@ -43,6 +46,9 @@
 
 /* Begin PBXFileReference section */
 		9304463D24E1ABBC00FBEEF2 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
+		937640CF24EC36CF00B51DEC /* BookclubListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubListTableViewController.swift; sourceTree = "<group>"; };
+		937640D124EC3BFE00B51DEC /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		937640D324EC3C1900B51DEC /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		938A2DA224EAE6B8002119E1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		938A2DA424EAE724002119E1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C98FC7AC24DDC71000C27CBF /* Readr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Readr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +214,7 @@
 				F31A488824E480DA0071652A /* BookclubViewController.swift */,
 				F31A488D24E4A83C0071652A /* CreateBCViewController.swift */,
 				F3C608B124EB1C1500E4F26F /* SearchViewController.swift */,
+				937640CF24EC36CF00B51DEC /* BookclubListTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -216,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				F31A488B24E485880071652A /* BookshelfCellTableViewCell.swift */,
+				937640D124EC3BFE00B51DEC /* SearchTableViewCell.swift */,
+				937640D324EC3C1900B51DEC /* SearchCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -296,14 +305,17 @@
 				9304463E24E1ABBC00FBEEF2 /* MessageController.swift in Sources */,
 				F31A488924E480DA0071652A /* BookclubViewController.swift in Sources */,
 				F3C608B224EB1C1600E4F26F /* SearchViewController.swift in Sources */,
+				937640D024EC36CF00B51DEC /* BookclubListTableViewController.swift in Sources */,
 				F31A488524E480A80071652A /* BookshelfListTableViewController.swift in Sources */,
 				C98FC7DC24E19D3900C27CBF /* BookshelfController.swift in Sources */,
 				C98FC7C824DDCB1300C27CBF /* Book.swift in Sources */,
 				C98FC7EA24E1B4BB00C27CBF /* UserError.swift in Sources */,
 				C98FC7E424E1B47100C27CBF /* ChatController.swift in Sources */,
+				937640D224EC3BFE00B51DEC /* SearchTableViewCell.swift in Sources */,
 				C98FC7CA24DDCB4100C27CBF /* Bookclub.swift in Sources */,
 				C98FC7CC24DDCB6400C27CBF /* Message.swift in Sources */,
 				C98FC7E624E1B49200C27CBF /* BookclubError.swift in Sources */,
+				937640D424EC3C1900B51DEC /* SearchCollectionViewCell.swift in Sources */,
 				F31A488724E480CA0071652A /* UserDetailViewController.swift in Sources */,
 				C98FC7D224DDCBCA00C27CBF /* Chat.swift in Sources */,
 				C98FC7E024E1B42000C27CBF /* BookclubControllers.swift in Sources */,

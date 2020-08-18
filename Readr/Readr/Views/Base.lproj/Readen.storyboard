@@ -18,14 +18,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="A1j-BF-KNH" kind="relationship" relationship="viewControllers" id="xcJ-aa-R4c"/>
+                        <segue destination="SEJ-cH-CT6" kind="relationship" relationship="viewControllers" id="g0d-0v-ei3"/>
                         <segue destination="9QW-qj-en5" kind="relationship" relationship="viewControllers" id="iPj-0Y-U5c"/>
                         <segue destination="UJ4-yH-Ff4" kind="relationship" relationship="viewControllers" id="hhB-nq-lWk"/>
+                        <segue destination="A1j-BF-KNH" kind="relationship" relationship="viewControllers" id="xcJ-aa-R4c"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLJ-d7-zTc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-793" y="106"/>
+            <point key="canvasLocation" x="-972" y="106"/>
         </scene>
         <!--CreateBC View Controller-->
         <scene sceneID="gVh-ll-gT8">
@@ -156,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2k-55-0YQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3113" y="814"/>
+            <point key="canvasLocation" x="4023" y="256"/>
         </scene>
         <!--Bookclub View Controller-->
         <scene sceneID="Wqe-zc-9iq">
@@ -328,9 +329,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjI-Mq-ohl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1370" y="862"/>
+            <point key="canvasLocation" x="4023" y="1022"/>
         </scene>
-        <!--Bookshelf List Table View Controller-->
+        <!--Bookclub List Table View Controller-->
+        <scene sceneID="yzk-bD-8R3">
+            <objects>
+                <tableViewController id="cqk-BO-4bC" customClass="BookclubListTableViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VVF-3l-rjw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookclubCell" rowHeight="108" id="RU0-c6-2NN">
+                                <rect key="frame" x="0.0" y="28" width="414" height="108"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RU0-c6-2NN" id="En0-Xh-3b3">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" id="Pdl-Xb-emP"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cqk-BO-4bC" id="VTn-48-rx6"/>
+                            <outlet property="delegate" destination="cqk-BO-4bC" id="X8T-Tz-3sX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="BJI-vb-apA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vlW-gf-Wsd">
+                            <connections>
+                                <segue destination="H6T-ob-m4V" kind="show" id="s51-Sp-ODc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FGf-fY-deT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2855" y="554"/>
+        </scene>
+        <!--Bookshelves-->
         <scene sceneID="6mh-RX-ImH">
             <objects>
                 <tableViewController id="SEJ-cH-CT6" customClass="BookshelfListTableViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
@@ -369,6 +408,7 @@
                             <outlet property="delegate" destination="SEJ-cH-CT6" id="Sfu-0s-hMG"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Bookshelves" image="book" catalog="system" id="Dix-tK-BLz"/>
                     <navigationItem key="navigationItem" id="f02-Rh-Hxf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fX1-VH-vya">
                             <connections>
@@ -379,7 +419,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ehe-hT-5pr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2454" y="862"/>
+            <point key="canvasLocation" x="806" y="-348"/>
         </scene>
         <!--User Detail View Controller-->
         <scene sceneID="94Q-M8-USP">
@@ -607,18 +647,11 @@
                         <viewLayoutGuide key="safeArea" id="L98-mv-r2w"/>
                     </view>
                     <navigationItem key="navigationItem" id="NDh-wL-Kam">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Item" id="YNR-yQ-Mwj">
-                                <connections>
-                                    <segue destination="SEJ-cH-CT6" kind="show" id="ok6-VG-ur0"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" id="Hfk-U8-HZj">
-                                <connections>
-                                    <segue destination="ZEJ-Jj-dV8" kind="show" id="Fvt-p3-Kqo"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Bookclubs" id="Hfk-U8-HZj">
+                            <connections>
+                                <segue destination="cqk-BO-4bC" kind="show" id="8hj-hD-7tX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="authorLabel1" destination="mlY-yD-MEj" id="aW8-Wl-Lbc"/>
@@ -655,9 +688,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FEp-ME-Jpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="106"/>
+            <point key="canvasLocation" x="1745" y="554"/>
         </scene>
-        <!--Item-->
+        <!--Search-->
         <scene sceneID="fOz-7V-teA">
             <objects>
                 <viewController id="9QW-qj-en5" customClass="SearchViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
@@ -665,49 +698,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T4q-iv-CFS">
-                                <rect key="frame" x="0.0" y="442" width="414" height="371"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7aR-rl-UHk">
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7aR-rl-UHk">
                                 <rect key="frame" x="0.0" y="84" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="vkg-IR-0de"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msF-Qg-gUk">
-                                <rect key="frame" x="186" y="44" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVg-0Y-v6H">
-                                <rect key="frame" x="22" y="145" width="43" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Books"/>
-                                <connections>
-                                    <action selector="booksButtonTapped:" destination="9QW-qj-en5" eventType="touchUpInside" id="ULo-hW-YIf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Eh-QI-byV">
-                                <rect key="frame" x="319" y="145" width="47" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="People"/>
-                                <connections>
-                                    <action selector="peopleButtonTapped:" destination="9QW-qj-en5" eventType="touchUpInside" id="Lyd-xB-RbT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8x-Iy-CKj">
-                                <rect key="frame" x="180" y="145" width="40" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Clubs"/>
-                                <connections>
-                                    <action selector="clubsButtonTapped:" destination="9QW-qj-en5" eventType="touchUpInside" id="6tI-bE-6Ax"/>
-                                </connections>
-                            </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dyE-he-TqN">
-                                <rect key="frame" x="0.0" y="220" width="414" height="214"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="yem-a0-cSH">
+                                <rect key="frame" x="15" y="143" width="384" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVg-0Y-v6H">
+                                        <rect key="frame" x="0.0" y="0.0" width="74.5" height="35"/>
+                                        <state key="normal" title="Books"/>
+                                        <connections>
+                                            <action selector="booksButtonTapped:" destination="9QW-qj-en5" eventType="touchUpInside" id="ULo-hW-YIf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8x-Iy-CKj">
+                                        <rect key="frame" x="154.5" y="0.0" width="75" height="35"/>
+                                        <state key="normal" title="Clubs"/>
+                                        <connections>
+                                            <action selector="clubsButtonTapped:" destination="9QW-qj-en5" eventType="touchUpInside" id="6tI-bE-6Ax"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Eh-QI-byV">
+                                        <rect key="frame" x="309.5" y="0.0" width="74.5" height="35"/>
+                                        <state key="normal" title="People"/>
+                                        <connections>
+                                            <action selector="peopleButtonTapped:" destination="9QW-qj-en5" eventType="touchUpInside" id="Lyd-xB-RbT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="XBR-fj-K3q"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T4q-iv-CFS">
+                                <rect key="frame" x="0.0" y="208" width="414" height="556"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" textLabel="4sw-vq-00y" rowHeight="62" style="IBUITableViewCellStyleDefault" id="qko-dU-HGu">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="62"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qko-dU-HGu" id="0se-Gp-uwX">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4sw-vq-00y">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="62"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dyE-he-TqN">
+                                <rect key="frame" x="0.0" y="208" width="414" height="556"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gJe-ug-m7Z">
                                     <size key="itemSize" width="128" height="128"/>
@@ -716,7 +767,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OrJ-jG-Y9f">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="searchCell" id="OrJ-jG-Y9f" customClass="SearchCollectionViewCell" customModule="Readr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="O2l-b1-46p">
@@ -729,13 +780,24 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="7aR-rl-UHk" firstAttribute="leading" secondItem="Sbj-1G-YcY" secondAttribute="leading" id="54v-Av-JAt"/>
+                            <constraint firstItem="yem-a0-cSH" firstAttribute="top" secondItem="7aR-rl-UHk" secondAttribute="bottom" constant="15" id="F9b-EW-VKW"/>
+                            <constraint firstItem="7aR-rl-UHk" firstAttribute="top" secondItem="Sbj-1G-YcY" secondAttribute="top" constant="40" id="Ggv-BL-v7Z"/>
+                            <constraint firstItem="dyE-he-TqN" firstAttribute="trailing" secondItem="Sbj-1G-YcY" secondAttribute="trailing" id="Qyj-Le-hX9"/>
+                            <constraint firstItem="Sbj-1G-YcY" firstAttribute="trailing" secondItem="yem-a0-cSH" secondAttribute="trailing" constant="15" id="SQz-LB-fH5"/>
+                            <constraint firstItem="T4q-iv-CFS" firstAttribute="top" secondItem="yem-a0-cSH" secondAttribute="bottom" constant="30" id="Urq-bH-0GN"/>
                             <constraint firstItem="T4q-iv-CFS" firstAttribute="bottom" secondItem="Sbj-1G-YcY" secondAttribute="bottom" id="Uvf-GI-fbI"/>
+                            <constraint firstItem="Sbj-1G-YcY" firstAttribute="bottom" secondItem="dyE-he-TqN" secondAttribute="bottom" id="V7U-u8-5FU"/>
                             <constraint firstItem="T4q-iv-CFS" firstAttribute="trailing" secondItem="Sbj-1G-YcY" secondAttribute="trailing" id="clg-xp-W3m"/>
+                            <constraint firstItem="dyE-he-TqN" firstAttribute="top" secondItem="yem-a0-cSH" secondAttribute="bottom" constant="30" id="gxO-1d-BUd"/>
+                            <constraint firstItem="dyE-he-TqN" firstAttribute="leading" secondItem="Sbj-1G-YcY" secondAttribute="leading" id="iBb-fS-fm9"/>
                             <constraint firstItem="T4q-iv-CFS" firstAttribute="leading" secondItem="Sbj-1G-YcY" secondAttribute="leading" id="ir6-KK-Qm4"/>
+                            <constraint firstItem="7aR-rl-UHk" firstAttribute="trailing" secondItem="Sbj-1G-YcY" secondAttribute="trailing" id="qqG-4x-NKt"/>
+                            <constraint firstItem="yem-a0-cSH" firstAttribute="leading" secondItem="Sbj-1G-YcY" secondAttribute="leading" constant="15" id="vuQ-zj-dIx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Sbj-1G-YcY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="bHn-Va-2x6"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="bHn-Va-2x6"/>
                     <toolbarItems>
                         <barButtonItem title="Item" id="3zL-5n-1Ex"/>
                     </toolbarItems>
@@ -748,9 +810,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Te-NI-0Tc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157" y="814"/>
+            <point key="canvasLocation" x="-1726.0869565217392" y="1170.5357142857142"/>
         </scene>
-        <!--Item-->
+        <!--Chat-->
         <scene sceneID="3h5-Uq-SI3">
             <objects>
                 <tableViewController id="UJ4-yH-Ff4" sceneMemberID="viewController">
@@ -773,16 +835,15 @@
                             <outlet property="delegate" destination="UJ4-yH-Ff4" id="DpZ-as-a9I"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="9ws-1I-jGw"/>
+                    <tabBarItem key="tabBarItem" title="Chat" image="message" catalog="system" id="9ws-1I-jGw"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPf-sT-QLw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157" y="1518"/>
+            <point key="canvasLocation" x="-217" y="1171"/>
         </scene>
         <!--Profile-->
         <scene sceneID="829-Wv-F8f">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sy6-zL-iyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A1j-BF-KNH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="person.crop.rectangle" catalog="system" id="4Ds-cK-Ol3"/>
                     <toolbarItems/>
@@ -795,11 +856,15 @@
                         <segue destination="Dff-Fc-vSR" kind="relationship" relationship="rootViewController" id="gNk-4k-DGh"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sy6-zL-iyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157" y="106"/>
+            <point key="canvasLocation" x="807" y="554"/>
         </scene>
     </scenes>
     <resources>
+        <image name="book" catalog="system" width="128" height="101"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="message" catalog="system" width="128" height="113"/>
         <image name="person.crop.rectangle" catalog="system" width="128" height="93"/>
     </resources>
 </document>
