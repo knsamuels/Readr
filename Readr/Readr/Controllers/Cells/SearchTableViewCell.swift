@@ -10,15 +10,33 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    //Mark: Outlets
+    
+    @IBOutlet weak var personOrClubImage: UIImageView!
+    @IBOutlet weak var personOrClubLabel: UILabel!
+    
+    //Mark: Properties
+    var user: User? {
+        didSet {
+            updateViews()
+        }
+    }
+    var bookclub: Bookclub? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    func updateViews() {
+        if let user = user {
+            personOrClubImage.image = user.profilePhoto
+            personOrClubLabel.text = "\(user.firstName) \(user.lastName)"
+        } else if let bookclub = bookclub {
+            personOrClubLabel.text = bookclub.name
+            personOrClubImage.image = bookclub.profilePicture
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+   
 
 }
