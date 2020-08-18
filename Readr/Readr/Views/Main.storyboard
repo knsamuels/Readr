@@ -10,7 +10,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="6m8-Db-lxu">
             <objects>
-                <viewController id="Rgj-Y1-NWb" customClass="SignInViewController" customModule="ChatMessenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Rgj-Y1-NWb" customClass="SignInViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uid-Nb-eGV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,10 +114,17 @@
                                     <action selector="enterButtonTapped:" destination="Rgj-Y1-NWb" eventType="touchUpInside" id="kbf-PV-deG"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ca4-or-ftP">
+                                <rect key="frame" x="107.5" y="88.5" width="199" height="97"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.74117647060000003" green="0.87450980389999999" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Ctn-O7-d2k" firstAttribute="top" secondItem="ca4-or-ftP" secondAttribute="bottom" constant="40" id="6nk-L6-UWb"/>
                             <constraint firstItem="Ctn-O7-d2k" firstAttribute="width" secondItem="sZJ-Pt-q8b" secondAttribute="width" multiplier="0.8" id="CXd-bm-nLd"/>
+                            <constraint firstItem="ca4-or-ftP" firstAttribute="centerX" secondItem="sZJ-Pt-q8b" secondAttribute="centerX" id="ChG-VO-Ilr"/>
+                            <constraint firstItem="ca4-or-ftP" firstAttribute="height" secondItem="Uid-Nb-eGV" secondAttribute="height" multiplier="0.108259" id="XnC-dM-TBv"/>
+                            <constraint firstItem="ca4-or-ftP" firstAttribute="width" secondItem="Uid-Nb-eGV" secondAttribute="width" multiplier="0.480676" id="bWY-Ki-3ei"/>
                             <constraint firstItem="Ctn-O7-d2k" firstAttribute="centerY" secondItem="sZJ-Pt-q8b" secondAttribute="centerY" multiplier="0.8" id="igU-xe-ATU"/>
                             <constraint firstItem="Ctn-O7-d2k" firstAttribute="centerX" secondItem="sZJ-Pt-q8b" secondAttribute="centerX" id="oue-FD-kUX"/>
                             <constraint firstItem="Xot-tD-g4I" firstAttribute="top" secondItem="Ctn-O7-d2k" secondAttribute="bottom" constant="90" id="p3n-t3-K6j"/>
@@ -139,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yB-gx-91d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2387" y="37"/>
+            <point key="canvasLocation" x="2386.9565217391305" y="36.830357142857139"/>
         </scene>
     </scenes>
 </document>
