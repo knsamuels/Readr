@@ -44,7 +44,7 @@
 		F31A488C24E485880071652A /* BookshelfCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488B24E485880071652A /* BookshelfCellTableViewCell.swift */; };
 		F31A488E24E4A83C0071652A /* CreateBCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488D24E4A83C0071652A /* CreateBCViewController.swift */; };
 		F3C608B224EB1C1600E4F26F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C608B124EB1C1500E4F26F /* SearchViewController.swift */; };
-		F3CFBCE124EDBFC30009DD01 /* Readen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3CFBCE024EDBFC30009DD01 /* Readen.storyboard */; };
+		F3CFBCE324EDC39E0009DD01 /* Readen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3CFBCE224EDC39D0009DD01 /* Readen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,7 +88,7 @@
 		F31A488B24E485880071652A /* BookshelfCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfCellTableViewCell.swift; sourceTree = "<group>"; };
 		F31A488D24E4A83C0071652A /* CreateBCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBCViewController.swift; sourceTree = "<group>"; };
 		F3C608B124EB1C1500E4F26F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		F3CFBCE024EDBFC30009DD01 /* Readen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Readen.storyboard; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/Readen.storyboard"; sourceTree = "<group>"; };
+		F3CFBCE224EDC39D0009DD01 /* Readen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Readen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				938A2DA224EAE6B8002119E1 /* Main.storyboard */,
-				F3CFBCE024EDBFC30009DD01 /* Readen.storyboard */,
+				F3CFBCE224EDC39D0009DD01 /* Readen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,9 +297,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C98FC7BC24DDC71C00C27CBF /* LaunchScreen.storyboard in Resources */,
+				F3CFBCE324EDC39E0009DD01 /* Readen.storyboard in Resources */,
 				C98FC7B924DDC71C00C27CBF /* Assets.xcassets in Resources */,
 				938A2DA324EAE6B8002119E1 /* Main.storyboard in Resources */,
-				F3CFBCE124EDBFC30009DD01 /* Readen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
