@@ -19,6 +19,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     var volumeInfo: Book? {
         didSet {
             updateViews()
+            
         }
     }
         
@@ -26,7 +27,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
         guard let volumeInfo = volumeInfo else {return}
         titleLabel.text = volumeInfo.title
         averageRating.text = "Rating: \(String(volumeInfo.averageRating ?? 0))"
-        bookImageView.image = volumeInfo.coverImage
+        bookImageView.image = volumeInfo.coverImage ?? UIImage(named: "noImage")
     }
     
 }
