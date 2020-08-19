@@ -126,7 +126,7 @@ extension Bookclub {
             }
         }
         
-        self.init(name: name, admin: admin, adminContactInfo: adminContactInfo, members: members, description: description, profilePicture: foundPhoto, currentlyReading: currentlyReading, pastReads: pastReads, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
+        self.init(name: name, admin: admin, adminContactInfo: adminContactInfo, members: members, description: description, profilePicture: foundPhoto, currentlyReading: currentlyReading, pastReads: pastReads, meetingInfo: meetingInfo, memberCapacity: memberCapacity, recordID: ckRecord.recordID)
         
     }
 }
