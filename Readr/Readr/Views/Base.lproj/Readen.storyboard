@@ -784,7 +784,7 @@
                                 <rect key="frame" x="0.0" y="252" width="414" height="620"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gJe-ug-m7Z">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gJe-ug-m7Z">
                                     <size key="itemSize" width="128" height="192"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -792,33 +792,33 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="searchCell" id="OrJ-jG-Y9f" customClass="SearchCollectionViewCell" customModule="Readr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="190.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="192"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="O2l-b1-46p">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="190.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="192"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="bq2-SP-kD8">
-                                                    <rect key="frame" x="0.0" y="4" width="128" height="182.5"/>
+                                                    <rect key="frame" x="0.0" y="4" width="128" height="184"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J7c-hI-6eM">
-                                                            <rect key="frame" x="23.5" y="0.0" width="81" height="137.5"/>
+                                                            <rect key="frame" x="23.5" y="0.0" width="81" height="132.5"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yuj-fT-xKg">
-                                                            <rect key="frame" x="43" y="139.5" width="42" height="20.5"/>
+                                                            <rect key="frame" x="43" y="134.5" width="42" height="23.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gU-De-aDQ">
-                                                            <rect key="frame" x="43" y="162" width="42" height="20.5"/>
+                                                            <rect key="frame" x="43" y="160" width="42" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="J7c-hI-6eM" firstAttribute="height" secondItem="bq2-SP-kD8" secondAttribute="height" multiplier="0.6" id="0Au-H9-6y2"/>
+                                                        <constraint firstItem="J7c-hI-6eM" firstAttribute="height" secondItem="bq2-SP-kD8" secondAttribute="height" multiplier="0.625" id="0Au-H9-6y2"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
