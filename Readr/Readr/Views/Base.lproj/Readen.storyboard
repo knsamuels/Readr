@@ -48,14 +48,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name Your Book Club..." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-vu-HVB">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Your Book Club..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-vu-HVB">
                                 <rect key="frame" x="87" y="154" width="232" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Meeting Info..." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pOQ-I2-3nw">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Meeting Info..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pOQ-I2-3nw">
                                 <rect key="frame" x="87" y="297" width="232" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,8 +94,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="admin Contact Info" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uWh-Ee-neZ">
+                                <rect key="frame" x="115" y="625" width="184" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Club capacity " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pWd-yf-gjy">
+                                <rect key="frame" x="163" y="572" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L59-XB-aFb">
-                                <rect key="frame" x="146" y="796" width="114" height="30"/>
+                                <rect key="frame" x="146" y="679" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create Bookclub"/>
                                 <connections>
@@ -108,6 +120,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="UFt-H5-d3g"/>
                     <connections>
+                        <outlet property="adminContactInfo" destination="pWd-yf-gjy" id="zOx-lI-Zqi"/>
                         <outlet property="createBookclubButton" destination="L59-XB-aFb" id="c9S-ym-ZLz"/>
                         <outlet property="currentlyReadingAuthorLabel" destination="veX-aW-i3P" id="OzO-y2-yvq"/>
                         <outlet property="currentlyReadingImage" destination="q2Y-Nn-bvf" id="L1Z-41-zjL"/>
@@ -116,6 +129,7 @@
                         <outlet property="descriptionOfBookClub" destination="nv1-BD-ce8" id="07l-X2-ZIe"/>
                         <outlet property="imageOfBookClub" destination="bhR-w8-l4M" id="F6H-5w-UrF"/>
                         <outlet property="meetingInfoForBookBlub" destination="pOQ-I2-3nw" id="BJR-1E-A4T"/>
+                        <outlet property="memberCapacity" destination="pWd-yf-gjy" id="86o-gd-x1j"/>
                         <outlet property="nameOfBookClub" destination="eAK-vu-HVB" id="lFP-xt-6Vb"/>
                     </connections>
                 </viewController>
