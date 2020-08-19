@@ -46,24 +46,31 @@ class BookController {
                 let topLevelObject = try JSONDecoder().decode(TopLevelObject.self, from: data)
                 let items = topLevelObject.items
                 var books: [Book] = []
-                
+                let dispatchGroup = DispatchGroup()
                 for item in items {
                     var newBook = item.book
                     if let imageLinks = newBook.imageLinks {
+                        dispatchGroup.enter()
                         self.fetchImage(imageLinks: imageLinks) { (result) in
                             switch result {
                             case .success(let image):
                                 newBook.coverImage = image
+                                books.append(newBook)
+                                dispatchGroup.leave()
                             case .failure(_):
                                 print("We were not able to find an image for the book")
+                                books.append(newBook)
+                                dispatchGroup.leave()
                             }
                         }
+                    } else {
+                        books.append(newBook)
                     }
-                    books.append(newBook)
                 }
     
-                
-                return completion(.success(books))
+                dispatchGroup.notify(queue: .main) {
+                    return completion(.success(books))
+                }
                 
             } catch {
                 print(error.localizedDescription)
