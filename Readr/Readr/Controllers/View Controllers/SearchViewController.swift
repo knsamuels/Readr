@@ -58,6 +58,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         clubsIsSelected = true
         tableView.isHidden = false
         collectionView.isHidden = true
+        tableView.reloadData()
         search()
     }
     
@@ -67,6 +68,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         clubsIsSelected = false
         tableView.isHidden = false
         collectionView.isHidden = true
+        tableView.reloadData()
         search()
     }
     
@@ -106,6 +108,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let people):
+                        self.clubsArray = []
                         self.peopleArray = people
                         self.tableView.reloadData()
                     case .failure(let error):
@@ -118,6 +121,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let clubs):
+                        self.peopleArray = []
                         self.clubsArray = clubs
                         self.tableView.reloadData()
                     case .failure(let error):
@@ -143,7 +147,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if peopleIsSelected == true {
             let user = peopleArray[indexPath.row]
             cell.user = user
-        } else {
+        } else if clubsIsSelected == true {
             let bookclub = clubsArray[indexPath.row]
             cell.bookclub = bookclub
         }

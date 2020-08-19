@@ -132,6 +132,28 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let messageToDelete = messagesArray[indexPath.row]
+            guard let index = messagesArray.firstIndex(of: messageToDelete) else {return}
+            guard let user = UserController.shared.currentUser else {return}
+            
+            if messageToDelete.user == user.username {
+                MessageController.shared.deleteMessage(message: messageToDelete) { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(_):
+                            self.messagesArray.remove(at: index)
+                            self.tableView.reloadData()
+                        case .failure(_):
+                            print("Error deleting message")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     /*
      // MARK: - Navigation
      

@@ -18,25 +18,26 @@ class SearchTableViewCell: UITableViewCell {
     //Mark: Properties
     var user: User? {
         didSet {
-            updateViews()
+            updateUserViews()
         }
     }
     var bookclub: Bookclub? {
         didSet {
-            updateViews()
+            updateBookclubViews()
         }
     }
     
-    func updateViews() {
-        if let user = user {
-            personOrClubImage.image = user.profilePhoto
-            personOrClubLabel.text = "\(user.firstName) \(user.lastName)"
-        } else if let bookclub = bookclub {
-            personOrClubLabel.text = bookclub.name
-            personOrClubImage.image = bookclub.profilePicture
-        }
+    func updateUserViews() {
+        guard let user = user else {return}
+        personOrClubImage.image = user.profilePhoto
+        personOrClubLabel.text = "\(user.firstName) \(user.lastName)"
+    }
+    func updateBookclubViews() {
+        guard let bookclub = bookclub else {return}
+        personOrClubImage.image = bookclub.profilePicture
+        personOrClubLabel.text = bookclub.name
     }
 
    
 
-}
+} //End of class
