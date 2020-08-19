@@ -56,7 +56,7 @@ class ChatTableViewController: UITableViewController {
     
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "" {
+        if segue.identifier == "toMessageVC" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
             let destinationVC = segue.destination as? MessageViewController
             let bookclub = bookclubsArray[indexPath.row]
