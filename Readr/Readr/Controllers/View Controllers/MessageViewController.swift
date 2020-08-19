@@ -55,6 +55,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     // MARK: - Helper Methods
+  
+    
     func fetchMessages() {
         guard let bookclub = bookclub else {return}
         MessageController.shared.fetchMessages(for: bookclub) { (result) in
