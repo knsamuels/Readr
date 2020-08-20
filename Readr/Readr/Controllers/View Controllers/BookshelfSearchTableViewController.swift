@@ -10,6 +10,8 @@ import UIKit
 
 class BookshelfSearchTableViewController: UITableViewController {
 
+    var bookshelf: Bookshelf?
+    
     // Mark Outlets
     @IBOutlet weak var bookshelfSearchBar: UISearchBar!
     
