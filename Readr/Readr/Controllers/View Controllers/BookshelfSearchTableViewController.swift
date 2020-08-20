@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookshelfSearchTableViewController: UITableViewController {
+class BookshelfSearchTableViewController: UITableViewController, UISearchBarDelegate {
 
     var bookshelf: Bookshelf?
     
@@ -18,7 +18,7 @@ class BookshelfSearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        bookshelfSearchBar.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
