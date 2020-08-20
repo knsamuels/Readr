@@ -14,25 +14,12 @@ class BookshelfListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        createBookshelf()
         fetchAllUsersFavorites()
     }
     @IBAction func addButtonTapped(_ sender: Any) {
         presentBookshelfAlert(bookshelf: nil)
     }
     //Mark: - Helper Functions
-    
-    func createBookshelf() {
-        BookshelfController.shared.createBookshelf(title: "Harry Potter Rocks") { (result) in
-            switch result {
-            case .success(_):
-                print("We created a bookshelf")
-            case .failure(_):
-                print("We could not create a bookshelf")
-            }
-        }
-    }
-    
     
     func fetchAllUsersFavorites() {
         BookshelfController.shared.fetchAllBookshelfs { (result) in
@@ -89,10 +76,9 @@ class BookshelfListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfCell", for: indexPath) as? BookshelfCellTableViewCell else {return UITableViewCell()}
         let bookshelf = userBookshelves[indexPath.row]
-        cell.textLabel?.text = bookshelf.title
-        cell.detailTextLabel?.text = "\(bookshelf.books.count)"
+        cell.bookshelf = bookshelf
         return cell
     }
     
@@ -104,22 +90,26 @@ class BookshelfListTableViewController: UITableViewController {
             
             BookshelfController.shared.deleteBookshelf(bookshelf: bookshelfToDelete) { (result) in
                 DispatchQueue.main.async {
-                switch result {
-                case .success(_):
-                    self.userBookshelves.remove(at: index)
-                    self.tableView.reloadData()
-                case .failure(_):
-                    print("no - error")
+                    switch result {
+                    case .success(_):
+                        self.userBookshelves.remove(at: index)
+                        self.tableView.reloadData()
+                    case .failure(_):
+                        print("no - error")
+                    }
                 }
             }
+            
+        } else if editingStyle == .insert {
+            
         }
-        
-    } else if editingStyle == .insert {
-    
     }
-}
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    // Get the new view controller using segue.destination.
-    // Pass the selected object to the new view controller.
-}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "BookselfListToBookShelf" {
+            guard let indexPath = tableView.indexPathForSelectedRow else {return}
+            guard let destination = segue.destination as? BookshelfSearchTableViewController else {return}
+            let bookshelfToSend = userBookshelves[indexPath.row]
+            destination.bookshelf = bookshelfToSend
+        }
+    }
 }
