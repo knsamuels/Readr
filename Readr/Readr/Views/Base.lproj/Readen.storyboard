@@ -274,6 +274,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqW-jg-oLo">
+                                <rect key="frame" x="342" y="105" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="JOIN"/>
+                                <connections>
+                                    <action selector="joinButtonTapped:" destination="ZEJ-Jj-dV8" eventType="touchUpInside" id="sdt-hA-PWR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="gFe-QI-9yi"/>
@@ -296,6 +304,7 @@
                         <outlet property="image1ForPastReads" destination="MKp-s1-zcr" id="TcD-ir-28L"/>
                         <outlet property="image2ForPastReads" destination="Xyc-yg-YXu" id="9ZF-d0-S7t"/>
                         <outlet property="imageOfBookClub" destination="he2-hu-3P2" id="BFq-0s-Zuo"/>
+                        <outlet property="joinButton" destination="PqW-jg-oLo" id="hJg-fn-oA6"/>
                         <outlet property="meetingInfoForBookClub" destination="OuF-re-nWW" id="kIr-3w-9pi"/>
                         <outlet property="nameOfBookClub" destination="Uec-c1-hou" id="AYA-cr-eMd"/>
                         <outlet property="rating1ForPastReads" destination="uhB-l5-NJo" id="McU-qe-t2I"/>
@@ -1498,7 +1507,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ve4-en-BJr"/>
+        <segue reference="Pdl-Xb-emP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="101"/>
