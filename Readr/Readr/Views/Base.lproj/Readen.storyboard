@@ -419,7 +419,7 @@
                                     <outlet property="book5Label" destination="3T9-QD-q6u" id="i5n-9h-BAF"/>
                                     <outlet property="bookCountLabel" destination="Rle-wH-UXg" id="KXa-Yx-VuT"/>
                                     <outlet property="titleOfBookShelfTextField" destination="vFe-Jv-oZ4" id="xUc-4i-Qu4"/>
-                                    <segue destination="GZb-gu-Hfk" kind="show" identifier="BookshelfListToBookShelfSearch" id="Z2W-uB-lv7"/>
+                                    <segue destination="GZb-gu-Hfk" kind="show" identifier="BookshelfListToBookShelf" id="Z2W-uB-lv7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -443,12 +443,12 @@
         <!--Bookshelf Search Table View Controller-->
         <scene sceneID="yF2-d9-eTn">
             <objects>
-                <tableViewController id="GZb-gu-Hfk" customClass="BookshelfSearchTableViewController" sceneMemberID="viewController">
+                <tableViewController id="GZb-gu-Hfk" customClass="BookshelfSearchTableViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OX3-JK-Jlp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="g7h-De-DAT">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="4Wk-x9-Jlt">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -518,12 +518,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bookshelfSearchBar" destination="g7h-De-DAT" id="TLT-6d-34P"/>
+                        <outlet property="searchBar" destination="4Wk-x9-Jlt" id="dv4-t1-WQT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WUn-GY-x0I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2502.898550724638" y="-348.21428571428572"/>
+            <point key="canvasLocation" x="2559" y="-364"/>
         </scene>
         <!--Bookshelf Detail View Controller-->
         <scene sceneID="okR-l1-vcn">
