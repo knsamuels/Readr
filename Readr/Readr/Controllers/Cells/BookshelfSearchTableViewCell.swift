@@ -9,6 +9,8 @@
 import UIKit
 
 class BookshelfSearchTableViewCell: UITableViewCell {
+    
+    var book: Book?
 
     @IBOutlet weak var bookImageView: UIImageView!
     

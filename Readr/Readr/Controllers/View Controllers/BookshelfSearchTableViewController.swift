@@ -11,14 +11,15 @@ import UIKit
 class BookshelfSearchTableViewController: UITableViewController, UISearchBarDelegate {
 
     var bookshelf: Bookshelf?
+    var bookshelfBooks: [Book] = []
     
     // Mark Outlets
-    @IBOutlet weak var bookshelfSearchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bookshelfSearchBar.delegate = self
+        searchBar.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,19 +33,16 @@ class BookshelfSearchTableViewController: UITableViewController, UISearchBarDele
     }
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return bookshelfBooks.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfSearchCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfSearchCell", for: indexPath) as? BookshelfSearchTableViewCell else { return UITableViewCell() }
+        let book = bookshelfBooks[indexPath.row]
+        cell.book = book
 
         // Configure the cell...
 
