@@ -170,7 +170,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
      // MARK: - Navigation
      
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if segue.identifier == "" {
+     if segue.identifier == "searchToVC" {
              guard let indexPath = tableView.indexPathForSelectedRow else {return}
              guard let destination = segue.destination as? BookclubViewController else {return}
              let bookclubToSend = clubsArray[indexPath.row]

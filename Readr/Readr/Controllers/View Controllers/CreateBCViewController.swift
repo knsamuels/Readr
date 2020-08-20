@@ -68,7 +68,7 @@ class CreateBCViewController: UIViewController {
      // MARK: - Navigation
   
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "" {
+    if segue.identifier == "createBCtoVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
             let bookclubToSend = bookclub
             destination.bookclub = bookclubToSend
