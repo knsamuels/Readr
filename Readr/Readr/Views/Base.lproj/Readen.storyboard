@@ -461,10 +461,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="141"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vL4-yj-MrH">
-                                            <rect key="frame" x="20" y="13" width="149" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpI-eQ-hvQ">
                                             <rect key="frame" x="226" y="27" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -494,6 +490,10 @@
                                                 <action selector="removeBookButtonTapped:" destination="FZ0-jc-r4d" eventType="touchUpInside" id="1Zg-KB-Qd7"/>
                                             </connections>
                                         </button>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vL4-yj-MrH">
+                                            <rect key="frame" x="20" y="0.0" width="149" height="128"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -566,19 +566,22 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reviews:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dln-zG-0Z1">
-                                <rect key="frame" x="38" y="664" width="68" height="21"/>
+                                <rect key="frame" x="32" y="649" width="68" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLN-wX-l7d">
-                                <rect key="frame" x="298" y="659" width="55" height="30"/>
+                                <rect key="frame" x="307" y="644" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="View All"/>
+                                <connections>
+                                    <action selector="viewAllButtonTapped:" destination="jym-Fn-cVA" eventType="touchUpInside" id="ksB-jF-daQ"/>
+                                </connections>
                             </button>
                             <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iGb-b6-kX7">
-                                <rect key="frame" x="87" y="664" width="240" height="128"/>
+                                <rect key="frame" x="87" y="678" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
@@ -590,7 +593,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="TCb-KI-fr3"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Jdw-a9-Zz3"/>
+                    <navigationItem key="navigationItem" id="Jdw-a9-Zz3">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="zAd-lJ-xIS">
+                            <connections>
+                                <action selector="deleteBookshelfButtonTapped:" destination="jym-Fn-cVA" id="p9N-cV-W72"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="averageRatingLabel" destination="ypl-JG-fig" id="UXE-gD-qhf"/>
+                        <outlet property="bookImageView" destination="dvS-fk-ZdM" id="TXa-YY-2Ff"/>
+                        <outlet property="bookshelfTitleLabel" destination="hxY-V4-YkS" id="Qar-oM-u89"/>
+                        <outlet property="descriptionLabel" destination="3tF-X3-0iy" id="mZ4-Hr-QW8"/>
+                        <outlet property="genreLabel" destination="n9W-hl-wE2" id="Dzq-pC-ckw"/>
+                        <outlet property="reviewImageLabel" destination="iGb-b6-kX7" id="SSg-Vv-qL5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Spx-d2-OZV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1395,6 +1412,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="101"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="person.crop.rectangle" catalog="system" width="128" height="93"/>
