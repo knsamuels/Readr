@@ -11,6 +11,8 @@ import WebKit
 
 class BookshelfDetailViewController: UIViewController {
 
+    var book: Book?
+    
     @IBOutlet weak var bookshelfTitleLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var genreLabel: UILabel!

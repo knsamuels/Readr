@@ -11,7 +11,7 @@ import CloudKit
 
 class BookclubViewController: UIViewController {
     
-    var bookclub: Bookclub? 
+    var bookclub: Bookclub?
     
     @IBOutlet weak var imageOfBookClub: UIImageView!
     @IBOutlet weak var nameOfBookClub: UILabel!
@@ -38,9 +38,26 @@ class BookclubViewController: UIViewController {
         super.viewDidLoad()
         fetchBookClubs()
         
+        
     }
     
     @IBAction func joinButtonTapped(_ sender: Any) {
+        guard let user = UserController.shared.currentUser else {return}
+        guard let bookclub = bookclub else {return}
+        let ckReference = CKRecord.Reference(recordID: user.recordID, action: .none)
+        
+        if user.bookclubs.contains(bookclub) {
+            guard let index = user.bookclubs.firstIndex(of: bookclub) else {return}
+            guard let userIndex = bookclub.members.firstIndex(of: ckReference) else {return}
+            user.bookclubs.remove(at: index)
+            bookclub.members.remove(at: userIndex)
+            joinButton.setTitle("Join Bookclub", for: .normal)
+            
+        } else {
+            user.bookclubs.append(bookclub)
+            bookclub.members.append(ckReference)
+            joinButton.setTitle("Leave Bookclub", for: .normal)
+        }
     }
     
     
@@ -56,6 +73,12 @@ class BookclubViewController: UIViewController {
             self.adminNameLabel.text = "\(bookclub.admin)"
             //this needs to be changed
             self.adminContactInfoLabel.text = bookclub.adminContactInfo
+            
+            if user.bookclubs.contains(bookclub) {
+                self.joinButton.setTitle("Leave Bookclub", for: .normal)
+            } else {
+                self.joinButton.setTitle("Join Bookclub", for: .normal)
+            }
         }
     }
 

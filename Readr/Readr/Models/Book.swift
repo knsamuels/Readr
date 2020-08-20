@@ -41,3 +41,15 @@ struct ImageLinks: Decodable {
 struct IndustryIdentifiers: Decodable {
     let identifier: String
 }
+
+extension Book: SearchableRecord {
+
+    func matches(searchTerm: String) -> Bool {
+
+        if title.lowercased().contains(searchTerm.lowercased()) {
+            return true
+        } else {
+            return false
+        }
+    }
+}//End of extension
