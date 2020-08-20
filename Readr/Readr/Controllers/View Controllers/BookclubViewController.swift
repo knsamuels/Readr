@@ -37,7 +37,6 @@ class BookclubViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchBookClubs()
-//        createBookClub()
         
     }
     
@@ -48,32 +47,18 @@ class BookclubViewController: UIViewController {
     func updateViews() {
         DispatchQueue.main.async {
             guard let user = UserController.shared.currentUser else {return}
-            self.descriptionOfBookClub.text = user.bookclubs[0].description
-            self.nameOfBookClub.text = user.bookclubs[0].name
-            self.meetingInfoForBookClub.text = user.bookclubs[0].meetingInfo
-            self.adminNameLabel.text = user.username
-            self.adminContactInfoLabel.text = user.bookclubs[0].adminContactInfo
+            guard let bookclub = self.bookclub else {return}
+//            let adminUser = User(ckRecord: bookclub.admin.recordID)
+//            let admin = adminUser.user
+            self.descriptionOfBookClub.text = bookclub.description
+            self.nameOfBookClub.text = bookclub.name
+            self.meetingInfoForBookClub.text = bookclub.meetingInfo
+            self.adminNameLabel.text = "\(bookclub.admin)"
+            //this needs to be changed
+            self.adminContactInfoLabel.text = bookclub.adminContactInfo
         }
     }
-    
-    func createBookClub() {
-        BookclubController.shared.createBookClub(name: "Harry Potter Fans", adminContactInfo: "kristin@email.com", description: "We love Harry Potter", profilePic: nil, meetingInfo: "Once a month", memberCapacity: 10) { (result) in
-            switch result {
-            case .success(let bookclub):
-                guard let user = UserController.shared.currentUser else {return}
-                let reference = CKRecord.Reference(recordID: user.recordID, action: .none)
-                bookclub.members.append(reference)
-                print("creating the bookclub worked")
-            case .failure(_):
-                print("oh no we couldn't create a bookclub")
-            }
-        }
-    }
-    
-//    func addBookClub() {
-//        UserController.shared.currentUser
-//
-//    }
+
     
     func fetchBookClubs () {
         guard let user = UserController.shared.currentUser else { return}
@@ -88,17 +73,6 @@ class BookclubViewController: UIViewController {
             }
         }
     }
-//    BookclubController.shared.createBookClub(name: "We love the Notebook", adminContactInfo: "kristin@email.com", description: "Talk about romance movies", profilePic: nil, meetingInfo: " first Monday of the month", memberCapacity: 15) { (result) in
-//    switch result {
-//    case .success(let bookclub):
-//    UserController.shared.currentUser?.bookclub.append(bookclub)
-//    self.updateViews()
-//    print("this worked")
-//    case .failure(_):
-//    print("oh no the bookclub didn't work")
-//    }
-//    }
-//}
     /*
      // MARK: - Navigation
      

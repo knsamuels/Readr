@@ -38,12 +38,14 @@ class BookclubListTableViewController: UITableViewController {
     func fetchBookclubs() {
         guard let user = UserController.shared.currentUser else {return}
         BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
-            switch result {
-            case .success(let bookclubs):
-                self.bookclubs = bookclubs
-                self.tableView.reloadData()
-            case .failure(_):
-                print("Could not fetch user's bookclubs")
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let bookclubs):
+                    self.bookclubs = bookclubs
+                    self.tableView.reloadData()
+                case .failure(_):
+                    print("Could not fetch user's bookclubs")
+                }
             }
         }
     }
@@ -51,7 +53,7 @@ class BookclubListTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       if segue.identifier == "" {
+       if segue.identifier == "bookclubListToVC" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
             guard let destination = segue.destination as? BookclubViewController else {return}
             let bookclubToSend = bookclubs[indexPath.row]

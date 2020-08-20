@@ -10,7 +10,17 @@ import UIKit
 
 class BookshelfCellTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var titleOfBookShelfTextField: UITextField!
     
-
+    @IBOutlet weak var bookCountLabel: UILabel!
+    
+    @IBOutlet weak var book1Label: UILabel!
+    
+    @IBOutlet weak var book2Label: UILabel!
+    
+    @IBOutlet weak var book3Label: UILabel!
+    
+    @IBOutlet weak var book4Label: UILabel!
+    
+    @IBOutlet weak var book5Label: UILabel!
 }
