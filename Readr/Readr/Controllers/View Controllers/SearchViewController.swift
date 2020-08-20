@@ -88,7 +88,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-    
+
     func search() {
         guard let searchTerm = searchBar.text else {return}
         if booksIsSelected == true {
@@ -152,7 +152,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.bookclub = bookclub
         }
         
-        
         return cell
     }
     
@@ -164,26 +163,24 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as? SearchCollectionViewCell else {return UICollectionViewCell()}
             let book = booksArray[indexPath.row]
         cell.volumeInfo = book
-        
-        
         return cell
     }
     
-    /*
+    
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
+     if segue.identifier == "" {
+             guard let indexPath = tableView.indexPathForSelectedRow else {return}
+             guard let destination = segue.destination as? BookclubViewController else {return}
+             let bookclubToSend = clubsArray[indexPath.row]
+             destination.bookclub = bookclubToSend
+         }
      }
-     */
-    
 }
 
-
 extension SearchViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         search()
     }
 }

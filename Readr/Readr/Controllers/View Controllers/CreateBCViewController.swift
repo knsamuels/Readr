@@ -43,7 +43,8 @@ class CreateBCViewController: UIViewController {
         if let bookclub = bookclub {
             BookclubController.shared.update(bookclub: bookclub) { (result) in
                 switch result {
-                case .success(_):
+                case .success(let bookclub):
+                    self.bookclub = bookclub
                     self.navigationController?.popViewController(animated: true)
                 case .failure(_):
                     print("could not update the bookclub")
@@ -53,7 +54,8 @@ class CreateBCViewController: UIViewController {
             BookclubController.shared.createBookClub(name: name, adminContactInfo: adminContactInformation, description: description, profilePic: profilePic, meetingInfo: meetingInfo, memberCapacity: Int(memberCap) ?? 10 ) { (result) in
                 DispatchQueue.main.async {
                     switch result {
-                    case .success(_):
+                    case .success(let bookclub):
+                        self.bookclub = bookclub
                         self.navigationController?.popViewController(animated: true)
                     case .failure(_):
                         self.navigationController?.popViewController(animated: true)
@@ -61,19 +63,15 @@ class CreateBCViewController: UIViewController {
                 }
             }
         }
-        
-        
-        
     }
-    
-    /*
+
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
+  
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    if segue.identifier == "" {
+            guard let destination = segue.destination as? BookclubViewController else {return}
+            let bookclubToSend = bookclub
+            destination.bookclub = bookclubToSend
+        }
+    }
 }

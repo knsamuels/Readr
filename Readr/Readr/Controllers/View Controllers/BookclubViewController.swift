@@ -11,6 +11,8 @@ import CloudKit
 
 class BookclubViewController: UIViewController {
     
+    var bookclub: Bookclub? 
+    
     @IBOutlet weak var imageOfBookClub: UIImageView!
     @IBOutlet weak var nameOfBookClub: UILabel!
     @IBOutlet weak var descriptionOfBookClub: UILabel!
