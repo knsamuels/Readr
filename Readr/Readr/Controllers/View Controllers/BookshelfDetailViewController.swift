@@ -7,16 +7,27 @@
 //
 
 import UIKit
+import WebKit
 
 class BookshelfDetailViewController: UIViewController {
 
+    @IBOutlet weak var bookshelfTitleLabel: UILabel!
+    @IBOutlet weak var bookImageView: UIImageView!
+    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var averageRatingLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var reviewImageLabel: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func viewAllButtonTapped(_ sender: Any) {
+    }
+    @IBAction func deleteBookshelfButtonTapped(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
