@@ -47,6 +47,7 @@
 		F31A488924E480DA0071652A /* BookclubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488824E480DA0071652A /* BookclubViewController.swift */; };
 		F31A488C24E485880071652A /* BookshelfCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488B24E485880071652A /* BookshelfCellTableViewCell.swift */; };
 		F31A488E24E4A83C0071652A /* CreateBCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488D24E4A83C0071652A /* CreateBCViewController.swift */; };
+		F3437FA124EF2CCD00C38DA3 /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3437FA024EF2CCD00C38DA3 /* ReviewDetailViewController.swift */; };
 		F3C608B224EB1C1600E4F26F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C608B124EB1C1500E4F26F /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		F31A488824E480DA0071652A /* BookclubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubViewController.swift; sourceTree = "<group>"; };
 		F31A488B24E485880071652A /* BookshelfCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfCellTableViewCell.swift; sourceTree = "<group>"; };
 		F31A488D24E4A83C0071652A /* CreateBCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBCViewController.swift; sourceTree = "<group>"; };
+		F3437FA024EF2CCD00C38DA3 /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
 		F3C608B124EB1C1500E4F26F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,6 +233,7 @@
 				937640D724EC45B800B51DEC /* MessageViewController.swift */,
 				C938A38C24EEF0AA0095AD50 /* BookshelfSearchTableViewController.swift */,
 				C938A38E24EEF0E60095AD50 /* BookshelfDetailViewController.swift */,
+				F3437FA024EF2CCD00C38DA3 /* ReviewDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				C98FC7DA24DDD55700C27CBF /* BookError.swift in Sources */,
 				C938A38D24EEF0AA0095AD50 /* BookshelfSearchTableViewController.swift in Sources */,
 				C938A39124EEF3C10095AD50 /* BookshelfSearchTableViewCell.swift in Sources */,
+				F3437FA124EF2CCD00C38DA3 /* ReviewDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
