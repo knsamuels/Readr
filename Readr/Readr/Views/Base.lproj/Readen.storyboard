@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2k-55-0YQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4931.884057971015" y="255.80357142857142"/>
+            <point key="canvasLocation" x="1893" y="1287"/>
         </scene>
         <!--Bookclub View Controller-->
         <scene sceneID="Wqe-zc-9iq">
@@ -287,7 +287,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" id="Ajn-VF-Y29"/>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="bcCurrentlyReadingImageToBDVC" id="Ajn-VF-Y29"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFE-wg-27c">
@@ -295,7 +295,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" id="gP7-je-BJn"/>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="bcPastReadsImage1ToBDVC" id="gP7-je-BJn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQr-j6-LL1">
@@ -303,7 +303,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" id="B9o-UE-y1z"/>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="bcPastReadsImage2ToBDVC" id="B9o-UE-y1z"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYY-F9-HWa">
@@ -336,7 +336,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" id="lEI-bc-Q5y"/>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="bcPastReadsImage3ToBDVC" id="lEI-bc-Q5y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQ5-NO-EBk">
@@ -344,7 +344,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="View All"/>
                                 <connections>
-                                    <segue destination="Em1-qk-fIc" kind="show" id="Emr-Ir-RHE"/>
+                                    <segue destination="Em1-qk-fIc" kind="show" identifier="bcPastReadsViewAllToPRLTVC" id="Emr-Ir-RHE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -379,7 +379,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjI-Mq-ohl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3826" y="1514"/>
+            <point key="canvasLocation" x="2970" y="148"/>
         </scene>
         <!--Past Reads List Table View Controller-->
         <scene sceneID="kyT-KG-XT6">
@@ -408,7 +408,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uaV-59-6wB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4845" y="1469"/>
+            <point key="canvasLocation" x="3012" y="1265"/>
         </scene>
         <!--Bookclub List Table View Controller-->
         <scene sceneID="yzk-bD-8R3">
@@ -446,7 +446,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGf-fY-deT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3713" y="552"/>
+            <point key="canvasLocation" x="54" y="897"/>
         </scene>
         <!--Bookshelf List Table View Controller-->
         <scene sceneID="6mh-RX-ImH">
@@ -791,7 +791,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Spx-d2-OZV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="254" y="90"/>
+            <point key="canvasLocation" x="1077" y="-4"/>
         </scene>
         <!--Review Detail View Controller-->
         <scene sceneID="Ki3-6g-gA9">
@@ -852,7 +852,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJu-nO-xen" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4200" y="-345.53571428571428"/>
+            <point key="canvasLocation" x="2859" y="-761"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="zXj-db-8v1">
@@ -1015,7 +1015,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rY-xV-ajw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2430" y="1240"/>
+            <point key="canvasLocation" x="-2751" y="567"/>
         </scene>
         <!--User Detail View Controller-->
         <scene sceneID="94Q-M8-USP">
@@ -1209,7 +1209,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create Bookclub"/>
                                 <connections>
-                                    <segue destination="H6T-ob-m4V" kind="show" id="qWZ-Sj-u0r"/>
+                                    <segue destination="H6T-ob-m4V" kind="show" identifier="userCreateBCtoCreateBCVC" id="qWZ-Sj-u0r"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cse-do-JE4">
@@ -1217,7 +1217,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="View All"/>
                                 <connections>
-                                    <segue destination="cqk-BO-4bC" kind="show" id="pmZ-OV-ysN"/>
+                                    <segue destination="cqk-BO-4bC" kind="show" identifier="userBCViewAllButtonToBCLTVC" id="pmZ-OV-ysN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iz1-lB-VzM">
@@ -1225,7 +1225,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" id="AAo-yt-oIc"/>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="bioFavBook1toBDVC" id="AAo-yt-oIc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giv-hx-Y1Y">
@@ -1233,7 +1233,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" id="Km3-zp-v7o"/>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="bioFavBook2toBDVC" id="Km3-zp-v7o"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6s9-NL-4q5">
@@ -1241,7 +1241,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" id="LOI-2s-DGG"/>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="bioFavBook3toBDVC" id="LOI-2s-DGG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pue-iC-gf0">
@@ -1249,7 +1249,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" id="6OY-GL-QtO"/>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="userBC1ToBDVC" id="6OY-GL-QtO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gP-0P-AVH">
@@ -1257,7 +1257,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" id="dqE-Yn-qw5"/>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="userBC3ToBDVC" id="dqE-Yn-qw5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zq-NO-fsh">
@@ -1265,7 +1265,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" id="BTS-Fa-ifk"/>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="userBC4ToBDVC" id="BTS-Fa-ifk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tN4-dv-8zB">
@@ -1273,7 +1273,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" id="NWB-vc-DPE"/>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="userBC2ToBDVC" id="NWB-vc-DPE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1312,7 +1312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FEp-ME-Jpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1820" y="48"/>
+            <point key="canvasLocation" x="-594" y="124"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="fOz-7V-teA">
@@ -1394,7 +1394,7 @@
                                         <connections>
                                             <outlet property="personOrClubImage" destination="UjX-nA-DSa" id="fJY-l4-D2p"/>
                                             <outlet property="personOrClubLabel" destination="8IZ-L6-wY7" id="kjI-gj-n5H"/>
-                                            <segue destination="ZEJ-Jj-dV8" kind="show" id="6Oz-Iw-e64"/>
+                                            <segue destination="ZEJ-Jj-dV8" kind="show" identifier="searchCellVCToBookClubVC" id="MxF-rF-ShL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1456,6 +1456,7 @@
                                             <outlet property="averageRating" destination="itW-ij-yEJ" id="ZLN-f7-20h"/>
                                             <outlet property="bookImageView" destination="Ywf-I4-E0r" id="wQG-PX-mXs"/>
                                             <outlet property="titleLabel" destination="tfM-fd-Wi2" id="7HC-jK-qdq"/>
+                                            <segue destination="jym-Fn-cVA" kind="show" identifier="seaechCellCollectionViewToBDVC" id="dxg-Yu-uUx"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1551,7 +1552,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sy6-zL-iyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="793" y="923"/>
+            <point key="canvasLocation" x="-1461" y="970"/>
         </scene>
         <!--Bookshelves-->
         <scene sceneID="0re-1Z-qcq">
@@ -1589,7 +1590,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJS-I7-eOp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1726" y="858"/>
+            <point key="canvasLocation" x="-2609" y="1029"/>
         </scene>
         <!--Chat-->
         <scene sceneID="a49-ac-aPq">
@@ -1608,7 +1609,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfm-Sl-u9Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-245" y="858"/>
+            <point key="canvasLocation" x="-2752" y="1334"/>
         </scene>
         <!--Message View Controller-->
         <scene sceneID="HGk-Yz-fAE">
@@ -1707,7 +1708,7 @@
                     <navigationItem key="navigationItem" id="kKN-wD-A0E">
                         <barButtonItem key="rightBarButtonItem" title="Bookclub" id="jeO-46-6Yy">
                             <connections>
-                                <segue destination="ZEJ-Jj-dV8" kind="show" id="XkH-si-XHh"/>
+                                <segue destination="ZEJ-Jj-dV8" kind="show" identifier="messagesToBCVC" id="XkH-si-XHh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1722,9 +1723,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dqE-Yn-qw5"/>
-        <segue reference="6Oz-Iw-e64"/>
-        <segue reference="qWZ-Sj-u0r"/>
+        <segue reference="d6C-eR-RjD"/>
+        <segue reference="ve4-en-BJr"/>
+        <segue reference="s51-Sp-ODc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="101"/>
