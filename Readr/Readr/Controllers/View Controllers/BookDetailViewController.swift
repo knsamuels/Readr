@@ -13,6 +13,7 @@ class BookDetailViewController: UIViewController {
 
     var book: Book? {
         didSet {
+            loadViewIfNeeded()
             updateViews()
         }
     }

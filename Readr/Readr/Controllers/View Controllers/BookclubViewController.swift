@@ -13,6 +13,7 @@ class BookclubViewController: UIViewController {
     
     var bookclub: Bookclub? {
         didSet {
+            loadViewIfNeeded()
             updateViews()
         }
     }

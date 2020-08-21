@@ -375,6 +375,9 @@
                         <outlet property="rating1ForPastReads" destination="uhB-l5-NJo" id="McU-qe-t2I"/>
                         <outlet property="rating2ForPastReads" destination="3lJ-Uw-X88" id="LkM-jf-w09"/>
                         <outlet property="ratingForCurrentlyReading" destination="EIc-TM-2HY" id="0lj-xb-N0l"/>
+                        <outlet property="title1ForPastReads" destination="Esc-Bl-JPI" id="drR-Vi-j4D"/>
+                        <outlet property="title2ForPastReads" destination="nb6-yC-RCG" id="sQk-UM-uJt"/>
+                        <outlet property="titleForCurrentlyReading" destination="9AE-aK-kgj" id="7zc-Xr-GSI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjI-Mq-ohl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -684,7 +687,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Xpv-Bi-87H">
-                                <rect key="frame" x="0.0" y="634" width="414" height="179"/>
+                                <rect key="frame" x="0.0" y="585" width="414" height="179"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="217" translatesAutoresizingMaskIntoConstraints="NO" id="a5Z-AS-m41">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="11.5"/>
@@ -791,8 +794,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="averageRatingLabel" destination="ypl-JG-fig" id="F7l-CR-Hwj"/>
+                        <outlet property="bookAuthorLabel" destination="hxY-V4-YkS" id="GnN-QS-Ga2"/>
                         <outlet property="bookImageView" destination="dvS-fk-ZdM" id="TXa-YY-2Ff"/>
-                        <outlet property="bookshelfTitleLabel" destination="hxY-V4-YkS" id="Qar-oM-u89"/>
                         <outlet property="descriptionLabel" destination="3tF-X3-0iy" id="mZ4-Hr-QW8"/>
                         <outlet property="genreLabel" destination="n9W-hl-wE2" id="Dzq-pC-ckw"/>
                         <outlet property="reviewImageLabel" destination="iGb-b6-kX7" id="SSg-Vv-qL5"/>
@@ -811,16 +814,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jBq-pC-tjn">
-                                <rect key="frame" x="20" y="88" width="374" height="725"/>
+                                <rect key="frame" x="20" y="88" width="374" height="676"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVX-3u-dHA">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="72.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="67.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMm-po-58g">
-                                        <rect key="frame" x="0.0" y="72.5" width="374" height="580"/>
+                                        <rect key="frame" x="0.0" y="67.5" width="374" height="541"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <wkWebViewConfiguration key="configuration">
                                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -828,7 +831,7 @@
                                         </wkWebViewConfiguration>
                                     </wkWebView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered By: Good Reads API" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkp-MX-z9w">
-                                        <rect key="frame" x="0.0" y="652.5" width="374" height="72.5"/>
+                                        <rect key="frame" x="0.0" y="608.5" width="374" height="67.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1732,8 +1735,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LOI-2s-DGG"/>
-        <segue reference="vGT-24-ml0"/>
+        <segue reference="Ajn-VF-Y29"/>
+        <segue reference="hUF-E8-PBY"/>
         <segue reference="qWZ-Sj-u0r"/>
     </inferredMetricsTieBreakers>
     <resources>
