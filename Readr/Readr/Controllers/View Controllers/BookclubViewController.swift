@@ -44,27 +44,28 @@ class BookclubViewController: UIViewController {
     @IBAction func joinButtonTapped(_ sender: Any) {
         guard let user = UserController.shared.currentUser else {return}
         guard let bookclub = bookclub else {return}
-        let ckReference = CKRecord.Reference(recordID: user.recordID, action: .none)
-        
+        let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
+        if userReference != bookclub.admin {
         if user.bookclubs.contains(bookclub) {
             guard let index = user.bookclubs.firstIndex(of: bookclub) else {return}
-            guard let userIndex = bookclub.members.firstIndex(of: ckReference) else {return}
+            guard let userIndex = bookclub.members.firstIndex(of: userReference) else {return}
             user.bookclubs.remove(at: index)
             bookclub.members.remove(at: userIndex)
-            joinButton.setTitle("Join Bookclub", for: .normal)
+            joinButton.setTitle("Join", for: .normal)
             
         } else {
             user.bookclubs.append(bookclub)
-            bookclub.members.append(ckReference)
-            joinButton.setTitle("Leave Bookclub", for: .normal)
+            bookclub.members.append(userReference)
+            joinButton.setTitle("Leave", for: .normal)
         }
     }
-    
+    }
     
     func updateViews() {
         DispatchQueue.main.async {
             guard let user = UserController.shared.currentUser else {return}
             guard let bookclub = self.bookclub else {return}
+            let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
 //            let adminUser = User(ckRecord: bookclub.admin.recordID)
 //            let admin = adminUser.user
             self.descriptionOfBookClub.text = bookclub.description
@@ -73,11 +74,12 @@ class BookclubViewController: UIViewController {
             self.adminNameLabel.text = "\(bookclub.admin)"
             //this needs to be changed
             self.adminContactInfoLabel.text = bookclub.adminContactInfo
-            
-            if user.bookclubs.contains(bookclub) {
-                self.joinButton.setTitle("Leave Bookclub", for: .normal)
+            if bookclub.admin == userReference {
+                self.joinButton.setTitle("Host", for: .normal)
+            } else if user.bookclubs.contains(bookclub) {
+                self.joinButton.setTitle("Leave", for: .normal)
             } else {
-                self.joinButton.setTitle("Join Bookclub", for: .normal)
+                self.joinButton.setTitle("Join", for: .normal)
             }
         }
     }
