@@ -44,8 +44,6 @@ class BookDetailViewController: UIViewController {
         bookImageView.image = book.coverImage
         averageRatingLabel.text = "\(book.averageRating)"
         descriptionLabel.text = book.description
-    
-        
     }
     /*
     // MARK: - Navigation

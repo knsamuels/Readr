@@ -11,7 +11,12 @@ import CloudKit
 
 class BookclubViewController: UIViewController {
     
-    var bookclub: Bookclub?
+    var bookclub: Bookclub? {
+        didSet {
+            updateViews()
+        }
+    }
+    var currentlyReading: Book?
     
     @IBOutlet weak var imageOfBookClub: UIImageView!
     @IBOutlet weak var nameOfBookClub: UILabel!
@@ -36,9 +41,10 @@ class BookclubViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchBookClubs()
-        
-        
+//        guard let bookclub = bookclub else {return}
+//        bookclub.currentlyReading = "9780399230035"
+//        print(bookclub.currentlyReading)
+        fetchBook()
     }
     
     @IBAction func joinButtonTapped(_ sender: Any) {
@@ -65,6 +71,7 @@ class BookclubViewController: UIViewController {
         DispatchQueue.main.async {
             guard let user = UserController.shared.currentUser else {return}
             guard let bookclub = self.bookclub else {return}
+            guard let currentlyReading = self.currentlyReading else {return}
             let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
 //            let adminUser = User(ckRecord: bookclub.admin.recordID)
 //            let admin = adminUser.user
@@ -81,10 +88,29 @@ class BookclubViewController: UIViewController {
             } else {
                 self.joinButton.setTitle("Join", for: .normal)
             }
+            self.ImageForCurrentlyReading.image = currentlyReading.coverImage
+            self.titleForCurrentlyReading.text = currentlyReading.title
+            self.authorForCurrentlyReading.text = currentlyReading.authors?.first
+            self.ratingForCurrentlyReading.text = "\(currentlyReading.averageRating)"
+                
         }
     }
 
-    
+    func fetchBook() {
+        guard let bookclub = bookclub else { return}
+        BookController.fetchOneBookWith(ISBN: bookclub.currentlyReading) {
+            (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let book):
+                    self.currentlyReading = book
+                    self.updateViews()
+                case .failure(_):
+                    print("error fetching book")
+                }
+            }
+        }
+    }
     func fetchBookClubs () {
         guard let user = UserController.shared.currentUser else { return}
         BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
@@ -98,14 +124,9 @@ class BookclubViewController: UIViewController {
             }
         }
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
+     // MARK: - Navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     
+     }
 }
