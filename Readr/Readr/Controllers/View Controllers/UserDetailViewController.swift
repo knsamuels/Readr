@@ -252,19 +252,19 @@ class UserDetailViewController: UIViewController {
             guard let destination = segue.destination as? BookDetailViewController else {return}
             let favBookToSend = userFavBooks[2]
             destination.book = favBookToSend
-        } else if segue.identifier == "userBC1ToBDVC" {
+        } else if segue.identifier == "userBookclub1ToBookClubVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
             let favBookclubToSend = userBookClubs[0]
             destination.bookclub = favBookclubToSend
-        } else if segue.identifier == "userBC2ToBDVC" {
+        } else if segue.identifier == "userBookclub2ToBookClubVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
             let favBookclubToSend = userBookClubs[1]
             destination.bookclub = favBookclubToSend
-        } else if segue.identifier == "userBC3ToBDVC" {
+        } else if segue.identifier == "userBookclub3ToBookClubVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
             let favBookclubToSend = userBookClubs[2]
             destination.bookclub = favBookclubToSend
-        } else if segue.identifier == "userBC4ToBDVC" {
+        } else if segue.identifier == "userBookclub4ToBookClubVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
             let favBookclubToSend = userBookClubs[3]
             destination.bookclub = favBookclubToSend

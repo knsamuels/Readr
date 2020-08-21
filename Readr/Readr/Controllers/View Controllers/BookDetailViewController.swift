@@ -17,12 +17,13 @@ class BookDetailViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var bookshelfTitleLabel: UILabel!
+    @IBOutlet weak var bookAuthorLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var averageRatingLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var reviewImageLabel: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,7 +40,7 @@ class BookDetailViewController: UIViewController {
     
     func updateViews() {
         guard let book = book else {return}
-        bookshelfTitleLabel.text = book.title 
+        bookAuthorLabel.text = book.authors?.first ?? ""
         bookImageView.image = book.coverImage
         averageRatingLabel.text = "\(book.averageRating)"
         descriptionLabel.text = book.description
