@@ -46,6 +46,21 @@ class UserDetailViewController: UIViewController {
         fetchUserBooks()
     }
     
+    //MARK: Actions
+    @IBAction func favBook1Tapped(_ sender: UIButton) {
+    }
+    @IBAction func favBook2Tapped(_ sender: Any) {
+    }
+    @IBAction func favBook3Tapped(_ sender: Any) {
+    }
+    @IBAction func bookclub1Tapped(_ sender: Any) {
+    }
+    @IBAction func bookclub2Tapped(_ sender: Any) {
+    }
+    @IBAction func bookclub3Tapped(_ sender: Any) {
+    }
+    @IBAction func bookclub4Tapped(_ sender: Any) {
+    }
     //helper functions
     
     func createUser() {
@@ -220,14 +235,18 @@ class UserDetailViewController: UIViewController {
     }
     
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
+        if segue.identifier == "bioFavBook1toBDVC" {
+            guard let destination = segue.destination as? BookDetailViewController else {return}
+            let favBookToSend = userFavBooks[0]
+            destination.book = favBookToSend
+        }
      }
-     */
-    
+     
+    //bioFavBook2toBDVC
+    //userBC1ToBDVC
 }
