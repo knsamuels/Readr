@@ -12,7 +12,7 @@ import WebKit
 class ReviewDetailViewController: UIViewController {
 
     @IBOutlet weak var bookTitleLabel: UILabel!
-    @IBOutlet weak var reviewsView: WKWebView!
+    @IBOutlet weak var reviewsWebView: WKWebView!
     @IBOutlet weak var goodReadsLabel: UILabel!
    
     override func viewDidLoad() {

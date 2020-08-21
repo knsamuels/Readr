@@ -16,7 +16,7 @@ class BookshelfCellTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var titleOfBookShelfTextField: UITextField!
+    @IBOutlet weak var titleOfBookShelfLabel: UILabel!
     
     @IBOutlet weak var bookCountLabel: UILabel!
     
@@ -34,8 +34,8 @@ class BookshelfCellTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let bookshelf = bookshelf else {return}
-        titleOfBookShelfTextField.text = bookshelf.title
-        bookCountLabel.text = "\(bookshelf.books.count)"
+        titleOfBookShelfLabel.text = bookshelf.title
+        bookCountLabel.text = "\(bookshelf.books.count) books"
     
     }
 }
