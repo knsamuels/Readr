@@ -791,7 +791,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Spx-d2-OZV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076.8115942028987" y="-4.0178571428571423"/>
+            <point key="canvasLocation" x="590" y="-126"/>
         </scene>
         <!--Review Detail View Controller-->
         <scene sceneID="Ki3-6g-gA9">
@@ -1249,7 +1249,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" identifier="userBC1ToBDVC" id="6OY-GL-QtO"/>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" identifier="userBookclub1ToBookClubVC" id="vGT-24-ml0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gP-0P-AVH">
@@ -1257,7 +1257,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" identifier="userBC3ToBDVC" id="dqE-Yn-qw5"/>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" identifier="userBookclub3ToBookClubVC" id="Ujn-G8-YEv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zq-NO-fsh">
@@ -1265,7 +1265,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" identifier="userBC4ToBDVC" id="BTS-Fa-ifk"/>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" identifier="userBookclub4ToBookClubVC" id="1Kp-kM-yhE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tN4-dv-8zB">
@@ -1273,7 +1273,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jym-Fn-cVA" kind="show" identifier="userBC2ToBDVC" id="NWB-vc-DPE"/>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" identifier="userBookclub2ToBookClubVC" id="hUF-E8-PBY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1723,8 +1723,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6OY-GL-QtO"/>
-        <segue reference="ve4-en-BJr"/>
+        <segue reference="LOI-2s-DGG"/>
+        <segue reference="vGT-24-ml0"/>
         <segue reference="qWZ-Sj-u0r"/>
     </inferredMetricsTieBreakers>
     <resources>
