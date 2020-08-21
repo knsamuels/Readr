@@ -1400,7 +1400,7 @@
                                 </prototypes>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9qi-Zf-pJy">
-                                <rect key="frame" x="0.0" y="222" width="414" height="1176"/>
+                                <rect key="frame" x="0.0" y="222" width="414" height="542"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1qU-cs-ud9">
                                     <size key="itemSize" width="218" height="319"/>
@@ -1409,7 +1409,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZxP-7D-aQz" customClass="SearchCollectionViewCell" customModule="Readr" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="searchCell" id="ZxP-7D-aQz" customClass="SearchCollectionViewCell" customModule="Readr" customModuleProvider="target">
                                         <rect key="frame" x="98" y="0.0" width="218" height="319"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5gG-KV-Zan">
@@ -1425,13 +1425,13 @@
                                                                 <constraint firstAttribute="width" secondItem="Ywf-I4-E0r" secondAttribute="height" multiplier="2:3" id="45M-U4-wTT"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfM-fd-Wi2">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfM-fd-Wi2">
                                                             <rect key="frame" x="0.0" y="201.5" width="218" height="92"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itW-ij-yEJ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itW-ij-yEJ">
                                                             <rect key="frame" x="0.0" y="298.5" width="218" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -1470,7 +1470,7 @@
                             <constraint firstItem="T4q-iv-CFS" firstAttribute="top" secondItem="yem-a0-cSH" secondAttribute="bottom" id="Urq-bH-0GN"/>
                             <constraint firstItem="T4q-iv-CFS" firstAttribute="bottom" secondItem="Sbj-1G-YcY" secondAttribute="bottom" id="Uvf-GI-fbI"/>
                             <constraint firstItem="Sbj-1G-YcY" firstAttribute="trailing" secondItem="9qi-Zf-pJy" secondAttribute="trailing" id="b9A-vW-vfF"/>
-                            <constraint firstItem="Sbj-1G-YcY" firstAttribute="bottom" secondItem="9qi-Zf-pJy" secondAttribute="bottom" constant="-634" id="cDg-j3-nao"/>
+                            <constraint firstItem="Sbj-1G-YcY" firstAttribute="bottom" secondItem="9qi-Zf-pJy" secondAttribute="bottom" id="cDg-j3-nao"/>
                             <constraint firstItem="T4q-iv-CFS" firstAttribute="trailing" secondItem="Sbj-1G-YcY" secondAttribute="trailing" id="clg-xp-W3m"/>
                             <constraint firstItem="T4q-iv-CFS" firstAttribute="leading" secondItem="Sbj-1G-YcY" secondAttribute="leading" id="ir6-KK-Qm4"/>
                             <constraint firstItem="9qi-Zf-pJy" firstAttribute="top" secondItem="yem-a0-cSH" secondAttribute="bottom" id="nej-nM-OOC"/>
