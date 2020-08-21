@@ -707,16 +707,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jBq-pC-tjn">
-                                <rect key="frame" x="20" y="74.5" width="374" height="752.5"/>
+                                <rect key="frame" x="20" y="88" width="374" height="725"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVX-3u-dHA">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="75"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="72.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMm-po-58g">
-                                        <rect key="frame" x="0.0" y="75" width="374" height="602"/>
+                                        <rect key="frame" x="0.0" y="72.5" width="374" height="580"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <wkWebViewConfiguration key="configuration">
                                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -724,7 +724,7 @@
                                         </wkWebViewConfiguration>
                                     </wkWebView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered By: Good Reads API" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkp-MX-z9w">
-                                        <rect key="frame" x="0.0" y="677" width="374" height="75.5"/>
+                                        <rect key="frame" x="0.0" y="652.5" width="374" height="72.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -740,10 +740,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="jBq-pC-tjn" secondAttribute="bottom" id="30A-DN-J9Z"/>
                             <constraint firstItem="jBq-pC-tjn" firstAttribute="centerY" secondItem="U8T-0N-vKz" secondAttribute="centerY" id="4Wc-3R-YgC"/>
                             <constraint firstItem="jBq-pC-tjn" firstAttribute="centerX" secondItem="U8T-0N-vKz" secondAttribute="centerX" id="NDk-m7-Dma"/>
                             <constraint firstItem="jBq-pC-tjn" firstAttribute="width" secondItem="4SM-oH-C9M" secondAttribute="width" multiplier="0.903382" id="fay-GQ-wKu"/>
-                            <constraint firstItem="jBq-pC-tjn" firstAttribute="height" secondItem="4SM-oH-C9M" secondAttribute="height" multiplier="0.839844" id="vfO-hG-arq"/>
+                            <constraint firstItem="jBq-pC-tjn" firstAttribute="top" secondItem="4SM-oH-C9M" secondAttribute="topMargin" id="k00-SM-scg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U8T-0N-vKz"/>
                     </view>
@@ -1553,7 +1554,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Pdl-Xb-emP"/>
+        <segue reference="dST-Jg-UWk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="101"/>
