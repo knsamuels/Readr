@@ -304,6 +304,7 @@
                         <outlet property="image1ForPastReads" destination="MKp-s1-zcr" id="TcD-ir-28L"/>
                         <outlet property="image2ForPastReads" destination="Xyc-yg-YXu" id="9ZF-d0-S7t"/>
                         <outlet property="imageOfBookClub" destination="he2-hu-3P2" id="BFq-0s-Zuo"/>
+                        <outlet property="joinButton" destination="niH-US-JMo" id="YJ3-t1-lb3"/>
                         <outlet property="meetingInfoForBookClub" destination="OuF-re-nWW" id="kIr-3w-9pi"/>
                         <outlet property="nameOfBookClub" destination="Uec-c1-hou" id="AYA-cr-eMd"/>
                         <outlet property="rating1ForPastReads" destination="uhB-l5-NJo" id="McU-qe-t2I"/>
