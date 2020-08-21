@@ -11,7 +11,11 @@ import WebKit
 
 class BookDetailViewController: UIViewController {
 
-    var book: Book?
+    var book: Book? {
+        didSet {
+            updateViews()
+        }
+    }
     
     @IBOutlet weak var bookshelfTitleLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
@@ -24,12 +28,24 @@ class BookDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    //Mark- Actions
     
     @IBAction func viewAllButtonTapped(_ sender: Any) {
     }
     @IBAction func deleteBookshelfButtonTapped(_ sender: Any) {
     }
     
+    //Mark: Helper functions
+    
+    func updateViews() {
+        guard let book = book else {return}
+        bookshelfTitleLabel.text = book.title 
+        bookImageView.image = book.coverImage
+        averageRatingLabel.text = "\(book.averageRating)"
+        descriptionLabel.text = book.description
+    
+        
+    }
     /*
     // MARK: - Navigation
 

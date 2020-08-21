@@ -118,7 +118,7 @@ class UserDetailViewController: UIViewController {
                 self.favBookPic3.isHidden = true
                 self.titleLabel3.isHidden = true
                 self.authorLabel3.isHidden = true
-              
+                
             case 1:
                 self.favBookPic1.image = self.userFavBooks[0].coverImage
                 self.titleLabel1.text = self.userFavBooks[0].title
@@ -218,7 +218,7 @@ class UserDetailViewController: UIViewController {
                 self.bookclubImage4.image = self.userBookClubs[3].profilePicture
                 self.bookclubName4.text = self.userBookClubs[3].name
             }
-           
+            
         }
     }
     func getUsersBookclubs() {
@@ -236,17 +236,38 @@ class UserDetailViewController: UIViewController {
     
     
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "bioFavBook1toBDVC" {
             guard let destination = segue.destination as? BookDetailViewController else {return}
             let favBookToSend = userFavBooks[0]
             destination.book = favBookToSend
+        } else if segue.identifier == "bioFavBook2toBDVC" {
+            guard let destination = segue.destination as? BookDetailViewController else {return}
+            let favBookToSend = userFavBooks[1]
+            destination.book = favBookToSend
+        } else if segue.identifier == "bioFavBook3toBDVC" {
+            guard let destination = segue.destination as? BookDetailViewController else {return}
+            let favBookToSend = userFavBooks[2]
+            destination.book = favBookToSend
+        } else if segue.identifier == "userBC1ToBDVC" {
+            guard let destination = segue.destination as? BookclubViewController else {return}
+            let favBookclubToSend = userBookClubs[0]
+            destination.bookclub = favBookclubToSend
+        } else if segue.identifier == "userBC2ToBDVC" {
+            guard let destination = segue.destination as? BookclubViewController else {return}
+            let favBookclubToSend = userBookClubs[1]
+            destination.bookclub = favBookclubToSend
+        } else if segue.identifier == "userBC3ToBDVC" {
+            guard let destination = segue.destination as? BookclubViewController else {return}
+            let favBookclubToSend = userBookClubs[2]
+            destination.bookclub = favBookclubToSend
+        } else if segue.identifier == "userBC4ToBDVC" {
+            guard let destination = segue.destination as? BookclubViewController else {return}
+            let favBookclubToSend = userBookClubs[3]
+            destination.bookclub = favBookclubToSend
         }
-     }
-     
-    //bioFavBook2toBDVC
-    //userBC1ToBDVC
+    }
 }
