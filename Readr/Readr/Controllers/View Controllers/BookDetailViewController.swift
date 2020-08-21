@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class BookshelfDetailViewController: UIViewController {
+class BookDetailViewController: UIViewController {
 
     var book: Book?
     

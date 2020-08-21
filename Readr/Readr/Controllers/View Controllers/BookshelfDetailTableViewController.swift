@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookshelfSearchTableViewController: UITableViewController, UISearchBarDelegate {
+class BookshelfDetailTableViewController: UITableViewController, UISearchBarDelegate {
     
     var bookshelf: Bookshelf?
     var bookshelfBooks: [Book] = []
@@ -119,14 +119,14 @@ class BookshelfSearchTableViewController: UITableViewController, UISearchBarDele
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "BookshelfSearchToBookshelfDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
-            guard let destination = segue.destination as? BookshelfDetailViewController else {return}
+            guard let destination = segue.destination as? BookDetailViewController else {return}
             let bookToSend = bookshelfBooks[indexPath.row]
             destination.book = bookToSend
         }
      }
 }
 
-extension BookshelfSearchTableViewController {
+extension BookshelfDetailTableViewController {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if !searchText.isEmpty {
