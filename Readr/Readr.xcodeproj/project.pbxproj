@@ -20,6 +20,7 @@
 		C938A38F24EEF0E60095AD50 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A38E24EEF0E60095AD50 /* BookDetailViewController.swift */; };
 		C938A39124EEF3C10095AD50 /* BookshelfSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A39024EEF3C10095AD50 /* BookshelfSearchTableViewCell.swift */; };
 		C938A39324EF2F200095AD50 /* SearchableRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A39224EF2F200095AD50 /* SearchableRecord.swift */; };
+		C938A3B524F1B3370095AD50 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C938A3B424F1B3370095AD50 /* WebKit.framework */; };
 		C98FC7B024DDC71000C27CBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7AF24DDC71000C27CBF /* AppDelegate.swift */; };
 		C98FC7B224DDC71000C27CBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7B124DDC71000C27CBF /* SceneDelegate.swift */; };
 		C98FC7B724DDC71000C27CBF /* Readen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C98FC7B524DDC71000C27CBF /* Readen.storyboard */; };
@@ -67,6 +68,7 @@
 		C938A38E24EEF0E60095AD50 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		C938A39024EEF3C10095AD50 /* BookshelfSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfSearchTableViewCell.swift; sourceTree = "<group>"; };
 		C938A39224EF2F200095AD50 /* SearchableRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableRecord.swift; sourceTree = "<group>"; };
+		C938A3B424F1B3370095AD50 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C98FC7AC24DDC71000C27CBF /* Readr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Readr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98FC7AF24DDC71000C27CBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C98FC7B124DDC71000C27CBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C938A3B524F1B3370095AD50 /* WebKit.framework in Frameworks */,
 				C98FC7F424E3182600C27CBF /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,7 +201,6 @@
 				C98FC7E124E1B46200C27CBF /* UserController.swift */,
 				C98FC7DB24E19D3900C27CBF /* BookshelfController.swift */,
 				C98FC7E324E1B47100C27CBF /* ChatController.swift */,
-				938A2DA424EAE724002119E1 /* SignInViewController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -220,6 +222,7 @@
 		C98FC7F224E3182600C27CBF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C938A3B424F1B3370095AD50 /* WebKit.framework */,
 				C98FC7F324E3182600C27CBF /* CloudKit.framework */,
 			);
 			name = Frameworks;
@@ -228,6 +231,7 @@
 		F31A488324E480540071652A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				938A2DA424EAE724002119E1 /* SignInViewController.swift */,
 				F31A488424E480A80071652A /* BookshelfListTableViewController.swift */,
 				F31A488624E480CA0071652A /* UserDetailViewController.swift */,
 				F31A488824E480DA0071652A /* BookclubViewController.swift */,
@@ -512,7 +516,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Readr/Readr.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = KAP7J6U3Y3;
 				INFOPLIST_FILE = "$(SRCROOT)/Readr/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -532,7 +536,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Readr/Readr.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = KAP7J6U3Y3;
 				INFOPLIST_FILE = "$(SRCROOT)/Readr/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
