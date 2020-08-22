@@ -11,13 +11,9 @@ import CloudKit
 
 class BookclubViewController: UIViewController {
     
-    var bookclub: Bookclub? {
-        didSet {
-            loadViewIfNeeded()
-            updateViews()
-        }
-    }
+    var bookclub: Bookclub? 
     var currentlyReading: Book?
+    var pastReads: [Book] = []
     
     @IBOutlet weak var imageOfBookClub: UIImageView!
     @IBOutlet weak var nameOfBookClub: UILabel!
@@ -42,9 +38,10 @@ class BookclubViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        guard let bookclub = bookclub else {return}
-//        bookclub.currentlyReading = "9780399230035"
-//        print(bookclub.currentlyReading)
+        updateViews()
+        //        guard let bookclub = bookclub else {return}
+        //        bookclub.currentlyReading = "9780399230035"
+        //        print(bookclub.currentlyReading)
         fetchBook()
     }
     
@@ -53,19 +50,19 @@ class BookclubViewController: UIViewController {
         guard let bookclub = bookclub else {return}
         let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
         if userReference != bookclub.admin {
-        if user.bookclubs.contains(bookclub) {
-            guard let index = user.bookclubs.firstIndex(of: bookclub) else {return}
-            guard let userIndex = bookclub.members.firstIndex(of: userReference) else {return}
-            user.bookclubs.remove(at: index)
-            bookclub.members.remove(at: userIndex)
-            joinButton.setTitle("Join", for: .normal)
-            
-        } else {
-            user.bookclubs.append(bookclub)
-            bookclub.members.append(userReference)
-            joinButton.setTitle("Leave", for: .normal)
+            if user.bookclubs.contains(bookclub) {
+                guard let index = user.bookclubs.firstIndex(of: bookclub) else {return}
+                guard let userIndex = bookclub.members.firstIndex(of: userReference) else {return}
+                user.bookclubs.remove(at: index)
+                bookclub.members.remove(at: userIndex)
+                joinButton.setTitle("Join", for: .normal)
+                
+            } else {
+                user.bookclubs.append(bookclub)
+                bookclub.members.append(userReference)
+                joinButton.setTitle("Leave", for: .normal)
+            }
         }
-    }
     }
     
     func updateViews() {
@@ -74,8 +71,8 @@ class BookclubViewController: UIViewController {
             guard let bookclub = self.bookclub else {return}
             guard let currentlyReading = self.currentlyReading else {return}
             let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
-//            let adminUser = User(ckRecord: bookclub.admin.recordID)
-//            let admin = adminUser.user
+            //            let adminUser = User(ckRecord: bookclub.admin.recordID)
+            //            let admin = adminUser.user
             self.descriptionOfBookClub.text = bookclub.description
             self.nameOfBookClub.text = bookclub.name
             self.meetingInfoForBookClub.text = bookclub.meetingInfo
@@ -93,10 +90,10 @@ class BookclubViewController: UIViewController {
             self.titleForCurrentlyReading.text = currentlyReading.title
             self.authorForCurrentlyReading.text = currentlyReading.authors?.first
             self.ratingForCurrentlyReading.text = "\(currentlyReading.averageRating)"
-                
+            
         }
     }
-
+    
     func fetchBook() {
         guard let bookclub = bookclub else { return}
         BookController.fetchOneBookWith(ISBN: bookclub.currentlyReading) {
@@ -126,8 +123,24 @@ class BookclubViewController: UIViewController {
         }
     }
     
-     // MARK: - Navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     
-     }
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "bcCurrentlyReadingImageToBDVC" {
+            guard let destination = segue.destination as? BookDetailViewController else {return}
+            let bookToSend = currentlyReading
+            destination.book = bookToSend
+        } else if segue.identifier == "bcPastReadsImage1ToBDVC" {
+            guard let destination = segue.destination as? BookDetailViewController else {return}
+            let bookToSend = pastReads[0]
+            destination.book = bookToSend
+        } else if segue.identifier == "bcPastReadsImage2ToBDVC" {
+            guard let destination = segue.destination as? BookDetailViewController else {return}
+            let bookToSend = pastReads[1]
+            destination.book = bookToSend
+        } else if segue.identifier == "bcPastReadsImage3ToBDVC" {
+            guard let destination = segue.destination as? BookDetailViewController else {return}
+            let bookToSend = pastReads[2]
+            destination.book = bookToSend
+        }
+    }
 }

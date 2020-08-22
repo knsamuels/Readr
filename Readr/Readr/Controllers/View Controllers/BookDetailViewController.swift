@@ -11,12 +11,13 @@ import WebKit
 
 class BookDetailViewController: UIViewController {
 
-    var book: Book? {
-        didSet {
-            loadViewIfNeeded()
-            updateViews()
-        }
-    }
+    var book: Book?
+//    {
+//        didSet {
+//            loadViewIfNeeded()
+//
+//        }
+//    }
     
     @IBOutlet weak var bookAuthorLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
@@ -27,7 +28,7 @@ class BookDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         // Do any additional setup after loading the view.
     }
     //Mark- Actions
@@ -41,19 +42,20 @@ class BookDetailViewController: UIViewController {
     
     func updateViews() {
         guard let book = book else {return}
-        bookAuthorLabel.text = book.authors?.first ?? ""
+        self.title = book.title
+        bookAuthorLabel.text = book.authors?.first ?? "No Author Found"
         bookImageView.image = book.coverImage
         averageRatingLabel.text = "\(book.averageRating)"
         descriptionLabel.text = book.description
     }
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "BookshelfDetailToReviewDetailVC" {
+            guard let destination = segue.destination as? ReviewDetailViewController else {return}
+//            let isbn = book?.industryIdentifiers?.first?.identifier
+            let bookToSend = book
+            destination.book = bookToSend
+        }
     }
-    */
-
 }

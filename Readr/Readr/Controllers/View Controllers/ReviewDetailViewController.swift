@@ -10,26 +10,27 @@ import UIKit
 import WebKit
 
 class ReviewDetailViewController: UIViewController {
+    
+    var bookISBN: String?
+    var book: Book?
+    
 
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var reviewsWebView: WKWebView!
     @IBOutlet weak var goodReadsLabel: UILabel!
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        fetchReview()
+        updateViews()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func fetchReview() {
+        guard let isbn = book?.industryIdentifiers?.first?.identifier else {return}
+        reviewsWebView.load(URLRequest(url: URL(string: "https://www.goodreads.com/api/reviews_widget_iframe?did=75599&format=html&header_text=Goodreads+reviews+for+The+Adventures+of+Huckleberry+Finn&isbn=\(isbn)&links=660&min_rating=&num_reviews=&review_back=ffffff&stars=000000&stylesheet=&text=444")!))
     }
-    */
-
+    
+    func updateViews() {
+      bookTitleLabel.text = "Title: \(book?.title)"
+    }
 }
