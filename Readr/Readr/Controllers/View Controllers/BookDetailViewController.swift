@@ -66,11 +66,11 @@ class BookDetailViewController: UIViewController {
     
     func updateViews() {
         guard let book = book else {return}
-        guard let rating = book.averageRating else {return}
+        let rating = "\(book.averageRating ?? 0)"
         self.title = book.title
         bookAuthorLabel.text = book.authors?.first ?? "No Author Found"
         bookImageView.image = book.coverImage
-        averageRatingLabel.text = "\(rating)"
+        averageRatingLabel.text = rating
         descriptionLabel.text = book.description
     }
     

@@ -215,7 +215,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             guard let destination = segue.destination as? BookclubViewController else {return}
             let bookclubToSend = clubsArray[indexPath.row]
             destination.bookclub = bookclubToSend
-        
+            
         } else if segue.identifier == "showUserDetailSegue"{
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
             guard let destination = segue.destination as? UserDetailViewController else {return}
@@ -234,7 +234,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 }
 
 extension SearchViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         search()
     }
 }
