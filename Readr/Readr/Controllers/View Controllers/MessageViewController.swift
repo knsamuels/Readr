@@ -43,7 +43,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             DispatchQueue.main.async {
                 switch result {
                 case .success(let message):
-                    self.messagesArray.insert(message, at: 0)
+                    self.messagesArray.append(message)
                     self.tableView.reloadData()
                 case .failure(_):
                     print("Error saving message.")
