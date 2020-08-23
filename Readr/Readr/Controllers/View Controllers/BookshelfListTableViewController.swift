@@ -14,8 +14,14 @@ class BookshelfListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         fetchAllUsersFavorites()
     }
+    
+    // Mark: Actions
     @IBAction func addButtonTapped(_ sender: Any) {
         presentBookshelfAlert(bookshelf: nil)
     }

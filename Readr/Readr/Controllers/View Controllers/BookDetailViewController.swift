@@ -10,14 +10,14 @@ import UIKit
 import WebKit
 
 class BookDetailViewController: UIViewController {
-
+    
     var book: Book?
-//    {
-//        didSet {
-//            loadViewIfNeeded()
-//
-//        }
-//    }
+    //    {
+    //        didSet {
+    //            loadViewIfNeeded()
+    //
+    //        }
+    //    }
     
     @IBOutlet weak var bookAuthorLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
@@ -47,7 +47,28 @@ class BookDetailViewController: UIViewController {
             let bookshelfAlertController = UIAlertController(title: "Select Bookshelf", message: nil, preferredStyle: .alert)
             let cancelBookshelfAction = UIAlertAction(title: "Cancel", style: .cancel)
             let bookshelfAction = UIAlertAction(title: "Add to First Bookshelf", style: .default) { (_) in
-                user.bookshelves.first?.books.append(isbn)
+                BookshelfController.shared.fetchAllBookshelfs { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(let bookshelves):
+                            user.bookshelves = bookshelves
+                            guard let firstBookshelf = user.bookshelves.first else {return}
+                            firstBookshelf.books.append(isbn)
+                            BookshelfController.shared.updateBookshelf(bookshelf: firstBookshelf) { (result) in
+                                DispatchQueue.main.async {
+                                    switch result {
+                                    case .success(_):
+                                        print("it worked")
+                                    case .failure(_):
+                                        print("it did not work")
+                                    }
+                                }
+                            }
+                        case .failure(_):
+                            print("could not add book to the bookshelf")
+                        }
+                    }
+                }
             }
             bookshelfAlertController.addAction(cancelBookshelfAction)
             bookshelfAlertController.addAction(bookshelfAction)

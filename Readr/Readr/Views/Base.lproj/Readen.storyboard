@@ -654,7 +654,7 @@
                                     <outlet property="bookImageView" destination="vL4-yj-MrH" id="1Oa-4N-yBJ"/>
                                     <outlet property="bookRatingLabel" destination="M91-aW-gPM" id="bbN-Hp-Z2j"/>
                                     <outlet property="bookTitleLabel" destination="vpI-eQ-hvQ" id="Nin-uI-8jw"/>
-                                    <segue destination="jym-Fn-cVA" kind="show" identifier="BookshelfSearchToBookshelfDetail" id="d6C-eR-RjD"/>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="BookshelfSearchToBookDetail" id="d6C-eR-RjD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -687,7 +687,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Xpv-Bi-87H">
-                                <rect key="frame" x="0.0" y="585" width="414" height="179"/>
+                                <rect key="frame" x="0.0" y="634" width="414" height="179"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="217" translatesAutoresizingMaskIntoConstraints="NO" id="a5Z-AS-m41">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="11.5"/>
@@ -733,7 +733,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oJh-Yd-wo7">
-                                <rect key="frame" x="40" y="98" width="334" height="393.5"/>
+                                <rect key="frame" x="40" y="98" width="334" height="442.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxY-V4-YkS">
                                         <rect key="frame" x="146" y="0.0" width="42" height="20.5"/>
@@ -748,16 +748,16 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gsV-hZ-kgp">
-                                        <rect key="frame" x="0.0" y="330.5" width="334" height="32.5"/>
+                                        <rect key="frame" x="0.0" y="330.5" width="334" height="81.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9W-hl-wE2">
-                                                <rect key="frame" x="0.0" y="0.0" width="162" height="32.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="162" height="81.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypl-JG-fig">
-                                                <rect key="frame" x="172" y="0.0" width="162" height="32.5"/>
+                                                <rect key="frame" x="172" y="0.0" width="162" height="81.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -765,7 +765,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tF-X3-0iy">
-                                        <rect key="frame" x="0.0" y="373" width="334" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="422" width="334" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.5" id="fGz-Xv-63w"/>
                                         </constraints>
@@ -826,16 +826,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jBq-pC-tjn">
-                                <rect key="frame" x="20" y="88" width="374" height="676"/>
+                                <rect key="frame" x="20" y="88" width="374" height="725"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVX-3u-dHA">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="67.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="72.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMm-po-58g">
-                                        <rect key="frame" x="0.0" y="67.5" width="374" height="541"/>
+                                        <rect key="frame" x="0.0" y="72.5" width="374" height="580"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <wkWebViewConfiguration key="configuration">
                                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -843,7 +843,7 @@
                                         </wkWebViewConfiguration>
                                     </wkWebView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered By: Good Reads API" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkp-MX-z9w">
-                                        <rect key="frame" x="0.0" y="608.5" width="374" height="67.5"/>
+                                        <rect key="frame" x="0.0" y="652.5" width="374" height="72.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1760,7 +1760,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="I22-a6-LKA"/>
-        <segue reference="Km3-zp-v7o"/>
+        <segue reference="d6C-eR-RjD"/>
         <segue reference="XkH-si-XHh"/>
         <segue reference="s51-Sp-ODc"/>
     </inferredMetricsTieBreakers>
