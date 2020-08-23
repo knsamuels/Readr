@@ -50,17 +50,32 @@ class BookclubViewController: UIViewController {
         guard let bookclub = bookclub else {return}
         let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
         if userReference != bookclub.admin {
-            if user.bookclubs.contains(bookclub) {
-                guard let index = user.bookclubs.firstIndex(of: bookclub) else {return}
-                guard let userIndex = bookclub.members.firstIndex(of: userReference) else {return}
-                user.bookclubs.remove(at: index)
-                bookclub.members.remove(at: userIndex)
+            print(user.bookclubs.count)
+            if bookclub.members.contains(userReference) {
+                guard let index = bookclub.members.firstIndex(of: userReference) else {return}
+                
+                bookclub.members.remove(at: index)
                 joinButton.setTitle("Join", for: .normal)
                 
             } else {
                 user.bookclubs.append(bookclub)
                 bookclub.members.append(userReference)
                 joinButton.setTitle("Leave", for: .normal)
+            }
+        }
+        print(bookclub.name)
+        print(user.username)
+        print(user.bookclubs.count)
+        print(user.recordID)
+        print(userReference)
+        BookclubController.shared.update(bookclub: bookclub) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    print("yes")
+                case .failure(_):
+                    print("no")
+                }
             }
         }
     }
@@ -81,7 +96,7 @@ class BookclubViewController: UIViewController {
             self.adminContactInfoLabel.text = bookclub.adminContactInfo
             if bookclub.admin == userReference {
                 self.joinButton.setTitle("Host", for: .normal)
-            } else if user.bookclubs.contains(bookclub) {
+            } else if bookclub.members.contains(userReference) {
                 self.joinButton.setTitle("Leave", for: .normal)
             } else {
                 self.joinButton.setTitle("Join", for: .normal)
