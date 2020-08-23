@@ -16,6 +16,7 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
     var isSearching = false
     var dataSource: [SearchableRecord] {
         return isSearching ? resultsArray : bookshelfBooks
+        
     }
     
     // Mark Outlets
@@ -31,7 +32,7 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         DispatchQueue.main.async {
             self.resultsArray = self.bookshelfBooks
             self.tableView.reloadData()
@@ -47,6 +48,9 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
                     switch result {
                     case .success(let book):
                         self.bookshelfBooks.append(book)
+                        self.tableView.reloadData()
+                        print(bookshelf.books.count)
+                        print(self.bookshelfBooks.count)
                     case .failure(_):
                         print("we could not get the books from bookshelf")
                     }
@@ -64,13 +68,15 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dataSource.count
+//        return dataSource.count
+        return bookshelfBooks.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfSearchCell", for: indexPath) as? BookshelfSearchTableViewCell else { return UITableViewCell() }
-        let book = dataSource[indexPath.row] as? Book
+//        let book = dataSource[indexPath.row] as? Book
+        let book = bookshelfBooks[indexPath.row] 
         cell.book = book
        
         return cell
@@ -115,18 +121,18 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
     
      // MARK: - Navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "BookshelfSearchToBookshelfDetail" {
+        if segue.identifier == "BookshelfSearchToBookDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
             guard let destination = segue.destination as? BookDetailViewController else {return}
             let bookToSend = bookshelfBooks[indexPath.row]
-            destination.book = bookToSend
+            destination.book = bookToSend as? Book
         }
      }
 }
 
 extension BookshelfDetailTableViewController {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+
         if !searchText.isEmpty {
             resultsArray = bookshelfBooks.filter { $0.matches(searchTerm: searchText) }
             tableView.reloadData()
