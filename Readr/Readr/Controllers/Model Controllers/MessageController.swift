@@ -67,7 +67,7 @@ class MessageController {
             print("Fetched Message Records Successfully")
             
             let fetchedMessages = records.compactMap { Message(ckRecord: $0) }
-            let sortedMessages = fetchedMessages.sorted(by: { $0.timestamp > $1.timestamp })
+            let sortedMessages = fetchedMessages.sorted(by: { $0.timestamp < $1.timestamp })
             
             //self.messages = sortedMessages
             

@@ -56,7 +56,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     // MARK: - Helper Methods
-  
+    
     func updateViews() {
         guard let bookclub = bookclub else {return}
         self.title = bookclub.name
@@ -70,6 +70,10 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
                 case .success(let messages):
                     self.messagesArray = messages
                     self.tableView.reloadData()
+                    if self.messagesArray.count > 0 {
+                        let indexPath = IndexPath(row: self.messagesArray.count - 1, section: 0)
+                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    }
                 case .failure(_):
                     print("Error fetching messages")
                 }
@@ -131,8 +135,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.message = message
         
-        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
-        cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
+        //        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
+        //        cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
         
         return cell
     }
@@ -159,16 +163,15 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    // MARK: - Navigation
     
-     // MARK: - Navigation
-
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "messagesToBCVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
             let bookclubToSend = bookclub
             destination.bookclub = bookclubToSend
             
         }
-     }
+    }
 }
