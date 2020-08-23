@@ -17,7 +17,6 @@ class ChatTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchBookclubs()
-        
     }
     
     // MARK: - Helper Methods

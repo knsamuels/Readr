@@ -24,6 +24,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         setupTableView()
         setupTextViews()
         fetchMessages()
+        updateViews()
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
@@ -56,6 +57,10 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - Helper Methods
   
+    func updateViews() {
+        guard let bookclub = bookclub else {return}
+        self.title = bookclub.name
+    }
     
     func fetchMessages() {
         guard let bookclub = bookclub else {return}
@@ -154,14 +159,16 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
+     // MARK: - Navigation
+
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     
+        if segue.identifier == "messagesToBCVC" {
+            guard let destination = segue.destination as? BookclubViewController else {return}
+            let bookclubToSend = bookclub
+            destination.bookclub = bookclubToSend
+            
+        }
+     }
 }

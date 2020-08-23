@@ -39,9 +39,9 @@ class BookclubViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-        //        guard let bookclub = bookclub else {return}
-        //        bookclub.currentlyReading = "9780399230035"
-        //        print(bookclub.currentlyReading)
+//                guard let bookclub = bookclub else {return}
+//        bookclub.pastReads.append("0439358078")
+//                print(bookclub.currentlyReading)
         fetchBook()
     }
     

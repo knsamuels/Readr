@@ -72,9 +72,7 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfSearchCell", for: indexPath) as? BookshelfSearchTableViewCell else { return UITableViewCell() }
         let book = dataSource[indexPath.row] as? Book
         cell.book = book
-        
-        // Configure the cell...
-        
+       
         return cell
     }
     
@@ -152,7 +150,6 @@ extension BookshelfDetailTableViewController {
     }
 
     func searchBarTextDidBeginEditing( searchBar: UISearchBar) {
-
         isSearching = true
     }
 
