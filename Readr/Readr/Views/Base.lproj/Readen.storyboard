@@ -687,7 +687,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Xpv-Bi-87H">
-                                <rect key="frame" x="0.0" y="585" width="414" height="179"/>
+                                <rect key="frame" x="0.0" y="634" width="414" height="179"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="217" translatesAutoresizingMaskIntoConstraints="NO" id="a5Z-AS-m41">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="11.5"/>
@@ -733,7 +733,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oJh-Yd-wo7">
-                                <rect key="frame" x="40" y="98" width="334" height="393.5"/>
+                                <rect key="frame" x="40" y="98" width="334" height="442.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxY-V4-YkS">
                                         <rect key="frame" x="146" y="0.0" width="42" height="20.5"/>
@@ -748,16 +748,16 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gsV-hZ-kgp">
-                                        <rect key="frame" x="0.0" y="330.5" width="334" height="32.5"/>
+                                        <rect key="frame" x="0.0" y="330.5" width="334" height="81.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9W-hl-wE2">
-                                                <rect key="frame" x="0.0" y="0.0" width="162" height="32.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="162" height="81.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypl-JG-fig">
-                                                <rect key="frame" x="172" y="0.0" width="162" height="32.5"/>
+                                                <rect key="frame" x="172" y="0.0" width="162" height="81.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -765,7 +765,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tF-X3-0iy">
-                                        <rect key="frame" x="0.0" y="373" width="334" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="422" width="334" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.5" id="fGz-Xv-63w"/>
                                         </constraints>
@@ -800,7 +800,7 @@
                     <navigationItem key="navigationItem" id="Jdw-a9-Zz3">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="zAd-lJ-xIS">
                             <connections>
-                                <action selector="deleteBookshelfButtonTapped:" destination="jym-Fn-cVA" id="p9N-cV-W72"/>
+                                <action selector="optionButton:" destination="jym-Fn-cVA" id="Oo1-Y8-zGE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -810,7 +810,7 @@
                         <outlet property="bookImageView" destination="dvS-fk-ZdM" id="TXa-YY-2Ff"/>
                         <outlet property="descriptionLabel" destination="3tF-X3-0iy" id="mZ4-Hr-QW8"/>
                         <outlet property="genreLabel" destination="n9W-hl-wE2" id="Dzq-pC-ckw"/>
-                        <outlet property="reviewImageLabel" destination="iGb-b6-kX7" id="SSg-Vv-qL5"/>
+                        <outlet property="reviewWebView" destination="iGb-b6-kX7" id="SSg-Vv-qL5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Spx-d2-OZV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -826,16 +826,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jBq-pC-tjn">
-                                <rect key="frame" x="20" y="88" width="374" height="676"/>
+                                <rect key="frame" x="20" y="88" width="374" height="725"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVX-3u-dHA">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="67.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="72.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMm-po-58g">
-                                        <rect key="frame" x="0.0" y="67.5" width="374" height="541"/>
+                                        <rect key="frame" x="0.0" y="72.5" width="374" height="580"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <wkWebViewConfiguration key="configuration">
                                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -843,7 +843,7 @@
                                         </wkWebViewConfiguration>
                                     </wkWebView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered By: Good Reads API" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkp-MX-z9w">
-                                        <rect key="frame" x="0.0" y="608.5" width="374" height="67.5"/>
+                                        <rect key="frame" x="0.0" y="652.5" width="374" height="72.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1316,6 +1316,10 @@
                         <outlet property="authorLabel2" destination="GVD-Ry-1CB" id="FZG-0q-wCK"/>
                         <outlet property="authorLabel3" destination="khS-fg-93c" id="vRd-YD-xBU"/>
                         <outlet property="bioLabel" destination="8hG-3W-g3L" id="H3Q-b1-N9x"/>
+                        <outlet property="bookclub1ButtonLabel" destination="pue-iC-gf0" id="ibt-Le-PJs"/>
+                        <outlet property="bookclub2ButtonLabel" destination="tN4-dv-8zB" id="bcO-XO-wbr"/>
+                        <outlet property="bookclub3ButtonLabel" destination="2gP-0P-AVH" id="547-ze-Rhb"/>
+                        <outlet property="bookclub4ButtonLabel" destination="9zq-NO-fsh" id="RZ5-Gc-R5S"/>
                         <outlet property="bookclubImage1" destination="YZz-AH-n7M" id="q1k-fB-qoy"/>
                         <outlet property="bookclubImage2" destination="fof-1w-ucx" id="7yr-3J-pfR"/>
                         <outlet property="bookclubImage3" destination="a1H-Py-veh" id="IVL-kf-3bU"/>
@@ -1324,6 +1328,9 @@
                         <outlet property="bookclubName2" destination="Mmg-rh-8yz" id="8wy-ZZ-cZ0"/>
                         <outlet property="bookclubName3" destination="aDT-Rk-OMx" id="mpO-4c-OKq"/>
                         <outlet property="bookclubName4" destination="tTw-31-a7O" id="ayv-z2-PF2"/>
+                        <outlet property="favBook1ButtonLabel" destination="iz1-lB-VzM" id="qWR-q0-IsW"/>
+                        <outlet property="favBook2ButtonLabel" destination="giv-hx-Y1Y" id="i66-JC-nOd"/>
+                        <outlet property="favBook3ButtonLabel" destination="6s9-NL-4q5" id="Quu-VI-DuA"/>
                         <outlet property="favBookPic1" destination="T8H-jC-OqB" id="D2C-gZ-zxa"/>
                         <outlet property="favBookPic2" destination="H9p-qw-1rP" id="PoP-sT-Hjs"/>
                         <outlet property="favBookPic3" destination="VVq-xB-8wU" id="FU6-tH-5VZ"/>
@@ -1340,7 +1347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FEp-ME-Jpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-610" y="-100"/>
+            <point key="canvasLocation" x="-610.14492753623188" y="-100.44642857142857"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="fOz-7V-teA">
@@ -1422,7 +1429,6 @@
                                         <connections>
                                             <outlet property="personOrClubImage" destination="UjX-nA-DSa" id="fJY-l4-D2p"/>
                                             <outlet property="personOrClubLabel" destination="8IZ-L6-wY7" id="kjI-gj-n5H"/>
-                                            <segue destination="ZEJ-Jj-dV8" kind="show" identifier="searchCellVCToBookClubVC" id="MxF-rF-ShL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1484,7 +1490,7 @@
                                             <outlet property="averageRating" destination="itW-ij-yEJ" id="ZLN-f7-20h"/>
                                             <outlet property="bookImageView" destination="Ywf-I4-E0r" id="wQG-PX-mXs"/>
                                             <outlet property="titleLabel" destination="tfM-fd-Wi2" id="7HC-jK-qdq"/>
-                                            <segue destination="jym-Fn-cVA" kind="show" identifier="seaechCellCollectionViewToBDVC" id="dxg-Yu-uUx"/>
+                                            <segue destination="jym-Fn-cVA" kind="show" identifier="searchCellCollectionViewToBDVC" id="dxg-Yu-uUx"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1516,6 +1522,8 @@
                         <outlet property="collectionView" destination="9qi-Zf-pJy" id="u0r-LS-yol"/>
                         <outlet property="searchBar" destination="7aR-rl-UHk" id="K9a-JG-Uz8"/>
                         <outlet property="tableView" destination="T4q-iv-CFS" id="gEB-Gh-bAd"/>
+                        <segue destination="Dff-Fc-vSR" kind="show" identifier="showUserDetailSegue" id="I22-a6-LKA"/>
+                        <segue destination="ZEJ-Jj-dV8" kind="show" identifier="showBookclubSegue" id="Dzd-T5-xhq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Te-NI-0Tc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1751,8 +1759,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dxg-Yu-uUx"/>
-        <segue reference="hUF-E8-PBY"/>
+        <segue reference="I22-a6-LKA"/>
+        <segue reference="d6C-eR-RjD"/>
+        <segue reference="Dzd-T5-xhq"/>
         <segue reference="qWZ-Sj-u0r"/>
     </inferredMetricsTieBreakers>
     <resources>

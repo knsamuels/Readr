@@ -23,7 +23,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
-   
+    
     
     
     //MARK: - Lifecycles
@@ -88,7 +88,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-
+    
     func search() {
         guard let searchTerm = searchBar.text else {return}
         if booksIsSelected == true {
@@ -132,6 +132,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    func presentBookclubVC() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "showBookclubSegue", sender: self)
+        }
+    }
+    
+    func presentUserDetailVC() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "showUserDetailSegue", sender: self)
+        }
+    }
+    
     //MARK: - Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -155,6 +167,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if clubsIsSelected == true {
+            presentBookclubVC()
+        } else {
+            presentUserDetailVC()
+        }
+    }
     
     //MARK: - Collection View
     
@@ -164,7 +183,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as? SearchCollectionViewCell else {return UICollectionViewCell()}
-            let book = booksArray[indexPath.row]
+        let book = booksArray[indexPath.row]
         cell.volumeInfo = book
         return cell
     }
@@ -188,16 +207,30 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-     // MARK: - Navigation
-     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if segue.identifier == "searchToVC" {
-             guard let indexPath = tableView.indexPathForSelectedRow else {return}
-             guard let destination = segue.destination as? BookclubViewController else {return}
-             let bookclubToSend = clubsArray[indexPath.row]
-             destination.bookclub = bookclubToSend
-         }
-     }
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showBookclubSegue" {
+            guard let indexPath = tableView.indexPathForSelectedRow else {return}
+            guard let destination = segue.destination as? BookclubViewController else {return}
+            let bookclubToSend = clubsArray[indexPath.row]
+            destination.bookclub = bookclubToSend
+        
+        } else if segue.identifier == "showUserDetailSegue"{
+            guard let indexPath = tableView.indexPathForSelectedRow else {return}
+            guard let destination = segue.destination as? UserDetailViewController else {return}
+            let userToSend = peopleArray[indexPath.row]
+            destination.user = userToSend
+            
+        } else if segue.identifier == "searchCellCollectionViewToBDVC" {
+            guard let cell = sender as? UICollectionViewCell else {return}
+            guard let indexPath = collectionView.indexPath(for: cell) else {return}
+            guard let destination = segue.destination as?
+                BookDetailViewController else {return}
+            let bookToSend = booksArray[indexPath.row]
+            destination.book = bookToSend
+        }
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {

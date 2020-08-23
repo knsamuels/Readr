@@ -13,6 +13,7 @@ class UserDetailViewController: UIViewController {
     // MARK: Properties:
     var userFavBooks: [Book] = []
     var userBookClubs: [Bookclub] = []
+    var user: User? 
     
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var followerLabel: UILabel!
@@ -38,47 +39,29 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var bookclubImage4: UIImageView!
     @IBOutlet weak var bookclubName4: UILabel!
     @IBOutlet weak var bioLabel: UILabel!
+    @IBOutlet weak var favBook1ButtonLabel: UIButton!
+    @IBOutlet weak var favBook2ButtonLabel: UIButton!
+    @IBOutlet weak var favBook3ButtonLabel: UIButton!
+    @IBOutlet weak var bookclub1ButtonLabel: UIButton!
+    @IBOutlet weak var bookclub2ButtonLabel: UIButton!
+    @IBOutlet weak var bookclub3ButtonLabel: UIButton!
+    @IBOutlet weak var bookclub4ButtonLabel: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // createUser()
-        // fetchUser()
-        fetchUserBooks()
-    }
-    
-    //MARK: Actions
-    @IBAction func favBook1Tapped(_ sender: UIButton) {
-    }
-    @IBAction func favBook2Tapped(_ sender: Any) {
-    }
-    @IBAction func favBook3Tapped(_ sender: Any) {
-    }
-    @IBAction func bookclub1Tapped(_ sender: Any) {
-    }
-    @IBAction func bookclub2Tapped(_ sender: Any) {
-    }
-    @IBAction func bookclub3Tapped(_ sender: Any) {
-    }
-    @IBAction func bookclub4Tapped(_ sender: Any) {
-    }
-    //helper functions
-    
-    func createUser() {
-        UserController.shared.createUser(username: "ksam17", firstName: "Kristin", lastName: "Samuels", favoriteAuthor: "Stephen King") { (result) in
-            switch result {
-            case .success(let user):
-                UserController.shared.currentUser = user
-            case .failure(_):
-                print("we did not create a new user")
-            }
+        if self.user == nil {
+            fetchUser()
+        } else {
+            fetchUserBooks()
         }
     }
     
+    //helper functions
     func fetchUser() {
         UserController.shared.fetchUser { (result) in
             switch result {
             case .success(let user):
-                UserController.shared.currentUser = user
+                self.user = user
                 print("we fetched a user")
                 self.fetchUserBooks()
             case .failure(_):
@@ -88,7 +71,7 @@ class UserDetailViewController: UIViewController {
     }
     
     func fetchUserBooks() {
-        guard let user = UserController.shared.currentUser else {return}
+        guard let user = self.user else {return}
         BookController.shared.fetchFavoriteBooks(forUser: user) { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -104,70 +87,82 @@ class UserDetailViewController: UIViewController {
     
     func updateViews() {
         DispatchQueue.main.async {
-            self.title = UserController.shared.currentUser?.username
-            self.bioLabel.text = UserController.shared.currentUser?.bio
+            self.title = self.user?.username ?? "N/A"
+            self.bioLabel.text = self.user?.bio ?? "N/A"
             let numberOfBooks = self.userFavBooks.count
             switch numberOfBooks {
             case 0:
                 self.favBookPic1.isHidden = true
                 self.titleLabel1.isHidden = true
                 self.authorLabel1.isHidden = true
+                self.favBook1ButtonLabel.isHidden = true
                 self.favBookPic2.isHidden = true
                 self.titleLabel2.isHidden = true
                 self.authorLabel2.isHidden = true
+                self.favBook2ButtonLabel.isHidden = true
                 self.favBookPic3.isHidden = true
                 self.titleLabel3.isHidden = true
                 self.authorLabel3.isHidden = true
+                self.favBook3ButtonLabel.isHidden = true
                 
             case 1:
                 self.favBookPic1.image = self.userFavBooks[0].coverImage
                 self.titleLabel1.text = self.userFavBooks[0].title
                 self.authorLabel1.text = self.userFavBooks[0].authors?.first
+                self.favBook1ButtonLabel.isHidden = false
                 self.favBookPic2.isHidden = true
                 self.titleLabel2.isHidden = true
                 self.authorLabel2.isHidden = true
+                self.favBook2ButtonLabel.isHidden = true
                 self.favBookPic3.isHidden = true
                 self.titleLabel3.isHidden = true
                 self.authorLabel3.isHidden = true
+                self.favBook3ButtonLabel.isHidden = true
             case 2:
                 self.favBookPic1.image = self.userFavBooks[0].coverImage
                 self.titleLabel1.text = self.userFavBooks[0].title
                 self.authorLabel1.text = self.userFavBooks[0].authors?.first
+                self.favBook1ButtonLabel.isHidden = false
                 self.favBookPic2.image = self.userFavBooks[1].coverImage
                 self.titleLabel2.text = self.userFavBooks[1].title
                 self.authorLabel2.text = self.userFavBooks[1].authors?.first
+                self.favBook2ButtonLabel.isHidden = false
                 self.favBookPic3.isHidden = true
                 self.titleLabel3.isHidden = true
                 self.authorLabel3.isHidden = true
+                self.favBook3ButtonLabel.isHidden = true
             default:
                 self.favBookPic1.image = self.userFavBooks[0].coverImage
                 self.titleLabel1.text = self.userFavBooks[0].title
                 self.authorLabel1.text = self.userFavBooks[0].authors?.first
+                self.favBook1ButtonLabel.isHidden = false
                 self.favBookPic2.image = self.userFavBooks[1].coverImage
                 self.titleLabel2.text = self.userFavBooks[1].title
                 self.authorLabel2.text = self.userFavBooks[1].authors?.first
+                self.favBook2ButtonLabel.isHidden = false
                 self.favBookPic3.image = self.userFavBooks[2].coverImage
                 self.titleLabel3.text = self.userFavBooks[2].title
                 self.authorLabel3.text = self.userFavBooks[2].authors?.first
+                self.favBook3ButtonLabel.isHidden = false
             }
-            let numberOfGenres = UserController.shared.currentUser?.favoriteGenres.count
+            let numberOfGenres = self.user?.favoriteGenres.count ?? 0
             switch numberOfGenres {
             case 0:
                 self.favGenreName1.isHidden = true
                 self.favGenreName2.isHidden = true
                 self.favGenreName3.isHidden = true
             case 1:
-                self.favGenreName1.text = UserController.shared.currentUser?.favoriteGenres[0]
+                self.favGenreName1.text = self.user?.favoriteGenres[0]
                 self.favGenreName2.isHidden = true
                 self.favGenreName3.isHidden = true
             case 2:
-                self.favGenreName1.text = UserController.shared.currentUser?.favoriteGenres[0]
-                self.favGenreName2.text = UserController.shared.currentUser?.favoriteGenres[1]
+                self.favGenreName1.text = self.user?.favoriteGenres[0]
+                self.favGenreName2.text = self.user?.favoriteGenres[1]
                 self.favGenreName3.isHidden = true
             default:
-                self.favGenreName1.text = UserController.shared.currentUser?.favoriteGenres[0]
-                self.favGenreName2.text = UserController.shared.currentUser?.favoriteGenres[1]
-                self.favGenreName3.text = UserController.shared.currentUser?.favoriteGenres[2]
+                self.favGenreName1.text = self.user?.favoriteGenres[0]
+                self.favGenreName2.text = self.user?.favoriteGenres[1]
+                self.favGenreName3.text = self.user?.favoriteGenres[2]
             }
             
             let numberOfBookClubs = self.userBookClubs.count
@@ -175,54 +170,74 @@ class UserDetailViewController: UIViewController {
             case 0:
                 self.bookclubImage1.isHidden = true
                 self.bookclubName1.isHidden = true
+                self.bookclub1ButtonLabel.isHidden = true
                 self.bookclubImage2.isHidden = true
                 self.bookclubName2.isHidden = true
+                self.bookclub2ButtonLabel.isHidden = true
                 self.bookclubImage3.isHidden = true
                 self.bookclubName3.isHidden = true
+                self.bookclub3ButtonLabel.isHidden = true
                 self.bookclubImage4.isHidden = true
                 self.bookclubName4.isHidden = true
+                self.bookclub4ButtonLabel.isHidden = true
             case 1:
                 self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                 self.bookclubName1.text = self.userBookClubs[0].name
+                self.bookclub1ButtonLabel.isHidden = false
                 self.bookclubImage2.isHidden = true
                 self.bookclubName2.isHidden = true
+                self.bookclub2ButtonLabel.isHidden = true
                 self.bookclubImage3.isHidden = true
                 self.bookclubName3.isHidden = true
+                self.bookclub3ButtonLabel.isHidden = true
                 self.bookclubImage4.isHidden = true
                 self.bookclubName4.isHidden = true
+                self.bookclub4ButtonLabel.isHidden = true
             case 2:
                 self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                 self.bookclubName1.text = self.userBookClubs[0].name
+                self.bookclub1ButtonLabel.isHidden = false
                 self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                 self.bookclubName2.text = self.userBookClubs[1].name
+                self.bookclub2ButtonLabel.isHidden = false
                 self.bookclubImage3.isHidden = true
                 self.bookclubName3.isHidden = true
+                self.bookclub3ButtonLabel.isHidden = true
                 self.bookclubImage4.isHidden = true
                 self.bookclubName4.isHidden = true
+                self.bookclub4ButtonLabel.isHidden = true
             case 3:
                 self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                 self.bookclubName1.text = self.userBookClubs[0].name
+                self.bookclub1ButtonLabel.isHidden = false
                 self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                 self.bookclubName2.text = self.userBookClubs[1].name
+                self.bookclub2ButtonLabel.isHidden = false
                 self.bookclubImage3.image = self.userBookClubs[2].profilePicture
                 self.bookclubName3.text = self.userBookClubs[2].name
+                self.bookclub3ButtonLabel.isHidden = false
                 self.bookclubImage4.isHidden = true
                 self.bookclubName4.isHidden = true
+                self.bookclub4ButtonLabel.isHidden = true
             default:
                 self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                 self.bookclubName1.text = self.userBookClubs[0].name
+                self.bookclub1ButtonLabel.isHidden = false
                 self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                 self.bookclubName2.text = self.userBookClubs[1].name
+                self.bookclub2ButtonLabel.isHidden = false
                 self.bookclubImage3.image = self.userBookClubs[2].profilePicture
                 self.bookclubName3.text = self.userBookClubs[2].name
+                self.bookclub3ButtonLabel.isHidden = false
                 self.bookclubImage4.image = self.userBookClubs[3].profilePicture
                 self.bookclubName4.text = self.userBookClubs[3].name
+                self.bookclub4ButtonLabel.isHidden = false
             }
             
         }
     }
     func getUsersBookclubs() {
-        guard let user = UserController.shared.currentUser else {return}
+        guard let user = self.user else {return}
         BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
             switch result {
             case .success(let bookclubs):

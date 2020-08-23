@@ -10,7 +10,11 @@ import UIKit
 
 class BookshelfSearchTableViewCell: UITableViewCell {
     
-    var book: Book?
+    var book: Book? {
+        didSet{
+            updateViews()
+        }
+    }
 
     @IBOutlet weak var bookImageView: UIImageView!
     
@@ -21,19 +25,18 @@ class BookshelfSearchTableViewCell: UITableViewCell {
     @IBOutlet weak var bookRatingLabel: UILabel!
     
     
+// Mark: Helper functions
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func updateViews() {
+        guard let book = book else {return}
+        let rating = "\(book.averageRating)"
+        bookImageView.image = book.coverImage
+        bookTitleLabel.text = book.title
+        bookAuthorLabel.text = book.authors?.first ?? "no author"
+        bookRatingLabel.text = rating
     }
     
-    //Actions:
+    //Mark: Actions
     
     @IBAction func removeBookButtonTapped(_ sender: UIButton) {
     }
