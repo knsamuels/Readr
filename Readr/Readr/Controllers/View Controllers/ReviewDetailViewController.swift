@@ -14,7 +14,6 @@ class ReviewDetailViewController: UIViewController {
     var bookISBN: String?
     var book: Book?
     
-
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var reviewsWebView: WKWebView!
     @IBOutlet weak var goodReadsLabel: UILabel!
@@ -31,6 +30,7 @@ class ReviewDetailViewController: UIViewController {
     }
     
     func updateViews() {
-      bookTitleLabel.text = "Title: \(book?.title)"
+        guard let book = book else {return}
+        bookTitleLabel.text = "Title: \(book.title)"
     }
 }

@@ -32,7 +32,7 @@ class BookshelfController {
                 return completion(.failure(.ckError(error)))
             }
             guard let record = record,
-                let savedBookshelf = Bookshelf(ckRecord: record) else { return completion(.failure(.couldNotUnwarp))}
+                let savedBookshelf = Bookshelf(ckRecord: record) else { return completion(.failure(.couldNotUnwrap))}
             
             UserController.shared.currentUser?.bookshelves.append(savedBookshelf)
             completion(.success(savedBookshelf))
@@ -51,13 +51,34 @@ class BookshelfController {
                 print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
                 completion(.failure(.ckError(error)))
             }
-            guard let records = records else {return completion(.failure(.couldNotUnwarp))}
+            guard let records = records else {return completion(.failure(.couldNotUnwrap))}
             
             let bookshelf: [Bookshelf] = records.compactMap { Bookshelf(ckRecord: $0)}
             self.bookshelf = bookshelf
             
             completion(.success(bookshelf))
         }
+    }
+    
+    func fetchFavoritesBookshelf(user: User, completion: @escaping(Result<Bookshelf, BookshelfError>) -> Void) {
+        
+        let predicate = NSPredicate(format: "%K == %@", BookshelfStrings.titleKey, "Favorites")
+        
+        let query = CKQuery(recordType: BookshelfStrings.recordTypeKey, predicate: predicate)
+        publicDB.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print("There was an error fetching all Bookclubs - \(error) - \(error.localizedDescription)")
+                return completion(.failure(.ckError(error)))
+            }
+            
+            guard let record = records?.first,
+                let fetchedFav = Bookshelf(ckRecord: record) else {return completion(.failure(.couldNotUnwrap))}
+            
+            print("Fetched Favorite bookshelf successfully.")
+            
+            return completion(.success(fetchedFav))
+        }
+        
     }
 
     func updateBookshelf(bookshelf: Bookshelf, completion: @escaping (Result<Bookshelf, BookshelfError>) -> Void) {
@@ -74,7 +95,7 @@ class BookshelfController {
             }
         guard let record = records?.first,
             let updateBookshelf = Bookshelf(ckRecord: record) else { return
-                completion(.failure(.couldNotUnwarp))}
+                completion(.failure(.couldNotUnwrap))}
             print("Successfully updated the record with ID: \(updateBookshelf.recordID)")
             completion(.success(updateBookshelf))
         }

@@ -11,7 +11,7 @@ import CloudKit
 
 struct UserStrings {
     static let recordTypeKey = "User"
-    fileprivate static let usernameKey = "username"
+    static let usernameKey = "username"
     fileprivate static let firstNameKey = "firstName"
     fileprivate static let lastNameKey = "lastName" 
     fileprivate static let bioKey = "bio"

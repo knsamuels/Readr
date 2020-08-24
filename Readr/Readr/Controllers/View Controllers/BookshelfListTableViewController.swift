@@ -82,7 +82,7 @@ class BookshelfListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfCell", for: indexPath) as? BookshelfCellTableViewCell else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfCell", for: indexPath) as? BookshelfListTableViewCell else {return UITableViewCell()}
         let bookshelf = userBookshelves[indexPath.row]
         cell.bookshelf = bookshelf
         return cell
@@ -93,18 +93,20 @@ class BookshelfListTableViewController: UITableViewController {
         if editingStyle == .delete {
             let bookshelfToDelete = userBookshelves[indexPath.row]
             guard let index = userBookshelves.firstIndex(of: bookshelfToDelete) else { return}
-            
-            BookshelfController.shared.deleteBookshelf(bookshelf: bookshelfToDelete) { (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(_):
-                        self.userBookshelves.remove(at: index)
-                        self.tableView.reloadData()
-                    case .failure(_):
-                        print("no - error")
+            if bookshelfToDelete.title != "Favorites" {
+                BookshelfController.shared.deleteBookshelf(bookshelf: bookshelfToDelete) { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(_):
+                            self.userBookshelves.remove(at: index)
+                            self.tableView.reloadData()
+                        case .failure(_):
+                            print("no - error")
+                        }
                     }
                 }
             }
+            
             
         } else if editingStyle == .insert {
             
