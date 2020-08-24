@@ -23,6 +23,7 @@ class CreateBCViewController: UIViewController {
     @IBOutlet weak var createBookclubButton: UIButton!
     @IBOutlet weak var adminContactInfo: UITextField!
     @IBOutlet weak var memberCapacity: UITextField!
+    @IBOutlet weak var selectProfileImage: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,8 @@ class CreateBCViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
+    }
     
     @IBAction func createBookclubButtonTapped(_ sender: UIButton) {
         guard let name = nameOfBookClub.text, !name.isEmpty,
