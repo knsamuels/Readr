@@ -45,6 +45,12 @@ class BookclubViewController: UIViewController {
         fetchBook()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(true)
+         updateViews()
+                fetchBook()
+    }
+    
     @IBAction func joinButtonTapped(_ sender: Any) {
         guard let user = UserController.shared.currentUser else {return}
         guard let bookclub = bookclub else {return}
