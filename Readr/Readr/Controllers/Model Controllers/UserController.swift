@@ -105,9 +105,9 @@ class UserController {
     
     func fetchUsername(username: String, completion: @escaping (Result<User, UserError>) -> Void) {
         
-        let predicate = NSPredicate(value: true)
+        let predicate = NSPredicate(format: "%K == %@", argumentArray: [UserStrings.usernameKey, username])
         
-        let query = CKQuery(recordType: UserStrings.usernameKey, predicate: predicate)
+        let query = CKQuery(recordType: UserStrings.recordTypeKey, predicate: predicate)
         
         self.publicDB.perform(query, inZoneWith: nil) { (records, error) in
             if let error = error {
