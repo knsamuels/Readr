@@ -42,12 +42,14 @@ class CreateBCViewController: UIViewController {
         }
         if let bookclub = bookclub {
             BookclubController.shared.update(bookclub: bookclub) { (result) in
-                switch result {
-                case .success(let bookclub):
-                    self.bookclub = bookclub
-                    self.navigationController?.popViewController(animated: true)
-                case .failure(_):
-                    print("could not update the bookclub")
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let bookclub):
+                        self.bookclub = bookclub
+                        self.navigationController?.popViewController(animated: true)
+                    case .failure(_):
+                        print("could not update the bookclub")
+                    }
                 }
             }
         } else {

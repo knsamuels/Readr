@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 //Testing
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        print(CKContainer.default().publicCloudDatabase)
 //        BookclubController.shared.createBookClub(name: "Lord of the rings",
 //                                                 adminContactInfo: "123",
 //                                                 description: "We are awesome",
