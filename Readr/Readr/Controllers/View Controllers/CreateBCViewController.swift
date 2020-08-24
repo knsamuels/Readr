@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateBCViewController: UIViewController, UINavigationControllerDelegate {
+class CreateBCViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate {
     
     var bookclub: Bookclub?
     
@@ -27,6 +27,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTextViews()
         
         // Do any additional setup after loading the view.
     }
@@ -90,18 +91,45 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate {
             }
         }
     }
+    //MARK: - Helpers
     
-    // MARK: - Navigation
+    func setupTextViews() {
+        descriptionOfBookClub.delegate = self
+        
+        if descriptionOfBookClub.text.isEmpty {
+            descriptionOfBookClub.text = "Describe your bookclub..."
+            descriptionOfBookClub.textColor = UIColor.lightGray
+        }
+    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createBCtoVC" {
-            guard let destination = segue.destination as? BookclubViewController else {return}
-            let bookclubToSend = bookclub
-            destination.bookclub = bookclubToSend
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            if textView == descriptionOfBookClub {
+                textView.text = "Describe your bookclub..."
+                
+                textView.textColor = UIColor.lightGray
+            }
+        }
+        
+        
+        // MARK: - Navigation
+        
+        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "createBCtoVC" {
+                guard let destination = segue.destination as? BookclubViewController else {return}
+                let bookclubToSend = bookclub
+                destination.bookclub = bookclubToSend
+            }
         }
     }
 }
-
 extension CreateBCViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.originalImage] as? UIImage else {return}
@@ -111,3 +139,4 @@ extension CreateBCViewController: UIImagePickerControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
 } //End of extension
+
