@@ -44,39 +44,44 @@ class BookDetailViewController: UIViewController {
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let addAction = UIAlertAction(title: "Add to Shelf", style: .default) { (_) in
-            let bookshelfAlertController = UIAlertController(title: "Select Bookshelf", message: nil, preferredStyle: .alert)
-            let cancelBookshelfAction = UIAlertAction(title: "Cancel", style: .cancel)
-            let bookshelfAction = UIAlertAction(title: "Add to First Bookshelf", style: .default) { (_) in
-                BookshelfController.shared.fetchAllBookshelfs { (result) in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success(let bookshelves):
-                            user.bookshelves = bookshelves
-                            guard let firstBookshelf = user.bookshelves.first else {return}
-//                            if firstBookshelf.title == "Favorites" {
-//                                user.favoriteBooks.append(isbn)
+            guard let popUpTBVC = UIStoryboard.init(name: "Readen", bundle: nil).instantiateViewController(withIdentifier: "popUpBookshelfTBVC") as? PopUpBookshelfTableViewController else {return}
+            popUpTBVC.modalPresentationStyle = .automatic
+            popUpTBVC.bookISBN = isbn
+            self.present(popUpTBVC, animated: true, completion: nil)
+            
+//            let bookshelfAlertController = UIAlertController(title: "Select Bookshelf", message: nil, preferredStyle: .alert)
+//            let cancelBookshelfAction = UIAlertAction(title: "Cancel", style: .cancel)
+//            let bookshelfAction = UIAlertAction(title: "Add to First Bookshelf", style: .default) { (_) in
+//                BookshelfController.shared.fetchAllBookshelfs { (result) in
+//                    DispatchQueue.main.async {
+//                        switch result {
+//                        case .success(let bookshelves):
+//                            user.bookshelves = bookshelves
+//                            guard let firstBookshelf = user.bookshelves.first else {return}
+////                            if firstBookshelf.title == "Favorites" {
+////                                user.favoriteBooks.append(isbn)
+////                            }
+//                            firstBookshelf.books.append(isbn)
+//                            BookshelfController.shared.updateBookshelf(bookshelf: firstBookshelf) { (result) in
+//                                DispatchQueue.main.async {
+//                                    switch result {
+//                                    case .success(_):
+//                                        print("it worked")
+//                                    case .failure(_):
+//                                        print("it did not work")
+//                                    }
+//                                }
 //                            }
-                            firstBookshelf.books.append(isbn)
-                            BookshelfController.shared.updateBookshelf(bookshelf: firstBookshelf) { (result) in
-                                DispatchQueue.main.async {
-                                    switch result {
-                                    case .success(_):
-                                        print("it worked")
-                                    case .failure(_):
-                                        print("it did not work")
-                                    }
-                                }
-                            }
-                        case .failure(_):
-                            print("could not add book to the bookshelf")
-                        }
-                    }
-                }
-            }
-            bookshelfAlertController.addAction(cancelBookshelfAction)
-            bookshelfAlertController.addAction(bookshelfAction)
-            self.present(bookshelfAlertController, animated: true)
-        }
+//                        case .failure(_):
+//                            print("could not add book to the bookshelf")
+//                        }
+//                    }
+//                }
+//            }
+//            bookshelfAlertController.addAction(cancelBookshelfAction)
+//            bookshelfAlertController.addAction(bookshelfAction)
+//            self.present(bookshelfAlertController, animated: true)
+       }
         alertController.addAction(cancelAction)
         alertController.addAction(addAction)
         self.present(alertController, animated: true)
