@@ -81,7 +81,6 @@ class BookController {
     }
     
     static func fetchOneBookWith(ISBN: String, completion: @escaping(Result<Book, BookError>) -> Void) {
-        print("5")
         guard let baseURL = URL(string: StringConstants.baseURLString) else {return completion(.failure(.invalidURL))}
         let volumeURL = baseURL.appendingPathComponent(StringConstants.volumeComponentString)
         
@@ -95,7 +94,6 @@ class BookController {
         print(finalURL)
         
         URLSession.shared.dataTask(with: finalURL) {(data, _, error) in
-            print("6")
             if let error = error {
                 return completion(.failure(.thrownError(error)))
             }
@@ -108,9 +106,7 @@ class BookController {
                 guard let imageLinks = book.imageLinks else {
                     return completion(.success(book))
                 }
-                print("7")
                 self.fetchImage(imageLinks: imageLinks) { (result) in
-                    print("10")
                     switch result {
                     case .success(let image):
                         book.coverImage = image
@@ -131,9 +127,7 @@ class BookController {
     static func fetchImage(imageLinks: ImageLinks, completion: @escaping(Result<UIImage, BookError>) -> Void) {
         guard  let url = imageLinks.thumbnail else {return}
         print(url)
-        print("8")
         URLSession.shared.dataTask(with: url) {(data, _, error) in
-            print("9")
             if let error = error {
                 return completion(.failure(.thrownError(error)))
             }
@@ -147,7 +141,6 @@ class BookController {
     func fetchFavoriteBooks(forUser user: User, completion: @escaping (Result<[Book], BookError>) -> Void) {
         let group = DispatchGroup()
         var books: [Book] = []
-        print("4")
         for i in user.favoriteBooks {
             group.enter()
             BookController.fetchOneBookWith(ISBN: i) { (result) in
@@ -162,7 +155,6 @@ class BookController {
             }
         }
         group.notify(queue: .main) {
-            print("11")
             completion(.success(books))
         }
     }

@@ -12,12 +12,6 @@ import WebKit
 class BookDetailViewController: UIViewController {
     
     var book: Book?
-    //    {
-    //        didSet {
-    //            loadViewIfNeeded()
-    //
-    //        }
-    //    }
     
     @IBOutlet weak var bookAuthorLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
@@ -31,8 +25,8 @@ class BookDetailViewController: UIViewController {
         updateViews()
         fetchReview()
     }
-    //Mark- Actions
     
+    //Mark- Actions
     @IBAction func viewAllButtonTapped(_ sender: Any) {
     }
     @IBAction func deleteBookshelfButtonTapped(_ sender: Any) {
@@ -48,46 +42,13 @@ class BookDetailViewController: UIViewController {
             popUpTBVC.modalPresentationStyle = .automatic
             popUpTBVC.bookISBN = isbn
             self.present(popUpTBVC, animated: true, completion: nil)
-            
-//            let bookshelfAlertController = UIAlertController(title: "Select Bookshelf", message: nil, preferredStyle: .alert)
-//            let cancelBookshelfAction = UIAlertAction(title: "Cancel", style: .cancel)
-//            let bookshelfAction = UIAlertAction(title: "Add to First Bookshelf", style: .default) { (_) in
-//                BookshelfController.shared.fetchAllBookshelfs { (result) in
-//                    DispatchQueue.main.async {
-//                        switch result {
-//                        case .success(let bookshelves):
-//                            user.bookshelves = bookshelves
-//                            guard let firstBookshelf = user.bookshelves.first else {return}
-////                            if firstBookshelf.title == "Favorites" {
-////                                user.favoriteBooks.append(isbn)
-////                            }
-//                            firstBookshelf.books.append(isbn)
-//                            BookshelfController.shared.updateBookshelf(bookshelf: firstBookshelf) { (result) in
-//                                DispatchQueue.main.async {
-//                                    switch result {
-//                                    case .success(_):
-//                                        print("it worked")
-//                                    case .failure(_):
-//                                        print("it did not work")
-//                                    }
-//                                }
-//                            }
-//                        case .failure(_):
-//                            print("could not add book to the bookshelf")
-//                        }
-//                    }
-//                }
-//            }
-//            bookshelfAlertController.addAction(cancelBookshelfAction)
-//            bookshelfAlertController.addAction(bookshelfAction)
-//            self.present(bookshelfAlertController, animated: true)
        }
         alertController.addAction(cancelAction)
         alertController.addAction(addAction)
         self.present(alertController, animated: true)
     }
-    //Mark: Helper functions
     
+    //Mark: Helper functions
     func fetchReview() {
         guard let isbn = book?.industryIdentifiers?.first?.identifier else {return}
         reviewWebView.load(URLRequest(url: URL(string: "https://www.goodreads.com/api/reviews_widget_iframe?did=75599&format=html&header_text=Goodreads+reviews+for+The+Adventures+of+Huckleberry+Finn&isbn=\(isbn)&links=660&min_rating=&num_reviews=&review_back=ffffff&stars=000000&stylesheet=&text=444")!))

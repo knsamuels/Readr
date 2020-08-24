@@ -26,10 +26,8 @@ class BookclubController {
     
     //Create
     func createBookClub(name: String, adminContactInfo: String, description: String, profilePic: UIImage?, meetingInfo: String, memberCapacity: Int, completion: @escaping(Result<Bookclub, BookclubError>) -> Void) {
-//        let recordID = CKRecord.ID(recordName: "acb123")
 //        let ckReference = CKRecord.Reference(recordID: recordID, action: .none)
         guard let user = UserController.shared.currentUser else {return completion(.failure(.couldNotUnwrap))}
-//        let user = User(username: "iamtoks", firstName: "toks", lastName: "babatunde", bio: "from dc", favoriteAuthor: "JK Rowling", favoriteBooks: ["a"], bookclub: [], friendList: [], followerList: [], favoriteGenres: [], bookshelves: [], recordID: recordID, appleUserRef: ckReference, profilePhoto: nil)
         let reference = CKRecord.Reference(recordID: user.recordID, action: .none)
         let newBC = Bookclub(name: name, admin: reference, adminContactInfo: adminContactInfo, members: [reference], description: description, profilePicture: profilePic, currentlyReading: "9780399230035", meetingInfo: meetingInfo, memberCapacity: memberCapacity)
         
