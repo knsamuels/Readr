@@ -27,7 +27,6 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
         super.viewDidLoad()
         searchBar.delegate = self
         fetchBooks()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,9 +74,12 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfSearchCell", for: indexPath) as? BookshelfDetailTableViewCell else { return UITableViewCell() }
+        guard let bookshelf = bookshelf else {return UITableViewCell()}
 //        let book = dataSource[indexPath.row] as? Book
         let book = bookshelfBooks[indexPath.row] 
         cell.book = book
+        cell.bookshelfDelegate = self
+        cell.bookshelf = bookshelf
        
         return cell
     }
@@ -165,4 +167,25 @@ extension BookshelfDetailTableViewController {
         isSearching = false
     }
 
+}
+extension BookshelfDetailTableViewController: BookshelfCellDelegate {
+    func presentAlertController(user: User, isbn: String, bookshelf: Bookshelf, cell: BookshelfDetailTableViewCell) {
+        let alertController = UIAlertController(title: nil , message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let removeAction = UIAlertAction(title: "Remove from Shelf", style: .default) { (_) in
+            guard let index = bookshelf.books.firstIndex(of: isbn) else {return}
+            bookshelf.books.remove(at: index)
+            
+        }
+        let addAction = UIAlertAction(title: "Add to Another Shelf", style: .default) { (_) in
+            guard let popUpTBVC = UIStoryboard.init(name: "Readen", bundle: nil).instantiateViewController(withIdentifier: "popUpBookshelfTBVC") as? PopUpBookshelfTableViewController else {return}
+            popUpTBVC.modalPresentationStyle = .automatic
+            popUpTBVC.bookISBN = isbn
+            self.present(popUpTBVC, animated: true, completion: nil)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(removeAction)
+        alertController.addAction(addAction)
+        self.present(alertController, animated: true)
+    }
 }

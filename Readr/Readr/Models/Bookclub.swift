@@ -22,6 +22,7 @@ struct BookclubConstants {
     fileprivate static let pastReadsKey = "pastReads"
     fileprivate static let meetingInfoKey = "meetingInfo"
     fileprivate static let memberCapacityKey = "memberCapacity"
+    fileprivate static let photoAssetKey = "photoAsset"
 }
 
 class Bookclub {
@@ -96,6 +97,9 @@ extension CKRecord {
         if bookclub.pastReads.count > 0 {
             self.setValue(bookclub.pastReads, forKey: BookclubConstants.pastReadsKey)
                }
+        if let photoAsset = bookclub.photoAsset {
+            self.setValue(photoAsset, forKey: BookclubConstants.photoAssetKey)
+        }
     }
 }
 
@@ -117,7 +121,7 @@ extension Bookclub {
         
         
         var foundPhoto: UIImage?
-        if let photoAsset = ckRecord[BookclubConstants.profilePictureKey] as? CKAsset {
+        if let photoAsset = ckRecord[BookclubConstants.photoAssetKey] as? CKAsset {
             do {
                 let data = try Data(contentsOf: photoAsset.fileURL!)
                 foundPhoto = UIImage(data: data)

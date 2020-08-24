@@ -45,6 +45,7 @@
 		C98FC7EC24E1B4C900C27CBF /* ChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7EB24E1B4C900C27CBF /* ChatError.swift */; };
 		C98FC7F424E3182600C27CBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98FC7F324E3182600C27CBF /* CloudKit.framework */; };
 		C9DBB76524F4117900285DC7 /* PopUpBookshelfTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DBB76424F4117900285DC7 /* PopUpBookshelfTableViewController.swift */; };
+		C9DBB76724F469B900285DC7 /* PastReadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DBB76624F469B800285DC7 /* PastReadsTableViewCell.swift */; };
 		F31A488524E480A80071652A /* BookshelfListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488424E480A80071652A /* BookshelfListTableViewController.swift */; };
 		F31A488724E480CA0071652A /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488624E480CA0071652A /* UserDetailViewController.swift */; };
 		F31A488924E480DA0071652A /* BookclubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488824E480DA0071652A /* BookclubViewController.swift */; };
@@ -97,6 +98,7 @@
 		C98FC7F124E3181F00C27CBF /* Readr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Readr.entitlements; sourceTree = "<group>"; };
 		C98FC7F324E3182600C27CBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C9DBB76424F4117900285DC7 /* PopUpBookshelfTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBookshelfTableViewController.swift; sourceTree = "<group>"; };
+		C9DBB76624F469B800285DC7 /* PastReadsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastReadsTableViewCell.swift; sourceTree = "<group>"; };
 		F31A488424E480A80071652A /* BookshelfListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfListTableViewController.swift; sourceTree = "<group>"; };
 		F31A488624E480CA0071652A /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		F31A488824E480DA0071652A /* BookclubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				937640D124EC3BFE00B51DEC /* SearchTableViewCell.swift */,
 				937640D324EC3C1900B51DEC /* SearchCollectionViewCell.swift */,
 				937640D924EC460700B51DEC /* MessageTableViewCell.swift */,
+				C9DBB76624F469B800285DC7 /* PastReadsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				C938A39324EF2F200095AD50 /* SearchableRecord.swift in Sources */,
 				C98FC7DC24E19D3900C27CBF /* BookshelfController.swift in Sources */,
 				C98FC7C824DDCB1300C27CBF /* Book.swift in Sources */,
+				C9DBB76724F469B900285DC7 /* PastReadsTableViewCell.swift in Sources */,
 				C98FC7EA24E1B4BB00C27CBF /* UserError.swift in Sources */,
 				937640D624EC44F100B51DEC /* ChatTableViewController.swift in Sources */,
 				C98FC7E424E1B47100C27CBF /* ChatController.swift in Sources */,
