@@ -64,7 +64,13 @@ class BookshelfController {
         
         let predicate = NSPredicate(format: "%K == %@", BookshelfStrings.titleKey, "Favorites")
         
-        let query = CKQuery(recordType: BookshelfStrings.recordTypeKey, predicate: predicate)
+        let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
+        
+        let predicate2 = NSPredicate(format: "%K == %@", BookshelfStrings.userRefKey, userRef)
+        
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, predicate2])
+        
+        let query = CKQuery(recordType: BookshelfStrings.recordTypeKey, predicate: compoundPredicate)
         publicDB.perform(query, inZoneWith: nil) { (records, error) in
             if let error = error {
                 print("There was an error fetching all Bookclubs - \(error) - \(error.localizedDescription)")
