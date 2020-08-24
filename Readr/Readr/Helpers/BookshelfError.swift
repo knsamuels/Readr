@@ -11,7 +11,7 @@ import Foundation
 enum BookshelfError: LocalizedError {
     
     case ckError(Error)
-    case couldNotUnwarp
+    case couldNotUnwrap
     case unableToDeleteRecord
     case noUserLoggedIn
     
@@ -19,7 +19,7 @@ enum BookshelfError: LocalizedError {
         switch self {
         case .ckError(let error):
             return error.localizedDescription
-        case . couldNotUnwarp :
+        case . couldNotUnwrap :
             return "Unable to unwarp this post"
         case . unableToDeleteRecord:
             return "Unable to delete record from CloudKit"

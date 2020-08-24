@@ -53,6 +53,9 @@ class BookDetailViewController: UIViewController {
                         case .success(let bookshelves):
                             user.bookshelves = bookshelves
                             guard let firstBookshelf = user.bookshelves.first else {return}
+//                            if firstBookshelf.title == "Favorites" {
+//                                user.favoriteBooks.append(isbn)
+//                            }
                             firstBookshelf.books.append(isbn)
                             BookshelfController.shared.updateBookshelf(bookshelf: firstBookshelf) { (result) in
                                 DispatchQueue.main.async {

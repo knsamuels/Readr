@@ -13,8 +13,10 @@ class UserDetailViewController: UIViewController {
     // MARK: Properties:
     var userFavBooks: [Book] = []
     var userBookClubs: [Bookclub] = []
-    var user: User? 
+    var favBookISBNs: [String] = []
+    var user: User?
     
+    //MARK: - Outlets
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var followerLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
@@ -56,7 +58,7 @@ class UserDetailViewController: UIViewController {
         }
     }
     
-    //helper functions
+    //MARK: - Helper Methods
     func fetchUser() {
         UserController.shared.fetchUser { (result) in
             switch result {
@@ -72,6 +74,45 @@ class UserDetailViewController: UIViewController {
     
     func fetchUserBooks() {
         guard let user = self.user else {return}
+        
+        BookshelfController.shared.fetchFavoritesBookshelf(user: user) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let bookshelf):
+                    self.retrieveFirstFour(bookshelf: bookshelf)
+                case .failure(_):
+                    print("Unable to retrieve Favorites")
+                }
+            }
+        }
+        
+//        BookController.shared.fetchFavoriteBooks(forUser: user) { (result) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let books):
+//                    self.userFavBooks = books
+//                    self.getUsersBookclubs()
+//                case .failure(_):
+//                    print("failed getting user's favorite books")
+//                }
+//            }
+//        }
+    }
+    
+    func retrieveFirstFour(bookshelf: Bookshelf) {
+        guard let user = self.user else {return}
+        
+        let count = bookshelf.books.count
+        if count >= 4 {
+            for i in 0...3 {
+                favBookISBNs.append(bookshelf.books[i])
+            }
+        }
+        else {
+            favBookISBNs.append(contentsOf: bookshelf.books)
+        }
+        user.favoriteBooks = favBookISBNs
+        
         BookController.shared.fetchFavoriteBooks(forUser: user) { (result) in
             DispatchQueue.main.async {
                 switch result {

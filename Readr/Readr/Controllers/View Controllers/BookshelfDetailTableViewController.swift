@@ -74,7 +74,7 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfSearchCell", for: indexPath) as? BookshelfSearchTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfSearchCell", for: indexPath) as? BookshelfDetailTableViewCell else { return UITableViewCell() }
 //        let book = dataSource[indexPath.row] as? Book
         let book = bookshelfBooks[indexPath.row] 
         cell.book = book

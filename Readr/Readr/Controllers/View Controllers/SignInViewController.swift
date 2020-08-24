@@ -9,7 +9,7 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-
+    
     //MARK: - Outlets
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
@@ -20,12 +20,14 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
     @IBOutlet weak var enterButton: UIButton!
+    @IBOutlet weak var alreadyExistsLabel: UILabel!
     
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         toggleToLogIn()
         fetchUser()
+        alreadyExistsLabel.isHidden = true
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
@@ -47,10 +49,33 @@ class SignInViewController: UIViewController {
         guard let firstName = firstNameTextField.text, !firstName.isEmpty else {return}
         guard let lastName = lastNameTextField.text, !lastName.isEmpty else {return}
         guard let favAuthor = favAuthorTextField.text, !favAuthor.isEmpty else {return}
+        checkUsername(username: username)
+    }
+    
+    //MARK: - Helper Methods
+    func checkUsername(username: String) {
+        UserController.shared.fetchUsername(username: username) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    self.alreadyExistsLabel.isHidden = false
+                case .failure(_):
+                    self.createUser()
+                }
+            }
+        }
+    }
+    
+    func createUser() {
+        guard let username = usernameTextField.text, !username.isEmpty else {return}
+        guard let firstName = firstNameTextField.text, !firstName.isEmpty else {return}
+        guard let lastName = lastNameTextField.text, !lastName.isEmpty else {return}
+        guard let favAuthor = favAuthorTextField.text, !favAuthor.isEmpty else {return}
         UserController.shared.createUser(username: username, firstName: firstName, lastName: lastName, favoriteAuthor: favAuthor) { (result) in
             switch result {
             case .success(let user):
                 UserController.shared.currentUser = user
+                self.createFavorites()
                 self.presentMessageVC()
             case .failure(let error):
                 print(error.errorDescription ?? "There was an error creating a user.")
@@ -58,7 +83,19 @@ class SignInViewController: UIViewController {
         }
     }
     
-    //MARK: - Helper Methods
+    func createFavorites() {
+           BookshelfController.shared.createBookshelf(title: "Favorites") { (result) in
+               DispatchQueue.main.async {
+                   switch result {
+                   case .success(_):
+                       print("Favorites added!")
+                   case .failure(_):
+                       print("Favorites failed.")
+                   }
+               }
+           }
+       }
+    
     func toggleToLogIn() {
         confirmTextField.isHidden = true
         firstNameTextField.isHidden = true
@@ -99,5 +136,5 @@ class SignInViewController: UIViewController {
             self.present(viewController, animated: true)
         }
     }
-
+    
 } //End of class

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookshelfCellTableViewCell: UITableViewCell {
+class BookshelfListTableViewCell: UITableViewCell {
 
     var bookshelf: Bookshelf? {
         didSet {
