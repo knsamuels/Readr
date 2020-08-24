@@ -51,13 +51,16 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.user == nil {
-            fetchUser()
-        } else {
-            fetchUserBooks()
-        }
+       
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(true)
+        if self.user == nil {
+                   fetchUser()
+               } else {
+                   fetchUserBooks()
+               }
+    }
     //MARK: - Helper Methods
     func fetchUser() {
         UserController.shared.fetchUser { (result) in
