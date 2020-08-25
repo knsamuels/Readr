@@ -550,7 +550,7 @@
         <!--Pop Up Books Search Table View Controller-->
         <scene sceneID="Gsr-cs-sDA">
             <objects>
-                <tableViewController storyboardIdentifier="PopUpBookSearch" id="xcb-Rn-diK" customClass="PopUpBooksSearchTableViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PopUpBookSearch" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xcb-Rn-diK" customClass="PopUpBooksSearchTableViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RMJ-93-lP4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
