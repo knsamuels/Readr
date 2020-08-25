@@ -175,7 +175,19 @@ extension BookshelfDetailTableViewController: BookshelfCellDelegate {
         let removeAction = UIAlertAction(title: "Remove from Shelf", style: .default) { (_) in
             guard let index = bookshelf.books.firstIndex(of: isbn) else {return}
             bookshelf.books.remove(at: index)
-            
+//            guard let filteredIndex = self.bookshelfBooks.firstIndex(of: <#T##Book#>)
+//            self.bookshelfBooks.remove(at: index)
+            BookshelfController.shared.updateBookshelf(bookshelf: bookshelf) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(_):
+                        self.tableView.reloadData()
+                    case .failure(_):
+                        print("failed to update bookshelf")
+                    }
+                }
+            }
+
         }
         let addAction = UIAlertAction(title: "Add to Another Shelf", style: .default) { (_) in
             guard let popUpTBVC = UIStoryboard.init(name: "Readen", bundle: nil).instantiateViewController(withIdentifier: "popUpBookshelfTBVC") as? PopUpBookshelfTableViewController else {return}

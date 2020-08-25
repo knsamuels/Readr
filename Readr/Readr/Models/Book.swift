@@ -53,3 +53,15 @@ extension Book: SearchableRecord {
         }
     }
 }//End of extension
+
+extension Book: Equatable {
+    static func == (lhs: Book, rhs: Book) -> Bool {
+        return lhs.industryIdentifiers == rhs.industryIdentifiers
+    }
+}
+
+extension IndustryIdentifiers: Equatable {
+    static func == (lhs: IndustryIdentifiers, rhs: IndustryIdentifiers) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+}
