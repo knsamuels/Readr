@@ -48,6 +48,14 @@ class PopUpBooksSearchTableViewController: UITableViewController  {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let book = books[indexPath.row]
+        if let presenter = presentingViewController as? CreateBCViewController {
+            presenter.currentlyReadingBook = book
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -59,7 +67,6 @@ class PopUpBooksSearchTableViewController: UITableViewController  {
     */
 
 }
-
 
 extension PopUpBooksSearchTableViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

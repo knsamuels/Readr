@@ -11,6 +11,11 @@ import UIKit
 class CreateBCViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate {
     
     var bookclub: Bookclub?
+    var currentlyReadingBook: Book? {
+        didSet {
+            updateCurrentlyReading()
+        }
+    }
     
     @IBOutlet weak var imageOfBookClub: UIImageView!
     @IBOutlet weak var nameOfBookClub: UITextField!
@@ -94,6 +99,10 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     @IBAction func currentlyReadingButtonTapped(_ sender: Any) {
+        
+        guard let bookPopUpTBVC = UIStoryboard(name: "Readen", bundle: nil).instantiateViewController(withIdentifier: "PopUpBookSearch") as? PopUpBookshelfTableViewController else {return}
+        bookPopUpTBVC.modalPresentationStyle = .automatic
+        self.present(bookPopUpTBVC, animated: true, completion: nil)
     }
     
     @IBAction func fiveMembersTapped(_ sender: Any) {
@@ -145,6 +154,11 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
                 textView.textColor = UIColor.black
             }
         }
+    }
+     
+    func updateCurrentlyReading() {
+        guard let book = currentlyReadingBook else {return}
+        currentlyReadingImage.image = book.coverImage
     }
     
     // MARK: - Navigation

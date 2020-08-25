@@ -21,13 +21,16 @@ class PopUpBookSearchTableViewCell: UITableViewCell {
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var bookAuthorLabel: UILabel!
     @IBOutlet weak var bookRatingLabel: UILabel!
-    
 
- 
     //MARK: - Helper
         func updateViews() {
-        
+            guard let book = book else {return}
+            bookImageView.image = book.coverImage
+            bookTitleLabel.text = book.title
+            bookAuthorLabel.text = book.authors?.first
+            bookRatingLabel.text = "Rating: \(String(book.averageRating ?? 0))"
         }
 
     
 }
+
