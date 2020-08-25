@@ -28,7 +28,7 @@ class BookclubController {
     func createBookClub(name: String, adminContactInfo: String, description: String, profilePic: UIImage?, meetingInfo: String, memberCapacity: Int, completion: @escaping(Result<Bookclub, BookclubError>) -> Void) {
 //        let ckReference = CKRecord.Reference(recordID: recordID, action: .none)
         guard let user = UserController.shared.currentUser else {return completion(.failure(.couldNotUnwrap))}
-        let reference = CKRecord.Reference(recordID: user.recordID, action: .none)
+        let reference = user.appleUserRef
         let newBC = Bookclub(name: name, admin: reference, adminContactInfo: adminContactInfo, members: [reference], description: description, profilePicture: profilePic, currentlyReading: "9780399230035", meetingInfo: meetingInfo, memberCapacity: memberCapacity)
         
         let bcRecord = CKRecord(bookclub: newBC)

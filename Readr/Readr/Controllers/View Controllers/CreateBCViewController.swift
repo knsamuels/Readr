@@ -17,13 +17,11 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var descriptionOfBookClub: UITextView!
     @IBOutlet weak var meetingInfoForBookBlub: UITextField!
     @IBOutlet weak var currentlyReadingImage: UIImageView!
-    @IBOutlet weak var currentlyReadingTitleLabel: UILabel!
-    @IBOutlet weak var currentlyReadingAuthorLabel: UILabel!
-    @IBOutlet weak var currentlyReadingRatingLabel: UILabel!
+    @IBOutlet weak var currentlyReadingButton: UIButton!
     @IBOutlet weak var createBookclubButton: UIButton!
-    @IBOutlet weak var adminContactInfo: UITextField!
-    @IBOutlet weak var memberCapacity: UITextField!
     @IBOutlet weak var selectProfileImage: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +56,8 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     
     @IBAction func createBookclubButtonTapped(_ sender: UIButton) {
         guard let name = nameOfBookClub.text, !name.isEmpty,
-            let adminContactInformation = adminContactInfo.text, !adminContactInformation.isEmpty, let description = descriptionOfBookClub.text, !description.isEmpty, let meetingInfo = meetingInfoForBookBlub.text, !meetingInfo.isEmpty, let memberCap = memberCapacity.text, !memberCap.isEmpty else {return}
+            let description = descriptionOfBookClub.text, !description.isEmpty,
+            let meetingInfo = meetingInfoForBookBlub.text, !meetingInfo.isEmpty else {return}
         let profilePic: UIImage?
         if imageOfBookClub.image != nil {
             profilePic = imageOfBookClub.image
@@ -71,18 +70,20 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
                     switch result {
                     case .success(let bookclub):
                         self.bookclub = bookclub
-                        self.navigationController?.popViewController(animated: true)
+                    //                        self.navigationController?.popViewController(animated: true)
                     case .failure(_):
                         print("could not update the bookclub")
                     }
                 }
             }
         } else {
-            BookclubController.shared.createBookClub(name: name, adminContactInfo: adminContactInformation, description: description, profilePic: profilePic, meetingInfo: meetingInfo, memberCapacity: Int(memberCap) ?? 10 ) { (result) in
+            BookclubController.shared.createBookClub(name: name, adminContactInfo: "never", description: description, profilePic: profilePic, meetingInfo: meetingInfo, memberCapacity: 10) { (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let bookclub):
                         self.bookclub = bookclub
+                        self.performSegue(withIdentifier:
+                            "toBookclubVC", sender: self)
                         self.navigationController?.popViewController(animated: true)
                     case .failure(_):
                         self.navigationController?.popViewController(animated: true)
@@ -91,19 +92,46 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             }
         }
     }
+    
+    @IBAction func currentlyReadingButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func fiveMembersTapped(_ sender: Any) {
+    }
+    
+    @IBAction func tenMembersButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func fifteenMemberButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func twentyMembersButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func twentyFivePlusMembersTapped(_ sender: Any) {
+    }
+    
+    
     //MARK: - Helpers
+    
+    func presentBookclub(bookclub: Bookclub) {
+        guard let bookclubVC = UIStoryboard.init(name: "Readen", bundle: nil).instantiateViewController(withIdentifier: "BookclubVC") as? BookclubViewController else {return}
+        bookclubVC.modalPresentationStyle = .fullScreen
+        bookclubVC.bookclub = bookclub
+        self.present(bookclubVC, animated: true, completion: nil)
+    }
     
     func setupTextViews() {
         descriptionOfBookClub.delegate = self
         
         if descriptionOfBookClub.text.isEmpty {
-            descriptionOfBookClub.text = "Describe your bookclub..."
-            descriptionOfBookClub.textColor = UIColor.lightGray
+            descriptionOfBookClub.text = "Introduce your bookclub!"
+            descriptionOfBookClub.textColor = UIColor.black
         }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor == UIColor.black {
             textView.text = nil
             textView.textColor = UIColor.black
         }
@@ -114,19 +142,19 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             if textView == descriptionOfBookClub {
                 textView.text = "Describe your bookclub..."
                 
-                textView.textColor = UIColor.lightGray
+                textView.textColor = UIColor.black
             }
         }
-        
-        
-        // MARK: - Navigation
-        
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "createBCtoVC" {
-                guard let destination = segue.destination as? BookclubViewController else {return}
-                let bookclubToSend = bookclub
-                destination.bookclub = bookclubToSend
-            }
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("segue was hit")
+        if segue.identifier == "toBookclubVC" {
+            guard let destination = segue.destination as? BookclubViewController else {return}
+            let bookclubToSend = bookclub
+            destination.bookclub = bookclubToSend
         }
     }
 }
