@@ -8,8 +8,13 @@
 
 import UIKit
 
-class PopUpBooksSearchTableViewController: UITableViewController  {
+protocol PopUpBookSearchDelegate: class {
+    func didSelectBook(book: Book)
+}
 
+class PopUpBooksSearchTableViewController: UITableViewController  {
+    
+    weak var bookDelegate: PopUpBookSearchDelegate?
     var books: [Book] = []
     
     @IBOutlet weak var bookSearchBar: UISearchBar!
@@ -50,9 +55,7 @@ class PopUpBooksSearchTableViewController: UITableViewController  {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let book = books[indexPath.row]
-        if let presenter = presentingViewController as? CreateBCViewController {
-            presenter.currentlyReadingBook = book
-        }
+        bookDelegate?.didSelectBook(book: book)
         dismiss(animated: true, completion: nil)
     }
     

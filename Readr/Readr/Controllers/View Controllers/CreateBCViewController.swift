@@ -31,8 +31,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextViews()
-        
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
@@ -62,7 +60,8 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     @IBAction func createBookclubButtonTapped(_ sender: UIButton) {
         guard let name = nameOfBookClub.text, !name.isEmpty,
             let description = descriptionOfBookClub.text, !description.isEmpty,
-            let meetingInfo = meetingInfoForBookBlub.text, !meetingInfo.isEmpty else {return}
+            let meetingInfo = meetingInfoForBookBlub.text, !meetingInfo.isEmpty,
+            let isbn = currentlyReadingBook?.industryIdentifiers?.first?.identifier else {return}
         let profilePic: UIImage?
         if imageOfBookClub.image != nil {
             profilePic = imageOfBookClub.image
@@ -82,14 +81,14 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
                 }
             }
         } else {
-            BookclubController.shared.createBookClub(name: name, adminContactInfo: "never", description: description, profilePic: profilePic, meetingInfo: meetingInfo, memberCapacity: 10) { (result) in
+            BookclubController.shared.createBookClub(name: name, adminContactInfo: "never", description: description, profilePic: profilePic, meetingInfo: meetingInfo, memberCapacity: 10, currentlyReading: isbn) { (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let bookclub):
                         self.bookclub = bookclub
                         self.performSegue(withIdentifier:
                             "toBookclubVC", sender: self)
-                        self.navigationController?.popViewController(animated: true)
+//                        self.navigationController?.popViewController(animated: true)
                     case .failure(_):
                         self.navigationController?.popViewController(animated: true)
                     }
@@ -100,8 +99,9 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     
     @IBAction func currentlyReadingButtonTapped(_ sender: Any) {
         
-        guard let bookPopUpTBVC = UIStoryboard(name: "Readen", bundle: nil).instantiateViewController(withIdentifier: "PopUpBookSearch") as? PopUpBookshelfTableViewController else {return}
+        guard let bookPopUpTBVC = UIStoryboard(name: "Readen", bundle: nil).instantiateViewController(withIdentifier: "PopUpBookSearch") as? PopUpBooksSearchTableViewController else {return}
         bookPopUpTBVC.modalPresentationStyle = .automatic
+        bookPopUpTBVC.bookDelegate = self
         self.present(bookPopUpTBVC, animated: true, completion: nil)
     }
     
@@ -155,7 +155,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             }
         }
     }
-     
+    
     func updateCurrentlyReading() {
         guard let book = currentlyReadingBook else {return}
         currentlyReadingImage.image = book.coverImage
@@ -164,7 +164,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("segue was hit")
         if segue.identifier == "toBookclubVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
             let bookclubToSend = bookclub
@@ -182,3 +181,9 @@ extension CreateBCViewController: UIImagePickerControllerDelegate {
     }
 } //End of extension
 
+extension CreateBCViewController: PopUpBookSearchDelegate {
+    func didSelectBook(book: Book) {
+        currentlyReadingBook = book
+        
+    }
+}
