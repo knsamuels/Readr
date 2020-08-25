@@ -45,6 +45,8 @@
 		C98FC7EA24E1B4BB00C27CBF /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E924E1B4BB00C27CBF /* UserError.swift */; };
 		C98FC7EC24E1B4C900C27CBF /* ChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7EB24E1B4C900C27CBF /* ChatError.swift */; };
 		C98FC7F424E3182600C27CBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98FC7F324E3182600C27CBF /* CloudKit.framework */; };
+		C9BFE4CA24F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFE4C924F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift */; };
+		C9BFE4CC24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFE4CB24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift */; };
 		C9DBB76524F4117900285DC7 /* PopUpBookshelfTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DBB76424F4117900285DC7 /* PopUpBookshelfTableViewController.swift */; };
 		C9DBB76724F469B900285DC7 /* PastReadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DBB76624F469B800285DC7 /* PastReadsTableViewCell.swift */; };
 		F31A488524E480A80071652A /* BookshelfListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488424E480A80071652A /* BookshelfListTableViewController.swift */; };
@@ -99,6 +101,8 @@
 		C98FC7EB24E1B4C900C27CBF /* ChatError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatError.swift; sourceTree = "<group>"; };
 		C98FC7F124E3181F00C27CBF /* Readr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Readr.entitlements; sourceTree = "<group>"; };
 		C98FC7F324E3182600C27CBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		C9BFE4C924F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBooksSearchTableViewController.swift; sourceTree = "<group>"; };
+		C9BFE4CB24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBookSearchTableViewCell.swift; sourceTree = "<group>"; };
 		C9DBB76424F4117900285DC7 /* PopUpBookshelfTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBookshelfTableViewController.swift; sourceTree = "<group>"; };
 		C9DBB76624F469B800285DC7 /* PastReadsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastReadsTableViewCell.swift; sourceTree = "<group>"; };
 		F31A488424E480A80071652A /* BookshelfListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfListTableViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +256,7 @@
 				937640D524EC44F100B51DEC /* ChatTableViewController.swift */,
 				937640D724EC45B800B51DEC /* MessageViewController.swift */,
 				F3437FA024EF2CCD00C38DA3 /* ReviewDetailViewController.swift */,
+				C9BFE4C924F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 				937640D324EC3C1900B51DEC /* SearchCollectionViewCell.swift */,
 				937640D924EC460700B51DEC /* MessageTableViewCell.swift */,
 				C9DBB76624F469B800285DC7 /* PastReadsTableViewCell.swift */,
+				C9BFE4CB24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 				C9DBB76724F469B900285DC7 /* PastReadsTableViewCell.swift in Sources */,
 				C98FC7EA24E1B4BB00C27CBF /* UserError.swift in Sources */,
 				937640D624EC44F100B51DEC /* ChatTableViewController.swift in Sources */,
+				C9BFE4CC24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift in Sources */,
 				C98FC7E424E1B47100C27CBF /* ChatController.swift in Sources */,
 				937640D224EC3BFE00B51DEC /* SearchTableViewCell.swift in Sources */,
 				C98FC7CA24DDCB4100C27CBF /* Bookclub.swift in Sources */,
@@ -366,6 +373,7 @@
 				C98FC7E024E1B42000C27CBF /* BookclubControllers.swift in Sources */,
 				C98FC7B024DDC71000C27CBF /* AppDelegate.swift in Sources */,
 				937A9F5C24F4CAC100AE9067 /* GenresViewController.swift in Sources */,
+				C9BFE4CA24F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift in Sources */,
 				C98FC7E824E1B4A300C27CBF /* MessageError.swift in Sources */,
 				C98FC7DE24E1A0B900C27CBF /* BookshelfError.swift in Sources */,
 				C98FC7D724DDD52000C27CBF /* BookController.swift in Sources */,
