@@ -33,6 +33,7 @@ class Bookclub {
     var members: [CKRecord.Reference]
     var currentlyReading: String
     var pastReads: [String]
+//    var pastReadBooks: [Book]
     var meetingInfo: String
     var memberCapacity: Int
     var recordID: CKRecord.ID

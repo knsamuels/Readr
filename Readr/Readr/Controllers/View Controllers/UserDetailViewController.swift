@@ -55,6 +55,8 @@ class UserDetailViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(true)
+//        userFavBooks = []
+        favBookISBNs = []
         if self.user == nil {
                    fetchUser()
                } else {
@@ -82,7 +84,7 @@ class UserDetailViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let bookshelf):
-                    self.retrieveFirstFour(bookshelf: bookshelf)
+                    self.retrieveFirstThree(bookshelf: bookshelf)
                 case .failure(_):
                     print("Unable to retrieve Favorites")
                 }
@@ -102,12 +104,12 @@ class UserDetailViewController: UIViewController {
 //        }
     }
     
-    func retrieveFirstFour(bookshelf: Bookshelf) {
+    func retrieveFirstThree(bookshelf: Bookshelf) {
         guard let user = self.user else {return}
         
         let count = bookshelf.books.count
-        if count >= 4 {
-            for i in 0...3 {
+        if count >= 3 {
+            for i in 0...2 {
                 favBookISBNs.append(bookshelf.books[i])
             }
         }
@@ -131,6 +133,18 @@ class UserDetailViewController: UIViewController {
     
     func updateViews() {
         DispatchQueue.main.async {
+            self.favBookPic1.isHidden = false
+            self.titleLabel1.isHidden = false
+            self.authorLabel1.isHidden = false
+            self.favBook1ButtonLabel.isHidden = false
+            self.favBookPic2.isHidden = false
+            self.titleLabel2.isHidden = false
+            self.authorLabel2.isHidden = false
+            self.favBook2ButtonLabel.isHidden = false
+            self.favBookPic3.isHidden = false
+            self.titleLabel3.isHidden = false
+            self.authorLabel3.isHidden = false
+            self.favBook3ButtonLabel.isHidden = false
             self.title = self.user?.username ?? "N/A"
             self.bioLabel.text = self.user?.bio ?? "N/A"
             let numberOfBooks = self.userFavBooks.count
@@ -209,6 +223,18 @@ class UserDetailViewController: UIViewController {
                 self.favGenreName3.text = self.user?.favoriteGenres[2]
             }
             
+            self.bookclubImage1.isHidden = false
+            self.bookclubName1.isHidden = false
+            self.bookclub1ButtonLabel.isHidden = false
+            self.bookclubImage2.isHidden = false
+            self.bookclubName2.isHidden = false
+            self.bookclub2ButtonLabel.isHidden = false
+            self.bookclubImage3.isHidden = false
+            self.bookclubName3.isHidden = false
+            self.bookclub3ButtonLabel.isHidden = false
+            self.bookclubImage4.isHidden = false
+            self.bookclubName4.isHidden = false
+            self.bookclub4ButtonLabel.isHidden = false
             let numberOfBookClubs = self.userBookClubs.count
             switch numberOfBookClubs {
             case 0:

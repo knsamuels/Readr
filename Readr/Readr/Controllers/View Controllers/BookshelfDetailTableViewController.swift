@@ -41,6 +41,7 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
     //Mark - Helper function
     func fetchBooks() {
         guard let bookshelf = bookshelf else {return}
+        bookshelfBooks = []
         for i in bookshelf.books {
             BookController.fetchOneBookWith(ISBN: i) { (result) in
                 DispatchQueue.main.async {
@@ -175,6 +176,7 @@ extension BookshelfDetailTableViewController: BookshelfCellDelegate {
         let removeAction = UIAlertAction(title: "Remove from Shelf", style: .default) { (_) in
             guard let index = bookshelf.books.firstIndex(of: isbn) else {return}
             bookshelf.books.remove(at: index)
+            self.fetchBooks()
 //            guard let filteredIndex = self.bookshelfBooks.firstIndex(of: <#T##Book#>)
 //            self.bookshelfBooks.remove(at: index)
             BookshelfController.shared.updateBookshelf(bookshelf: bookshelf) { (result) in

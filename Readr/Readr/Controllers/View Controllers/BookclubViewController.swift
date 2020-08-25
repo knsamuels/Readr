@@ -16,7 +16,6 @@ class BookclubViewController: UIViewController {
     var pastReads: [Book] = []
     
     @IBOutlet weak var imageOfBookClub: UIImageView!
-    @IBOutlet weak var nameOfBookClub: UILabel!
     @IBOutlet weak var descriptionOfBookClub: UILabel!
     @IBOutlet weak var meetingInfoForBookClub: UILabel!
     @IBOutlet weak var ImageForCurrentlyReading: UIImageView!
@@ -42,14 +41,8 @@ class BookclubViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        updateViews()
-//        fetchBook()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super .viewWillAppear(true)
-        updateViews()
-        fetchBook()
+        loadDataForUser()
+        self.title = bookclub?.name
     }
     
     @IBAction func joinButtonTapped(_ sender: Any) {
@@ -70,11 +63,6 @@ class BookclubViewController: UIViewController {
                 joinButton.setTitle("Leave", for: .normal)
             }
         }
-        print(bookclub.name)
-        print(user.username)
-        print(user.bookclubs.count)
-        print(user.recordID)
-        print(userReference)
         BookclubController.shared.update(bookclub: bookclub) { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -87,20 +75,17 @@ class BookclubViewController: UIViewController {
         }
     }
     
-    func updateViews() {
+    func updateViews(admin: User) {
         DispatchQueue.main.async {
             guard let user = UserController.shared.currentUser else {return}
             guard let bookclub = self.bookclub else {return}
             guard let currentlyReading = self.currentlyReading else {return}
             let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
-//            let adminUser = User(ckRecord: bookclub.admin.recordID)
-//            let admin = adminUser.user
+            
             self.imageOfBookClub.image = bookclub.profilePicture
             self.descriptionOfBookClub.text = bookclub.description
-            self.nameOfBookClub.text = bookclub.name
             self.meetingInfoForBookClub.text = bookclub.meetingInfo
-            self.adminNameLabel.text = "\(bookclub.admin)"
-            //this needs to be changed
+            self.adminNameLabel.text = admin.username
             self.adminContactInfoLabel.text = bookclub.adminContactInfo
             if bookclub.admin == userReference {
                 self.joinButton.setTitle("Host", for: .normal)
@@ -173,7 +158,23 @@ class BookclubViewController: UIViewController {
         }
     }
     
-    func fetchBook() {
+    private func loadDataForUser() {
+        guard let adminReference = bookclub?.admin else {return}
+        UserController.shared.fetchUser(withReference: adminReference) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let admin):
+                    self.fetchBook() {
+                        self.updateViews(admin: admin)
+                        //fetchPastReads --- need to add call updateViews in PastReads closure
+                    }
+                case .failure(_):
+                    print("there was an error fetching the user")
+                }
+            }
+        }
+    }
+    func fetchBook(completion: @escaping() -> Void) {
         guard let bookclub = bookclub else { return}
         BookController.fetchOneBookWith(ISBN: bookclub.currentlyReading) {
             (result) in
@@ -181,26 +182,27 @@ class BookclubViewController: UIViewController {
                 switch result {
                 case .success(let book):
                     self.currentlyReading = book
-                    self.updateViews()
+                    completion()
                 case .failure(_):
+                    completion()
                     print("error fetching book")
                 }
             }
         }
     }
-    func fetchBookClubs () {
-        guard let user = UserController.shared.currentUser else { return}
-        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
-            switch result {
-            case .success(let bookclubs):
-                UserController.shared.currentUser?.bookclubs.append(contentsOf: bookclubs)
-                self.updateViews()
-                print("we were able to get the user's bookclubs")
-            case .failure(_):
-                print("we were not able to get the user's bookclubs")
-            }
-        }
-    }
+//    func fetchBookClubs () {
+//        guard let user = UserController.shared.currentUser else { return}
+//        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
+//            switch result {
+//            case .success(let bookclubs):
+//                UserController.shared.currentUser?.bookclubs.append(contentsOf: bookclubs)
+//                self.updateViews()
+//                print("we were able to get the user's bookclubs")
+//            case .failure(_):
+//                print("we were not able to get the user's bookclubs")
+//            }
+//        }
+//    }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

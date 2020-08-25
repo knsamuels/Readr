@@ -184,4 +184,23 @@ class UserController {
         publicDB.add(operation)
     }
     
+    func fetchUser(withReference reference: CKRecord.Reference, completion: @escaping (Result< User, UserError>) -> Void) {
+        let predicate = NSPredicate(format: "%K == %@", argumentArray: [UserStrings.appleUserRefKey, reference])
+        
+        let query = CKQuery(recordType: UserStrings.recordTypeKey, predicate: predicate)
+        
+        self.publicDB.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print("There was an error fetching a user - \(error) - \(error.localizedDescription)")
+                return completion(.failure(.ckError(error)))
+            }
+            
+            guard let record = records?.first,
+                let fetchedUser = User(ckRecord: record) else {return completion(.failure(.couldNotUnwrap))}
+            
+            print("Fetched User: \(fetchedUser.username)")
+            completion(.success(fetchedUser))
+        }
+    }
+    
 } //End class
