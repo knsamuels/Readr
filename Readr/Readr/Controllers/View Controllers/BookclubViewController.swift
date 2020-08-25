@@ -34,7 +34,6 @@ class BookclubViewController: UIViewController {
     @IBOutlet weak var adminNameLabel: UILabel!
     @IBOutlet weak var adminContactInfoLabel: UILabel!
     @IBOutlet weak var joinButton: UIButton!
-    /// add these connections
     @IBOutlet weak var image3ForPastReads: UIImageView!
     @IBOutlet weak var title3ForPastReads: UILabel!
     @IBOutlet weak var author3ForPastReads: UILabel!
@@ -126,10 +125,10 @@ class BookclubViewController: UIViewController {
                 self.title2ForPastReads.isHidden = true
                 self.author2ForPastReads.isHidden = true
                 self.rating2ForPastReads.isHidden = true
-//                self.image3ForPastReads.isHidden = true
-//                self.title3ForPastReads.isHidden = true
-//                self.author3ForPastReads.isHidden = true
-//                self.rating3ForPastReads.isHidden = true
+                self.image3ForPastReads.isHidden = true
+                self.title3ForPastReads.isHidden = true
+                self.author3ForPastReads.isHidden = true
+                self.rating3ForPastReads.isHidden = true
             case 1:
                 self.image1ForPastReads.isHidden = false
                 self.title1ForPastReads.isHidden = false
@@ -139,10 +138,10 @@ class BookclubViewController: UIViewController {
                 self.title2ForPastReads.isHidden = true
                 self.author2ForPastReads.isHidden = true
                 self.rating2ForPastReads.isHidden = true
-//                self.image3ForPastReads.isHidden = true
-//                self.title3ForPastReads.isHidden = true
-//                self.author3ForPastReads.isHidden = true
-//                self.rating3ForPastReads.isHidden = true
+                self.image3ForPastReads.isHidden = true
+                self.title3ForPastReads.isHidden = true
+                self.author3ForPastReads.isHidden = true
+                self.rating3ForPastReads.isHidden = true
             case 2:
                 self.image1ForPastReads.isHidden = false
                 self.title1ForPastReads.isHidden = false
@@ -152,10 +151,10 @@ class BookclubViewController: UIViewController {
                 self.title2ForPastReads.isHidden = false
                 self.author2ForPastReads.isHidden = false
                 self.rating2ForPastReads.isHidden = false
-//                self.image3ForPastReads.isHidden = true
-//                self.title3ForPastReads.isHidden = true
-//                self.author3ForPastReads.isHidden = true
-//                self.rating3ForPastReads.isHidden = true
+                self.image3ForPastReads.isHidden = true
+                self.title3ForPastReads.isHidden = true
+                self.author3ForPastReads.isHidden = true
+                self.rating3ForPastReads.isHidden = true
                 
             default:
                 self.image1ForPastReads.isHidden = false
@@ -166,12 +165,11 @@ class BookclubViewController: UIViewController {
                 self.title2ForPastReads.isHidden = false
                 self.author2ForPastReads.isHidden = false
                 self.rating2ForPastReads.isHidden = false
-//                self.image3ForPastReads.isHidden = false
-//                self.title3ForPastReads.isHidden = false
-//                self.author3ForPastReads.isHidden = false
-//                self.rating3ForPastReads.isHidden = false
+                self.image3ForPastReads.isHidden = false
+                self.title3ForPastReads.isHidden = false
+                self.author3ForPastReads.isHidden = false
+                self.rating3ForPastReads.isHidden = false
             }
-            
         }
     }
     
