@@ -63,7 +63,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         if imageOfBookClub.image != nil {
             profilePic = imageOfBookClub.image
         } else {
-            profilePic = UIImage(named: "noImage")
+            profilePic = UIImage(named: "RLogo")
         }
         if let bookclub = bookclub {
             BookclubController.shared.update(bookclub: bookclub) { (result) in
