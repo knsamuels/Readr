@@ -11,6 +11,7 @@ import UIKit
 class CreateBCViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate {
     
     var bookclub: Bookclub?
+    var memberCapacity = 10
     var currentlyReadingBook: Book? {
         didSet {
             updateCurrentlyReading()
@@ -27,10 +28,11 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var selectProfileImage: UIButton!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextViews()
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
     
     @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
@@ -81,14 +83,14 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
                 }
             }
         } else {
-            BookclubController.shared.createBookClub(name: name, adminContactInfo: "never", description: description, profilePic: profilePic, meetingInfo: meetingInfo, memberCapacity: 10, currentlyReading: isbn) { (result) in
+            BookclubController.shared.createBookClub(name: name, adminContactInfo: "never", description: description, profilePic: profilePic, meetingInfo: meetingInfo, memberCapacity: memberCapacity, currentlyReading: isbn) { (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let bookclub):
                         self.bookclub = bookclub
                         self.performSegue(withIdentifier:
                             "toBookclubVC", sender: self)
-//                        self.navigationController?.popViewController(animated: true)
+                        self.navigationController?.popViewController(animated: true)
                     case .failure(_):
                         self.navigationController?.popViewController(animated: true)
                     }
@@ -106,18 +108,23 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     @IBAction func fiveMembersTapped(_ sender: Any) {
+        memberCapacity = 5
     }
     
     @IBAction func tenMembersButtonTapped(_ sender: Any) {
+        memberCapacity = 10
     }
     
     @IBAction func fifteenMemberButtonTapped(_ sender: Any) {
+        memberCapacity = 15
     }
     
     @IBAction func twentyMembersButtonTapped(_ sender: Any) {
+        memberCapacity = 20
     }
     
     @IBAction func twentyFivePlusMembersTapped(_ sender: Any) {
+        memberCapacity = 100
     }
     
     
@@ -149,10 +156,9 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             if textView == descriptionOfBookClub {
-                textView.text = "Describe your bookclub..."
-                
-                textView.textColor = UIColor.black
+                textView.text = "Introduce your bookclub!"
             }
+            textView.textColor = UIColor.black
         }
     }
     

@@ -22,6 +22,7 @@ class PopUpBooksSearchTableViewController: UITableViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         bookSearchBar.delegate = self
+        bookSearchBar.placeholder = "Search Book Title here..."
 
     }
     

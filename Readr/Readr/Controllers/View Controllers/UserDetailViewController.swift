@@ -55,6 +55,7 @@ class UserDetailViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(true)
+        print("The view appeared")
 //        userFavBooks = []
         favBookISBNs = []
         if self.user == nil {
@@ -303,9 +304,9 @@ class UserDetailViewController: UIViewController {
                 self.bookclubName4.text = self.userBookClubs[3].name
                 self.bookclub4ButtonLabel.isHidden = false
             }
-            
         }
     }
+    
     func getUsersBookclubs() {
         guard let user = self.user else {return}
         BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
