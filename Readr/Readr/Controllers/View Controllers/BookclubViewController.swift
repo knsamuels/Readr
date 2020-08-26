@@ -38,17 +38,24 @@ class BookclubViewController: UIViewController {
     @IBOutlet weak var author3ForPastReads: UILabel!
     @IBOutlet weak var rating3ForPastReads: UILabel!
     
+    private lazy var loadingScreen: RLogoLoadingView = {
+        let view = RLogoLoadingView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoadingScreen()
         loadDataForUser()
         self.title = bookclub?.name
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        loadDataForUser()
-        self.title = bookclub?.name
+        print("Testing")
     }
     
     @IBAction func joinButtonTapped(_ sender: Any) {
@@ -92,6 +99,17 @@ class BookclubViewController: UIViewController {
         }
     }
     
+    //MARK: - Helper functions
+    
+    private func showLoadingScreen() {
+        view.addSubview(loadingScreen)
+        NSLayoutConstraint.activate([
+            loadingScreen.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingScreen.topAnchor.constraint(equalTo: view.topAnchor),
+            loadingScreen.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingScreen.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
     
     func updateViews(admin: User) {
         DispatchQueue.main.async {
@@ -194,6 +212,7 @@ class BookclubViewController: UIViewController {
                 case .success(let admin):
                     self.fetchBook() {
                         self.updateViews(admin: admin)
+                        self.loadingScreen.removeFromSuperview()
                         //fetchPastReads --- need to add call updateViews in PastReads closure
                     }
                 case .failure(_):

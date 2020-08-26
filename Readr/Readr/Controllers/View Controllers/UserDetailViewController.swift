@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserDetailViewController: UIViewController {
+class UserDetailViewController: UIViewController, UINavigationControllerDelegate {
     
     // MARK: Properties:
     var userFavBooks: [Book] = []
@@ -309,8 +309,28 @@ class UserDetailViewController: UIViewController {
         }
     }
     
-    
     @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Select an image", message: "From where would you like to select an image?", preferredStyle: .alert)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .camera
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+        
+        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addAction(cameraAction)
+        alertController.addAction(libraryAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
     }
     
     // MARK: - Navigation
@@ -347,3 +367,13 @@ class UserDetailViewController: UIViewController {
         }
     }
 }
+
+extension UserDetailViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.originalImage] as? UIImage else {return}
+        
+        selectProfileImage.setTitle("", for: .normal)
+        profilePic.image = selectedImage
+        dismiss(animated: true, completion: nil)
+    }
+} //End of extension
