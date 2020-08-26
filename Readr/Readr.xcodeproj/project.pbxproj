@@ -47,6 +47,7 @@
 		C98FC7F424E3182600C27CBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98FC7F324E3182600C27CBF /* CloudKit.framework */; };
 		C9BFE4CA24F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFE4C924F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift */; };
 		C9BFE4CC24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFE4CB24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift */; };
+		C9BFE4CE24F6CBC700242CE7 /* UserBioEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFE4CD24F6CBC600242CE7 /* UserBioEditViewController.swift */; };
 		C9DBB76524F4117900285DC7 /* PopUpBookshelfTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DBB76424F4117900285DC7 /* PopUpBookshelfTableViewController.swift */; };
 		C9DBB76724F469B900285DC7 /* PastReadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DBB76624F469B800285DC7 /* PastReadsTableViewCell.swift */; };
 		F31A488524E480A80071652A /* BookshelfListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488424E480A80071652A /* BookshelfListTableViewController.swift */; };
@@ -103,6 +104,7 @@
 		C98FC7F324E3182600C27CBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C9BFE4C924F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBooksSearchTableViewController.swift; sourceTree = "<group>"; };
 		C9BFE4CB24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBookSearchTableViewCell.swift; sourceTree = "<group>"; };
+		C9BFE4CD24F6CBC600242CE7 /* UserBioEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBioEditViewController.swift; sourceTree = "<group>"; };
 		C9DBB76424F4117900285DC7 /* PopUpBookshelfTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBookshelfTableViewController.swift; sourceTree = "<group>"; };
 		C9DBB76624F469B800285DC7 /* PastReadsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastReadsTableViewCell.swift; sourceTree = "<group>"; };
 		F31A488424E480A80071652A /* BookshelfListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfListTableViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				938A2DA424EAE724002119E1 /* SignInViewController.swift */,
 				937A9F5B24F4CAC100AE9067 /* GenresViewController.swift */,
 				F31A488624E480CA0071652A /* UserDetailViewController.swift */,
+				C9BFE4CD24F6CBC600242CE7 /* UserBioEditViewController.swift */,
 				C938A38E24EEF0E60095AD50 /* BookDetailViewController.swift */,
 				F3C608B124EB1C1500E4F26F /* SearchViewController.swift */,
 				F31A488D24E4A83C0071652A /* CreateBCViewController.swift */,
@@ -351,6 +354,7 @@
 				9304463E24E1ABBC00FBEEF2 /* MessageController.swift in Sources */,
 				F31A488924E480DA0071652A /* BookclubViewController.swift in Sources */,
 				F3C608B224EB1C1600E4F26F /* SearchViewController.swift in Sources */,
+				C9BFE4CE24F6CBC700242CE7 /* UserBioEditViewController.swift in Sources */,
 				937640D024EC36CF00B51DEC /* BookclubListTableViewController.swift in Sources */,
 				F3437FA324F0348F00C38DA3 /* PastReadsListTableViewController.swift in Sources */,
 				F31A488524E480A80071652A /* BookshelfListTableViewController.swift in Sources */,

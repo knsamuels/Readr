@@ -91,18 +91,6 @@ class UserDetailViewController: UIViewController {
                 }
             }
         }
-        
-//        BookController.shared.fetchFavoriteBooks(forUser: user) { (result) in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let books):
-//                    self.userFavBooks = books
-//                    self.getUsersBookclubs()
-//                case .failure(_):
-//                    print("failed getting user's favorite books")
-//                }
-//            }
-//        }
     }
     
     func retrieveFirstThree(bookshelf: Bookshelf) {
@@ -321,8 +309,7 @@ class UserDetailViewController: UIViewController {
     }
     
     // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "bioFavBook1toBDVC" {
             guard let destination = segue.destination as? BookDetailViewController else {return}
