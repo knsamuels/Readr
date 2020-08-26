@@ -45,6 +45,12 @@ class BookclubViewController: UIViewController {
         self.title = bookclub?.name
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadDataForUser()
+        self.title = bookclub?.name
+    }
+    
     @IBAction func joinButtonTapped(_ sender: Any) {
         guard let user = UserController.shared.currentUser else {return}
         guard let bookclub = bookclub else {return}
@@ -74,6 +80,18 @@ class BookclubViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func optionButtonTapped(_ sender: UIBarButtonItem) {
+        guard let user = UserController.shared.currentUser else {return}
+        guard let bookclub = self.bookclub else {return}
+        let userAppleRef = user.appleUserRef
+        if bookclub.admin == userAppleRef {
+            presentEditAlert(bookclub: bookclub)
+        } else {
+            presentShareAlert(bookclub: bookclub)
+        }
+    }
+    
     
     func updateViews(admin: User) {
         DispatchQueue.main.async {
@@ -201,20 +219,11 @@ class BookclubViewController: UIViewController {
         }
     }
     
-    func optionButtonTapped() {
-        guard let user = UserController.shared.currentUser else {return}
-        guard let bookclub = self.bookclub else {return}
-        let userAppleRef = user.appleUserRef
-        if bookclub.admin == userAppleRef {
-            presentEditAlert(bookclub: bookclub)
-        } else {
-            presentShareAlert(bookclub: bookclub)
-        }
-    }
+   
     
     func presentEditAlert(bookclub: Bookclub?) {
         guard let bookclub = bookclub else {return}
-        let alertController = UIAlertController(title: "Edit Bookclub", message: "", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
@@ -234,7 +243,7 @@ class BookclubViewController: UIViewController {
                 DispatchQueue.main.async {
                     switch result {
                     case .success(_):
-                        print("fix this")
+                        self.navigationController?.popViewController(animated: true)
                     case .failure(_):
                         print("could not delete bookclub")
                     }
@@ -251,7 +260,7 @@ class BookclubViewController: UIViewController {
     
     func presentShareAlert(bookclub: Bookclub?) {
         guard let bookclub = bookclub else {return}
-        let alertController = UIAlertController(title: "Edit Bookclub", message: "", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
