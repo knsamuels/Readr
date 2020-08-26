@@ -38,6 +38,4 @@ class SearchTableViewCell: UITableViewCell {
         personOrClubLabel.text = bookclub.name
     }
 
-   
-
 } //End of class

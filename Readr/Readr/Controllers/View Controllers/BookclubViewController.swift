@@ -51,7 +51,6 @@ class BookclubViewController: UIViewController {
         let userAppleRef = user.appleUserRef
         let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
         if userAppleRef != bookclub.admin {
-            print(user.bookclubs.count)
             if bookclub.members.contains(userReference) {
                 guard let index = bookclub.members.firstIndex(of: userReference) else {return}
                 
@@ -89,12 +88,21 @@ class BookclubViewController: UIViewController {
             self.meetingInfoForBookClub.text = bookclub.meetingInfo
             self.adminNameLabel.text = admin.username
             self.adminContactInfoLabel.text = bookclub.adminContactInfo
-            if bookclub.admin == userAppleRef {
-                self.joinButton.setTitle("Host", for: .normal)
-            } else if bookclub.members.contains(userReference) {
-                self.joinButton.setTitle("Leave", for: .normal)
+            
+            if bookclub.members.contains(userReference) {
+                if bookclub.admin == userAppleRef {
+                    self.joinButton.setTitle("Host", for: .normal)
+                } else  {
+                    self.joinButton.setTitle("Leave", for: .normal)
+                }
             } else {
-                self.joinButton.setTitle("Join", for: .normal)
+                if bookclub.members.count == bookclub.memberCapacity {
+                    self.joinButton.setTitle("Full", for: .normal)
+                    self.joinButton.isEnabled = false
+                } else {
+                    self.joinButton.setTitle("Join", for: .normal)
+                    self.joinButton.isEnabled = true
+                }
             }
             self.ImageForCurrentlyReading.image = currentlyReading.coverImage
             self.titleForCurrentlyReading.text = currentlyReading.title
@@ -192,10 +200,73 @@ class BookclubViewController: UIViewController {
             }
         }
     }
-
+    
     func optionButtonTapped() {
-        
+        guard let user = UserController.shared.currentUser else {return}
+        guard let bookclub = self.bookclub else {return}
+        let userAppleRef = user.appleUserRef
+        if bookclub.admin == userAppleRef {
+            presentEditAlert(bookclub: bookclub)
+        } else {
+            presentShareAlert(bookclub: bookclub)
+        }
     }
+    
+    func presentEditAlert(bookclub: Bookclub?) {
+        guard let bookclub = bookclub else {return}
+        let alertController = UIAlertController(title: "Edit Bookclub", message: "", preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
+            
+            let shareSheet = UIActivityViewController(activityItems: [bookclub], applicationActivities: nil)
+            
+            self.present(shareSheet, animated: true, completion: nil)
+            
+        }
+        
+        let editAction = UIAlertAction(title: "Edit", style: .default) { (_) in
+            //            prepare(for: <#T##UIStoryboardSegue#>, sender: <#T##Any?#>)
+        }
+        
+        let deleteAction = UIAlertAction(title: "Delete Bookclub", style: .default) { (_) in
+            BookclubController.shared.delete(bookclub: bookclub) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(_):
+                        print("fix this")
+                    case .failure(_):
+                        print("could not delete bookclub")
+                    }
+                }
+            }
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(editAction)
+        alertController.addAction(deleteAction)
+        alertController.addAction(shareAction)
+        
+        self.present(alertController, animated: true)
+    }
+    
+    func presentShareAlert(bookclub: Bookclub?) {
+        guard let bookclub = bookclub else {return}
+        let alertController = UIAlertController(title: "Edit Bookclub", message: "", preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
+            
+            let shareSheet = UIActivityViewController(activityItems: [bookclub], applicationActivities: nil)
+            
+            self.present(shareSheet, animated: true, completion: nil)
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(shareAction)
+        
+        self.present(alertController, animated: true)
+    }
+    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
