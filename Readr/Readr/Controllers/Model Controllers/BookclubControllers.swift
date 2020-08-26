@@ -53,7 +53,7 @@ class BookclubController {
         var predicate: NSPredicate
         
         if let searchTerm = searchTerm {
-            predicate = NSPredicate(format: "self CONTAINS %@", argumentArray: [searchTerm])
+            predicate = NSPredicate(format: "self contains %@", argumentArray: [searchTerm])
         } else {
             predicate = NSPredicate(value: true)
         }
