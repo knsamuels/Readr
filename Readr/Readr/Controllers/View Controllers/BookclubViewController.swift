@@ -192,19 +192,10 @@ class BookclubViewController: UIViewController {
             }
         }
     }
-//    func fetchBookClubs () {
-//        guard let user = UserController.shared.currentUser else { return}
-//        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
-//            switch result {
-//            case .success(let bookclubs):
-//                UserController.shared.currentUser?.bookclubs.append(contentsOf: bookclubs)
-//                self.updateViews()
-//                print("we were able to get the user's bookclubs")
-//            case .failure(_):
-//                print("we were not able to get the user's bookclubs")
-//            }
-//        }
-//    }
+
+    func optionButtonTapped() {
+        
+    }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

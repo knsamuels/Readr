@@ -10,6 +10,7 @@ import UIKit
 
 class CreateBCViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate {
     
+    var activeTextField : UITextField? = nil
     var bookclub: Bookclub?
     var memberCapacity = 10
     var currentlyReadingBook: Book? {
@@ -33,6 +34,15 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         setupTextViews()
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        nameOfBookClub.delegate = self
+        meetingInfoForBookBlub.delegate = self
+        
+
     }
     
     @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
@@ -167,6 +177,22 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         currentlyReadingImage.image = book.coverImage
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+               return
+            }
+        
+        if meetingInfoForBookBlub.isEditing {
+            self.view.window?.frame.origin.y = -keyboardSize.height
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.window?.frame.origin.y != 0 {
+            self.view.window?.frame.origin.y = 0
+        }
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -192,4 +218,14 @@ extension CreateBCViewController: PopUpBookSearchDelegate {
         currentlyReadingBook = book
         
     }
+}
+
+extension CreateBCViewController: UITextFieldDelegate {
+  func textFieldWillBeginEditing( textField: UITextField) {
+    self.activeTextField = textField
+  }
+
+  func textFieldDidEndEditing( textField: UITextField) {
+    self.activeTextField = nil
+  }
 }
