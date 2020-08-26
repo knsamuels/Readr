@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yB-gx-91d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1707" y="-33"/>
+            <point key="canvasLocation" x="1706" y="5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="m3J-4O-uE4">
@@ -191,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOC-HM-WdY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2614" y="-33"/>
+            <point key="canvasLocation" x="2614" y="-714"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="e6y-sQ-Wt6">
@@ -212,12 +212,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rFB-WR-mzT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3581" y="-40"/>
+            <point key="canvasLocation" x="3386" y="-715"/>
         </scene>
-        <!--View Controller-->
+        <!--Genres View Controller-->
         <scene sceneID="MTs-Nn-VlD">
             <objects>
-                <viewController id="6pt-kr-hmt" sceneMemberID="viewController">
+                <viewController id="6pt-kr-hmt" customClass="GenresViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FcQ-l8-NmJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -240,34 +240,74 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WU3-Iz-3QQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="104.5" height="58.5"/>
                                                 <state key="normal" title="Fantasy"/>
+                                                <connections>
+                                                    <action selector="fantasyButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="GvH-gQ-Lmp"/>
+                                                    <action selector="fantasyButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="EPE-lK-lzd"/>
+                                                    <action selector="fantasyButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="cDC-D7-JPl"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4IB-41-kRH">
                                                 <rect key="frame" x="0.0" y="78.5" width="104.5" height="59"/>
                                                 <state key="normal" title="Contemporary"/>
+                                                <connections>
+                                                    <action selector="contemporaryButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="JXL-PE-gVl"/>
+                                                    <action selector="contemporaryButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="7Zi-QS-w4m"/>
+                                                    <action selector="contemporaryButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="pwe-Yd-d1C"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJ7-4a-7ZK">
                                                 <rect key="frame" x="0.0" y="157.5" width="104.5" height="58.5"/>
                                                 <state key="normal" title="Horror"/>
+                                                <connections>
+                                                    <action selector="horrorButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="j4D-dV-dYe"/>
+                                                    <action selector="horrorButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="6eb-Cn-aA6"/>
+                                                    <action selector="horrorButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="faa-Fa-Vgj"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbM-SV-TPk">
                                                 <rect key="frame" x="0.0" y="236" width="104.5" height="58.5"/>
                                                 <state key="normal" title="Historical Fiction"/>
+                                                <connections>
+                                                    <action selector="historicalFictionButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="76N-mZ-UdS"/>
+                                                    <action selector="historicalFictionButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="D4q-x0-I8Q"/>
+                                                    <action selector="historicalFictionButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="x7v-gs-pae"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKi-Pt-l2H">
                                                 <rect key="frame" x="0.0" y="314.5" width="104.5" height="58.5"/>
                                                 <state key="normal" title="Cooking"/>
+                                                <connections>
+                                                    <action selector="cookingButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="l7e-2x-Agb"/>
+                                                    <action selector="cookingButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="sjF-Ij-JbM"/>
+                                                    <action selector="cookingButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="v4V-oV-CDA"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sn6-6B-dbO">
                                                 <rect key="frame" x="0.0" y="393" width="104.5" height="59"/>
                                                 <state key="normal" title="Development"/>
+                                                <connections>
+                                                    <action selector="developmentButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="xlU-nF-rBr"/>
+                                                    <action selector="developmentButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="4OJ-A6-gcd"/>
+                                                    <action selector="developmentButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="qle-yd-mjD"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3P-SF-EhY">
                                                 <rect key="frame" x="0.0" y="472" width="104.5" height="58.5"/>
                                                 <state key="normal" title="History"/>
+                                                <connections>
+                                                    <action selector="historyButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="fgx-OX-pji"/>
+                                                    <action selector="historyButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="I0N-rf-SRX"/>
+                                                    <action selector="historyButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="ypv-0X-xyX"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKu-ZY-LvS">
                                                 <rect key="frame" x="0.0" y="550.5" width="104.5" height="58.5"/>
                                                 <state key="normal" title="Relationships"/>
+                                                <connections>
+                                                    <action selector="relationshipsButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="1vp-zQ-dQP"/>
+                                                    <action selector="relationshipsButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="CxG-o3-ckT"/>
+                                                    <action selector="relationshipsButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="rfo-a9-gE7"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -277,34 +317,74 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-eg-47J">
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="58.5"/>
                                                 <state key="normal" title="Adventure"/>
+                                                <connections>
+                                                    <action selector="adventureButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="weT-O5-pQm"/>
+                                                    <action selector="adventureButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="Bhi-b2-GkB"/>
+                                                    <action selector="adventureButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="fli-ec-HKn"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9M-ve-AoB">
                                                 <rect key="frame" x="0.0" y="78.5" width="105" height="59"/>
                                                 <state key="normal" title="Dypostian"/>
+                                                <connections>
+                                                    <action selector="dypostianButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="fFb-Oa-Kok"/>
+                                                    <action selector="dypostianButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="BUS-2o-aZQ"/>
+                                                    <action selector="dypostianButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="lmE-h1-YTc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRc-15-bPC">
                                                 <rect key="frame" x="0.0" y="157.5" width="105" height="58.5"/>
                                                 <state key="normal" title="Thriller"/>
+                                                <connections>
+                                                    <action selector="thrillerButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="YbJ-85-Guz"/>
+                                                    <action selector="thrillerButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="75P-ms-KyV"/>
+                                                    <action selector="thrillerButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="Nnj-l5-BLc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Re4-Wa-FLf">
                                                 <rect key="frame" x="0.0" y="236" width="105" height="58.5"/>
                                                 <state key="normal" title="Science Fiction"/>
+                                                <connections>
+                                                    <action selector="scienceFictionButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="LyL-yx-Oao"/>
+                                                    <action selector="scienceFictionButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="4ty-iN-cio"/>
+                                                    <action selector="scienceFictionButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="qbO-5v-E10"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRN-Ne-6Yi">
                                                 <rect key="frame" x="0.0" y="314.5" width="105" height="58.5"/>
                                                 <state key="normal" title="Art"/>
+                                                <connections>
+                                                    <action selector="artButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="EnW-Jg-GGX"/>
+                                                    <action selector="artButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="2qa-XB-Ccn"/>
+                                                    <action selector="artButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="t9j-4v-22A"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTr-eq-jn3">
                                                 <rect key="frame" x="0.0" y="393" width="105" height="59"/>
                                                 <state key="normal" title="Motivational"/>
+                                                <connections>
+                                                    <action selector="motivationalButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="2pO-zl-zZo"/>
+                                                    <action selector="motivationalButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="Jlc-Lh-2At"/>
+                                                    <action selector="motivationalButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="UmK-xb-5We"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voI-CO-bo6">
                                                 <rect key="frame" x="0.0" y="472" width="105" height="58.5"/>
                                                 <state key="normal" title="Travel"/>
+                                                <connections>
+                                                    <action selector="travelButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="fCt-tV-NOY"/>
+                                                    <action selector="travelButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="Pr8-bX-OZ3"/>
+                                                    <action selector="travelButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="Tzu-ed-AoN"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiN-Vc-EF8">
                                                 <rect key="frame" x="0.0" y="550.5" width="105" height="58.5"/>
                                                 <state key="normal" title="Humor"/>
+                                                <connections>
+                                                    <action selector="humorButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="hGj-V3-xmt"/>
+                                                    <action selector="humorButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="Awe-Tw-iF3"/>
+                                                    <action selector="humorButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="K6t-3r-irG"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -314,34 +394,74 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9E3-HM-91N">
                                                 <rect key="frame" x="0.0" y="0.0" width="104.5" height="58.5"/>
                                                 <state key="normal" title="Romance"/>
+                                                <connections>
+                                                    <action selector="romanceButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="wfF-Ex-GzI"/>
+                                                    <action selector="romanceButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="9DB-Gj-dIB"/>
+                                                    <action selector="romanceButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="fUD-PM-7NU"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-H7-isO">
                                                 <rect key="frame" x="0.0" y="78.5" width="104.5" height="59"/>
                                                 <state key="normal" title="Mystery"/>
+                                                <connections>
+                                                    <action selector="mysteryButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="Cl8-MM-CrW"/>
+                                                    <action selector="mysteryButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="sOe-Dk-1pF"/>
+                                                    <action selector="mysteryButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="xbr-TQ-QNX"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEp-n9-m3r">
                                                 <rect key="frame" x="0.0" y="157.5" width="104.5" height="58.5"/>
                                                 <state key="normal" title="Paranormal"/>
+                                                <connections>
+                                                    <action selector="paranormalButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="yej-XR-snW"/>
+                                                    <action selector="paranormalButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="9np-Jh-Boc"/>
+                                                    <action selector="paranormalButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="MK6-jr-NkA"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4l-Qd-wB0">
                                                 <rect key="frame" x="0.0" y="236" width="104.5" height="58.5"/>
                                                 <state key="normal" title="Memoir"/>
+                                                <connections>
+                                                    <action selector="memoirButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="htY-m8-2c2"/>
+                                                    <action selector="memoirButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="Gj0-f3-BMn"/>
+                                                    <action selector="memoirButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="ZRV-DA-o9S"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Goc-Vt-fWm">
                                                 <rect key="frame" x="0.0" y="314.5" width="104.5" height="58.5"/>
                                                 <state key="normal" title="Self Help + Personal"/>
+                                                <connections>
+                                                    <action selector="selfHelpPersonalButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="dIE-Lk-P6T"/>
+                                                    <action selector="selfHelpPersonalButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="UmE-3e-K9y"/>
+                                                    <action selector="selfHelpPersonalButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="XF7-jc-Ig1"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGg-KG-zdZ">
                                                 <rect key="frame" x="0.0" y="393" width="104.5" height="59"/>
                                                 <state key="normal" title="Health"/>
+                                                <connections>
+                                                    <action selector="healthButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="oVt-8D-3Fx"/>
+                                                    <action selector="healthButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="fNp-I4-bse"/>
+                                                    <action selector="healthButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="tCr-gG-6bf"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGH-Q3-whU">
                                                 <rect key="frame" x="0.0" y="472" width="104.5" height="58.5"/>
                                                 <state key="normal" title="Guide + How To"/>
+                                                <connections>
+                                                    <action selector="guideHowToButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="wvh-WB-XJi"/>
+                                                    <action selector="guideHowToButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="dxa-ge-Jur"/>
+                                                    <action selector="guideHowToButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="nbk-ZJ-ZpW"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG6-cI-SN0">
                                                 <rect key="frame" x="0.0" y="550.5" width="104.5" height="58.5"/>
                                                 <state key="normal" title="Childrens"/>
+                                                <connections>
+                                                    <action selector="childrensButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="h6Q-ko-A4b"/>
+                                                    <action selector="childrensButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="1nk-D2-xNq"/>
+                                                    <action selector="childrensButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="UyG-yg-zJR"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -359,10 +479,37 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nCq-jQ-W07"/>
                     </view>
+                    <connections>
+                        <outlet property="adventureButton" destination="Gwf-eg-47J" id="GAN-pU-MzG"/>
+                        <outlet property="artButton" destination="KRN-Ne-6Yi" id="Cne-nH-twE"/>
+                        <outlet property="childrensButton" destination="ZG6-cI-SN0" id="CyA-Xh-gPp"/>
+                        <outlet property="contemporaryButton" destination="4IB-41-kRH" id="d5b-aL-NFZ"/>
+                        <outlet property="cookingButton" destination="dKi-Pt-l2H" id="2fo-wX-vaq"/>
+                        <outlet property="developmentButton" destination="Sn6-6B-dbO" id="vM7-Xa-dm2"/>
+                        <outlet property="dypostianButton" destination="g9M-ve-AoB" id="vja-Sa-wtm"/>
+                        <outlet property="fantasyButton" destination="WU3-Iz-3QQ" id="QyS-xZ-6Jq"/>
+                        <outlet property="guideHowToButton" destination="fGH-Q3-whU" id="RA0-mD-w1A"/>
+                        <outlet property="healthButton" destination="vGg-KG-zdZ" id="Y3Y-6G-yL3"/>
+                        <outlet property="historicalFictionButton" destination="dbM-SV-TPk" id="usq-Cv-35g"/>
+                        <outlet property="historyButton" destination="y3P-SF-EhY" id="oXG-pN-zLG"/>
+                        <outlet property="horrorButton" destination="AJ7-4a-7ZK" id="ZVX-mK-tgq"/>
+                        <outlet property="humorButton" destination="kiN-Vc-EF8" id="6td-mo-Zzb"/>
+                        <outlet property="memoirButton" destination="A4l-Qd-wB0" id="T2J-zR-pf9"/>
+                        <outlet property="motivationalButton" destination="XTr-eq-jn3" id="pHm-Ol-WMe"/>
+                        <outlet property="mysteryButton" destination="bfM-H7-isO" id="kDL-Ri-PPy"/>
+                        <outlet property="paranormalButton" destination="EEp-n9-m3r" id="Qx3-9C-yyd"/>
+                        <outlet property="relationshipsButton" destination="IKu-ZY-LvS" id="1Kl-Ac-mAy"/>
+                        <outlet property="romanceButton" destination="9E3-HM-91N" id="T1r-eH-ocx"/>
+                        <outlet property="scienceFictionButton" destination="Re4-Wa-FLf" id="xlH-8T-Eb5"/>
+                        <outlet property="selfHelpPersonalButton" destination="Goc-Vt-fWm" id="BVk-Yd-3wX"/>
+                        <outlet property="thrillerButton" destination="eRc-15-bPC" id="23p-LN-gub"/>
+                        <outlet property="travelButton" destination="voI-CO-bo6" id="67J-ii-joP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Do8-0I-OgR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="tWY-Y5-h0w" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4858" y="-40"/>
+            <point key="canvasLocation" x="4162" y="5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="g0o-J5-i0a">
@@ -383,7 +530,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbk-0v-fY9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6065" y="-40"/>
+            <point key="canvasLocation" x="5157" y="5"/>
         </scene>
     </scenes>
     <resources>
