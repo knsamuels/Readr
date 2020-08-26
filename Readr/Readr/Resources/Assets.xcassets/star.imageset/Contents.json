@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "icons8-star-49.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icons8-star-50.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
