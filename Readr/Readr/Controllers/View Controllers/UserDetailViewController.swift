@@ -48,6 +48,7 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var bookclub2ButtonLabel: UIButton!
     @IBOutlet weak var bookclub3ButtonLabel: UIButton!
     @IBOutlet weak var bookclub4ButtonLabel: UIButton!
+    @IBOutlet weak var selectProfileImage: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -306,6 +307,10 @@ class UserDetailViewController: UIViewController {
                 print("we could not get the user's bookclubs")
             }
         }
+    }
+    
+    
+    @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
     }
     
     // MARK: - Navigation

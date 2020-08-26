@@ -13,12 +13,16 @@ class UserBioEditViewController: UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var imageOfUser: UIImageView!
     @IBOutlet weak var selectProfileImage: UIButton!
     
+    @IBOutlet weak var editBioTextView: UITextView!
     
+    @IBOutlet weak var editGenresButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
     
+    @IBAction func editGenresButtonTapped(_ sender: UIButton) {
+    }
     @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Select an image", message: "From where would you like to select an image?", preferredStyle: .alert)
         
