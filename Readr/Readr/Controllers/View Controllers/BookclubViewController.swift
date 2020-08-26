@@ -48,8 +48,9 @@ class BookclubViewController: UIViewController {
     @IBAction func joinButtonTapped(_ sender: Any) {
         guard let user = UserController.shared.currentUser else {return}
         guard let bookclub = bookclub else {return}
+        let userAppleRef = user.appleUserRef
         let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
-        if userReference != bookclub.admin {
+        if userAppleRef != bookclub.admin {
             print(user.bookclubs.count)
             if bookclub.members.contains(userReference) {
                 guard let index = bookclub.members.firstIndex(of: userReference) else {return}
@@ -81,13 +82,14 @@ class BookclubViewController: UIViewController {
             guard let bookclub = self.bookclub else {return}
             guard let currentlyReading = self.currentlyReading else {return}
             let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
+            let userAppleRef = user.appleUserRef
             
             self.imageOfBookClub.image = bookclub.profilePicture
             self.descriptionOfBookClub.text = bookclub.description
             self.meetingInfoForBookClub.text = bookclub.meetingInfo
             self.adminNameLabel.text = admin.username
             self.adminContactInfoLabel.text = bookclub.adminContactInfo
-            if bookclub.admin == userReference {
+            if bookclub.admin == userAppleRef {
                 self.joinButton.setTitle("Host", for: .normal)
             } else if bookclub.members.contains(userReference) {
                 self.joinButton.setTitle("Leave", for: .normal)

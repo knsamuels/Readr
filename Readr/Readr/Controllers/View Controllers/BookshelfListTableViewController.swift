@@ -65,11 +65,9 @@ class BookshelfListTableViewController: UITableViewController {
                     }
                 case .failure(let error):
                     print(error.errorDescription)
-                    
                 }
             }
         }
-        
         alertController.addAction(cancelAction)
         alertController.addAction(addBookclubAction)
         

@@ -34,7 +34,7 @@ class BookshelfDetailTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let book = book else {return}
-        let rating = "\(book.averageRating)"
+        let rating = "Rating: \(String(book.averageRating ?? 0))"
         bookImageView.image = book.coverImage
         bookTitleLabel.text = book.title
         bookAuthorLabel.text = book.authors?.first ?? "no author"
