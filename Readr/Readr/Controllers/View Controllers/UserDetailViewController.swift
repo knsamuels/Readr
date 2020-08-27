@@ -16,6 +16,13 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     var favBookISBNs: [String] = []
     var user: User?
     
+    private lazy var loadingScreen: RLogoLoadingView = {
+        let view = RLogoLoadingView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     //MARK: - Outlets
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var followerLabel: UILabel!
@@ -52,6 +59,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoadingScreen()
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
     }
     
@@ -67,6 +75,17 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                }
     }
     //MARK: - Helper Methods
+    
+    private func showLoadingScreen() {
+          view.addSubview(loadingScreen)
+          NSLayoutConstraint.activate([
+              loadingScreen.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+              loadingScreen.topAnchor.constraint(equalTo: view.topAnchor),
+              loadingScreen.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+              loadingScreen.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+          ])
+      }
+    
     func fetchUser() {
         UserController.shared.fetchUser { (result) in
             switch result {
@@ -124,6 +143,12 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     
     func updateViews() {
         DispatchQueue.main.async {
+            guard let user = self.user else {return}
+            if user == UserController.shared.currentUser {
+                self.selectProfileImage.isHidden = false
+            } else {
+                self.selectProfileImage.isHidden = true
+            }
             if let image = self.user?.profilePhoto {
                 self.selectProfileImage.setTitle("Edit Photo", for: .normal)
                 self.profilePic.image = image
@@ -300,6 +325,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 self.bookclubName4.text = self.userBookClubs[3].name
                 self.bookclub4ButtonLabel.isHidden = false
             }
+            self.loadingScreen.removeFromSuperview()
         }
     }
     

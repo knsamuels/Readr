@@ -206,6 +206,7 @@ class BookclubViewController: UIViewController {
                 self.author3ForPastReads.isHidden = false
                 self.rating3ForPastReads.isHidden = false
             }
+            
         }
     }
     
