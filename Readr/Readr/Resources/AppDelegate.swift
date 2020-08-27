@@ -8,74 +8,27 @@
 
 import UIKit
 import CloudKit
-//Testing
+import UserNotifications
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(CKContainer.default().publicCloudDatabase)
-//        BookclubController.shared.createBookClub(name: "Lord of the rings",
-//                                                 adminContactInfo: "123",
-//                                                 description: "We are awesome",
-//                                                 profilePic: nil,
-//                                                 meetingInfo: "Every week",
-//                                                 memberCapacity: 10) { (result) in
-//                                                    switch result {
-//                                                    case .success(_):
-//                                                        print("success")
-//                                                    case .failure(_):
-//                                                        print("failure")
-//                                                    }
-//        }
-//        BookclubController.shared.fetchBookclubs(searchTerm: "awesome") { (result) in
-//            switch result {
-//            case .success(_):
-//                print("success")
-//            case .failure(_):
-//                print("failure")
-//            }
-//
-//
-//        }
-//        UserController.shared.createUser(username: "bwork35", firstName: "Bryan", lastName: "Workman", favoriteAuthor: "JK Rowling") { (result) in
-//            switch result {
-//            case .success(_):
-//                print("success")
-//            case .failure(_):
-//                print("failure")
-//            }
-//        }
-        
-//        UserController.shared.fetchUser { (result) in
-//            switch result {
-//            case .success(let user):
-//                UserController.shared.currentUser = user
-//                BookshelfController.sharedInstance.fetchAllBookshelfs { (result) in
-//                    switch result {
-//                    case .success(let bookshelves):
-//                        print(bookshelves)
-//                    case .failure(_):
-//                        print("failure")
-//                    }
-//                }
-//            case .failure(_):
-//                print("failure")
-//            }
-//        }
-        
-//        BookshelfController.sharedInstance.createBookshelf(title: "Hunger Games") { (result) in
-//            switch result {
-//            case .success(_):
-//                print("success")
-//            case .failure(_):
-//                print("failure")
-//            }
-//        }
-        
-        
-        
+
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
+            if let error = error {
+                print("There was an error when requesting authorization to send the user a notification -- \(error) -- \(error.localizedDescription)")
+            }
+            
+            if success == true {
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+        }
         return true
     }
 
