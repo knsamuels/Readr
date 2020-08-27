@@ -383,21 +383,19 @@
                                     <segue destination="jym-Fn-cVA" kind="show" identifier="bcCurrentlyReadingImageToBDVC" id="Ajn-VF-Y29"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="sef-U6-hrW">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="sef-U6-hrW">
                                 <rect key="frame" x="16" y="439.5" width="159.5" height="32"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past Reads:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrW-d9-ako">
                                         <rect key="frame" x="0.0" y="0.0" width="82.5" height="32"/>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQ5-NO-EBk">
                                         <rect key="frame" x="98.5" y="0.0" width="61" height="32"/>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                        <state key="normal" title="View All">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
+                                        <state key="normal" title="View All"/>
                                         <connections>
                                             <segue destination="Em1-qk-fIc" kind="show" identifier="bcPastReadsViewAllToPRLTVC" id="Emr-Ir-RHE"/>
                                         </connections>
@@ -425,7 +423,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="ApF-Zm-qcw">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="ApF-Zm-qcw">
                                 <rect key="frame" x="16" y="487.5" width="291" height="195"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="niK-Yo-dMK">
@@ -444,7 +442,7 @@
                                                     <constraint firstAttribute="height" constant="19" id="Jqe-Q7-MBz"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTx-4i-g7c">
@@ -453,7 +451,7 @@
                                                     <constraint firstAttribute="height" constant="19.5" id="49E-9e-MwI"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhB-l5-NJo">
@@ -462,7 +460,7 @@
                                                     <constraint firstAttribute="height" constant="19.5" id="Gs1-lv-QPC"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -499,7 +497,7 @@
                                                     <constraint firstAttribute="height" constant="19.5" id="gmt-I1-9aN"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2D3-5e-KTc">
@@ -508,7 +506,7 @@
                                                     <constraint firstAttribute="height" constant="19.5" id="mrZ-Z6-HTL"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lJ-Uw-X88">
@@ -517,7 +515,7 @@
                                                     <constraint firstAttribute="height" constant="18" id="3lJ-Sb-VIg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -553,7 +551,7 @@
                                                     <constraint firstAttribute="height" constant="19.5" id="8QF-Cs-ryt"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqp-df-YyF">
@@ -562,7 +560,7 @@
                                                     <constraint firstAttribute="height" constant="18" id="CTf-Zj-45z"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9D-dM-uI3">
@@ -571,7 +569,7 @@
                                                     <constraint firstAttribute="height" constant="19.5" id="1tm-ix-73W"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -631,7 +629,7 @@
                                     <constraint firstAttribute="height" constant="19.5" id="4Jb-S2-pfI"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0WQ-JY-AiN">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0WQ-JY-AiN">
                                 <rect key="frame" x="16" y="8" width="111" height="111"/>
                                 <state key="normal" title="Select Image"/>
                             </button>
@@ -783,20 +781,26 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="eoK-Xr-We4">
                                                     <rect key="frame" x="107" y="14" width="291" height="69"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0X6-Ma-79S">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0X6-Ma-79S">
                                                             <rect key="frame" x="0.0" y="0.0" width="291" height="22"/>
                                                             <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="el0-ng-YK2">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="el0-ng-YK2">
                                                             <rect key="frame" x="0.0" y="26" width="291" height="19.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="19.5" id="cD1-46-vJ8"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bV4-My-Lsd">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bV4-My-Lsd">
                                                             <rect key="frame" x="0.0" y="49.5" width="291" height="19.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="19.5" id="kbE-vn-4ht"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1331,9 +1335,8 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEZ-ug-co2">
-                                <rect key="frame" x="132.5" y="216" width="165" height="23"/>
+                                <rect key="frame" x="132.5" y="216" width="165" height="19.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="Wtf-ys-FIY"/>
                                     <constraint firstAttribute="width" constant="165" id="bVM-ph-fEA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
@@ -1341,7 +1344,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Books:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPn-Xd-GT8">
-                                <rect key="frame" x="32" y="255" width="125" height="20"/>
+                                <rect key="frame" x="32" y="251.5" width="125" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="YJj-C7-PdM"/>
                                     <constraint firstAttribute="height" constant="20" id="sNs-Hr-78P"/>
@@ -1351,10 +1354,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="59" translatesAutoresizingMaskIntoConstraints="NO" id="Pfs-SQ-Idq">
-                                <rect key="frame" x="44" y="287" width="283" height="139"/>
+                                <rect key="frame" x="44" y="283.5" width="283" height="134"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="RfJ-1j-0DY">
-                                        <rect key="frame" x="0.0" y="0.0" width="55" height="139"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="55" height="134"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="t1f-ry-L4O">
                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="84"/>
@@ -1363,20 +1366,14 @@
                                                     <constraint firstAttribute="height" constant="84" id="SpL-Nb-HZA"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZK-Rp-NBp">
-                                                <rect key="frame" x="0.0" y="95" width="55" height="18.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="18.5" id="L24-Ty-7Vu"/>
-                                                </constraints>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZK-Rp-NBp">
+                                                <rect key="frame" x="0.0" y="95" width="55" height="14"/>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mjy-Xd-2K9">
-                                                <rect key="frame" x="0.0" y="124.5" width="55" height="14.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="14.5" id="ptH-Jb-Tgy"/>
-                                                </constraints>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mjy-Xd-2K9">
+                                                <rect key="frame" x="0.0" y="120" width="55" height="14"/>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1387,16 +1384,12 @@
                                             <constraint firstItem="mjy-Xd-2K9" firstAttribute="leading" secondItem="RfJ-1j-0DY" secondAttribute="leading" id="BKV-gd-ryF"/>
                                             <constraint firstItem="EZK-Rp-NBp" firstAttribute="leading" secondItem="RfJ-1j-0DY" secondAttribute="leading" id="D6j-Uj-kEq"/>
                                             <constraint firstAttribute="bottom" secondItem="mjy-Xd-2K9" secondAttribute="bottom" id="Eb1-uG-0t3"/>
-                                            <constraint firstItem="EZK-Rp-NBp" firstAttribute="leading" secondItem="RfJ-1j-0DY" secondAttribute="leading" id="I3I-ub-gHP"/>
-                                            <constraint firstItem="mjy-Xd-2K9" firstAttribute="top" secondItem="EZK-Rp-NBp" secondAttribute="bottom" constant="11" id="Pgi-vr-5x4"/>
                                             <constraint firstAttribute="trailing" secondItem="EZK-Rp-NBp" secondAttribute="trailing" id="TN3-KP-YXI"/>
-                                            <constraint firstItem="mjy-Xd-2K9" firstAttribute="top" secondItem="EZK-Rp-NBp" secondAttribute="bottom" constant="11" id="UhE-eN-mHA"/>
                                             <constraint firstAttribute="trailing" secondItem="mjy-Xd-2K9" secondAttribute="trailing" id="h9w-CW-sQF"/>
-                                            <constraint firstAttribute="trailing" secondItem="EZK-Rp-NBp" secondAttribute="trailing" id="zy0-4u-kN5"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Lrd-sH-KIO">
-                                        <rect key="frame" x="114" y="0.0" width="55" height="139"/>
+                                        <rect key="frame" x="114" y="0.0" width="55" height="134"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="Iss-PE-bx9">
                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="84"/>
@@ -1405,38 +1398,30 @@
                                                     <constraint firstAttribute="height" constant="84" id="y5K-L4-Qlr"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5P2-Lq-V4R">
-                                                <rect key="frame" x="0.0" y="95" width="55" height="18.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="18.5" id="Y8W-VG-vc7"/>
-                                                </constraints>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5P2-Lq-V4R">
+                                                <rect key="frame" x="0.0" y="95" width="55" height="14"/>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPc-9O-q3b">
-                                                <rect key="frame" x="0.0" y="124.5" width="55" height="14.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="14.5" id="Var-Lm-h5D"/>
-                                                </constraints>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPc-9O-q3b">
+                                                <rect key="frame" x="0.0" y="120" width="55" height="14"/>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="rPc-9O-q3b" firstAttribute="top" secondItem="5P2-Lq-V4R" secondAttribute="bottom" constant="11" id="0aO-EL-0cZ"/>
                                             <constraint firstAttribute="trailing" secondItem="5P2-Lq-V4R" secondAttribute="trailing" id="2Dm-p0-KUj"/>
                                             <constraint firstItem="5P2-Lq-V4R" firstAttribute="top" secondItem="Iss-PE-bx9" secondAttribute="bottom" constant="11" id="DW7-of-i3z"/>
                                             <constraint firstItem="rPc-9O-q3b" firstAttribute="leading" secondItem="Lrd-sH-KIO" secondAttribute="leading" id="NHc-Ol-cZx"/>
                                             <constraint firstAttribute="trailing" secondItem="rPc-9O-q3b" secondAttribute="trailing" id="R9j-n1-DXf"/>
                                             <constraint firstItem="5P2-Lq-V4R" firstAttribute="leading" secondItem="Lrd-sH-KIO" secondAttribute="leading" id="eQ2-eM-epw"/>
                                             <constraint firstAttribute="bottom" secondItem="rPc-9O-q3b" secondAttribute="bottom" id="eld-jw-qIm"/>
-                                            <constraint firstItem="rPc-9O-q3b" firstAttribute="top" secondItem="5P2-Lq-V4R" secondAttribute="bottom" constant="11" id="fcp-bZ-PsQ"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="XMP-hU-2HV">
-                                        <rect key="frame" x="228" y="0.0" width="55" height="139"/>
+                                        <rect key="frame" x="228" y="0.0" width="55" height="134"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="ecF-VF-5U0">
                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="84"/>
@@ -1445,27 +1430,20 @@
                                                     <constraint firstAttribute="height" constant="84" id="8mv-vz-3Fj"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRF-4K-hJo">
-                                                <rect key="frame" x="0.0" y="95" width="55" height="18.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="18.5" id="ZMb-Ts-uvL"/>
-                                                </constraints>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRF-4K-hJo">
+                                                <rect key="frame" x="0.0" y="95" width="55" height="14"/>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coJ-NS-Abd">
-                                                <rect key="frame" x="0.0" y="124.5" width="55" height="14.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="14.5" id="IHl-29-SwD"/>
-                                                </constraints>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coJ-NS-Abd">
+                                                <rect key="frame" x="0.0" y="120" width="55" height="14"/>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="coJ-NS-Abd" firstAttribute="top" secondItem="TRF-4K-hJo" secondAttribute="bottom" constant="11" id="4Q5-HT-qAR"/>
                                             <constraint firstAttribute="trailing" secondItem="coJ-NS-Abd" secondAttribute="trailing" id="4s1-oO-vN3"/>
                                             <constraint firstAttribute="bottom" secondItem="coJ-NS-Abd" secondAttribute="bottom" id="Bxw-jM-vLd"/>
                                             <constraint firstItem="coJ-NS-Abd" firstAttribute="leading" secondItem="XMP-hU-2HV" secondAttribute="leading" id="CEn-Bp-rmE"/>
@@ -1476,12 +1454,11 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="139" id="6G9-yn-mvi"/>
                                     <constraint firstAttribute="width" constant="283" id="rdt-V7-NuW"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Genres:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0V-0r-Mi8">
-                                <rect key="frame" x="34" y="442" width="126" height="20"/>
+                                <rect key="frame" x="34" y="433.5" width="126" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="9cy-Au-GC7"/>
                                     <constraint firstAttribute="width" constant="126" id="mlI-ou-yny"/>
@@ -1491,7 +1468,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="85S-fV-h2t">
-                                <rect key="frame" x="46" y="474" width="30" height="78"/>
+                                <rect key="frame" x="46" y="465.5" width="30" height="78"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7d-Mm-Ibm">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="18"/>
@@ -1523,7 +1500,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="qSd-Wp-fAz">
-                                <rect key="frame" x="34" y="568" width="297" height="20"/>
+                                <rect key="frame" x="34" y="559.5" width="297" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Clubs:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoK-5m-OcF">
                                         <rect key="frame" x="0.0" y="0.0" width="88" height="19.5"/>
@@ -1553,10 +1530,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="oFf-wZ-WFv">
-                                <rect key="frame" x="34" y="600" width="359" height="102.5"/>
+                                <rect key="frame" x="34" y="591.5" width="359" height="96"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="vYZ-vq-rqz">
-                                        <rect key="frame" x="0.0" y="0.0" width="71" height="102.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="71" height="96"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="x5e-Bs-Zga">
                                                 <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
@@ -1566,10 +1543,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6s-wK-5qQ">
-                                                <rect key="frame" x="0.0" y="82" width="71" height="20.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20.5" id="bmm-sR-zdu"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="82" width="71" height="14"/>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1582,7 +1556,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="PZZ-Em-wQe">
-                                        <rect key="frame" x="96" y="0.0" width="71" height="102.5"/>
+                                        <rect key="frame" x="96" y="0.0" width="71" height="96"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="xub-2H-yGv">
                                                 <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
@@ -1591,10 +1565,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1u-9M-oFF">
-                                                <rect key="frame" x="0.0" y="82" width="71" height="20.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20.5" id="Pb0-yO-Tra"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="82" width="71" height="14"/>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1607,7 +1578,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="GtA-Zl-Fx1">
-                                        <rect key="frame" x="192" y="0.0" width="71" height="102.5"/>
+                                        <rect key="frame" x="192" y="0.0" width="71" height="96"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="1JP-NA-gFw">
                                                 <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
@@ -1616,10 +1587,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ere-Z5-dQZ">
-                                                <rect key="frame" x="0.0" y="82" width="71" height="20.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20.5" id="87r-J4-304"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="82" width="71" height="14"/>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1632,7 +1600,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="0LG-Xn-GUF">
-                                        <rect key="frame" x="288" y="0.0" width="71" height="102.5"/>
+                                        <rect key="frame" x="288" y="0.0" width="71" height="96"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="CAt-JS-iNV">
                                                 <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
@@ -1641,10 +1609,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5i-mh-qOq">
-                                                <rect key="frame" x="0.0" y="82" width="71" height="20.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20.5" id="l6m-ge-swI"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="82" width="71" height="14"/>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1659,25 +1624,25 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNd-wb-CeY">
-                                <rect key="frame" x="34" y="618" width="71" height="35.5"/>
+                                <rect key="frame" x="34" y="609.5" width="71" height="35.5"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-0f-vXp">
-                                <rect key="frame" x="130" y="618" width="71" height="35.5"/>
+                                <rect key="frame" x="130" y="609.5" width="71" height="35.5"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igC-sf-kDW">
-                                <rect key="frame" x="226" y="618" width="71" height="35.5"/>
+                                <rect key="frame" x="226" y="609.5" width="71" height="35.5"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gT6-zV-9hr">
-                                <rect key="frame" x="322" y="618" width="71" height="35.5"/>
+                                <rect key="frame" x="322" y="609.5" width="71" height="35.5"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itL-HM-qWl">
-                                <rect key="frame" x="44" y="287" width="55" height="84"/>
+                                <rect key="frame" x="44" y="283.5" width="55" height="84"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOW-RJ-WR7">
-                                <rect key="frame" x="158" y="287" width="55" height="84"/>
+                                <rect key="frame" x="158" y="283.5" width="55" height="84"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fx2-JB-jIe">
-                                <rect key="frame" x="272" y="287" width="55" height="84"/>
+                                <rect key="frame" x="272" y="283.5" width="55" height="84"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imi-Tp-fxf">
                                 <rect key="frame" x="159" y="174.5" width="96" height="17.5"/>
