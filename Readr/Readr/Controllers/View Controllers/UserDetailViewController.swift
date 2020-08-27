@@ -56,6 +56,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var bookclub3ButtonLabel: UIButton!
     @IBOutlet weak var bookclub4ButtonLabel: UIButton!
     @IBOutlet weak var selectProfileImage: UIButton!
+    @IBOutlet weak var createBookclubButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,8 +147,10 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             guard let user = self.user else {return}
             if user == UserController.shared.currentUser {
                 self.selectProfileImage.isHidden = false
+                self.createBookclubButton.isHidden = false
             } else {
                 self.selectProfileImage.isHidden = true
+                self.createBookclubButton.isHidden = true 
             }
             if let image = self.user?.profilePhoto {
                 self.selectProfileImage.setTitle("Edit Photo", for: .normal)
