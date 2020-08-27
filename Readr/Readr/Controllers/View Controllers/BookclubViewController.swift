@@ -52,58 +52,21 @@ class BookclubViewController: UIViewController {
         loadDataForUser()
         self.title = bookclub?.name
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-//        CreateBCViewController.delegate = self
-        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadDataForUser()
-    }
-    
-    @IBAction func joinButtonTapped(_ sender: Any) {
-        guard let user = UserController.shared.currentUser else {return}
-        guard let bookclub = bookclub else {return}
-        let userAppleRef = user.appleUserRef
-        let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
-        if userAppleRef != bookclub.admin {
-            if bookclub.members.contains(userReference) {
-                guard let index = bookclub.members.firstIndex(of: userReference) else {return}
-                
-                bookclub.members.remove(at: index)
-                joinButton.setTitle("Join", for: .normal)
-                
-            } else {
-                user.bookclubs.append(bookclub)
-                bookclub.members.append(userReference)
-                joinButton.setTitle("Leave", for: .normal)
-            }
-        }
-        BookclubController.shared.update(bookclub: bookclub) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(_):
-                    print("yes")
-                case .failure(_):
-                    print("no")
-                }
-            }
-        }
-    }
-    
-    @IBAction func optionButtonTapped(_ sender: UIBarButtonItem) {
-        guard let user = UserController.shared.currentUser else {return}
-        guard let bookclub = self.bookclub else {return}
-        let userAppleRef = user.appleUserRef
-        if bookclub.admin == userAppleRef {
-            presentEditAlert(bookclub: bookclub)
-        } else {
-            presentShareAlert(bookclub: bookclub)
-        }
+        setUpImage()
     }
     
     //MARK: - Helper functions
+    
+    func setUpImage() {
+        imageOfBookClub.layer.cornerRadius = imageOfBookClub.frame.height / 2
+        imageOfBookClub.clipsToBounds = true
+    }
     
     private func showLoadingScreen() {
         view.addSubview(loadingScreen)
@@ -122,7 +85,6 @@ class BookclubViewController: UIViewController {
             guard let currentlyReading = self.currentlyReading else {return}
             let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
             let userAppleRef = user.appleUserRef
-            
             self.title = bookclub.name
             self.imageOfBookClub.image = bookclub.profilePicture
             self.descriptionOfBookClub.text = bookclub.description
@@ -306,6 +268,47 @@ class BookclubViewController: UIViewController {
     }
     
     
+    
+    @IBAction func joinButtonTapped(_ sender: Any) {
+        guard let user = UserController.shared.currentUser else {return}
+        guard let bookclub = bookclub else {return}
+        let userAppleRef = user.appleUserRef
+        let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
+        if userAppleRef != bookclub.admin {
+            if bookclub.members.contains(userReference) {
+                guard let index = bookclub.members.firstIndex(of: userReference) else {return}
+                
+                bookclub.members.remove(at: index)
+                joinButton.setTitle("Join", for: .normal)
+                
+            } else {
+                user.bookclubs.append(bookclub)
+                bookclub.members.append(userReference)
+                joinButton.setTitle("Leave", for: .normal)
+            }
+        }
+        BookclubController.shared.update(bookclub: bookclub) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    print("yes")
+                case .failure(_):
+                    print("no")
+                }
+            }
+        }
+    }
+    
+    @IBAction func optionButtonTapped(_ sender: UIBarButtonItem) {
+        guard let user = UserController.shared.currentUser else {return}
+        guard let bookclub = self.bookclub else {return}
+        let userAppleRef = user.appleUserRef
+        if bookclub.admin == userAppleRef {
+            presentEditAlert(bookclub: bookclub)
+        } else {
+            presentShareAlert(bookclub: bookclub)
+        }
+    }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "bcCurrentlyReadingImageToBDVC" {
@@ -328,9 +331,3 @@ class BookclubViewController: UIViewController {
     }
 }
 
-extension BookclubViewController: UpdateBookclubDelegate {
-    func updateBookclub(for bookclub: Bookclub) {
-        self.bookclub = bookclub
-        self.loadDataForUser()
-    }
-}

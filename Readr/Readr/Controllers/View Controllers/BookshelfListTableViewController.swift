@@ -86,15 +86,15 @@ class BookshelfListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfCell", for: indexPath) as? BookshelfListTableViewCell else {return UITableViewCell()}
         if indexPath.row == 0 {
-            cell.backgroundColor = UIColor(named: "Red")
+            cell.backgroundColor = .readenBlue
         } else if indexPath.row % 4 == 0 {
-            cell.backgroundColor = UIColor(named: "Green")
+            cell.backgroundColor = .readenGreen
         } else if indexPath.row % 3 == 0 {
-            cell.backgroundColor = UIColor(named: "Blue")
+            cell.backgroundColor = .readenYellow
         } else if indexPath.row % 2 == 0 {
-            cell.backgroundColor = UIColor(named: "Orange")
+            cell.backgroundColor = .readenOrange
         } else {
-            cell.backgroundColor = UIColor(named: "Purple")
+            cell.backgroundColor = .readenGreen
         }
         
         let bookshelf = userBookshelves[indexPath.row]
