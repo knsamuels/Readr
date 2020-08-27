@@ -123,6 +123,7 @@ class BookclubViewController: UIViewController {
             let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
             let userAppleRef = user.appleUserRef
             
+            self.title = bookclub.name
             self.imageOfBookClub.image = bookclub.profilePicture
             self.descriptionOfBookClub.text = bookclub.description
             self.meetingInfoForBookClub.text = bookclub.meetingInfo

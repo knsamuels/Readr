@@ -79,6 +79,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             let description = descriptionOfBookClub.text, !description.isEmpty,
             let meetingInfo = meetingInfoForBookBlub.text, !meetingInfo.isEmpty,
             let isbn = currentlyReadingBook?.industryIdentifiers?.first?.identifier else {return}
+        
         let profilePic: UIImage?
         if imageOfBookClub.image != nil {
             profilePic = imageOfBookClub.image
@@ -86,6 +87,12 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             profilePic = UIImage(named: "RLogo")
         }
         if let bookclub = bookclub {
+            bookclub.description = description
+            bookclub.name = name
+            bookclub.meetingInfo = meetingInfo
+            bookclub.memberCapacity = memberCapacity
+            bookclub.currentlyReading = isbn
+            bookclub.profilePicture = profilePic
             BookclubController.shared.update(bookclub: bookclub) { (result) in
                 DispatchQueue.main.async {
                     switch result {
@@ -221,7 +228,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         descriptionOfBookClub.text = bookclub.description
         meetingInfoForBookBlub.text = bookclub.meetingInfo
         createBookclubButton.setTitle("Save", for: .normal)
-        
+        fetchCurrentlyReadingBook(bookclub: bookclub)
     }
     
     // MARK: - Navigation
