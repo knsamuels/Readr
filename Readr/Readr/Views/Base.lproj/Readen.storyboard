@@ -1362,7 +1362,7 @@
                                                     <constraint firstAttribute="height" constant="84" id="SpL-Nb-HZA"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZK-Rp-NBp">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZK-Rp-NBp">
                                                 <rect key="frame" x="0.0" y="95" width="55" height="18.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18.5" id="L24-Ty-7Vu"/>
