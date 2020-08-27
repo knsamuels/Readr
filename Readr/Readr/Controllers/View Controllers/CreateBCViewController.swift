@@ -7,6 +7,9 @@
 //
 
 import UIKit
+protocol UpdateBookclubDelegate: AnyObject {
+    func updateBookclub(for bookclub: Bookclub)
+}
 
 class CreateBCViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate {
     
@@ -18,6 +21,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             updateCurrentlyReading()
         }
     }
+    weak var delegate: UpdateBookclubDelegate? 
     
     @IBOutlet weak var imageOfBookClub: UIImageView!
     @IBOutlet weak var nameOfBookClub: UITextField!
@@ -41,8 +45,9 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
 
         nameOfBookClub.delegate = self
         meetingInfoForBookBlub.delegate = self
-        
-
+        if let bookclub = bookclub {
+            updateViews(bookclub: bookclub)
+        }
     }
     
     @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
@@ -74,6 +79,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             let description = descriptionOfBookClub.text, !description.isEmpty,
             let meetingInfo = meetingInfoForBookBlub.text, !meetingInfo.isEmpty,
             let isbn = currentlyReadingBook?.industryIdentifiers?.first?.identifier else {return}
+        
         let profilePic: UIImage?
         if imageOfBookClub.image != nil {
             profilePic = imageOfBookClub.image
@@ -81,19 +87,25 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             profilePic = UIImage(named: "RLogo")
         }
         if let bookclub = bookclub {
+            bookclub.description = description
+            bookclub.name = name
+            bookclub.meetingInfo = meetingInfo
+            bookclub.memberCapacity = memberCapacity
+            bookclub.currentlyReading = isbn
+            bookclub.profilePicture = profilePic
             BookclubController.shared.update(bookclub: bookclub) { (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let bookclub):
-                        self.bookclub = bookclub
-                    //                        self.navigationController?.popViewController(animated: true)
+                        print("this worked")
+                        self.dismiss(animated: true)
                     case .failure(_):
                         print("could not update the bookclub")
                     }
                 }
             }
         } else {
-            BookclubController.shared.createBookClub(name: name, adminContactInfo: "never", description: description, profilePic: profilePic, meetingInfo: meetingInfo, memberCapacity: memberCapacity, currentlyReading: isbn) { (result) in
+            BookclubController.shared.createBookClub(name: name, adminContactInfo: "", description: description, profilePic: profilePic, meetingInfo: meetingInfo, memberCapacity: memberCapacity, currentlyReading: isbn) { (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let bookclub):
@@ -137,6 +149,9 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         memberCapacity = 100
     }
     
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
     
     //MARK: - Helpers
     
@@ -191,6 +206,29 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         if self.view.window?.frame.origin.y != 0 {
             self.view.window?.frame.origin.y = 0
         }
+    }
+    
+    func fetchCurrentlyReadingBook(bookclub: Bookclub){
+        let isbn = bookclub.currentlyReading
+        BookController.fetchOneBookWith(ISBN: isbn) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let book):
+                    self.currentlyReadingBook = book
+                case .failure(_):
+                    print("could not fetch the bookclub for that isbn")
+                }
+            }
+        }
+    }
+    
+    func updateViews(bookclub: Bookclub) {
+        imageOfBookClub.image = bookclub.profilePicture
+        nameOfBookClub.text = bookclub.name
+        descriptionOfBookClub.text = bookclub.description
+        meetingInfoForBookBlub.text = bookclub.meetingInfo
+        createBookclubButton.setTitle("Save", for: .normal)
+        fetchCurrentlyReadingBook(bookclub: bookclub)
     }
     
     // MARK: - Navigation

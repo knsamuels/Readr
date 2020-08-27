@@ -141,12 +141,18 @@ class BookclubController {
         operation.modifyRecordsCompletionBlock = { (records, _, error) in 
             if let error = error {
                 print("There was an error modifying the Bookclub - \(error) - \(error.localizedDescription) ")
-                return completion(.failure(.ckError(error)))
+                completion(.failure(.ckError(error)))
+                return
             }
             
-            guard let record = records?.first, let updatedBC = Bookclub(ckRecord: record) else {return completion(.failure(.couldNotUnwrap))}
+            guard let record = records?.first, let updatedBC = Bookclub(ckRecord: record)
+                else {
+                    completion(.failure(.couldNotUnwrap))
+                return
+            }
             
-            return completion(.success(updatedBC))
+            completion(.success(updatedBC))
+            return
         }
         
         publicDB.add(operation)
