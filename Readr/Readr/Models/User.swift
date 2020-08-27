@@ -156,3 +156,9 @@ extension CKRecord {
         }
     }
 } //End of extension
+
+extension User: Equatable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.recordID == rhs.recordID
+    }
+}
