@@ -124,6 +124,12 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     
     func updateViews() {
         DispatchQueue.main.async {
+            if let image = self.user?.profilePhoto {
+                self.selectProfileImage.setTitle("Edit Photo", for: .normal)
+                self.profilePic.image = image
+            } else {
+                self.profilePic.image = self.user?.profilePhoto ?? UIImage(named: "ReadenLogo")
+            }
             self.favBookPic1.isHidden = false
             self.titleLabel1.isHidden = false
             self.authorLabel1.isHidden = false
@@ -373,8 +379,20 @@ extension UserDetailViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.originalImage] as? UIImage else {return}
         
-        selectProfileImage.setTitle("", for: .normal)
+        selectProfileImage.setTitle("Edit Photo", for: .normal)
         profilePic.image = selectedImage
         dismiss(animated: true, completion: nil)
+        guard let user = user else {return}
+        user.profilePhoto = selectedImage
+        UserController.shared.updateUser(user: user) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    print("updated user's image")
+                case .failure(_):
+                    print("did not update user's image")
+                }
+            }
+        }
     }
 } //End of extension

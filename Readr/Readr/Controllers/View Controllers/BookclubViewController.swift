@@ -238,14 +238,14 @@ class BookclubViewController: UIViewController {
             }
         }
     }
-    
+
     func presentShare(bookclub: Bookclub) {
-        let shareSheet = UIActivityViewController(activityItems: [bookclub], applicationActivities: nil)
+        let title = " Please open Readen, search \(bookclub.name) under clubs tab and join this bookclub!"
+        let shareSheet = UIActivityViewController(activityItems: [title], applicationActivities: nil)
         
         self.present(shareSheet, animated: true, completion: nil)
     }
    
-    
     func presentEditAlert(bookclub: Bookclub?) {
         guard let bookclub = bookclub else {return}
         let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)

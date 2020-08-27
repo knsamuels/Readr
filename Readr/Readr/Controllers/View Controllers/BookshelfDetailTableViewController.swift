@@ -20,12 +20,11 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
     }
     
     // Mark Outlets
-    @IBOutlet weak var searchBar: UISearchBar!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
+//        searchBar.delegate = self
         fetchBooks()
         self.title = bookshelf?.title
                self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
@@ -50,6 +49,8 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
                     switch result {
                     case .success(let book):
                         self.bookshelfBooks.append(book)
+                        let sortedBooks = self.bookshelfBooks.sorted(by: { $0.title < $1.title })
+                        self.bookshelfBooks = sortedBooks
                         self.tableView.reloadData()
                         print(bookshelf.books.count)
                         print(self.bookshelfBooks.count)
@@ -130,47 +131,47 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
             guard let destination = segue.destination as? BookDetailViewController else {return}
             let bookToSend = bookshelfBooks[indexPath.row]
-            destination.book = bookToSend as? Book
+            destination.book = bookToSend
         }
      }
 }
 
-extension BookshelfDetailTableViewController {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
-        if !searchText.isEmpty {
-            resultsArray = bookshelfBooks.filter { $0.matches(searchTerm: searchText) }
-            tableView.reloadData()
-        } else {
-            resultsArray = bookshelfBooks
-            tableView.reloadData()
-        }
-    }
-    func searchBarCancelButtonClicked( searchBar: UISearchBar) {
-
-        resultsArray = bookshelfBooks
-        tableView.reloadData()
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-    }
-
-    func searchBarSearchButtonClicked( searchBar: UISearchBar) {
-
-        searchBar.resignFirstResponder()
-        isSearching = false
-    }
-
-    func searchBarTextDidBeginEditing( searchBar: UISearchBar) {
-        isSearching = true
-    }
-
-    func searchBarTextDidEndEditing( searchBar: UISearchBar) {
-
-        searchBar.text = ""
-        isSearching = false
-    }
-
-}
+//extension BookshelfDetailTableViewController {
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//
+//        if !searchText.isEmpty {
+//            resultsArray = bookshelfBooks.filter { $0.matches(searchTerm: searchText) }
+//            tableView.reloadData()
+//        } else {
+//            resultsArray = bookshelfBooks
+//            tableView.reloadData()
+//        }
+//    }
+//    func searchBarCancelButtonClicked( searchBar: UISearchBar) {
+//
+//        resultsArray = bookshelfBooks
+//        tableView.reloadData()
+//        searchBar.text = ""
+//        searchBar.resignFirstResponder()
+//    }
+//
+//    func searchBarSearchButtonClicked( searchBar: UISearchBar) {
+//
+//        searchBar.resignFirstResponder()
+//        isSearching = false
+//    }
+//
+//    func searchBarTextDidBeginEditing( searchBar: UISearchBar) {
+//        isSearching = true
+//    }
+//
+//    func searchBarTextDidEndEditing( searchBar: UISearchBar) {
+//
+//        searchBar.text = ""
+//        isSearching = false
+//    }
+//
+//}
 extension BookshelfDetailTableViewController: BookshelfCellDelegate {
     func presentAlertController(user: User, isbn: String, bookshelf: Bookshelf, cell: BookshelfDetailTableViewCell) {
         let alertController = UIAlertController(title: nil , message: nil, preferredStyle: .actionSheet)

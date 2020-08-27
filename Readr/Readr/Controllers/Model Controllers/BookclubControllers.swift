@@ -70,10 +70,7 @@ class BookclubController {
             print("Fetched all Bookclubs successfully.")
             
             let fetchBC = records.compactMap { Bookclub(ckRecord: $0) }
-            print(fetchBC.count)
-            for bookclub in fetchBC {
-                print(bookclub.name)
-            }
+            
             return completion(.success(fetchBC))
         }
         
