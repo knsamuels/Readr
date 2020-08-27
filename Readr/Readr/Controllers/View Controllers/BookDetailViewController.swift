@@ -24,6 +24,8 @@ class BookDetailViewController: UIViewController {
         super.viewDidLoad()
         updateViews()
         fetchReview()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
     }
     
     //Mark- Actions
@@ -42,7 +44,7 @@ class BookDetailViewController: UIViewController {
             popUpTBVC.modalPresentationStyle = .automatic
             popUpTBVC.bookISBN = isbn
             self.present(popUpTBVC, animated: true, completion: nil)
-       }
+        }
         alertController.addAction(cancelAction)
         alertController.addAction(addAction)
         self.present(alertController, animated: true)

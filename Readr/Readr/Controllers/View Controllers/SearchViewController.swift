@@ -38,8 +38,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.isHidden = true
         collectionView.isHidden = false
         fetchBooksWithAuthor()
-        
-        
+        self.title = "SEARCH"
+               self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
     }
     
     //MARK: - Actions

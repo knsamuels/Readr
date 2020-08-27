@@ -27,6 +27,8 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
         super.viewDidLoad()
         searchBar.delegate = self
         fetchBooks()
+        self.title = bookshelf?.title
+               self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
     }
     
     override func viewWillAppear(_ animated: Bool) {

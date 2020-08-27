@@ -52,6 +52,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
     }
     
     override func viewWillAppear(_ animated: Bool) {

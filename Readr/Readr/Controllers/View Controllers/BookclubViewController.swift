@@ -51,6 +51,7 @@ class BookclubViewController: UIViewController {
         showLoadingScreen()
         loadDataForUser()
         self.title = bookclub?.name
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -238,6 +239,11 @@ class BookclubViewController: UIViewController {
         }
     }
     
+    func presentShare(bookclub: Bookclub) {
+        let shareSheet = UIActivityViewController(activityItems: [bookclub], applicationActivities: nil)
+        
+        self.present(shareSheet, animated: true, completion: nil)
+    }
    
     
     func presentEditAlert(bookclub: Bookclub?) {
@@ -246,11 +252,7 @@ class BookclubViewController: UIViewController {
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
-            
-            let shareSheet = UIActivityViewController(activityItems: [bookclub], applicationActivities: nil)
-            
-            self.present(shareSheet, animated: true, completion: nil)
-            
+            self.presentShare(bookclub: bookclub)
         }
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { (_) in
