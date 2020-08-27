@@ -21,6 +21,8 @@ class BookclubListTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         fetchBookclubs()
+        self.title = "My Bookclubs"
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
     }
 
     // MARK: - Table view data source

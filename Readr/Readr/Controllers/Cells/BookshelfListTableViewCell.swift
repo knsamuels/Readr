@@ -9,7 +9,8 @@
 import UIKit
 
 class BookshelfListTableViewCell: UITableViewCell {
-
+    
+   
     var bookshelf: Bookshelf? {
         didSet {
             updateViews()
@@ -20,23 +21,11 @@ class BookshelfListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var bookCountLabel: UILabel!
     
-    @IBOutlet weak var book1Label: UILabel!
-    
-    @IBOutlet weak var book2Label: UILabel!
-    
-    @IBOutlet weak var book3Label: UILabel!
-    
-    @IBOutlet weak var book4Label: UILabel!
-    
-    @IBOutlet weak var book5Label: UILabel!
-    
-    
-    
     func updateViews() {
         guard let bookshelf = bookshelf else {return}
         titleOfBookShelfLabel.text = bookshelf.title
         bookCountLabel.text = "\(bookshelf.books.count) books"
-    
+        
     }
 }
 
