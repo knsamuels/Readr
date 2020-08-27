@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9303FEC624F7356B00486F65 /* OnBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FEC524F7356A00486F65 /* OnBoardViewController.swift */; };
+		9303FEC824F73CC400486F65 /* RViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FEC724F73CC400486F65 /* RViewController.swift */; };
+		9303FECC24F745B700486F65 /* ReadenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FECB24F745B700486F65 /* ReadenButton.swift */; };
+		9303FED024F75FD900486F65 /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FECF24F75FD900486F65 /* UsernameViewController.swift */; };
+		9303FED224F7600D00486F65 /* CustomizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FED124F7600D00486F65 /* CustomizeViewController.swift */; };
+		9303FED424F7605A00486F65 /* FavAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FED324F7605A00486F65 /* FavAuthorViewController.swift */; };
+		9303FED624F7609300486F65 /* BioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FED524F7609300486F65 /* BioViewController.swift */; };
 		9304463E24E1ABBC00FBEEF2 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9304463D24E1ABBC00FBEEF2 /* MessageController.swift */; };
 		937640D024EC36CF00B51DEC /* BookclubListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640CF24EC36CF00B51DEC /* BookclubListTableViewController.swift */; };
 		937640D224EC3BFE00B51DEC /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640D124EC3BFE00B51DEC /* SearchTableViewCell.swift */; };
@@ -60,6 +67,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9303FEC524F7356A00486F65 /* OnBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewController.swift; sourceTree = "<group>"; };
+		9303FEC724F73CC400486F65 /* RViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RViewController.swift; sourceTree = "<group>"; };
+		9303FECB24F745B700486F65 /* ReadenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadenButton.swift; sourceTree = "<group>"; };
+		9303FECF24F75FD900486F65 /* UsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameViewController.swift; sourceTree = "<group>"; };
+		9303FED124F7600D00486F65 /* CustomizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeViewController.swift; sourceTree = "<group>"; };
+		9303FED324F7605A00486F65 /* FavAuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavAuthorViewController.swift; sourceTree = "<group>"; };
+		9303FED524F7609300486F65 /* BioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioViewController.swift; sourceTree = "<group>"; };
 		9304463D24E1ABBC00FBEEF2 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		937640CF24EC36CF00B51DEC /* BookclubListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubListTableViewController.swift; sourceTree = "<group>"; };
 		937640D124EC3BFE00B51DEC /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -128,6 +142,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9303FEC924F7459200486F65 /* Custom UI */ = {
+			isa = PBXGroup;
+			children = (
+				9303FECA24F745A000486F65 /* Custom Buttons */,
+			);
+			path = "Custom UI";
+			sourceTree = "<group>";
+		};
+		9303FECA24F745A000486F65 /* Custom Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				9303FECB24F745B700486F65 /* ReadenButton.swift */,
+			);
+			path = "Custom Buttons";
+			sourceTree = "<group>";
+		};
 		C98FC7A324DDC71000C27CBF = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +203,7 @@
 		C98FC7C424DDCAC200C27CBF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9303FEC924F7459200486F65 /* Custom UI */,
 				938A2DA224EAE6B8002119E1 /* Main.storyboard */,
 				C98FC7B524DDC71000C27CBF /* Readen.storyboard */,
 			);
@@ -242,7 +273,13 @@
 			isa = PBXGroup;
 			children = (
 				938A2DA424EAE724002119E1 /* SignInViewController.swift */,
+				9303FECF24F75FD900486F65 /* UsernameViewController.swift */,
+				9303FED124F7600D00486F65 /* CustomizeViewController.swift */,
+				9303FED324F7605A00486F65 /* FavAuthorViewController.swift */,
+				9303FED524F7609300486F65 /* BioViewController.swift */,
 				937A9F5B24F4CAC100AE9067 /* GenresViewController.swift */,
+				9303FEC724F73CC400486F65 /* RViewController.swift */,
+				9303FEC524F7356A00486F65 /* OnBoardViewController.swift */,
 				F31A488624E480CA0071652A /* UserDetailViewController.swift */,
 				C938A38E24EEF0E60095AD50 /* BookDetailViewController.swift */,
 				F3C608B124EB1C1500E4F26F /* SearchViewController.swift */,
@@ -349,6 +386,8 @@
 			files = (
 				C98FC7EC24E1B4C900C27CBF /* ChatError.swift in Sources */,
 				9304463E24E1ABBC00FBEEF2 /* MessageController.swift in Sources */,
+				9303FED624F7609300486F65 /* BioViewController.swift in Sources */,
+				9303FECC24F745B700486F65 /* ReadenButton.swift in Sources */,
 				F31A488924E480DA0071652A /* BookclubViewController.swift in Sources */,
 				F3C608B224EB1C1600E4F26F /* SearchViewController.swift in Sources */,
 				937640D024EC36CF00B51DEC /* BookclubListTableViewController.swift in Sources */,
@@ -362,13 +401,16 @@
 				937640D624EC44F100B51DEC /* ChatTableViewController.swift in Sources */,
 				C9BFE4CC24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift in Sources */,
 				C98FC7E424E1B47100C27CBF /* ChatController.swift in Sources */,
+				9303FEC824F73CC400486F65 /* RViewController.swift in Sources */,
 				937640D224EC3BFE00B51DEC /* SearchTableViewCell.swift in Sources */,
 				C98FC7CA24DDCB4100C27CBF /* Bookclub.swift in Sources */,
 				C98FC7CC24DDCB6400C27CBF /* Message.swift in Sources */,
 				C98FC7E624E1B49200C27CBF /* BookclubError.swift in Sources */,
 				937640D424EC3C1900B51DEC /* SearchCollectionViewCell.swift in Sources */,
+				9303FED024F75FD900486F65 /* UsernameViewController.swift in Sources */,
 				C9DBB76524F4117900285DC7 /* PopUpBookshelfTableViewController.swift in Sources */,
 				F31A488724E480CA0071652A /* UserDetailViewController.swift in Sources */,
+				9303FED424F7605A00486F65 /* FavAuthorViewController.swift in Sources */,
 				C98FC7D224DDCBCA00C27CBF /* Chat.swift in Sources */,
 				C98FC7E024E1B42000C27CBF /* BookclubControllers.swift in Sources */,
 				C98FC7B024DDC71000C27CBF /* AppDelegate.swift in Sources */,
@@ -376,11 +418,13 @@
 				C9BFE4CA24F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift in Sources */,
 				C98FC7E824E1B4A300C27CBF /* MessageError.swift in Sources */,
 				C98FC7DE24E1A0B900C27CBF /* BookshelfError.swift in Sources */,
+				9303FED224F7600D00486F65 /* CustomizeViewController.swift in Sources */,
 				C98FC7D724DDD52000C27CBF /* BookController.swift in Sources */,
 				938A2DA524EAE724002119E1 /* SignInViewController.swift in Sources */,
 				C98FC7B224DDC71000C27CBF /* SceneDelegate.swift in Sources */,
 				C98FC7CE24DDCB7800C27CBF /* User.swift in Sources */,
 				937640DA24EC460700B51DEC /* MessageTableViewCell.swift in Sources */,
+				9303FEC624F7356B00486F65 /* OnBoardViewController.swift in Sources */,
 				937640D824EC45B800B51DEC /* MessageViewController.swift in Sources */,
 				C98FC7E224E1B46200C27CBF /* UserController.swift in Sources */,
 				C98FC7D024DDCBB100C27CBF /* Bookshelf.swift in Sources */,

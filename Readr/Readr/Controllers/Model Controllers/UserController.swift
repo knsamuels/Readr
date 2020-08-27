@@ -21,12 +21,12 @@ class UserController {
     //MARK: - CRUD
     
     //Create
-    func createUser(username: String, firstName: String, lastName: String,  favoriteAuthor: String, completion: @escaping (Result<User, UserError>) -> Void) {
+    func createUser(username: String, firstName: String, lastName: String, completion: @escaping (Result<User, UserError>) -> Void) {
         fetchAppleUserReference { (result) in
             switch result {
             case .success(let reference):
             
-                let newUser = User(username: username, firstName: firstName, lastName: lastName, favoriteAuthor: favoriteAuthor, appleUserRef: reference)
+                let newUser = User(username: username, firstName: firstName, lastName: lastName, appleUserRef: reference)
                 let userRecord = CKRecord(user: newUser)
                 
                 self.publicDB.save(userRecord) { (record, error) in
