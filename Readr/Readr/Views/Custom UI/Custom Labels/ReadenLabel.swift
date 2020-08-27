@@ -1,5 +1,5 @@
 //
-//  ReadenButton.swift
+//  ReadenLabel.swift
 //  Readr
 //
 //  Created by Bryan Workman on 8/26/20.
@@ -8,15 +8,11 @@
 
 import UIKit
 
-class ReadenButton: UIButton {
-    
+class ReadenLabel: UILabel {
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupView()
+        
+        let size = self.font.pointSize
+        self.font = UIFont(name: "Cochin", size: size)
     }
-    func setupView() {
-        self.layer.cornerRadius = 12.0
-        self.clipsToBounds = true
-    }
-    
 } //End of class

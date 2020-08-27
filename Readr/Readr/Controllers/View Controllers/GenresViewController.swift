@@ -10,8 +10,6 @@ import UIKit
 
 class GenresViewController: UIViewController {
     
-    var user: User?
-    
     //MARK: - Outlets
     @IBOutlet weak var fantasyButton: UIButton!
     @IBOutlet weak var adventureButton: UIButton!
@@ -74,7 +72,8 @@ class GenresViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func finishedButtonTapped(_ sender: Any) {
-        guard let user = user else {return}
+        guard let user = UserController.shared.currentUser else {return}
+        guard favGenres.count > 0 else {return}
         user.favoriteGenres = favGenres
         
         UserController.shared.updateUser(user: user) { (result) in
@@ -531,78 +530,6 @@ class GenresViewController: UIViewController {
         relationshipsButton.isEnabled = true
         humorButton.isEnabled = true
         childrensButton.isEnabled = true
-        
-
     }
     
 } //End of class
-
-
-
-
-
-
-
-
-
-
-
-/* all gray ---- nullify
- 
-        fantasyButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        adventureButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        romanceButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        contemporaryButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        dypostianButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        mysteryButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        horrorButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        thrillerButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        paranormalButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        historicalFictionButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        scienceFictionButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        memoirButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        cookingButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        artButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        selfHelpPersonalButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        developmentButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        motivationalButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        healthButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        historyButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        travelButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        guideHowToButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        relationshipsButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        humorButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        childrensButton.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-
-*/
-
-
-
-
-/* back to normal colors ---- unNullify
- 
-        fantasyButton.backgroundColor = #colorLiteral(red: 0.2098854482, green: 0.3161664009, blue: 0.4439439476, alpha: 1)
-        adventureButton.backgroundColor = #colorLiteral(red: 0.354118228, green: 0.3790878952, blue: 0.3499294817, alpha: 1)
-        romanceButton.backgroundColor = #colorLiteral(red: 0.7780780196, green: 0.6214153767, blue: 0.3541248441, alpha: 1)
-        contemporaryButton.backgroundColor = #colorLiteral(red: 0.6584896445, green: 0.4279785752, blue: 0.3415432572, alpha: 1)
-        dypostianButton.backgroundColor = #colorLiteral(red: 0.5264488459, green: 0.4599625468, blue: 0.4678027034, alpha: 1)
-        mysteryButton.backgroundColor = #colorLiteral(red: 0.4279251099, green: 0.3873221874, blue: 0.479637146, alpha: 1)
-        horrorButton.backgroundColor = #colorLiteral(red: 0.6585012674, green: 0.3416002989, blue: 0.3790254593, alpha: 1)
-        thrillerButton.backgroundColor = #colorLiteral(red: 0.2098854482, green: 0.3161664009, blue: 0.4439439476, alpha: 1)
-        paranormalButton.backgroundColor = #colorLiteral(red: 0.354118228, green: 0.3790878952, blue: 0.3499294817, alpha: 1)
-        historicalFictionButton.backgroundColor = #colorLiteral(red: 0.7780780196, green: 0.6214153767, blue: 0.3541248441, alpha: 1)
-        scienceFictionButton.backgroundColor = #colorLiteral(red: 0.6584896445, green: 0.4279785752, blue: 0.3415432572, alpha: 1)
-        memoirButton.backgroundColor = #colorLiteral(red: 0.5264488459, green: 0.4599625468, blue: 0.4678027034, alpha: 1)
-        cookingButton.backgroundColor = #colorLiteral(red: 0.4279251099, green: 0.3873221874, blue: 0.479637146, alpha: 1)
-        artButton.backgroundColor = #colorLiteral(red: 0.6585012674, green: 0.3416002989, blue: 0.3790254593, alpha: 1)
-        selfHelpPersonalButton.backgroundColor = #colorLiteral(red: 0.2098854482, green: 0.3161664009, blue: 0.4439439476, alpha: 1)
-        developmentButton.backgroundColor = #colorLiteral(red: 0.354118228, green: 0.3790878952, blue: 0.3499294817, alpha: 1)
-        motivationalButton.backgroundColor = #colorLiteral(red: 0.7780780196, green: 0.6214153767, blue: 0.3541248441, alpha: 1)
-        healthButton.backgroundColor = #colorLiteral(red: 0.6584896445, green: 0.4279785752, blue: 0.3415432572, alpha: 1)
-        historyButton.backgroundColor = #colorLiteral(red: 0.5264488459, green: 0.4599625468, blue: 0.4678027034, alpha: 1)
-        travelButton.backgroundColor = #colorLiteral(red: 0.4279251099, green: 0.3873221874, blue: 0.479637146, alpha: 1)
-        guideHowToButton.backgroundColor = #colorLiteral(red: 0.6585012674, green: 0.3416002989, blue: 0.3790254593, alpha: 1)
-        relationshipsButton.backgroundColor = #colorLiteral(red: 0.2098854482, green: 0.3161664009, blue: 0.4439439476, alpha: 1)
-        humorButton.backgroundColor = #colorLiteral(red: 0.354118228, green: 0.3790878952, blue: 0.3499294817, alpha: 1)
-        childrensButton.backgroundColor = #colorLiteral(red: 0.7780780196, green: 0.6214153767, blue: 0.3541248441, alpha: 1)
-*/

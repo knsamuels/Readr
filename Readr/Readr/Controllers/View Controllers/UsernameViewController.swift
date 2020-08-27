@@ -16,9 +16,7 @@ class UsernameViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var alreadyInUseLabel: UILabel!
-    
-    //MARK: - Properties
-    
+  
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +24,6 @@ class UsernameViewController: UIViewController {
     }
     
     //MARK: - Actions
-    
     @IBAction func continueButtonTapped(_ sender: Any) {
         guard let username = usernameTextField.text, !username.isEmpty else {return}
         guard let firstName = firstNameTextField.text, !firstName.isEmpty else {return}
@@ -36,7 +33,6 @@ class UsernameViewController: UIViewController {
     }
     
     //MARK: - Helper Methods
-    
     func checkUsername(username: String) {
         UserController.shared.fetchUsername(username: username) { (result) in
             DispatchQueue.main.async {
