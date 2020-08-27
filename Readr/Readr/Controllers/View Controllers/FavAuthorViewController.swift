@@ -13,23 +13,17 @@ class FavAuthorViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var favAuthorTextField: UITextField!
     @IBOutlet weak var blackView: UIView!
-    
-    //MARK: - Properties
-    
+  
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    //MARK: - Helper Methods
-
-    
-    // MARK: - Navigation
-
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+    //MARK: - Actions
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        guard let user = UserController.shared.currentUser else {return}
+        guard let favAuthor = favAuthorTextField.text, !favAuthor.isEmpty else {return}
+        user.favoriteAuthor = favAuthor
     }
     
-
-}
+} //End of class

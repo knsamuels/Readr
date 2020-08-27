@@ -11,7 +11,6 @@ import UIKit
 class SignInViewController: UIViewController {
     
     //MARK: - Outlets
-    
     @IBOutlet weak var signUpButton: UIButton!
     
     //MARK: - Lifecycles
@@ -21,7 +20,6 @@ class SignInViewController: UIViewController {
     }
     
     //MARK: - Actions
-   
     @IBAction func signupButtonTapped(_ sender: Any) {
         guard UserController.shared.currentUser == nil else {
             self.presentBookshelfVC()
