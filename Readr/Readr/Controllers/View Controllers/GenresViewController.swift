@@ -10,6 +10,8 @@ import UIKit
 
 class GenresViewController: UIViewController {
     
+    var user: User?
+    
     //MARK: - Outlets
     @IBOutlet weak var fantasyButton: UIButton!
     @IBOutlet weak var adventureButton: UIButton!
@@ -35,6 +37,7 @@ class GenresViewController: UIViewController {
     @IBOutlet weak var relationshipsButton: UIButton!
     @IBOutlet weak var humorButton: UIButton!
     @IBOutlet weak var childrensButton: UIButton!
+    @IBOutlet weak var finishedButton: UIButton!
     
     //MARK: - Properties
     var favGenres: [String] = []
@@ -70,6 +73,13 @@ class GenresViewController: UIViewController {
     }
     
     //MARK: - Actions
+    @IBAction func finishedButtonTapped(_ sender: Any) {
+        guard let user = user else {return}
+        user.favoriteGenres = favGenres
+        
+        UserController.shared.updateUser(user: user) { (result) in
+        }
+    }
     @IBAction func fantasyButtonTapped(_ sender: Any) {
         fantasyIsSelected.toggle()
         if fantasyIsSelected {
@@ -524,16 +534,6 @@ class GenresViewController: UIViewController {
         
 
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 } //End of class
 

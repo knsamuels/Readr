@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rgj-Y1-NWb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TYG-wo-5CD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -15,148 +15,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Ctn-O7-d2k" userLabel="TotalStack">
-                                <rect key="frame" x="41.5" y="225.5" width="331" height="274"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="OPR-gj-k7l" userLabel="ButtonStack">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="274"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEf-d7-8dd">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="117"/>
-                                                <state key="normal" title="Log In"/>
-                                                <connections>
-                                                    <action selector="logInButtonSelected:" destination="Rgj-Y1-NWb" eventType="touchUpInside" id="lrm-fI-W5D"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECX-MN-Gas">
-                                                <rect key="frame" x="0.0" y="157" width="75" height="117"/>
-                                                <state key="normal" title="Sign Up"/>
-                                                <connections>
-                                                    <action selector="signUpButtonSelected:" destination="Rgj-Y1-NWb" eventType="touchUpInside" id="oOX-n9-rBJ"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="7Xn-Os-k54"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="swW-Uu-ra6" userLabel="TextFieldStack">
-                                        <rect key="frame" x="89" y="0.0" width="242" height="274"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x1v-Kh-QYx">
-                                                <rect key="frame" x="0.0" y="0.0" width="242" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="QcU-Bc-3LD"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter first name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CiI-uJ-gRw">
-                                                <rect key="frame" x="0.0" y="48" width="242" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="AnJ-H4-Ort"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter last name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZvR-Ka-yVB">
-                                                <rect key="frame" x="0.0" y="96" width="242" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="zol-V5-m3i"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter favorite author..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FyC-5A-MXm">
-                                                <rect key="frame" x="0.0" y="144" width="242" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="OGO-Dg-Ga9"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PKv-FC-Yb0">
-                                                <rect key="frame" x="0.0" y="192" width="242" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="qRe-Vs-UFV"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i2a-o2-zIS">
-                                                <rect key="frame" x="0.0" y="240" width="242" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="UU3-Fu-QQv"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="OPR-gj-k7l" secondAttribute="bottom" id="68g-vX-GWN"/>
-                                    <constraint firstItem="OPR-gj-k7l" firstAttribute="leading" secondItem="Ctn-O7-d2k" secondAttribute="leading" id="8Fz-mc-GZl"/>
-                                    <constraint firstAttribute="bottom" secondItem="swW-Uu-ra6" secondAttribute="bottom" id="O3h-MR-wPL"/>
-                                    <constraint firstItem="swW-Uu-ra6" firstAttribute="top" secondItem="Ctn-O7-d2k" secondAttribute="top" id="XPm-cT-q4c"/>
-                                    <constraint firstAttribute="trailing" secondItem="swW-Uu-ra6" secondAttribute="trailing" id="if0-Ka-9af"/>
-                                    <constraint firstItem="OPR-gj-k7l" firstAttribute="top" secondItem="Ctn-O7-d2k" secondAttribute="top" id="oSp-1N-b0n"/>
-                                </constraints>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xot-tD-g4I">
-                                <rect key="frame" x="167" y="589.5" width="80" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="bMY-J0-CjR"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ReadenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ca4-or-ftP">
+                                <rect key="frame" x="138" y="213" width="139" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xot-tD-g4I">
+                                <rect key="frame" x="138" y="534" width="138" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Sign Up"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="enterButtonTapped:" destination="Rgj-Y1-NWb" eventType="touchUpInside" id="kbf-PV-deG"/>
+                                    <action selector="signupButtonTapped:" destination="Rgj-Y1-NWb" eventType="touchUpInside" id="kbf-PV-deG"/>
+                                    <segue destination="gBc-Cp-10d" kind="show" id="Okk-Rm-UaN"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ca4-or-ftP">
-                                <rect key="frame" x="107.5" y="88.5" width="199" height="97"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**username already exists**" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJ0-a9-qod">
-                                <rect key="frame" x="41.5" y="539.5" width="331" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.90765783629441621" green="0.017983920711077822" blue="0.072990826304108899" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.74117647060000003" green="0.87450980389999999" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Ctn-O7-d2k" firstAttribute="top" secondItem="ca4-or-ftP" secondAttribute="bottom" constant="40" id="6nk-L6-UWb"/>
-                            <constraint firstItem="Ctn-O7-d2k" firstAttribute="width" secondItem="sZJ-Pt-q8b" secondAttribute="width" multiplier="0.8" id="CXd-bm-nLd"/>
-                            <constraint firstItem="ca4-or-ftP" firstAttribute="centerX" secondItem="sZJ-Pt-q8b" secondAttribute="centerX" id="ChG-VO-Ilr"/>
-                            <constraint firstItem="PJ0-a9-qod" firstAttribute="leading" secondItem="ECX-MN-Gas" secondAttribute="leading" id="HHX-KF-Qa9"/>
-                            <constraint firstItem="PJ0-a9-qod" firstAttribute="top" secondItem="Ctn-O7-d2k" secondAttribute="bottom" constant="40" id="L51-9r-N9S"/>
-                            <constraint firstItem="ca4-or-ftP" firstAttribute="height" secondItem="Uid-Nb-eGV" secondAttribute="height" multiplier="0.108259" id="XnC-dM-TBv"/>
-                            <constraint firstItem="ca4-or-ftP" firstAttribute="width" secondItem="Uid-Nb-eGV" secondAttribute="width" multiplier="0.480676" id="bWY-Ki-3ei"/>
-                            <constraint firstItem="Ctn-O7-d2k" firstAttribute="centerY" secondItem="sZJ-Pt-q8b" secondAttribute="centerY" multiplier="0.8" id="igU-xe-ATU"/>
-                            <constraint firstItem="PJ0-a9-qod" firstAttribute="trailing" secondItem="i2a-o2-zIS" secondAttribute="trailing" id="mKd-87-d3f"/>
-                            <constraint firstItem="Ctn-O7-d2k" firstAttribute="centerX" secondItem="sZJ-Pt-q8b" secondAttribute="centerX" id="oue-FD-kUX"/>
-                            <constraint firstItem="Xot-tD-g4I" firstAttribute="top" secondItem="Ctn-O7-d2k" secondAttribute="bottom" constant="90" id="p3n-t3-K6j"/>
-                            <constraint firstItem="Xot-tD-g4I" firstAttribute="centerX" secondItem="sZJ-Pt-q8b" secondAttribute="centerX" id="qza-Yh-S1V"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="sZJ-Pt-q8b"/>
                     </view>
+                    <navigationItem key="navigationItem" id="1H5-mT-ic2"/>
                     <connections>
-                        <outlet property="alreadyExistsLabel" destination="PJ0-a9-qod" id="xY1-DI-Jw8"/>
-                        <outlet property="confirmTextField" destination="i2a-o2-zIS" id="87X-ag-ME4"/>
-                        <outlet property="enterButton" destination="Xot-tD-g4I" id="fdQ-dU-pYA"/>
-                        <outlet property="favAuthorTextField" destination="FyC-5A-MXm" id="vgH-9t-NOA"/>
-                        <outlet property="firstNameTextField" destination="CiI-uJ-gRw" id="BhZ-OL-OEl"/>
-                        <outlet property="lastNameTextField" destination="ZvR-Ka-yVB" id="VHH-79-WDl"/>
-                        <outlet property="logInButton" destination="rEf-d7-8dd" id="NFE-tv-pJD"/>
-                        <outlet property="passwordTextField" destination="PKv-FC-Yb0" id="xLG-0Q-Qsm"/>
-                        <outlet property="signUpButton" destination="ECX-MN-Gas" id="crf-az-1Kw"/>
-                        <outlet property="usernameTextField" destination="x1v-Kh-QYx" id="nVa-g4-AbL"/>
+                        <outlet property="signUpButton" destination="Xot-tD-g4I" id="fdQ-dU-pYA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yB-gx-91d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="5"/>
+            <point key="canvasLocation" x="2528.985507246377" y="4.6875"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="m3J-4O-uE4">
@@ -191,28 +78,81 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOC-HM-WdY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2614" y="-714"/>
+            <point key="canvasLocation" x="2529" y="-854"/>
         </scene>
-        <!--View Controller-->
+        <!--Username View Controller-->
         <scene sceneID="e6y-sQ-Wt6">
             <objects>
-                <viewController id="gBc-Cp-10d" sceneMemberID="viewController">
+                <viewController id="gBc-Cp-10d" customClass="UsernameViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d3V-6A-gUm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ReadenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="K3R-5X-fQP">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <rect key="frame" x="87" y="241" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3U0-ST-X6n">
+                                <rect key="frame" x="0.0" y="491" width="414" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="keg-xA-zCG">
+                                        <rect key="frame" x="95" y="95" width="224" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rH5-GO-OdN">
+                                        <rect key="frame" x="95" y="146" width="224" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PlX-gC-HrW">
+                                        <rect key="frame" x="95" y="201" width="224" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mA0-Ek-riv">
+                                        <rect key="frame" x="129" y="266" width="155" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="continue">
+                                            <color key="titleColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="continueButtonTapped:" destination="gBc-Cp-10d" eventType="touchUpInside" id="jFh-IY-PsF"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="**Username is already in use**" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJp-JF-NnZ">
+                                        <rect key="frame" x="67" y="340" width="274" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="0.026988566603960429" blue="0.092577411702019496" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="shadowOffset" width="-1" height="1"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="hEy-qB-bL7"/>
                     </view>
+                    <navigationItem key="navigationItem" id="scf-wW-O4V"/>
+                    <connections>
+                        <outlet property="alreadyInUseLabel" destination="uJp-JF-NnZ" id="DDo-LP-gyV"/>
+                        <outlet property="blackView" destination="3U0-ST-X6n" id="hFc-4O-tXo"/>
+                        <outlet property="firstNameTextField" destination="rH5-GO-OdN" id="jDz-hz-L1l"/>
+                        <outlet property="lastNameTextField" destination="PlX-gC-HrW" id="Hwj-bI-PKX"/>
+                        <outlet property="usernameTextField" destination="keg-xA-zCG" id="31N-xn-kKE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rFB-WR-mzT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3386" y="-715"/>
+            <point key="canvasLocation" x="3389.8550724637685" y="4.6875"/>
         </scene>
         <!--Genres View Controller-->
         <scene sceneID="MTs-Nn-VlD">
@@ -223,7 +163,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What are your 3 favorite genres?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7T-Zz-Sxs">
-                                <rect key="frame" x="40" y="144" width="334" height="29"/>
+                                <rect key="frame" x="40" y="118" width="334" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="re3-Tf-ldx"/>
                                 </constraints>
@@ -231,78 +171,103 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Soq-fp-3O0">
-                                <rect key="frame" x="30" y="223" width="354" height="609"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Soq-fp-3O0">
+                                <rect key="frame" x="30" y="177" width="354" height="575"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zjP-3w-PMI">
-                                        <rect key="frame" x="0.0" y="0.0" width="104.5" height="609"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zjP-3w-PMI">
+                                        <rect key="frame" x="0.0" y="0.0" width="108" height="575"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WU3-Iz-3QQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="104.5" height="58.5"/>
-                                                <state key="normal" title="Fantasy"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WU3-Iz-3QQ" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="108" height="59"/>
+                                                <color key="backgroundColor" red="0.20988544819999999" green="0.31616640089999998" blue="0.4439439476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Fantasy">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="fantasyButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="GvH-gQ-Lmp"/>
                                                     <action selector="fantasyButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="EPE-lK-lzd"/>
                                                     <action selector="fantasyButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="cDC-D7-JPl"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4IB-41-kRH">
-                                                <rect key="frame" x="0.0" y="78.5" width="104.5" height="59"/>
-                                                <state key="normal" title="Contemporary"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4IB-41-kRH" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="74" width="108" height="58.5"/>
+                                                <color key="backgroundColor" red="0.65848964450000003" green="0.42797857519999999" blue="0.34154325720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Contemporary">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="contemporaryButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="JXL-PE-gVl"/>
                                                     <action selector="contemporaryButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="7Zi-QS-w4m"/>
                                                     <action selector="contemporaryButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="pwe-Yd-d1C"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJ7-4a-7ZK">
-                                                <rect key="frame" x="0.0" y="157.5" width="104.5" height="58.5"/>
-                                                <state key="normal" title="Horror"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJ7-4a-7ZK" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="147.5" width="108" height="59"/>
+                                                <color key="backgroundColor" red="0.65850126740000003" green="0.34160029889999999" blue="0.37902545929999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Horror">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="horrorButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="j4D-dV-dYe"/>
                                                     <action selector="horrorButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="6eb-Cn-aA6"/>
                                                     <action selector="horrorButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="faa-Fa-Vgj"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbM-SV-TPk">
-                                                <rect key="frame" x="0.0" y="236" width="104.5" height="58.5"/>
-                                                <state key="normal" title="Historical Fiction"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbM-SV-TPk" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="221.5" width="108" height="58.5"/>
+                                                <color key="backgroundColor" red="0.7780780196" green="0.62141537670000002" blue="0.3541248441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="Historical Fiction">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="historicalFictionButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="76N-mZ-UdS"/>
                                                     <action selector="historicalFictionButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="D4q-x0-I8Q"/>
                                                     <action selector="historicalFictionButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="x7v-gs-pae"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKi-Pt-l2H">
-                                                <rect key="frame" x="0.0" y="314.5" width="104.5" height="58.5"/>
-                                                <state key="normal" title="Cooking"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKi-Pt-l2H" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="295" width="108" height="59"/>
+                                                <color key="backgroundColor" red="0.42792510989999999" green="0.38732218740000002" blue="0.47963714600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Cooking">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="cookingButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="l7e-2x-Agb"/>
                                                     <action selector="cookingButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="sjF-Ij-JbM"/>
                                                     <action selector="cookingButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="v4V-oV-CDA"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sn6-6B-dbO">
-                                                <rect key="frame" x="0.0" y="393" width="104.5" height="59"/>
-                                                <state key="normal" title="Development"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sn6-6B-dbO" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="369" width="108" height="58.5"/>
+                                                <color key="backgroundColor" red="0.35411822799999998" green="0.37908789520000002" blue="0.34992948169999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Development">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="developmentButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="xlU-nF-rBr"/>
                                                     <action selector="developmentButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="4OJ-A6-gcd"/>
                                                     <action selector="developmentButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="qle-yd-mjD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3P-SF-EhY">
-                                                <rect key="frame" x="0.0" y="472" width="104.5" height="58.5"/>
-                                                <state key="normal" title="History"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3P-SF-EhY" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="442.5" width="108" height="59"/>
+                                                <color key="backgroundColor" red="0.52644884589999996" green="0.45996254679999998" blue="0.46780270340000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="History">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="historyButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="fgx-OX-pji"/>
                                                     <action selector="historyButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="I0N-rf-SRX"/>
                                                     <action selector="historyButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="ypv-0X-xyX"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKu-ZY-LvS">
-                                                <rect key="frame" x="0.0" y="550.5" width="104.5" height="58.5"/>
-                                                <state key="normal" title="Relationships"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKu-ZY-LvS" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="516.5" width="108" height="58.5"/>
+                                                <color key="backgroundColor" red="0.20988544819999999" green="0.31616640089999998" blue="0.4439439476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Relationships">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="relationshipsButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="1vp-zQ-dQP"/>
                                                     <action selector="relationshipsButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="CxG-o3-ckT"/>
@@ -311,75 +276,99 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YKg-bN-NJ2">
-                                        <rect key="frame" x="124.5" y="0.0" width="105" height="609"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="YKg-bN-NJ2">
+                                        <rect key="frame" x="123" y="0.0" width="108" height="575"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-eg-47J">
-                                                <rect key="frame" x="0.0" y="0.0" width="105" height="58.5"/>
-                                                <state key="normal" title="Adventure"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-eg-47J" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="108" height="59"/>
+                                                <color key="backgroundColor" red="0.35411822799999998" green="0.37908789520000002" blue="0.34992948169999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Adventure">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="adventureButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="weT-O5-pQm"/>
                                                     <action selector="adventureButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="Bhi-b2-GkB"/>
                                                     <action selector="adventureButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="fli-ec-HKn"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9M-ve-AoB">
-                                                <rect key="frame" x="0.0" y="78.5" width="105" height="59"/>
-                                                <state key="normal" title="Dypostian"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9M-ve-AoB" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="74" width="108" height="58.5"/>
+                                                <color key="backgroundColor" red="0.52644884589999996" green="0.45996254679999998" blue="0.46780270340000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Dypostian">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="dypostianButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="fFb-Oa-Kok"/>
                                                     <action selector="dypostianButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="BUS-2o-aZQ"/>
                                                     <action selector="dypostianButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="lmE-h1-YTc"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRc-15-bPC">
-                                                <rect key="frame" x="0.0" y="157.5" width="105" height="58.5"/>
-                                                <state key="normal" title="Thriller"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRc-15-bPC" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="147.5" width="108" height="59"/>
+                                                <color key="backgroundColor" red="0.20988544819999999" green="0.31616640089999998" blue="0.4439439476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Thriller">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="thrillerButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="YbJ-85-Guz"/>
                                                     <action selector="thrillerButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="75P-ms-KyV"/>
                                                     <action selector="thrillerButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="Nnj-l5-BLc"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Re4-Wa-FLf">
-                                                <rect key="frame" x="0.0" y="236" width="105" height="58.5"/>
-                                                <state key="normal" title="Science Fiction"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Re4-Wa-FLf" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="221.5" width="108" height="58.5"/>
+                                                <color key="backgroundColor" red="0.65848964450000003" green="0.42797857519999999" blue="0.34154325720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Science Fiction">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="scienceFictionButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="LyL-yx-Oao"/>
                                                     <action selector="scienceFictionButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="4ty-iN-cio"/>
                                                     <action selector="scienceFictionButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="qbO-5v-E10"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRN-Ne-6Yi">
-                                                <rect key="frame" x="0.0" y="314.5" width="105" height="58.5"/>
-                                                <state key="normal" title="Art"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRN-Ne-6Yi" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="295" width="108" height="59"/>
+                                                <color key="backgroundColor" red="0.65850126740000003" green="0.34160029889999999" blue="0.37902545929999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Art">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="artButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="EnW-Jg-GGX"/>
                                                     <action selector="artButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="2qa-XB-Ccn"/>
                                                     <action selector="artButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="t9j-4v-22A"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTr-eq-jn3">
-                                                <rect key="frame" x="0.0" y="393" width="105" height="59"/>
-                                                <state key="normal" title="Motivational"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTr-eq-jn3" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="369" width="108" height="58.5"/>
+                                                <color key="backgroundColor" red="0.7780780196" green="0.62141537670000002" blue="0.3541248441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Motivational">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="motivationalButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="2pO-zl-zZo"/>
                                                     <action selector="motivationalButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="Jlc-Lh-2At"/>
                                                     <action selector="motivationalButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="UmK-xb-5We"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voI-CO-bo6">
-                                                <rect key="frame" x="0.0" y="472" width="105" height="58.5"/>
-                                                <state key="normal" title="Travel"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voI-CO-bo6" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="442.5" width="108" height="59"/>
+                                                <color key="backgroundColor" red="0.42792510989999999" green="0.38732218740000002" blue="0.47963714600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Travel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="travelButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="fCt-tV-NOY"/>
                                                     <action selector="travelButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="Pr8-bX-OZ3"/>
                                                     <action selector="travelButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="Tzu-ed-AoN"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiN-Vc-EF8">
-                                                <rect key="frame" x="0.0" y="550.5" width="105" height="58.5"/>
-                                                <state key="normal" title="Humor"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiN-Vc-EF8" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="516.5" width="108" height="58.5"/>
+                                                <color key="backgroundColor" red="0.35411822799999998" green="0.37908789520000002" blue="0.34992948169999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Humor">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="humorButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="hGj-V3-xmt"/>
                                                     <action selector="humorButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="Awe-Tw-iF3"/>
@@ -388,75 +377,101 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rdT-FB-KsJ">
-                                        <rect key="frame" x="249.5" y="0.0" width="104.5" height="609"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rdT-FB-KsJ">
+                                        <rect key="frame" x="246" y="0.0" width="108" height="575"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9E3-HM-91N">
-                                                <rect key="frame" x="0.0" y="0.0" width="104.5" height="58.5"/>
-                                                <state key="normal" title="Romance"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9E3-HM-91N" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="108" height="59"/>
+                                                <color key="backgroundColor" red="0.7780780196" green="0.62141537670000002" blue="0.3541248441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Romance">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="romanceButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="wfF-Ex-GzI"/>
                                                     <action selector="romanceButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="9DB-Gj-dIB"/>
                                                     <action selector="romanceButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="fUD-PM-7NU"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-H7-isO">
-                                                <rect key="frame" x="0.0" y="78.5" width="104.5" height="59"/>
-                                                <state key="normal" title="Mystery"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-H7-isO" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="74" width="108" height="58.5"/>
+                                                <color key="backgroundColor" red="0.42792510989999999" green="0.38732218740000002" blue="0.47963714600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Mystery">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="mysteryButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="Cl8-MM-CrW"/>
                                                     <action selector="mysteryButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="sOe-Dk-1pF"/>
                                                     <action selector="mysteryButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="xbr-TQ-QNX"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEp-n9-m3r">
-                                                <rect key="frame" x="0.0" y="157.5" width="104.5" height="58.5"/>
-                                                <state key="normal" title="Paranormal"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEp-n9-m3r" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="147.5" width="108" height="59"/>
+                                                <color key="backgroundColor" red="0.35411822799999998" green="0.37908789520000002" blue="0.34992948169999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Paranormal">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="paranormalButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="yej-XR-snW"/>
                                                     <action selector="paranormalButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="9np-Jh-Boc"/>
                                                     <action selector="paranormalButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="MK6-jr-NkA"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4l-Qd-wB0">
-                                                <rect key="frame" x="0.0" y="236" width="104.5" height="58.5"/>
-                                                <state key="normal" title="Memoir"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4l-Qd-wB0" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="221.5" width="108" height="58.5"/>
+                                                <color key="backgroundColor" red="0.52644884589999996" green="0.45996254679999998" blue="0.46780270340000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Memoir">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="memoirButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="htY-m8-2c2"/>
                                                     <action selector="memoirButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="Gj0-f3-BMn"/>
                                                     <action selector="memoirButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="ZRV-DA-o9S"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Goc-Vt-fWm">
-                                                <rect key="frame" x="0.0" y="314.5" width="104.5" height="58.5"/>
-                                                <state key="normal" title="Self Help + Personal"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Goc-Vt-fWm" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="295" width="108" height="59"/>
+                                                <color key="backgroundColor" red="0.20988544819999999" green="0.31616640089999998" blue="0.4439439476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <state key="normal" title="Self Help + Personal">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="selfHelpPersonalButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="dIE-Lk-P6T"/>
                                                     <action selector="selfHelpPersonalButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="UmE-3e-K9y"/>
                                                     <action selector="selfHelpPersonalButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="XF7-jc-Ig1"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGg-KG-zdZ">
-                                                <rect key="frame" x="0.0" y="393" width="104.5" height="59"/>
-                                                <state key="normal" title="Health"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGg-KG-zdZ" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="369" width="108" height="58.5"/>
+                                                <color key="backgroundColor" red="0.65848964450000003" green="0.42797857519999999" blue="0.34154325720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Health">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="healthButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="oVt-8D-3Fx"/>
                                                     <action selector="healthButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="fNp-I4-bse"/>
                                                     <action selector="healthButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="tCr-gG-6bf"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGH-Q3-whU">
-                                                <rect key="frame" x="0.0" y="472" width="104.5" height="58.5"/>
-                                                <state key="normal" title="Guide + How To"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGH-Q3-whU" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="442.5" width="108" height="59"/>
+                                                <color key="backgroundColor" red="0.65850126740000003" green="0.34160029889999999" blue="0.37902545929999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal" title="Guide + How To">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="guideHowToButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="wvh-WB-XJi"/>
                                                     <action selector="guideHowToButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="dxa-ge-Jur"/>
                                                     <action selector="guideHowToButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="nbk-ZJ-ZpW"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG6-cI-SN0">
-                                                <rect key="frame" x="0.0" y="550.5" width="104.5" height="58.5"/>
-                                                <state key="normal" title="Childrens"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG6-cI-SN0" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="516.5" width="108" height="58.5"/>
+                                                <color key="backgroundColor" red="0.7780780196" green="0.62141537670000002" blue="0.3541248441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Childrens">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="childrensButton:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="h6Q-ko-A4b"/>
                                                     <action selector="childrensButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="1nk-D2-xNq"/>
@@ -467,18 +482,36 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhQ-Hc-ABo" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                <rect key="frame" x="62" y="782" width="290" height="50"/>
+                                <color key="backgroundColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Oxx-6x-mCI"/>
+                                </constraints>
+                                <state key="normal" title="Finished">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishedButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="vL5-qc-3lL"/>
+                                    <segue destination="QDc-vZ-uoK" kind="show" identifier="toRVC" id="ryf-bM-ZEU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="nCq-jQ-W07" firstAttribute="bottom" secondItem="Soq-fp-3O0" secondAttribute="bottom" constant="30" id="3LF-Wx-R3K"/>
                             <constraint firstItem="nCq-jQ-W07" firstAttribute="trailing" secondItem="Soq-fp-3O0" secondAttribute="trailing" constant="30" id="6jO-0D-ZBB"/>
-                            <constraint firstItem="Soq-fp-3O0" firstAttribute="top" secondItem="E7T-Zz-Sxs" secondAttribute="bottom" constant="50" id="GdY-ee-TjP"/>
+                            <constraint firstItem="Soq-fp-3O0" firstAttribute="top" secondItem="E7T-Zz-Sxs" secondAttribute="bottom" constant="30" id="GdY-ee-TjP"/>
+                            <constraint firstItem="nCq-jQ-W07" firstAttribute="bottom" secondItem="qhQ-Hc-ABo" secondAttribute="bottom" constant="30" id="egF-0k-rwH"/>
+                            <constraint firstItem="qhQ-Hc-ABo" firstAttribute="width" secondItem="FcQ-l8-NmJ" secondAttribute="width" multiplier="0.7" id="ff2-Xk-0Ic"/>
+                            <constraint firstItem="qhQ-Hc-ABo" firstAttribute="top" secondItem="Soq-fp-3O0" secondAttribute="bottom" constant="30" id="jlZ-0G-K6q"/>
                             <constraint firstItem="E7T-Zz-Sxs" firstAttribute="centerX" secondItem="FcQ-l8-NmJ" secondAttribute="centerX" id="n1k-G8-1Mx"/>
-                            <constraint firstItem="E7T-Zz-Sxs" firstAttribute="top" secondItem="nCq-jQ-W07" secondAttribute="top" constant="100" id="p3F-Xn-gy6"/>
+                            <constraint firstItem="E7T-Zz-Sxs" firstAttribute="top" secondItem="nCq-jQ-W07" secondAttribute="top" constant="30" id="p3F-Xn-gy6"/>
                             <constraint firstItem="Soq-fp-3O0" firstAttribute="leading" secondItem="nCq-jQ-W07" secondAttribute="leading" constant="30" id="sni-hs-fUM"/>
+                            <constraint firstItem="qhQ-Hc-ABo" firstAttribute="centerX" secondItem="nCq-jQ-W07" secondAttribute="centerX" id="y5L-SV-wUg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nCq-jQ-W07"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hnl-mK-YPc"/>
                     <connections>
                         <outlet property="adventureButton" destination="Gwf-eg-47J" id="GAN-pU-MzG"/>
                         <outlet property="artButton" destination="KRN-Ne-6Yi" id="Cne-nH-twE"/>
@@ -488,6 +521,7 @@
                         <outlet property="developmentButton" destination="Sn6-6B-dbO" id="vM7-Xa-dm2"/>
                         <outlet property="dypostianButton" destination="g9M-ve-AoB" id="vja-Sa-wtm"/>
                         <outlet property="fantasyButton" destination="WU3-Iz-3QQ" id="QyS-xZ-6Jq"/>
+                        <outlet property="finishedButton" destination="qhQ-Hc-ABo" id="BWw-hY-DEd"/>
                         <outlet property="guideHowToButton" destination="fGH-Q3-whU" id="RA0-mD-w1A"/>
                         <outlet property="healthButton" destination="vGg-KG-zdZ" id="Y3Y-6G-yL3"/>
                         <outlet property="historicalFictionButton" destination="dbM-SV-TPk" id="usq-Cv-35g"/>
@@ -509,12 +543,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Do8-0I-OgR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="tWY-Y5-h0w" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4162" y="5"/>
+            <point key="canvasLocation" x="8971.0144927536239" y="4.6875"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="g0o-J5-i0a">
             <objects>
-                <viewController id="QDc-vZ-uoK" sceneMemberID="viewController">
+                <viewController id="QDc-vZ-uoK" customClass="RViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wFn-ci-Zug">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -527,10 +561,217 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="FoW-8p-Ken"/>
                     </view>
+                    <navigationItem key="navigationItem" id="q0P-b5-y9P"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbk-0v-fY9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5157" y="5"/>
+            <point key="canvasLocation" x="9953.6231884057979" y="4.6875"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JNm-ts-BQm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TYG-wo-5CD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KLH-jz-9K9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Rgj-Y1-NWb" kind="relationship" relationship="rootViewController" id="7kj-Hm-JgC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rOh-WY-guW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1705.7971014492755" y="4.6875"/>
+        </scene>
+        <!--Customize View Controller-->
+        <scene sceneID="LxY-92-1d8">
+            <objects>
+                <viewController storyboardIdentifier="customizeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IVR-6o-Cto" customClass="CustomizeViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XUW-Iz-Hio">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ReadenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="3Pp-8e-4IX">
+                                <rect key="frame" x="87" y="241" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZF7-HN-NW6">
+                                <rect key="frame" x="0.0" y="491" width="414" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Let's customize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iq1-e8-d2X">
+                                        <rect key="frame" x="105" y="96" width="204" height="93"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="your Readen." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HvF-qE-VQB">
+                                        <rect key="frame" x="105" y="197" width="204" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="xg4-m6-CF0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3iT-3F-LGo"/>
+                    <connections>
+                        <outlet property="blackView" destination="ZF7-HN-NW6" id="U5h-IP-PpR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AC0-ej-Cm4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4276.811594202899" y="4.6875"/>
+        </scene>
+        <!--Bio View Controller-->
+        <scene sceneID="y0a-oA-qoO">
+            <objects>
+                <viewController id="rKY-A0-4vC" customClass="BioViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ik3-6U-nRv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ReadenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="zTh-g2-Gv8">
+                                <rect key="frame" x="87" y="241" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pIH-wN-nfd">
+                                <rect key="frame" x="0.0" y="491" width="414" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7j-ZQ-v4C">
+                                        <rect key="frame" x="133" y="272" width="148" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="6pt-kr-hmt" kind="show" id="Dq0-if-BQS"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lSE-60-ru5">
+                                        <rect key="frame" x="87" y="185" width="240" height="79"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tell us a little bit about yourself...." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6x-wa-C6D">
+                                        <rect key="frame" x="80" y="65" width="255" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(this will show up on your bio page)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9U-mo-LvT">
+                                        <rect key="frame" x="72" y="121" width="270" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="m6q-wD-9FK"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cUk-f3-RaF"/>
+                    <connections>
+                        <outlet property="bioTextView" destination="lSE-60-ru5" id="PN4-Jj-NhL"/>
+                        <outlet property="blackView" destination="pIH-wN-nfd" id="NXC-tQ-frw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xGM-a2-mXm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8010.1449275362329" y="4.6875"/>
+        </scene>
+        <!--Fav Author View Controller-->
+        <scene sceneID="tbM-lJ-bA2">
+            <objects>
+                <viewController storyboardIdentifier="favAuthorVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gTH-xt-Js0" customClass="FavAuthorViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PGc-P1-cac">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ReadenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="1hN-sG-Gav">
+                                <rect key="frame" x="87" y="241" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4a0-Oq-CXv">
+                                <rect key="frame" x="0.0" y="491" width="414" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Who is your favorite author?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYU-0v-JKc">
+                                        <rect key="frame" x="97" y="85" width="253" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fej-kX-8W0">
+                                        <rect key="frame" x="62" y="191" width="308" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLR-5y-dE3">
+                                        <rect key="frame" x="165" y="283" width="84" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="rKY-A0-4vC" kind="show" id="Cru-ih-xWe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="PqF-na-fyH"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TpU-Px-TGv"/>
+                    <connections>
+                        <outlet property="blackView" destination="4a0-Oq-CXv" id="vwc-t1-lh1"/>
+                        <outlet property="favAuthorTextField" destination="Fej-kX-8W0" id="JBx-Ta-JT5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CSP-fe-B3M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7026.0869565217399" y="4.6875"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lcD-bJ-RQO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Bk-eV-OCd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nWq-3n-22w">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gTH-xt-Js0" kind="relationship" relationship="rootViewController" id="sVW-mL-onj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QgU-DP-HFc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6115.9420289855079" y="4.6875"/>
         </scene>
     </scenes>
     <resources>

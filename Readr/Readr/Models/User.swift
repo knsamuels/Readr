@@ -69,7 +69,7 @@ class User {
         }
     }
     
-    init(username: String, firstName: String, lastName: String, bio: String = "", favoriteAuthor: String, favoriteBooks: [String] = [], bookclubs: [Bookclub] = [], friendList: [String] = [], followerList: [String] = [], blockedUsers: [String] = [], favoriteGenres: [String] = [], bookshelves: [Bookshelf] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), appleUserRef: CKRecord.Reference, profilePhoto: UIImage? = nil) {
+    init(username: String, firstName: String, lastName: String, bio: String = "", favoriteAuthor: String = "", favoriteBooks: [String] = [], bookclubs: [Bookclub] = [], friendList: [String] = [], followerList: [String] = [], blockedUsers: [String] = [], favoriteGenres: [String] = [], bookshelves: [Bookshelf] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), appleUserRef: CKRecord.Reference, profilePhoto: UIImage? = nil) {
         self.username = username
         self.firstName = firstName
         self.lastName = lastName
