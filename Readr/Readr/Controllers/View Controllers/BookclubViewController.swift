@@ -52,11 +52,14 @@ class BookclubViewController: UIViewController {
         loadDataForUser()
         self.title = bookclub?.name
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+//        CreateBCViewController.delegate = self
+        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        print("Testing")
+        loadDataForUser()
     }
     
     @IBAction func joinButtonTapped(_ sender: Any) {
@@ -256,7 +259,10 @@ class BookclubViewController: UIViewController {
         }
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { (_) in
-            self.prepare(for: <#T##UIStoryboardSegue#>, sender: <#T##Any?#>)
+            guard let createVC = UIStoryboard.init(name: "Readen", bundle: nil).instantiateViewController(withIdentifier: "toCreateBCVC") as? CreateBCViewController else {return}
+            createVC.modalPresentationStyle = .fullScreen
+            createVC.bookclub = bookclub
+            self.present(createVC, animated: true, completion: nil)
         }
         
         let deleteAction = UIAlertAction(title: "Delete Bookclub", style: .default) { (_) in
@@ -317,5 +323,12 @@ class BookclubViewController: UIViewController {
             let bookToSend = pastReads[2]
             destination.book = bookToSend
         }
+    }
+}
+
+extension BookclubViewController: UpdateBookclubDelegate {
+    func updateBookclub(for bookclub: Bookclub) {
+        self.bookclub = bookclub
+        self.loadDataForUser()
     }
 }
