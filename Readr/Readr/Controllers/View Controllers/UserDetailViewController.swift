@@ -66,7 +66,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(true)
-        print("The view appeared")
+        setUpImage()
 //        userFavBooks = []
         favBookISBNs = []
         if self.user == nil {
@@ -76,6 +76,11 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                }
     }
     //MARK: - Helper Methods
+    
+    func setUpImage() {
+        profilePic.layer.cornerRadius = profilePic.frame.height / 2
+        profilePic.clipsToBounds = true
+    }
     
     private func showLoadingScreen() {
           view.addSubview(loadingScreen)

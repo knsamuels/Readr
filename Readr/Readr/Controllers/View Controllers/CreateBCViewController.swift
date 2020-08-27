@@ -7,9 +7,6 @@
 //
 
 import UIKit
-protocol UpdateBookclubDelegate: AnyObject {
-    func updateBookclub(for bookclub: Bookclub)
-}
 
 class CreateBCViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate {
     
@@ -21,7 +18,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             updateCurrentlyReading()
         }
     }
-    weak var delegate: UpdateBookclubDelegate? 
     
     @IBOutlet weak var imageOfBookClub: UIImageView!
     @IBOutlet weak var nameOfBookClub: UITextField!
