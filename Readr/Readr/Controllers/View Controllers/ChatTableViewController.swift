@@ -17,6 +17,8 @@ class ChatTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchBookclubs()
+        self.title = "Bookclub Messaging"
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
     }
     
     // MARK: - Helper Methods

@@ -29,7 +29,7 @@ class BookclubController {
 //        let ckReference = CKRecord.Reference(recordID: recordID, action: .none)
         guard let user = UserController.shared.currentUser else {return completion(.failure(.couldNotUnwrap))}
         let reference = user.appleUserRef
-        let userCKRef = CKRecord.Reference(recordID: user.recordID, action: .none)
+        let userCKRef = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
         let newBC = Bookclub(name: name, admin: reference, adminContactInfo: adminContactInfo, members: [userCKRef], description: description, profilePicture: profilePic, currentlyReading: currentlyReading, meetingInfo: meetingInfo, memberCapacity: memberCapacity)
         
         let bcRecord = CKRecord(bookclub: newBC)
