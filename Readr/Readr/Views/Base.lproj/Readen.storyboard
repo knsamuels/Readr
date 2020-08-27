@@ -1761,6 +1761,7 @@
                         <outlet property="bookclubName2" destination="T1u-9M-oFF" id="6L0-D4-SWE"/>
                         <outlet property="bookclubName3" destination="Ere-Z5-dQZ" id="jTX-MX-EXy"/>
                         <outlet property="bookclubName4" destination="B5i-mh-qOq" id="fPl-ML-Fih"/>
+                        <outlet property="createBookclubButton" destination="692-V5-e3X" id="pKQ-Hp-pPA"/>
                         <outlet property="favBook1ButtonLabel" destination="itL-HM-qWl" id="Pin-yb-8zA"/>
                         <outlet property="favBook2ButtonLabel" destination="ZOW-RJ-WR7" id="a7A-cA-1F7"/>
                         <outlet property="favBook3ButtonLabel" destination="fx2-JB-jIe" id="Dgp-RR-rK5"/>
@@ -2291,7 +2292,7 @@
         <segue reference="I22-a6-LKA"/>
         <segue reference="Ajn-VF-Y29"/>
         <segue reference="4Pb-cf-ugE"/>
-        <segue reference="s51-Sp-ODc"/>
+        <segue reference="d4d-j6-Xm7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="RLogo" width="44" height="48"/>
