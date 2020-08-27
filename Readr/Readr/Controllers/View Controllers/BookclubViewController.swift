@@ -120,7 +120,7 @@ class BookclubViewController: UIViewController {
             guard let user = UserController.shared.currentUser else {return}
             guard let bookclub = self.bookclub else {return}
             guard let currentlyReading = self.currentlyReading else {return}
-            let userReference = CKRecord.Reference(recordID: user.recordID, action: .none)
+            let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
             let userAppleRef = user.appleUserRef
             
             self.title = bookclub.name
