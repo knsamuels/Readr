@@ -256,7 +256,7 @@ class BookclubViewController: UIViewController {
         }
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { (_) in
-            //            prepare(for: <#T##UIStoryboardSegue#>, sender: <#T##Any?#>)
+            self.prepare(for: <#T##UIStoryboardSegue#>, sender: <#T##Any?#>)
         }
         
         let deleteAction = UIAlertAction(title: "Delete Bookclub", style: .default) { (_) in
