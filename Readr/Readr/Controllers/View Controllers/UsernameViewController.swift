@@ -78,7 +78,7 @@ class UsernameViewController: UIViewController {
     
     func presentCustomizeVC() {
         DispatchQueue.main.async {
-            let customizeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "customizeVC")
+            let customizeVC = UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "customizeVC")
             customizeVC.modalPresentationStyle = .fullScreen
             self.present(customizeVC, animated: true, completion: nil)
         }
