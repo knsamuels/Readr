@@ -108,7 +108,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
                         self.bookclub = bookclub
                         self.performSegue(withIdentifier:
                             "toBookclubVC", sender: self)
-//                       self.navigationController?.popViewController(animated: true)
+                  self.navigationController?.popViewController(animated: true)
                     case .failure(_):
                         self.navigationController?.popViewController(animated: true)
                     }
