@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(CKContainer.default().publicCloudDatabase)
+        
+        application.applicationIconBadgeNumber = 0
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
             if let error = error {
@@ -30,6 +32,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        MessageController.shared.subscribeForRemoteNotifications { (error) in
+            if let error = error {
+                print("There was an error subscribing for remote notifications -- \(error) -- \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("We failed to register for remote notifications. -- \(error) -- \(error.localizedDescription)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        //guard let user = UserController.shared.currentUser else {return}
+    
+        //MessageController.shared.fetchMessages(for: <#T##Bookclub#>, completion: <#T##(Result<[Message], MessageError>) -> Void#>)
     }
 
     // MARK: UISceneSession Lifecycle
