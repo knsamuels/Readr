@@ -33,6 +33,7 @@
 		C938A39324EF2F200095AD50 /* SearchableRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A39224EF2F200095AD50 /* SearchableRecord.swift */; };
 		C938A3B524F1B3370095AD50 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C938A3B424F1B3370095AD50 /* WebKit.framework */; };
 		C93A75CB24F87C820024F62D /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A75CA24F87C820024F62D /* StyleGuide.swift */; };
+		C93A75CD24F998D50024F62D /* ICloudHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A75CC24F998D50024F62D /* ICloudHelper.swift */; };
 		C98FC7B024DDC71000C27CBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7AF24DDC71000C27CBF /* AppDelegate.swift */; };
 		C98FC7B224DDC71000C27CBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7B124DDC71000C27CBF /* SceneDelegate.swift */; };
 		C98FC7B724DDC71000C27CBF /* Readen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C98FC7B524DDC71000C27CBF /* Readen.storyboard */; };
@@ -99,6 +100,7 @@
 		C938A39224EF2F200095AD50 /* SearchableRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableRecord.swift; sourceTree = "<group>"; };
 		C938A3B424F1B3370095AD50 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C93A75CA24F87C820024F62D /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
+		C93A75CC24F998D50024F62D /* ICloudHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudHelper.swift; sourceTree = "<group>"; };
 		C98FC7AC24DDC71000C27CBF /* Readr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Readr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98FC7AF24DDC71000C27CBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C98FC7B124DDC71000C27CBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				C938A39224EF2F200095AD50 /* SearchableRecord.swift */,
 				C9BFE4CF24F7106000242CE7 /* RLogoLoadingView.swift */,
 				C93A75CA24F87C820024F62D /* StyleGuide.swift */,
+				C93A75CC24F998D50024F62D /* ICloudHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				C938A39324EF2F200095AD50 /* SearchableRecord.swift in Sources */,
 				C98FC7DC24E19D3900C27CBF /* BookshelfController.swift in Sources */,
 				C98FC7C824DDCB1300C27CBF /* Book.swift in Sources */,
+				C93A75CD24F998D50024F62D /* ICloudHelper.swift in Sources */,
 				C9DBB76724F469B900285DC7 /* PastReadsTableViewCell.swift in Sources */,
 				C98FC7EA24E1B4BB00C27CBF /* UserError.swift in Sources */,
 				937640D624EC44F100B51DEC /* ChatTableViewController.swift in Sources */,
