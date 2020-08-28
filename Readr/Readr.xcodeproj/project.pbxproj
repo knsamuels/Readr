@@ -17,6 +17,9 @@
 		9303FEDF24F7731000486F65 /* ReadenTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FEDE24F7731000486F65 /* ReadenTextField.swift */; };
 		9303FEE224F77A7000486F65 /* ReadenTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FEE124F77A7000486F65 /* ReadenTextView.swift */; };
 		9303FEE524F77B4300486F65 /* ReadenLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FEE424F77B4300486F65 /* ReadenLabel.swift */; };
+		9303FEE724F9B04B00486F65 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FEE624F9B04B00486F65 /* UIViewControllerExtension.swift */; };
+		9303FEEB24F9BBED00486F65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9303FEEA24F9BBED00486F65 /* Main.storyboard */; };
+		9303FEED24F9BC1900486F65 /* AppleIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FEEC24F9BC1900486F65 /* AppleIDViewController.swift */; };
 		9304463E24E1ABBC00FBEEF2 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9304463D24E1ABBC00FBEEF2 /* MessageController.swift */; };
 		937640D024EC36CF00B51DEC /* BookclubListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640CF24EC36CF00B51DEC /* BookclubListTableViewController.swift */; };
 		937640D224EC3BFE00B51DEC /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640D124EC3BFE00B51DEC /* SearchTableViewCell.swift */; };
@@ -25,7 +28,7 @@
 		937640D824EC45B800B51DEC /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640D724EC45B800B51DEC /* MessageViewController.swift */; };
 		937640DA24EC460700B51DEC /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640D924EC460700B51DEC /* MessageTableViewCell.swift */; };
 		937A9F5C24F4CAC100AE9067 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A9F5B24F4CAC100AE9067 /* GenresViewController.swift */; };
-		938A2DA324EAE6B8002119E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938A2DA224EAE6B8002119E1 /* Main.storyboard */; };
+		938A2DA324EAE6B8002119E1 /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938A2DA224EAE6B8002119E1 /* LogIn.storyboard */; };
 		938A2DA524EAE724002119E1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938A2DA424EAE724002119E1 /* SignInViewController.swift */; };
 		C938A38D24EEF0AA0095AD50 /* BookshelfDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A38C24EEF0AA0095AD50 /* BookshelfDetailTableViewController.swift */; };
 		C938A38F24EEF0E60095AD50 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A38E24EEF0E60095AD50 /* BookDetailViewController.swift */; };
@@ -84,6 +87,9 @@
 		9303FEDE24F7731000486F65 /* ReadenTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadenTextField.swift; sourceTree = "<group>"; };
 		9303FEE124F77A7000486F65 /* ReadenTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadenTextView.swift; sourceTree = "<group>"; };
 		9303FEE424F77B4300486F65 /* ReadenLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadenLabel.swift; sourceTree = "<group>"; };
+		9303FEE624F9B04B00486F65 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		9303FEEA24F9BBED00486F65 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9303FEEC24F9BC1900486F65 /* AppleIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleIDViewController.swift; sourceTree = "<group>"; };
 		9304463D24E1ABBC00FBEEF2 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		937640CF24EC36CF00B51DEC /* BookclubListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubListTableViewController.swift; sourceTree = "<group>"; };
 		937640D124EC3BFE00B51DEC /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -92,7 +98,7 @@
 		937640D724EC45B800B51DEC /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		937640D924EC460700B51DEC /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		937A9F5B24F4CAC100AE9067 /* GenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewController.swift; sourceTree = "<group>"; };
-		938A2DA224EAE6B8002119E1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		938A2DA224EAE6B8002119E1 /* LogIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		938A2DA424EAE724002119E1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C938A38C24EEF0AA0095AD50 /* BookshelfDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfDetailTableViewController.swift; sourceTree = "<group>"; };
 		C938A38E24EEF0E60095AD50 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
@@ -262,7 +268,8 @@
 			isa = PBXGroup;
 			children = (
 				9303FEC924F7459200486F65 /* Custom UI */,
-				938A2DA224EAE6B8002119E1 /* Main.storyboard */,
+				9303FEEA24F9BBED00486F65 /* Main.storyboard */,
+				938A2DA224EAE6B8002119E1 /* LogIn.storyboard */,
 				C98FC7B524DDC71000C27CBF /* Readen.storyboard */,
 			);
 			path = Views;
@@ -317,6 +324,7 @@
 				C9BFE4CF24F7106000242CE7 /* RLogoLoadingView.swift */,
 				C93A75CA24F87C820024F62D /* StyleGuide.swift */,
 				C93A75CC24F998D50024F62D /* ICloudHelper.swift */,
+				9303FEE624F9B04B00486F65 /* UIViewControllerExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -333,6 +341,7 @@
 		F31A488324E480540071652A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9303FEEC24F9BC1900486F65 /* AppleIDViewController.swift */,
 				938A2DA424EAE724002119E1 /* SignInViewController.swift */,
 				9303FECF24F75FD900486F65 /* UsernameViewController.swift */,
 				9303FED124F7600D00486F65 /* CustomizeViewController.swift */,
@@ -432,9 +441,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C98FC7BC24DDC71C00C27CBF /* LaunchScreen.storyboard in Resources */,
+				9303FEEB24F9BBED00486F65 /* Main.storyboard in Resources */,
 				C98FC7B924DDC71C00C27CBF /* Assets.xcassets in Resources */,
 				C98FC7B724DDC71000C27CBF /* Readen.storyboard in Resources */,
-				938A2DA324EAE6B8002119E1 /* Main.storyboard in Resources */,
+				938A2DA324EAE6B8002119E1 /* LogIn.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +479,7 @@
 				9303FEC824F73CC400486F65 /* RViewController.swift in Sources */,
 				937640D224EC3BFE00B51DEC /* SearchTableViewCell.swift in Sources */,
 				C98FC7CA24DDCB4100C27CBF /* Bookclub.swift in Sources */,
+				9303FEED24F9BC1900486F65 /* AppleIDViewController.swift in Sources */,
 				C98FC7CC24DDCB6400C27CBF /* Message.swift in Sources */,
 				C98FC7E624E1B49200C27CBF /* BookclubError.swift in Sources */,
 				937640D424EC3C1900B51DEC /* SearchCollectionViewCell.swift in Sources */,
@@ -491,6 +502,7 @@
 				C98FC7B224DDC71000C27CBF /* SceneDelegate.swift in Sources */,
 				C98FC7CE24DDCB7800C27CBF /* User.swift in Sources */,
 				937640DA24EC460700B51DEC /* MessageTableViewCell.swift in Sources */,
+				9303FEE724F9B04B00486F65 /* UIViewControllerExtension.swift in Sources */,
 				937640D824EC45B800B51DEC /* MessageViewController.swift in Sources */,
 				C98FC7E224E1B46200C27CBF /* UserController.swift in Sources */,
 				C98FC7D024DDCBB100C27CBF /* Bookshelf.swift in Sources */,

@@ -22,7 +22,7 @@ class CustomizeViewController: UIViewController {
     //MARK: - Helper Methods
     @objc func presentAuthorVC() {
         DispatchQueue.main.async {
-            let authorVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "favAuthorVC")
+            let authorVC = UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "favAuthorVC")
             authorVC.modalPresentationStyle = .fullScreen
             self.present(authorVC, animated: true, completion: nil)
         }
