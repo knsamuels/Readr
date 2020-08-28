@@ -19,6 +19,7 @@ class ChatTableViewController: UITableViewController {
         fetchBookclubs()
         self.title = "Bookclub Messaging"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+        self.navigationController?.navigationBar.tintColor = .black
     }
     
     // MARK: - Helper Methods
