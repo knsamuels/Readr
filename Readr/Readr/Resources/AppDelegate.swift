@@ -90,21 +90,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //        }
     //    }
     
-    //    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-    //        print("We failed to register for remote notifications. -- \(error) -- \(error.localizedDescription)")
-    //    }
+//        func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+//            print("We failed to register for remote notifications. -- \(error) -- \(error.localizedDescription)")
+//        }
     
-//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-//        //guard let user = UserController.shared.currentUser else {return}
-//
-//        print("message")
-//
-//
-//        //MessageController.shared.fetchMessages(for: <#T##Bookclub#>, completion: <#T##(Result<[Message], MessageError>) -> Void#>)
-//    }
-//
-//
-//
-//
-}
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        guard let user = UserController.shared.currentUser else {return}
+
+        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let bookclubs):
+                    user.bookclubs = bookclubs
+                    fetchMessages()
+                case .failure(_):
+                    print("no bookclubs")
+                }
+            }
+        }
+        
+        func fetchMessages() {
+            for bookclub in user.bookclubs {
+                MessageController.shared.fetchMessages(for: bookclub) { (result) in
+                    switch result {
+                    case .success(_):
+                        print("fetched messages")
+                    case .failure(_):
+                        print("no messages")
+                    }
+                }
+            }
+        }
+    }
+} //End of class
 
