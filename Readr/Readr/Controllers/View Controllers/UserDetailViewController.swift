@@ -108,7 +108,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     
     func fetchUserBooks() {
         guard let user = self.user else {return}
-        
         BookshelfController.shared.fetchFavoritesBookshelf(user: user) { (result) in
             DispatchQueue.main.async {
                 switch result {
