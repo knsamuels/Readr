@@ -76,6 +76,68 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                    fetchUserBooks()
                }
     }
+    
+    //MARK: - Actions
+    @IBAction func unwindToUserDetail(_ sender: UIStoryboardSegue) {}
+    
+    @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Select an image", message: "From where would you like to select an image?", preferredStyle: .alert)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .camera
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+        
+        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addAction(cameraAction)
+        alertController.addAction(libraryAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+    
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "bioFavBook1toBDVC" {
+            guard let destination = segue.destination as? BookDetailViewController else {return}
+            let favBookToSend = userFavBooks[0]
+            destination.book = favBookToSend
+        } else if segue.identifier == "bioFavBook2toBDVC" {
+            guard let destination = segue.destination as? BookDetailViewController else {return}
+            let favBookToSend = userFavBooks[1]
+            destination.book = favBookToSend
+        } else if segue.identifier == "bioFavBook3toBDVC" {
+            guard let destination = segue.destination as? BookDetailViewController else {return}
+            let favBookToSend = userFavBooks[2]
+            destination.book = favBookToSend
+        } else if segue.identifier == "userBookclub1ToBookClubVC" {
+            guard let destination = segue.destination as? BookclubViewController else {return}
+            let favBookclubToSend = userBookClubs[0]
+            destination.bookclub = favBookclubToSend
+        } else if segue.identifier == "userBookclub2ToBookClubVC" {
+            guard let destination = segue.destination as? BookclubViewController else {return}
+            let favBookclubToSend = userBookClubs[1]
+            destination.bookclub = favBookclubToSend
+        } else if segue.identifier == "userBookclub3ToBookClubVC" {
+            guard let destination = segue.destination as? BookclubViewController else {return}
+            let favBookclubToSend = userBookClubs[2]
+            destination.bookclub = favBookclubToSend
+        } else if segue.identifier == "userBookclub4ToBookClubVC" {
+            guard let destination = segue.destination as? BookclubViewController else {return}
+            let favBookclubToSend = userBookClubs[3]
+            destination.bookclub = favBookclubToSend
+        }
+    }
+    
     //MARK: - Helper Methods
     
     func setUpImage() {
@@ -155,7 +217,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 self.createBookclubButton.isHidden = false
             } else {
                 self.selectProfileImage.isHidden = true
-                self.createBookclubButton.isHidden = true 
+                self.createBookclubButton.isHidden = true
             }
             if let image = self.user?.profilePhoto {
                 self.selectProfileImage.setTitle("Edit Photo", for: .normal)
@@ -350,64 +412,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
-    @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "Select an image", message: "From where would you like to select an image?", preferredStyle: .alert)
-        
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.delegate = self
-            imagePickerController.sourceType = .camera
-            self.present(imagePickerController, animated: true, completion: nil)
-        }
-        
-        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.delegate = self
-            imagePickerController.sourceType = .photoLibrary
-            self.present(imagePickerController, animated: true, completion: nil)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alertController.addAction(cameraAction)
-        alertController.addAction(libraryAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true)
-    }
-    
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "bioFavBook1toBDVC" {
-            guard let destination = segue.destination as? BookDetailViewController else {return}
-            let favBookToSend = userFavBooks[0]
-            destination.book = favBookToSend
-        } else if segue.identifier == "bioFavBook2toBDVC" {
-            guard let destination = segue.destination as? BookDetailViewController else {return}
-            let favBookToSend = userFavBooks[1]
-            destination.book = favBookToSend
-        } else if segue.identifier == "bioFavBook3toBDVC" {
-            guard let destination = segue.destination as? BookDetailViewController else {return}
-            let favBookToSend = userFavBooks[2]
-            destination.book = favBookToSend
-        } else if segue.identifier == "userBookclub1ToBookClubVC" {
-            guard let destination = segue.destination as? BookclubViewController else {return}
-            let favBookclubToSend = userBookClubs[0]
-            destination.bookclub = favBookclubToSend
-        } else if segue.identifier == "userBookclub2ToBookClubVC" {
-            guard let destination = segue.destination as? BookclubViewController else {return}
-            let favBookclubToSend = userBookClubs[1]
-            destination.bookclub = favBookclubToSend
-        } else if segue.identifier == "userBookclub3ToBookClubVC" {
-            guard let destination = segue.destination as? BookclubViewController else {return}
-            let favBookclubToSend = userBookClubs[2]
-            destination.bookclub = favBookclubToSend
-        } else if segue.identifier == "userBookclub4ToBookClubVC" {
-            guard let destination = segue.destination as? BookclubViewController else {return}
-            let favBookclubToSend = userBookClubs[3]
-            destination.bookclub = favBookclubToSend
-        }
-    }
-}
+} //End of class
 
 extension UserDetailViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

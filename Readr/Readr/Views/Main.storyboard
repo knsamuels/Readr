@@ -19,7 +19,7 @@
                                 <rect key="frame" x="87" y="298.5" width="240" height="128"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="VF8-CB-XhA" userLabel="iCloudStack">
-                                <rect key="frame" x="8" y="476.5" width="398" height="170"/>
+                                <rect key="frame" x="8" y="476.5" width="398" height="109.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iCloud account required." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHG-89-YxV">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
@@ -48,24 +48,14 @@
                                             <constraint firstAttribute="trailing" secondItem="BdX-EX-LOQ" secondAttribute="trailing" id="yJv-8s-05t"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Then close the app and rerun it." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCq-JH-rpD">
-                                        <rect key="frame" x="0.0" y="149.5" width="398" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="AHG-89-YxV" firstAttribute="top" secondItem="VF8-CB-XhA" secondAttribute="top" id="1UJ-GA-pzD"/>
                                     <constraint firstAttribute="trailing" secondItem="XfW-bn-hdj" secondAttribute="trailing" id="1yk-v8-pZf"/>
-                                    <constraint firstItem="tCq-JH-rpD" firstAttribute="top" secondItem="XfW-bn-hdj" secondAttribute="bottom" constant="40" id="2FF-LC-RUl"/>
                                     <constraint firstItem="XfW-bn-hdj" firstAttribute="top" secondItem="AHG-89-YxV" secondAttribute="bottom" constant="40" id="3hP-2n-R96"/>
                                     <constraint firstItem="AHG-89-YxV" firstAttribute="leading" secondItem="VF8-CB-XhA" secondAttribute="leading" id="7pI-zz-gsP"/>
-                                    <constraint firstItem="tCq-JH-rpD" firstAttribute="leading" secondItem="VF8-CB-XhA" secondAttribute="leading" id="Spt-oU-U9C"/>
-                                    <constraint firstAttribute="trailing" secondItem="tCq-JH-rpD" secondAttribute="trailing" id="YUV-1f-KKD"/>
                                     <constraint firstAttribute="trailing" secondItem="AHG-89-YxV" secondAttribute="trailing" id="ekM-6v-BEh"/>
                                     <constraint firstItem="XfW-bn-hdj" firstAttribute="leading" secondItem="VF8-CB-XhA" secondAttribute="leading" id="lYR-6N-Ojo"/>
-                                    <constraint firstAttribute="bottom" secondItem="tCq-JH-rpD" secondAttribute="bottom" id="ohS-4u-eM7"/>
                                 </constraints>
                             </stackView>
                         </subviews>
