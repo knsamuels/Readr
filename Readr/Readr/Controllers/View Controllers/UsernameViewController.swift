@@ -8,8 +8,10 @@
 
 import UIKit
 
-class UsernameViewController: UIViewController {
+class UsernameViewController: UIViewController, UITextViewDelegate  {
     
+    
+    var activeTextField : UITextField? = nil
     //MARK: - Outlets
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -21,6 +23,12 @@ class UsernameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         alreadyInUseLabel.isHidden = true
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     //MARK: - Actions
@@ -83,4 +91,35 @@ class UsernameViewController: UIViewController {
             self.present(customizeVC, animated: true, completion: nil)
         }
     }
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+               return
+            }
+        
+        if usernameTextField.isEditing {
+            self.view.window?.frame.origin.y = -keyboardSize.height
+        }
+        if firstNameTextField.isEditing {
+        self.view.window?.frame.origin.y = -keyboardSize.height
+        }
+        if lastNameTextField.isEditing {
+        self.view.window?.frame.origin.y = -keyboardSize.height
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.window?.frame.origin.y != 0 {
+            self.view.window?.frame.origin.y = 0
+        }
+    }
 } //End of class
+    
+extension UsernameViewController: UITextFieldDelegate {
+  func textFieldWillBeginEditing( textField: UITextField) {
+    self.activeTextField = textField
+  }
+
+  func textFieldDidEndEditing( textField: UITextField) {
+    self.activeTextField = nil
+  }
+}

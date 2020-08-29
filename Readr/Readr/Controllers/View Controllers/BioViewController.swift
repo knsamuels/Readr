@@ -8,8 +8,10 @@
 
 import UIKit
 
-class BioViewController: UIViewController {
+class BioViewController: UIViewController  {
 
+    var activeTextView : UITextView? = nil
+    
     //MARK: - Outlets
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var blackView: UIView!
@@ -17,6 +19,12 @@ class BioViewController: UIViewController {
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     //MARK: - Actions
@@ -27,4 +35,30 @@ class BioViewController: UIViewController {
         user.bio = bio
     }
 
-} //End of class 
+     @objc func keyboardWillShow(notification: NSNotification) {
+            guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+                   return
+                }
+            
+        if bioTextView.isEditable {
+                self.view.window?.frame.origin.y = -keyboardSize.height
+            }
+        }
+        
+        @objc func keyboardWillHide(notification: NSNotification) {
+            if self.view.window?.frame.origin.y != 0 {
+                self.view.window?.frame.origin.y = 0
+            }
+        }
+    } //End of class
+        
+    extension BioViewController: UITextViewDelegate {
+      func textViewWillBeginEditing( textView: UITextView) {
+        self.activeTextView = textView
+      }
+
+      func textViewDidEndEditing( textView: UITextView) {
+        self.activeTextView = nil
+      }
+    }
+
