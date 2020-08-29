@@ -28,7 +28,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var createBookclubButton: UIButton!
     @IBOutlet weak var selectProfileImage: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextViews()
@@ -146,7 +145,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        //self.dismiss(animated: true)
     }
     
     //MARK: - Helpers
