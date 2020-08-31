@@ -10,19 +10,23 @@ import UIKit
 
 class UsernameViewController: UIViewController, UITextViewDelegate  {
     
-    
-    var activeTextField : UITextField? = nil
     //MARK: - Outlets
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var alreadyInUseLabel: UILabel!
   
+    //MARK: Properties
+    var firstName: String?
+    var lastName: String?
+    var activeTextField : UITextField? = nil
+    
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         alreadyInUseLabel.isHidden = true
+        
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
         
@@ -34,8 +38,9 @@ class UsernameViewController: UIViewController, UITextViewDelegate  {
     //MARK: - Actions
     @IBAction func continueButtonTapped(_ sender: Any) {
         guard let username = usernameTextField.text, !username.isEmpty else {return}
-        guard let firstName = firstNameTextField.text, !firstName.isEmpty else {return}
-        guard let lastName = lastNameTextField.text, !lastName.isEmpty else {return}
+        guard let password = passwordTextField.text, !password.isEmpty else {return}
+        guard let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty else {return}
+        guard password == confirmPassword else {return}
         
         checkUsername(username: username)
     }
@@ -56,10 +61,13 @@ class UsernameViewController: UIViewController, UITextViewDelegate  {
     
     func createUser() {
         guard let username = usernameTextField.text, !username.isEmpty else {return}
-        guard let firstName = firstNameTextField.text, !firstName.isEmpty else {return}
-        guard let lastName = lastNameTextField.text, !lastName.isEmpty else {return}
+        guard let password = passwordTextField.text, !password.isEmpty else {return}
+        guard let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty else {return}
+        guard password == confirmPassword else {return}
+        guard let firstName = firstName else {return}
+        guard let lastName = lastName else {return}
         
-        UserController.shared.createUser(username: username, firstName: firstName, lastName: lastName) { (result) in
+        UserController.shared.createUser(username: username, firstName: firstName, lastName: lastName, password: password) { (result) in
             switch result {
             case .success(let user):
                 UserController.shared.currentUser = user
@@ -91,6 +99,7 @@ class UsernameViewController: UIViewController, UITextViewDelegate  {
             self.present(customizeVC, animated: true, completion: nil)
         }
     }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
                return
@@ -98,12 +107,6 @@ class UsernameViewController: UIViewController, UITextViewDelegate  {
         
         if usernameTextField.isEditing {
             self.view.window?.frame.origin.y = -keyboardSize.height
-        }
-        if firstNameTextField.isEditing {
-        self.view.window?.frame.origin.y = -keyboardSize.height
-        }
-        if lastNameTextField.isEditing {
-        self.view.window?.frame.origin.y = -keyboardSize.height
         }
     }
     

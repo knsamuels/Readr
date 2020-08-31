@@ -13,7 +13,8 @@ struct UserStrings {
     static let recordTypeKey = "User"
     static let usernameKey = "username"
     fileprivate static let firstNameKey = "firstName"
-    fileprivate static let lastNameKey = "lastName" 
+    fileprivate static let lastNameKey = "lastName"
+    fileprivate static let passwordKey = "password"
     fileprivate static let bioKey = "bio"
     fileprivate static let favoriteAuthorKey = "favoriteAuthor"
     fileprivate static let favoriteBooksKey = "favoriteBooks"
@@ -31,6 +32,7 @@ class User {
     var username: String
     var firstName: String
     var lastName: String
+    var password: String
     var bio: String
     var favoriteAuthor: String
     var favoriteBooks: [String]
@@ -69,10 +71,11 @@ class User {
         }
     }
     
-    init(username: String, firstName: String, lastName: String, bio: String = "", favoriteAuthor: String = "", favoriteBooks: [String] = [], bookclubs: [Bookclub] = [], friendList: [String] = [], followerList: [String] = [], blockedUsers: [String] = [], favoriteGenres: [String] = [], bookshelves: [Bookshelf] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), appleUserRef: CKRecord.Reference, profilePhoto: UIImage? = nil) {
+    init(username: String, firstName: String, lastName: String, password: String, bio: String = "", favoriteAuthor: String = "", favoriteBooks: [String] = [], bookclubs: [Bookclub] = [], friendList: [String] = [], followerList: [String] = [], blockedUsers: [String] = [], favoriteGenres: [String] = [], bookshelves: [Bookshelf] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), appleUserRef: CKRecord.Reference, profilePhoto: UIImage? = nil) {
         self.username = username
         self.firstName = firstName
         self.lastName = lastName
+        self.password = password
         self.bio = bio
         self.favoriteAuthor = favoriteAuthor
         self.favoriteBooks = favoriteBooks
@@ -94,6 +97,7 @@ extension User {
         guard let username = ckRecord[UserStrings.usernameKey] as? String,
             let firstName = ckRecord[UserStrings.firstNameKey] as? String,
             let lastName = ckRecord[UserStrings.lastNameKey] as? String,
+            let password = ckRecord[UserStrings.passwordKey] as? String,
             let bio = ckRecord[UserStrings.bioKey] as? String,
             let favoriteAuthor = ckRecord[UserStrings.favoriteAuthorKey] as? String,
             let appleUserRef = ckRecord[UserStrings.appleUserRefKey] as? CKRecord.Reference else {return nil}
@@ -124,7 +128,7 @@ extension User {
             }
         }
         
-        self.init(username: username, firstName: firstName, lastName: lastName, bio: bio, favoriteAuthor: favoriteAuthor, favoriteBooks: favoriteBooks, bookclubs: [], friendList: [], followerList: [], blockedUsers: blockedUsers, favoriteGenres: favoriteGenres, bookshelves: [], recordID: ckRecord.recordID, appleUserRef: appleUserRef, profilePhoto: foundPhoto)
+        self.init(username: username, firstName: firstName, lastName: lastName, password: password, bio: bio, favoriteAuthor: favoriteAuthor, favoriteBooks: favoriteBooks, bookclubs: [], friendList: [], followerList: [], blockedUsers: blockedUsers, favoriteGenres: favoriteGenres, bookshelves: [], recordID: ckRecord.recordID, appleUserRef: appleUserRef, profilePhoto: foundPhoto)
     }
     
 } //End of extension
@@ -136,13 +140,11 @@ extension CKRecord {
             UserStrings.firstNameKey : user.firstName,
             UserStrings.lastNameKey : user.lastName,
             UserStrings.usernameKey : user.username,
+            UserStrings.passwordKey : user.password,
             UserStrings.bioKey : user.bio,
             UserStrings.favoriteAuthorKey : user.favoriteAuthor,
-//            UserStrings.bookclubKey : user.bookclub,
-//            UserStrings.friendListKey : user.friendList,
-            
+            //UserStrings.friendListKey : user.friendList,
             //UserStrings.followerListKey : user.followerList,
-            //UserStrings.bookshelvesKey : user.bookshelves,
             UserStrings.appleUserRefKey : user.appleUserRef
         ])
         if user.favoriteGenres.count > 0 {

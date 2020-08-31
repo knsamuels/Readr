@@ -909,6 +909,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hft-Fo-39K" customClass="ReadenView" customModule="Readr" customModuleProvider="target">
+                                            <rect key="frame" x="15" y="5" width="384" height="100"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="thf-iI-32f">
                                             <rect key="frame" x="30" y="10" width="354" height="90"/>
                                             <subviews>
@@ -942,13 +946,18 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Hft-Fo-39K" firstAttribute="leading" secondItem="tqA-BB-X4m" secondAttribute="leading" constant="15" id="4Kl-Gb-It1"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hft-Fo-39K" secondAttribute="trailing" constant="15" id="5ti-le-Y1y"/>
                                         <constraint firstAttribute="trailing" secondItem="thf-iI-32f" secondAttribute="trailing" constant="30" id="Aat-Ci-v2f"/>
                                         <constraint firstItem="thf-iI-32f" firstAttribute="top" secondItem="tqA-BB-X4m" secondAttribute="top" constant="10" id="Mh2-nz-9sz"/>
                                         <constraint firstItem="thf-iI-32f" firstAttribute="leading" secondItem="tqA-BB-X4m" secondAttribute="leading" constant="30" id="ONA-uM-smy"/>
+                                        <constraint firstItem="Hft-Fo-39K" firstAttribute="top" secondItem="tqA-BB-X4m" secondAttribute="top" constant="5" id="nqv-l9-rLv"/>
                                         <constraint firstAttribute="bottom" secondItem="thf-iI-32f" secondAttribute="bottom" constant="10" id="tD6-Eh-WMi"/>
+                                        <constraint firstAttribute="bottom" secondItem="Hft-Fo-39K" secondAttribute="bottom" constant="5" id="tDe-4K-WdZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="backgroundColorView" destination="Hft-Fo-39K" id="69i-VB-2ky"/>
                                     <outlet property="bookCountLabel" destination="Rle-wH-UXg" id="KXa-Yx-VuT"/>
                                     <outlet property="titleOfBookShelfLabel" destination="Vjf-S3-LjQ" id="LIa-h1-LKa"/>
                                     <segue destination="GZb-gu-Hfk" kind="show" identifier="BookshelfListToBookShelf" id="Z2W-uB-lv7"/>
@@ -971,7 +980,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ehe-hT-5pr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3797" y="-934"/>
+            <point key="canvasLocation" x="3795.652173913044" y="-934.15178571428567"/>
         </scene>
         <!--Bookshelf Detail Table View Controller-->
         <scene sceneID="yF2-d9-eTn">
