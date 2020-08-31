@@ -10,13 +10,19 @@ import UIKit
 
 class BookshelfListTableViewController: UITableViewController {
     
+    //MARK: - Outlets
+    @IBOutlet weak var backgroundColorView: ReadenView!
+    
+    //MARK: - Properties
     var userBookshelves: [Bookshelf] = []
     
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "BOOKSHELF"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
         self.navigationController?.navigationBar.tintColor = .black
+        tableView.separatorColor = .clear
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,15 +91,15 @@ class BookshelfListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfCell", for: indexPath) as? BookshelfListTableViewCell else {return UITableViewCell()}
         if indexPath.row == 0 {
-            cell.backgroundColor = .readenBlue
+            cell.backgroundColorView.backgroundColor = .readenBlue
         } else if indexPath.row % 4 == 0 {
-            cell.backgroundColor = .readenGreen
+            cell.backgroundColorView.backgroundColor = .readenGreen
         } else if indexPath.row % 3 == 0 {
-            cell.backgroundColor = .readenYellow
+            cell.backgroundColorView.backgroundColor = .readenYellow
         } else if indexPath.row % 2 == 0 {
-            cell.backgroundColor = .readenOrange
+            cell.backgroundColorView.backgroundColor = .readenOrange
         } else {
-            cell.backgroundColor = .readenGreen
+            cell.backgroundColorView.backgroundColor = .readenGreen
         }
         
         let bookshelf = userBookshelves[indexPath.row]

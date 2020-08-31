@@ -20,6 +20,8 @@
 		9303FEE724F9B04B00486F65 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FEE624F9B04B00486F65 /* UIViewControllerExtension.swift */; };
 		9303FEEB24F9BBED00486F65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9303FEEA24F9BBED00486F65 /* Main.storyboard */; };
 		9303FEED24F9BC1900486F65 /* AppleIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FEEC24F9BC1900486F65 /* AppleIDViewController.swift */; };
+		9303FEF924FCB40500486F65 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FEF824FCB40500486F65 /* LogInViewController.swift */; };
+		9303FEFB24FCBAC600486F65 /* FirstNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303FEFA24FCBAC600486F65 /* FirstNameViewController.swift */; };
 		9304463E24E1ABBC00FBEEF2 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9304463D24E1ABBC00FBEEF2 /* MessageController.swift */; };
 		937640D024EC36CF00B51DEC /* BookclubListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640CF24EC36CF00B51DEC /* BookclubListTableViewController.swift */; };
 		937640D224EC3BFE00B51DEC /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640D124EC3BFE00B51DEC /* SearchTableViewCell.swift */; };
@@ -90,6 +92,8 @@
 		9303FEE624F9B04B00486F65 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		9303FEEA24F9BBED00486F65 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9303FEEC24F9BC1900486F65 /* AppleIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleIDViewController.swift; sourceTree = "<group>"; };
+		9303FEF824FCB40500486F65 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		9303FEFA24FCBAC600486F65 /* FirstNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstNameViewController.swift; sourceTree = "<group>"; };
 		9304463D24E1ABBC00FBEEF2 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		937640CF24EC36CF00B51DEC /* BookclubListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubListTableViewController.swift; sourceTree = "<group>"; };
 		937640D124EC3BFE00B51DEC /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -342,7 +346,9 @@
 			isa = PBXGroup;
 			children = (
 				9303FEEC24F9BC1900486F65 /* AppleIDViewController.swift */,
+				9303FEF824FCB40500486F65 /* LogInViewController.swift */,
 				938A2DA424EAE724002119E1 /* SignInViewController.swift */,
+				9303FEFA24FCBAC600486F65 /* FirstNameViewController.swift */,
 				9303FECF24F75FD900486F65 /* UsernameViewController.swift */,
 				9303FED124F7600D00486F65 /* CustomizeViewController.swift */,
 				9303FED324F7605A00486F65 /* FavAuthorViewController.swift */,
@@ -471,6 +477,7 @@
 				C98FC7DC24E19D3900C27CBF /* BookshelfController.swift in Sources */,
 				C98FC7C824DDCB1300C27CBF /* Book.swift in Sources */,
 				C93A75CD24F998D50024F62D /* ICloudHelper.swift in Sources */,
+				9303FEFB24FCBAC600486F65 /* FirstNameViewController.swift in Sources */,
 				C9DBB76724F469B900285DC7 /* PastReadsTableViewCell.swift in Sources */,
 				C98FC7EA24E1B4BB00C27CBF /* UserError.swift in Sources */,
 				937640D624EC44F100B51DEC /* ChatTableViewController.swift in Sources */,
@@ -509,6 +516,7 @@
 				C938A38F24EEF0E60095AD50 /* BookDetailViewController.swift in Sources */,
 				F31A488E24E4A83C0071652A /* CreateBCViewController.swift in Sources */,
 				F31A488C24E485880071652A /* BookshelfListTableViewCell.swift in Sources */,
+				9303FEF924FCB40500486F65 /* LogInViewController.swift in Sources */,
 				C98FC7DA24DDD55700C27CBF /* BookError.swift in Sources */,
 				9303FEE524F77B4300486F65 /* ReadenLabel.swift in Sources */,
 				C938A38D24EEF0AA0095AD50 /* BookshelfDetailTableViewController.swift in Sources */,

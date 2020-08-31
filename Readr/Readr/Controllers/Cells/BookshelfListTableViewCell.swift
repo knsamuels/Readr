@@ -10,23 +10,25 @@ import UIKit
 
 class BookshelfListTableViewCell: UITableViewCell {
     
-   
+    //MARK: - Outlets
+    @IBOutlet weak var backgroundColorView: ReadenView!
+    @IBOutlet weak var titleOfBookShelfLabel: UILabel!
+    @IBOutlet weak var bookCountLabel: UILabel!
+    
+    //MARK: - Properties
     var bookshelf: Bookshelf? {
         didSet {
             updateViews()
         }
     }
     
-    @IBOutlet weak var titleOfBookShelfLabel: UILabel!
-    
-    @IBOutlet weak var bookCountLabel: UILabel!
-    
+    //MARK: - Helper Methods
     func updateViews() {
         guard let bookshelf = bookshelf else {return}
         titleOfBookShelfLabel.text = bookshelf.title
         bookCountLabel.text = "\(bookshelf.books.count) books"
-        
     }
-}
+    
+}//End of class
 
 
