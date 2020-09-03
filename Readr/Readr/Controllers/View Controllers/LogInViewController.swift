@@ -12,7 +12,6 @@ class LogInViewController: UIViewController {
 
     //MARK: - Outlets
     @IBOutlet weak var usernameTextField: ReadenTextField!
-    @IBOutlet weak var passwordTextField: ReadenTextField!
     @IBOutlet weak var incorrectLabel: UILabel!
     
     // MARK: -Properties
@@ -34,19 +33,22 @@ class LogInViewController: UIViewController {
     //MARK: - Actions
     @IBAction func continueButtonTapped(_ sender: Any) {
         guard let username = usernameTextField.text, !username.isEmpty else {return}
-        guard let password = passwordTextField.text, !password.isEmpty else {return}
         
         UserController.shared.fetchUsername(username: username) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let user):
-                    if password == user.password {
-                        UserController.shared.currentUser = user
-                        self.presentBookshelfVC()
-                    } else {
-                        self.incorrectLabel.isHidden = false
-                    }
+                    self.incorrectLabel.isHidden = true
+                    self.checkAppleRef(user: user)
+//                    if  {
+//                        UserController.shared.currentUser = user
+//                        self.presentBookshelfVC()
+//                    } else {
+//                        self.incorrectLabel.isHidden = false
+//                    }
                 case .failure(_):
+                    self.incorrectLabel.text = "**Could not find user with that username**"
+                    self.incorrectLabel.isHidden = false
                     print("Could not fetch user with that username")
                 }
             }
@@ -70,6 +72,23 @@ class LogInViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.window?.frame.origin.y != 0 {
             self.view.window?.frame.origin.y = 0
+        }
+    }
+
+    func checkAppleRef(user: User) {
+        UserController.shared.fetchAppleUserReference { (result) in
+            switch result {
+            case .success(let reference):
+                if user.appleUserRef == reference {
+                    UserController.shared.currentUser = user
+                    self.presentBookshelfVC()
+                } else {
+                    self.incorrectLabel.text = "**Incorrect username for this iCloud account**"
+                    self.incorrectLabel.isHidden = false
+                }
+            case .failure(_):
+                print("Error fetching Apple User Reference.")
+            }
         }
     }
     

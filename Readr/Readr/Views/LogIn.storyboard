@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Sign In View Controller-->
+        <!--Start View Controller-->
         <scene sceneID="6m8-Db-lxu">
             <objects>
-                <viewController id="Rgj-Y1-NWb" customClass="SignInViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Rgj-Y1-NWb" customClass="StartViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uid-Nb-eGV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signupButtonTapped:" destination="Rgj-Y1-NWb" eventType="touchUpInside" id="kbf-PV-deG"/>
-                                    <segue destination="gVj-2x-06G" kind="show" id="bGQ-yf-Sgg"/>
+                                    <segue destination="gBc-Cp-10d" kind="show" id="fTL-CU-bA5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amb-1Z-LjJ">
@@ -116,7 +116,7 @@
                                 <rect key="frame" x="0.0" y="576" width="414" height="350"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fdS-NH-Kja">
-                                        <rect key="frame" x="52" y="40" width="310.5" height="100"/>
+                                        <rect key="frame" x="52" y="40" width="310.5" height="45"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HNJ-xD-D37" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="310.5" height="45"/>
@@ -126,15 +126,10 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mhg-dX-IWy" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="55" width="310.5" height="45"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                            </textField>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9P-GH-Y7J" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
-                                        <rect key="frame" x="129.5" y="170" width="155" height="45"/>
+                                        <rect key="frame" x="129.5" y="115" width="155" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="CQS-Zy-4Jt"/>
@@ -147,9 +142,9 @@
                                             <action selector="continueButtonTapped:" destination="gBc-Cp-10d" eventType="touchUpInside" id="nM1-cm-OUy"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**Username and Password are incorrect**" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgW-Xg-lvK">
-                                        <rect key="frame" x="41.5" y="245" width="331" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**Incorrect username for this iCloud account**" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgW-Xg-lvK">
+                                        <rect key="frame" x="41.5" y="190" width="331" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="1" green="0.0269885666" blue="0.092577411700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -188,8 +183,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="oyk-u2-E75"/>
                     <connections>
-                        <outlet property="incorrectLabel" destination="EgW-Xg-lvK" id="YJj-t4-Lzc"/>
-                        <outlet property="passwordTextField" destination="mhg-dX-IWy" id="hDb-Od-Pha"/>
+                        <outlet property="incorrectLabel" destination="EgW-Xg-lvK" id="6cz-V7-AlV"/>
                         <outlet property="usernameTextField" destination="HNJ-xD-D37" id="SxD-B3-5rc"/>
                     </connections>
                 </viewController>
@@ -197,10 +191,10 @@
             </objects>
             <point key="canvasLocation" x="3361" y="508"/>
         </scene>
-        <!--Username View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="e6y-sQ-Wt6">
             <objects>
-                <viewController id="gBc-Cp-10d" customClass="UsernameViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gBc-Cp-10d" customClass="SignUpViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d3V-6A-gUm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -222,12 +216,12 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJA-PN-1Do" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJA-PN-1Do" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="55" width="310.5" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUg-CT-wvG" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUg-CT-wvG" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="110" width="310.5" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -287,14 +281,14 @@
                     <connections>
                         <outlet property="alreadyInUseLabel" destination="uJp-JF-NnZ" id="DDo-LP-gyV"/>
                         <outlet property="blackView" destination="3U0-ST-X6n" id="hFc-4O-tXo"/>
-                        <outlet property="confirmPasswordTextField" destination="hUg-CT-wvG" id="Y3i-vX-fJ8"/>
-                        <outlet property="passwordTextField" destination="wJA-PN-1Do" id="mNO-Tt-0UK"/>
+                        <outlet property="firstNameTextField" destination="wJA-PN-1Do" id="tsd-Jt-VrF"/>
+                        <outlet property="lastNameTextField" destination="hUg-CT-wvG" id="K2t-gH-ULb"/>
                         <outlet property="usernameTextField" destination="keg-xA-zCG" id="31N-xn-kKE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rFB-WR-mzT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4049" y="-315"/>
+            <point key="canvasLocation" x="3361" y="-313"/>
         </scene>
         <!--Genres View Controller-->
         <scene sceneID="MTs-Nn-VlD">
@@ -685,7 +679,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Do8-0I-OgR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="tWY-Y5-h0w" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="8367" y="-315"/>
+            <point key="canvasLocation" x="7680" y="-313"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="g0o-J5-i0a">
@@ -713,7 +707,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbk-0v-fY9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9225" y="-315"/>
+            <point key="canvasLocation" x="8538" y="-313"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JNm-ts-BQm">
@@ -796,7 +790,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AC0-ej-Cm4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4887" y="-315"/>
+            <point key="canvasLocation" x="4200" y="-313"/>
         </scene>
         <!--Bio View Controller-->
         <scene sceneID="y0a-oA-qoO">
@@ -902,7 +896,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xGM-a2-mXm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7509" y="-315"/>
+            <point key="canvasLocation" x="6822" y="-313"/>
         </scene>
         <!--Fav Author View Controller-->
         <scene sceneID="tbM-lJ-bA2">
@@ -994,7 +988,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CSP-fe-B3M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6619" y="-315"/>
+            <point key="canvasLocation" x="5932" y="-313"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lcD-bJ-RQO">
@@ -1012,89 +1006,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QgU-DP-HFc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5738" y="-315"/>
-        </scene>
-        <!--First Name View Controller-->
-        <scene sceneID="hzF-PC-ld3">
-            <objects>
-                <viewController id="gVj-2x-06G" customClass="FirstNameViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4zS-iX-Woq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReadenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="HEQ-bd-xQX">
-                                <rect key="frame" x="87" y="316" width="240" height="128"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AtX-gt-OXi" customClass="ReadenView" customModule="Readr" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="576" width="414" height="350"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZQG-o0-s1c">
-                                        <rect key="frame" x="52" y="25" width="310.5" height="100"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PHV-Xt-N2o" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="310.5" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="zKi-qY-qPu"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mri-Ka-beM" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="55" width="310.5" height="45"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4q-ZF-Sns" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
-                                        <rect key="frame" x="129.5" y="155" width="155" height="45"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="Eur-h3-T9U"/>
-                                        </constraints>
-                                        <state key="normal" title="continue">
-                                            <color key="titleColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="continueButtonTapped:" destination="RLS-9j-LhF" eventType="touchUpInside" id="xUi-94-Q4S"/>
-                                            <segue destination="gBc-Cp-10d" kind="show" identifier="toUsernameVC" id="0Wp-4L-M1F"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="ZQG-o0-s1c" firstAttribute="width" secondItem="AtX-gt-OXi" secondAttribute="width" multiplier="0.75" id="IY8-qL-62k"/>
-                                    <constraint firstItem="ZQG-o0-s1c" firstAttribute="top" secondItem="AtX-gt-OXi" secondAttribute="top" constant="25" id="NRR-xd-qkA"/>
-                                    <constraint firstAttribute="height" constant="350" id="Rx9-dF-RwH"/>
-                                    <constraint firstItem="y4q-ZF-Sns" firstAttribute="top" secondItem="ZQG-o0-s1c" secondAttribute="bottom" constant="30" id="VMv-lO-N0Y"/>
-                                    <constraint firstItem="y4q-ZF-Sns" firstAttribute="width" secondItem="AtX-gt-OXi" secondAttribute="width" multiplier="0.374396" id="eJB-PI-9s9"/>
-                                    <constraint firstItem="y4q-ZF-Sns" firstAttribute="centerX" secondItem="AtX-gt-OXi" secondAttribute="centerX" id="jx3-gC-RlD"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="HEQ-bd-xQX" firstAttribute="centerX" secondItem="0qo-KR-bcI" secondAttribute="centerX" id="0qb-LS-eaL"/>
-                            <constraint firstItem="AtX-gt-OXi" firstAttribute="leading" secondItem="0qo-KR-bcI" secondAttribute="leading" id="322-oY-B2g"/>
-                            <constraint firstItem="ZQG-o0-s1c" firstAttribute="centerX" secondItem="0qo-KR-bcI" secondAttribute="centerX" id="7zl-f3-Ljf"/>
-                            <constraint firstAttribute="bottom" secondItem="AtX-gt-OXi" secondAttribute="bottom" constant="-30" id="GWv-a1-UC9"/>
-                            <constraint firstItem="HEQ-bd-xQX" firstAttribute="centerY" secondItem="0qo-KR-bcI" secondAttribute="centerY" multiplier="0.8" id="Gjg-kw-tL1"/>
-                            <constraint firstItem="HEQ-bd-xQX" firstAttribute="width" secondItem="4zS-iX-Woq" secondAttribute="width" multiplier="0.57971" id="PRB-xv-xeA"/>
-                            <constraint firstItem="HEQ-bd-xQX" firstAttribute="height" secondItem="4zS-iX-Woq" secondAttribute="height" multiplier="0.142857" id="dEB-aJ-BOe"/>
-                            <constraint firstItem="AtX-gt-OXi" firstAttribute="trailing" secondItem="0qo-KR-bcI" secondAttribute="trailing" id="xjq-Zt-Dai"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="0qo-KR-bcI"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="m5m-FT-7qE"/>
-                    <connections>
-                        <outlet property="firstNameTextField" destination="PHV-Xt-N2o" id="ofE-Gy-RDB"/>
-                        <outlet property="lastNameTextField" destination="Mri-Ka-beM" id="vjG-Xk-SxD"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dGV-RA-isO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="RLS-9j-LhF" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="3210" y="-315"/>
+            <point key="canvasLocation" x="5051" y="-313"/>
         </scene>
     </scenes>
     <resources>

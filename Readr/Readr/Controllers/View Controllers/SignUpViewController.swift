@@ -12,14 +12,12 @@ class SignUpViewController: UIViewController, UITextViewDelegate  {
     
     //MARK: - Outlets
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var alreadyInUseLabel: UILabel!
   
     //MARK: Properties
-    var firstName: String?
-    var lastName: String?
     var activeTextField : UITextField? = nil
     
     //MARK: - Lifecycles
@@ -38,16 +36,9 @@ class SignUpViewController: UIViewController, UITextViewDelegate  {
     //MARK: - Actions
     @IBAction func continueButtonTapped(_ sender: Any) {
         guard let username = usernameTextField.text, !username.isEmpty else {return}
-        guard let password = passwordTextField.text, !password.isEmpty else {return}
-        guard let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty else {return}
-        guard password == confirmPassword else {return}
+        guard let firstName = firstNameTextField.text, !firstName.isEmpty else {return}
+        guard let lastName = lastNameTextField.text, !lastName.isEmpty else {return}
         
-//        if password != confirmPassword {
-//            alreadyInUseLabel.text = "**Passwords must match**"
-//            alreadyInUseLabel.isHidden = false
-//        } else {
-//            checkUsername(username: username)
-//        }
         checkUsername(username: username)
     }
     
@@ -57,7 +48,6 @@ class SignUpViewController: UIViewController, UITextViewDelegate  {
             DispatchQueue.main.async {
                 switch result {
                 case .success(_):
-                    //self.alreadyInUseLabel.text = "**Username is already in use**"
                     self.alreadyInUseLabel.isHidden = false
                 case .failure(_):
                     self.createUser()
@@ -68,11 +58,8 @@ class SignUpViewController: UIViewController, UITextViewDelegate  {
     
     func createUser() {
         guard let username = usernameTextField.text, !username.isEmpty else {return}
-        guard let password = passwordTextField.text, !password.isEmpty else {return}
-        guard let confirmPassword = confirmPasswordTextField.text, !confirmPassword.isEmpty else {return}
-        guard password == confirmPassword else {return}
-        guard let firstName = firstName else {return}
-        guard let lastName = lastName else {return}
+        guard let firstName = firstNameTextField.text, !firstName.isEmpty else {return}
+        guard let lastName = lastNameTextField.text, !lastName.isEmpty else {return}
         
         UserController.shared.createUser(username: username, firstName: firstName, lastName: lastName) { (result) in
             switch result {
