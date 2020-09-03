@@ -64,9 +64,6 @@ class LogInViewController: UIViewController {
         if usernameTextField.isEditing {
             self.view.window?.frame.origin.y = -keyboardSize.height
         }
-        if passwordTextField.isEditing {
-            self.view.window?.frame.origin.y = -keyboardSize.height
-            }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
