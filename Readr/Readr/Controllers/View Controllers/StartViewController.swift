@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+class StartViewController: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet weak var signUpButton: UIButton!
