@@ -12,11 +12,13 @@ class StartViewController: UIViewController, UITextViewDelegate {
     
     //MARK: - Outlets
     @IBOutlet weak var signUpButton: UIButton!
-    
+    @IBOutlet weak var signInButton: UIButton!
+  
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
+        signInButton.isHidden = true
     }
     
     //MARK: - Actions

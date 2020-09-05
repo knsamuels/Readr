@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TYG-wo-5CD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TYG-wo-5CD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -11,7 +11,7 @@
         <!--Start View Controller-->
         <scene sceneID="6m8-Db-lxu">
             <objects>
-                <viewController id="Rgj-Y1-NWb" customClass="StartViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Rgj-Y1-NWb" customClass="StartViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uid-Nb-eGV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,7 +19,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReadenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ca4-or-ftP">
                                 <rect key="frame" x="87" y="316" width="240" height="128"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xot-tD-g4I" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xot-tD-g4I" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="138" y="524" width="138" height="50"/>
                                 <color key="backgroundColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -62,6 +62,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="1H5-mT-ic2"/>
                     <connections>
+                        <outlet property="signInButton" destination="Amb-1Z-LjJ" id="TxJ-nC-SK5"/>
                         <outlet property="signUpButton" destination="Xot-tD-g4I" id="fdQ-dU-pYA"/>
                     </connections>
                 </viewController>
@@ -107,18 +108,18 @@
         <!--Log In View Controller-->
         <scene sceneID="a3c-rW-YBl">
             <objects>
-                <viewController id="vMU-zF-qrg" customClass="LogInViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vMU-zF-qrg" customClass="LogInViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z55-O8-nQs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3a-XP-Taf" customClass="ReadenView" customModule="Readr" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3a-XP-Taf" customClass="ReadenView" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="576" width="414" height="350"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fdS-NH-Kja">
                                         <rect key="frame" x="52" y="40" width="310.5" height="45"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HNJ-xD-D37" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HNJ-xD-D37" customClass="ReadenTextField" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="310.5" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="hTq-Zz-i2n"/>
@@ -128,7 +129,7 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9P-GH-Y7J" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9P-GH-Y7J" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                         <rect key="frame" x="129.5" y="115" width="155" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -194,7 +195,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="e6y-sQ-Wt6">
             <objects>
-                <viewController id="gBc-Cp-10d" customClass="SignUpViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gBc-Cp-10d" customClass="SignUpViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d3V-6A-gUm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,13 +203,13 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReadenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="K3R-5X-fQP">
                                 <rect key="frame" x="87" y="316" width="240" height="128"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3U0-ST-X6n" customClass="ReadenView" customModule="Readr" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3U0-ST-X6n" customClass="ReadenView" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="576" width="414" height="350"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lBx-5X-aUa">
                                         <rect key="frame" x="52" y="25" width="310.5" height="155"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="keg-xA-zCG" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="keg-xA-zCG" customClass="ReadenTextField" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="310.5" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="wCD-0f-vZ3"/>
@@ -216,19 +217,19 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJA-PN-1Do" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJA-PN-1Do" customClass="ReadenTextField" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="55" width="310.5" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUg-CT-wvG" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUg-CT-wvG" customClass="ReadenTextField" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="110" width="310.5" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mA0-Ek-riv" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mA0-Ek-riv" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                         <rect key="frame" x="129.5" y="210" width="155" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -293,7 +294,7 @@
         <!--Genres View Controller-->
         <scene sceneID="MTs-Nn-VlD">
             <objects>
-                <viewController id="6pt-kr-hmt" customClass="GenresViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6pt-kr-hmt" customClass="GenresViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FcQ-l8-NmJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -313,7 +314,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zjP-3w-PMI">
                                         <rect key="frame" x="0.0" y="0.0" width="108" height="575"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WU3-Iz-3QQ" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WU3-Iz-3QQ" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="108" height="59"/>
                                                 <color key="backgroundColor" red="0.20988544819999999" green="0.31616640089999998" blue="0.4439439476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Fantasy">
@@ -325,7 +326,7 @@
                                                     <action selector="fantasyButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="cDC-D7-JPl"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4IB-41-kRH" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4IB-41-kRH" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="74" width="108" height="58.5"/>
                                                 <color key="backgroundColor" red="0.65848964450000003" green="0.42797857519999999" blue="0.34154325720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Contemporary">
@@ -337,7 +338,7 @@
                                                     <action selector="contemporaryButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="pwe-Yd-d1C"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJ7-4a-7ZK" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJ7-4a-7ZK" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="147.5" width="108" height="59"/>
                                                 <color key="backgroundColor" red="0.65850126740000003" green="0.34160029889999999" blue="0.37902545929999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Horror">
@@ -349,7 +350,7 @@
                                                     <action selector="horrorButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="faa-Fa-Vgj"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbM-SV-TPk" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbM-SV-TPk" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="221.5" width="108" height="58.5"/>
                                                 <color key="backgroundColor" red="0.7780780196" green="0.62141537670000002" blue="0.3541248441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -362,7 +363,7 @@
                                                     <action selector="historicalFictionButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="x7v-gs-pae"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKi-Pt-l2H" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKi-Pt-l2H" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="295" width="108" height="59"/>
                                                 <color key="backgroundColor" red="0.42792510989999999" green="0.38732218740000002" blue="0.47963714600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Cooking">
@@ -374,7 +375,7 @@
                                                     <action selector="cookingButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="v4V-oV-CDA"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sn6-6B-dbO" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sn6-6B-dbO" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="369" width="108" height="58.5"/>
                                                 <color key="backgroundColor" red="0.35411822799999998" green="0.37908789520000002" blue="0.34992948169999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Development">
@@ -386,7 +387,7 @@
                                                     <action selector="developmentButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="qle-yd-mjD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3P-SF-EhY" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3P-SF-EhY" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="442.5" width="108" height="59"/>
                                                 <color key="backgroundColor" red="0.52644884589999996" green="0.45996254679999998" blue="0.46780270340000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="History">
@@ -398,7 +399,7 @@
                                                     <action selector="historyButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="ypv-0X-xyX"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKu-ZY-LvS" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKu-ZY-LvS" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="516.5" width="108" height="58.5"/>
                                                 <color key="backgroundColor" red="0.20988544819999999" green="0.31616640089999998" blue="0.4439439476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Relationships">
@@ -415,7 +416,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="YKg-bN-NJ2">
                                         <rect key="frame" x="123" y="0.0" width="108" height="575"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-eg-47J" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-eg-47J" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="108" height="59"/>
                                                 <color key="backgroundColor" red="0.35411822799999998" green="0.37908789520000002" blue="0.34992948169999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Adventure">
@@ -427,7 +428,7 @@
                                                     <action selector="adventureButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="fli-ec-HKn"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9M-ve-AoB" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9M-ve-AoB" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="74" width="108" height="58.5"/>
                                                 <color key="backgroundColor" red="0.52644884589999996" green="0.45996254679999998" blue="0.46780270340000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Dypostian">
@@ -439,7 +440,7 @@
                                                     <action selector="dypostianButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="lmE-h1-YTc"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRc-15-bPC" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRc-15-bPC" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="147.5" width="108" height="59"/>
                                                 <color key="backgroundColor" red="0.20988544819999999" green="0.31616640089999998" blue="0.4439439476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Thriller">
@@ -451,7 +452,7 @@
                                                     <action selector="thrillerButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="Nnj-l5-BLc"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Re4-Wa-FLf" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Re4-Wa-FLf" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="221.5" width="108" height="58.5"/>
                                                 <color key="backgroundColor" red="0.65848964450000003" green="0.42797857519999999" blue="0.34154325720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Science Fiction">
@@ -463,7 +464,7 @@
                                                     <action selector="scienceFictionButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="qbO-5v-E10"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRN-Ne-6Yi" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRN-Ne-6Yi" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="295" width="108" height="59"/>
                                                 <color key="backgroundColor" red="0.65850126740000003" green="0.34160029889999999" blue="0.37902545929999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Art">
@@ -475,7 +476,7 @@
                                                     <action selector="artButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="t9j-4v-22A"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTr-eq-jn3" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTr-eq-jn3" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="369" width="108" height="58.5"/>
                                                 <color key="backgroundColor" red="0.7780780196" green="0.62141537670000002" blue="0.3541248441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Motivational">
@@ -487,7 +488,7 @@
                                                     <action selector="motivationalButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="UmK-xb-5We"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voI-CO-bo6" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voI-CO-bo6" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="442.5" width="108" height="59"/>
                                                 <color key="backgroundColor" red="0.42792510989999999" green="0.38732218740000002" blue="0.47963714600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Travel">
@@ -499,7 +500,7 @@
                                                     <action selector="travelButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="Tzu-ed-AoN"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiN-Vc-EF8" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiN-Vc-EF8" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="516.5" width="108" height="58.5"/>
                                                 <color key="backgroundColor" red="0.35411822799999998" green="0.37908789520000002" blue="0.34992948169999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Humor">
@@ -516,7 +517,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rdT-FB-KsJ">
                                         <rect key="frame" x="246" y="0.0" width="108" height="575"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9E3-HM-91N" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9E3-HM-91N" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="108" height="59"/>
                                                 <color key="backgroundColor" red="0.7780780196" green="0.62141537670000002" blue="0.3541248441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Romance">
@@ -528,7 +529,7 @@
                                                     <action selector="romanceButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="fUD-PM-7NU"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-H7-isO" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-H7-isO" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="74" width="108" height="58.5"/>
                                                 <color key="backgroundColor" red="0.42792510989999999" green="0.38732218740000002" blue="0.47963714600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Mystery">
@@ -540,7 +541,7 @@
                                                     <action selector="mysteryButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="xbr-TQ-QNX"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEp-n9-m3r" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEp-n9-m3r" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="147.5" width="108" height="59"/>
                                                 <color key="backgroundColor" red="0.35411822799999998" green="0.37908789520000002" blue="0.34992948169999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Paranormal">
@@ -552,7 +553,7 @@
                                                     <action selector="paranormalButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="MK6-jr-NkA"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4l-Qd-wB0" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4l-Qd-wB0" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="221.5" width="108" height="58.5"/>
                                                 <color key="backgroundColor" red="0.52644884589999996" green="0.45996254679999998" blue="0.46780270340000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Memoir">
@@ -564,7 +565,7 @@
                                                     <action selector="memoirButtonTapped:" destination="tWY-Y5-h0w" eventType="touchUpInside" id="ZRV-DA-o9S"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Goc-Vt-fWm" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Goc-Vt-fWm" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="295" width="108" height="59"/>
                                                 <color key="backgroundColor" red="0.20988544819999999" green="0.31616640089999998" blue="0.4439439476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -577,7 +578,7 @@
                                                     <action selector="selfHelpPersonalButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="XF7-jc-Ig1"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGg-KG-zdZ" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGg-KG-zdZ" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="369" width="108" height="58.5"/>
                                                 <color key="backgroundColor" red="0.65848964450000003" green="0.42797857519999999" blue="0.34154325720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Health">
@@ -589,7 +590,7 @@
                                                     <action selector="healthButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="tCr-gG-6bf"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGH-Q3-whU" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGH-Q3-whU" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="442.5" width="108" height="59"/>
                                                 <color key="backgroundColor" red="0.65850126740000003" green="0.34160029889999999" blue="0.37902545929999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -602,7 +603,7 @@
                                                     <action selector="guideHowToButtonTapped:" destination="6pt-kr-hmt" eventType="touchUpInside" id="nbk-ZJ-ZpW"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG6-cI-SN0" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG6-cI-SN0" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="516.5" width="108" height="58.5"/>
                                                 <color key="backgroundColor" red="0.7780780196" green="0.62141537670000002" blue="0.3541248441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Childrens">
@@ -618,7 +619,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhQ-Hc-ABo" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhQ-Hc-ABo" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="62" y="782" width="290" height="50"/>
                                 <color key="backgroundColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -684,7 +685,7 @@
         <!--View Controller-->
         <scene sceneID="g0o-J5-i0a">
             <objects>
-                <viewController id="QDc-vZ-uoK" customClass="RViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QDc-vZ-uoK" customClass="RViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wFn-ci-Zug">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -730,7 +731,7 @@
         <!--Customize View Controller-->
         <scene sceneID="LxY-92-1d8">
             <objects>
-                <viewController storyboardIdentifier="customizeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IVR-6o-Cto" customClass="CustomizeViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="customizeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IVR-6o-Cto" customClass="CustomizeViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XUW-Iz-Hio">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -738,7 +739,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReadenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="3Pp-8e-4IX">
                                 <rect key="frame" x="87" y="298.5" width="240" height="128"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZF7-HN-NW6" customClass="ReadenView" customModule="Readr" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZF7-HN-NW6" customClass="ReadenView" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="596" width="414" height="330"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kve-Uz-LzV">
@@ -795,7 +796,7 @@
         <!--Bio View Controller-->
         <scene sceneID="y0a-oA-qoO">
             <objects>
-                <viewController id="rKY-A0-4vC" customClass="BioViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rKY-A0-4vC" customClass="BioViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ik3-6U-nRv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -803,10 +804,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReadenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="zTh-g2-Gv8">
                                 <rect key="frame" x="87" y="316" width="240" height="128"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIH-wN-nfd" customClass="ReadenView" customModule="Readr" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIH-wN-nfd" customClass="ReadenView" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="510" width="414" height="416"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7j-ZQ-v4C" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7j-ZQ-v4C" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                         <rect key="frame" x="145" y="278" width="124" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -820,7 +821,7 @@
                                             <segue destination="6pt-kr-hmt" kind="show" id="Dq0-if-BQS"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lSE-60-ru5" customClass="ReadenTextView" customModule="Readr" customModuleProvider="target">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lSE-60-ru5" customClass="ReadenTextView" customModule="Readen" customModuleProvider="target">
                                         <rect key="frame" x="52" y="153" width="310.5" height="90"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -901,7 +902,7 @@
         <!--Fav Author View Controller-->
         <scene sceneID="tbM-lJ-bA2">
             <objects>
-                <viewController storyboardIdentifier="favAuthorVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gTH-xt-Js0" customClass="FavAuthorViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favAuthorVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gTH-xt-Js0" customClass="FavAuthorViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PGc-P1-cac">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -909,10 +910,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReadenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="1hN-sG-Gav">
                                 <rect key="frame" x="87" y="316" width="240" height="128"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4a0-Oq-CXv" customClass="ReadenView" customModule="Readr" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4a0-Oq-CXv" customClass="ReadenView" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="576" width="414" height="350"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fej-kX-8W0" customClass="ReadenTextField" customModule="Readr" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fej-kX-8W0" customClass="ReadenTextField" customModule="Readen" customModuleProvider="target">
                                         <rect key="frame" x="52" y="142" width="310.5" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="a4r-R1-Oz3"/>
@@ -920,7 +921,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLR-5y-dE3" customClass="ReadenButton" customModule="Readr" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLR-5y-dE3" customClass="ReadenButton" customModule="Readen" customModuleProvider="target">
                                         <rect key="frame" x="145" y="217" width="124" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
