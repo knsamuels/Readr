@@ -11,12 +11,12 @@ import UIKit
 class MemberListTableViewController: UITableViewController {
 
     
+    var bookclub: Bookclub?
     var bookclubMembers: [User] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fetchUsers()
     }
 
     // MARK: - Table view data source
@@ -26,9 +26,9 @@ class MemberListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath)
-
-        // Configure the cell...
-
+        let member = bookclubMembers[indexPath.row]
+        cell.textLabel?.text = "\(member.firstName) \(member.lastName)"
+    
         return cell
     }
 
@@ -67,6 +67,22 @@ class MemberListTableViewController: UITableViewController {
     }
     */
 
+    //MARK: - Helper Functions
+    func fetchUsers() {
+        guard let bookclub = bookclub else {return}
+        for reference in bookclub.members {
+            UserController.shared.fetchUser(withReference: reference) { (result) in
+                switch result {
+                case .success(let member):
+                    self.bookclubMembers.append(member)
+                    self.tableView.reloadData()
+                case .failure(_):
+                    print("Could not fetch member")
+                }
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

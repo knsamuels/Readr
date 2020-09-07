@@ -54,10 +54,6 @@ class PastReadsListTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookCell", for: indexPath) as? PastReadsTableViewCell else {return UITableViewCell()}
         let book = books[indexPath.row]
         cell.book = book
-        
-
-        
-
         return cell
     }
     
