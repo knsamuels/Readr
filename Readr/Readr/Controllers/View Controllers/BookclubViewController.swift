@@ -37,6 +37,8 @@ class BookclubViewController: UIViewController {
     @IBOutlet weak var title3ForPastReads: UILabel!
     @IBOutlet weak var author3ForPastReads: UILabel!
     @IBOutlet weak var rating3ForPastReads: UILabel!
+    @IBOutlet weak var memberCountLabel: UILabel!
+    
     
     private lazy var loadingScreen: RLogoLoadingView = {
         let view = RLogoLoadingView()
@@ -104,6 +106,8 @@ class BookclubViewController: UIViewController {
         }
     }
     
+    @IBAction func viewAllMembersButtonTapped(_ sender: UIButton) {
+    }
     //MARK: - Helper functions
     
     func setUpImage() {
@@ -331,5 +335,7 @@ class BookclubViewController: UIViewController {
             destination.book = bookToSend
         }
     }
+    
+    //memberCell
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSO-MQ-rBx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSO-MQ-rBx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -33,7 +33,7 @@
         <!--CreateBC View Controller-->
         <scene sceneID="gVh-ll-gT8">
             <objects>
-                <viewController storyboardIdentifier="toCreateBCVC" id="H6T-ob-m4V" customClass="CreateBCViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toCreateBCVC" id="H6T-ob-m4V" customClass="CreateBCViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i6a-oG-BLL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -297,7 +297,7 @@
         <!--Bookclub View Controller-->
         <scene sceneID="Wqe-zc-9iq">
             <objects>
-                <viewController storyboardIdentifier="BookclubVC" id="ZEJ-Jj-dV8" customClass="BookclubViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookclubVC" id="ZEJ-Jj-dV8" customClass="BookclubViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VQs-3E-Ioz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,7 +310,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niH-US-JMo">
-                                <rect key="frame" x="157" y="175" width="227" height="32"/>
+                                <rect key="frame" x="157" y="172" width="227" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="QCj-Ef-nZp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                 <state key="normal" title="JOIN">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -635,6 +638,45 @@
                                 <rect key="frame" x="16" y="96" width="111" height="111"/>
                                 <state key="normal" title="Select Image"/>
                             </button>
+                            <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="j2C-sR-VOl">
+                                <rect key="frame" x="142" y="96" width="257" height="68"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Members" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60P-fO-6RP">
+                                        <rect key="frame" x="0.0" y="48.5" width="257" height="19.5"/>
+                                        <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRR-dI-Qin">
+                                        <rect key="frame" x="0.0" y="0.0" width="257" height="40.5"/>
+                                        <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Urn-21-WLU">
+                                        <rect key="frame" x="0.0" y="0.0" width="257" height="68"/>
+                                        <connections>
+                                            <action selector="viewAllMembersButtonTapped:" destination="ZEJ-Jj-dV8" eventType="touchUpInside" id="tGk-Sc-zfy"/>
+                                            <segue destination="olf-St-n1g" kind="show" id="erQ-Ba-1fy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="CRR-dI-Qin" secondAttribute="trailing" id="2pa-nj-Xs9"/>
+                                    <constraint firstItem="60P-fO-6RP" firstAttribute="top" secondItem="CRR-dI-Qin" secondAttribute="bottom" constant="8" id="EQq-bN-OX5"/>
+                                    <constraint firstItem="60P-fO-6RP" firstAttribute="top" secondItem="CRR-dI-Qin" secondAttribute="bottom" constant="8" symbolic="YES" id="Kzb-6W-Rrt"/>
+                                    <constraint firstAttribute="trailing" secondItem="60P-fO-6RP" secondAttribute="trailing" id="LbD-qJ-CgX"/>
+                                    <constraint firstItem="Urn-21-WLU" firstAttribute="leading" secondItem="j2C-sR-VOl" secondAttribute="leading" id="X4U-Eh-p6i"/>
+                                    <constraint firstItem="CRR-dI-Qin" firstAttribute="leading" secondItem="j2C-sR-VOl" secondAttribute="leading" id="efV-g6-2Rn"/>
+                                    <constraint firstItem="60P-fO-6RP" firstAttribute="leading" secondItem="j2C-sR-VOl" secondAttribute="leading" id="k6m-kA-3Um"/>
+                                    <constraint firstAttribute="trailing" secondItem="Urn-21-WLU" secondAttribute="trailing" id="mRZ-us-ltq"/>
+                                    <constraint firstAttribute="bottom" secondItem="Urn-21-WLU" secondAttribute="bottom" id="nQi-IB-UST"/>
+                                    <constraint firstItem="Urn-21-WLU" firstAttribute="top" secondItem="j2C-sR-VOl" secondAttribute="top" id="pjz-sq-mxb"/>
+                                    <constraint firstItem="CRR-dI-Qin" firstAttribute="top" secondItem="j2C-sR-VOl" secondAttribute="top" id="rKC-9M-PRA"/>
+                                    <constraint firstAttribute="bottom" secondItem="60P-fO-6RP" secondAttribute="bottom" id="zLY-1h-jKw"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -651,6 +693,7 @@
                             <constraint firstItem="0WQ-JY-AiN" firstAttribute="height" secondItem="he2-hu-3P2" secondAttribute="height" id="AE5-3j-e6V"/>
                             <constraint firstItem="3OJ-CY-swk" firstAttribute="leading" secondItem="gFe-QI-9yi" secondAttribute="leading" constant="16" id="ATn-Ls-IBL"/>
                             <constraint firstItem="UlA-hB-L8A" firstAttribute="height" secondItem="KSN-wE-uTC" secondAttribute="height" id="AY1-zm-Dxh"/>
+                            <constraint firstItem="j2C-sR-VOl" firstAttribute="top" secondItem="gFe-QI-9yi" secondAttribute="top" constant="8" id="BYh-jS-PuU"/>
                             <constraint firstItem="0WQ-JY-AiN" firstAttribute="width" secondItem="he2-hu-3P2" secondAttribute="width" id="Cqi-S2-yIq"/>
                             <constraint firstItem="Zfn-gh-Kpa" firstAttribute="height" secondItem="MKp-s1-zcr" secondAttribute="height" id="HFF-Qk-r1J"/>
                             <constraint firstItem="he2-hu-3P2" firstAttribute="top" secondItem="gFe-QI-9yi" secondAttribute="top" constant="8" id="HXO-Mc-JT0"/>
@@ -660,7 +703,9 @@
                             <constraint firstItem="LFE-wg-27c" firstAttribute="centerY" secondItem="Xyc-yg-YXu" secondAttribute="centerY" id="Kwm-qQ-n4Q"/>
                             <constraint firstItem="3OJ-CY-swk" firstAttribute="top" secondItem="OuF-re-nWW" secondAttribute="bottom" constant="20" id="MkK-tC-eNu"/>
                             <constraint firstItem="AQr-j6-LL1" firstAttribute="width" secondItem="Is2-rJ-eoE" secondAttribute="width" id="OOg-nh-gzg"/>
+                            <constraint firstItem="gFe-QI-9yi" firstAttribute="trailing" secondItem="j2C-sR-VOl" secondAttribute="trailing" constant="15" id="Qnb-Qy-aNf"/>
                             <constraint firstItem="rDd-b0-krF" firstAttribute="leading" secondItem="gFe-QI-9yi" secondAttribute="leading" constant="16" id="X4Q-Zs-xHE"/>
+                            <constraint firstItem="niH-US-JMo" firstAttribute="top" secondItem="j2C-sR-VOl" secondAttribute="bottom" constant="8" id="Xfw-HZ-UNZ"/>
                             <constraint firstItem="gFe-QI-9yi" firstAttribute="trailing" secondItem="Qxv-a9-qHh" secondAttribute="trailing" constant="30" id="Zga-hZ-icg"/>
                             <constraint firstItem="u2v-tA-8us" firstAttribute="leading" secondItem="gFe-QI-9yi" secondAttribute="leading" constant="16" id="ZwE-PY-VOE"/>
                             <constraint firstItem="LFE-wg-27c" firstAttribute="width" secondItem="Xyc-yg-YXu" secondAttribute="width" id="bZx-ua-ZFR"/>
@@ -680,6 +725,7 @@
                             <constraint firstItem="ApF-Zm-qcw" firstAttribute="leading" secondItem="gFe-QI-9yi" secondAttribute="leading" constant="16" id="tzD-8j-PCB"/>
                             <constraint firstItem="UlA-hB-L8A" firstAttribute="centerY" secondItem="KSN-wE-uTC" secondAttribute="centerY" id="vKZ-lY-Vyj"/>
                             <constraint firstItem="0WQ-JY-AiN" firstAttribute="centerX" secondItem="he2-hu-3P2" secondAttribute="centerX" id="xNq-oO-fI1"/>
+                            <constraint firstItem="j2C-sR-VOl" firstAttribute="leading" secondItem="he2-hu-3P2" secondAttribute="trailing" constant="15" id="zHb-M2-odp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gFe-QI-9yi"/>
                     </view>
@@ -707,6 +753,7 @@
                         <outlet property="imageOfBookClub" destination="he2-hu-3P2" id="BFq-0s-Zuo"/>
                         <outlet property="joinButton" destination="niH-US-JMo" id="YJ3-t1-lb3"/>
                         <outlet property="meetingInfoForBookClub" destination="OuF-re-nWW" id="kIr-3w-9pi"/>
+                        <outlet property="memberCountLabel" destination="CRR-dI-Qin" id="kgJ-nd-y2m"/>
                         <outlet property="rating1ForPastReads" destination="uhB-l5-NJo" id="McU-qe-t2I"/>
                         <outlet property="rating2ForPastReads" destination="3lJ-Uw-X88" id="LkM-jf-w09"/>
                         <outlet property="rating3ForPastReads" destination="P9D-dM-uI3" id="6Fd-7w-aVP"/>
@@ -724,7 +771,7 @@
         <!--Past Reads List Table View Controller-->
         <scene sceneID="kyT-KG-XT6">
             <objects>
-                <tableViewController id="Em1-qk-fIc" customClass="PastReadsListTableViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Em1-qk-fIc" customClass="PastReadsListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5fA-Jg-7kV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -750,10 +797,48 @@
             </objects>
             <point key="canvasLocation" x="4646" y="975"/>
         </scene>
+        <!--Member List Table View Controller-->
+        <scene sceneID="g83-dn-tmf">
+            <objects>
+                <tableViewController id="olf-St-n1g" customClass="MemberListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IkP-RT-d1p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberCell" textLabel="Uoq-v8-9P7" rowHeight="59" style="IBUITableViewCellStyleDefault" id="Jth-fe-Qrm">
+                                <rect key="frame" x="0.0" y="28" width="414" height="59"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jth-fe-Qrm" id="56o-sa-zbt">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uoq-v8-9P7">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="olf-St-n1g" id="pxc-m9-FMF"/>
+                            <outlet property="delegate" destination="olf-St-n1g" id="Kr3-ZF-Yal"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="deC-aG-lCh"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NRu-am-7sI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5360.8695652173919" y="975.66964285714278"/>
+        </scene>
         <!--Pop Up Books Search Table View Controller-->
         <scene sceneID="Gsr-cs-sDA">
             <objects>
-                <tableViewController storyboardIdentifier="PopUpBookSearch" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xcb-Rn-diK" customClass="PopUpBooksSearchTableViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PopUpBookSearch" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xcb-Rn-diK" customClass="PopUpBooksSearchTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RMJ-93-lP4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -764,7 +849,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" rowHeight="113" id="nPx-a4-GNA" customClass="PopUpBookSearchTableViewCell" customModule="Readr" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" rowHeight="113" id="nPx-a4-GNA" customClass="PopUpBookSearchTableViewCell" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="113"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nPx-a4-GNA" id="gh8-cb-vUv">
@@ -844,12 +929,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvh-fN-pYf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5542" y="925"/>
+            <point key="canvasLocation" x="6112" y="965"/>
         </scene>
         <!--Bookclub List Table View Controller-->
         <scene sceneID="yzk-bD-8R3">
             <objects>
-                <tableViewController id="cqk-BO-4bC" customClass="BookclubListTableViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="cqk-BO-4bC" customClass="BookclubListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VVF-3l-rjw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -896,20 +981,20 @@
         <!--Bookshelf List Table View Controller-->
         <scene sceneID="6mh-RX-ImH">
             <objects>
-                <tableViewController id="SEJ-cH-CT6" customClass="BookshelfListTableViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="SEJ-cH-CT6" customClass="BookshelfListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9ya-bl-i9B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelfCell" rowHeight="110" id="upu-kq-gYK" customClass="BookshelfListTableViewCell" customModule="Readr" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelfCell" rowHeight="110" id="upu-kq-gYK" customClass="BookshelfListTableViewCell" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="upu-kq-gYK" id="tqA-BB-X4m">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hft-Fo-39K" customClass="ReadenView" customModule="Readr" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hft-Fo-39K" customClass="ReadenView" customModule="Readen" customModuleProvider="target">
                                             <rect key="frame" x="15" y="5" width="384" height="100"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         </view>
@@ -985,13 +1070,13 @@
         <!--Bookshelf Detail Table View Controller-->
         <scene sceneID="yF2-d9-eTn">
             <objects>
-                <tableViewController id="GZb-gu-Hfk" customClass="BookshelfDetailTableViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="GZb-gu-Hfk" customClass="BookshelfDetailTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OX3-JK-Jlp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelfSearchCell" rowHeight="106" id="FZ0-jc-r4d" customClass="BookshelfDetailTableViewCell" customModule="Readr" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelfSearchCell" rowHeight="106" id="FZ0-jc-r4d" customClass="BookshelfDetailTableViewCell" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="106"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FZ0-jc-r4d" id="igH-TK-VqD">
@@ -1088,7 +1173,7 @@
         <!--Pop Up Bookshelf Table View Controller-->
         <scene sceneID="ggy-Sf-SLe">
             <objects>
-                <tableViewController storyboardIdentifier="popUpBookshelfTBVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jvY-9K-sw0" customClass="PopUpBookshelfTableViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="popUpBookshelfTBVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jvY-9K-sw0" customClass="PopUpBookshelfTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TGH-Ga-Foy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1125,7 +1210,7 @@
         <!--Book Detail View Controller-->
         <scene sceneID="okR-l1-vcn">
             <objects>
-                <viewController id="jym-Fn-cVA" customClass="BookDetailViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jym-Fn-cVA" customClass="BookDetailViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Umr-4i-5Dn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1269,7 +1354,7 @@
         <!--Review Detail View Controller-->
         <scene sceneID="Ki3-6g-gA9">
             <objects>
-                <viewController id="P61-HG-6Je" customClass="ReviewDetailViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="P61-HG-6Je" customClass="ReviewDetailViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4SM-oH-C9M">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1334,7 +1419,7 @@
         <!--User Detail View Controller-->
         <scene sceneID="94Q-M8-USP">
             <objects>
-                <viewController id="Dff-Fc-vSR" customClass="UserDetailViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Dff-Fc-vSR" customClass="UserDetailViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RZP-id-95u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1766,7 +1851,7 @@
         <!--User Bio Edit View Controller-->
         <scene sceneID="Xzn-XF-ttZ">
             <objects>
-                <viewController id="quA-1n-G68" customClass="UserBioEditViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="quA-1n-G68" customClass="UserBioEditViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="krG-v9-Eie">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1858,7 +1943,7 @@
         <!--Search View Controller-->
         <scene sceneID="fOz-7V-teA">
             <objects>
-                <viewController id="9QW-qj-en5" customClass="SearchViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9QW-qj-en5" customClass="SearchViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5HZ-W2-8Tg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1912,7 +1997,7 @@
                                 <rect key="frame" x="0.0" y="222" width="414" height="542"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="92" id="qko-dU-HGu" customClass="SearchTableViewCell" customModule="Readr" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="92" id="qko-dU-HGu" customClass="SearchTableViewCell" customModule="Readen" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qko-dU-HGu" id="0se-Gp-uwX">
@@ -1959,7 +2044,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="searchCell" id="ZxP-7D-aQz" customClass="SearchCollectionViewCell" customModule="Readr" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="searchCell" id="ZxP-7D-aQz" customClass="SearchCollectionViewCell" customModule="Readen" customModuleProvider="target">
                                         <rect key="frame" x="98" y="0.0" width="218" height="319"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5gG-KV-Zan">
@@ -2049,7 +2134,7 @@
         <!--Chat Table View Controller-->
         <scene sceneID="3h5-Uq-SI3">
             <objects>
-                <tableViewController id="UJ4-yH-Ff4" customClass="ChatTableViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="UJ4-yH-Ff4" customClass="ChatTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="91A-3D-ePW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2169,7 +2254,7 @@
         <!--Message View Controller-->
         <scene sceneID="HGk-Yz-fAE">
             <objects>
-                <viewController id="m3Q-h9-1fx" customClass="MessageViewController" customModule="Readr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="m3Q-h9-1fx" customClass="MessageViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2pm-d5-GLt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2178,7 +2263,7 @@
                                 <rect key="frame" x="20" y="108" width="374" height="507.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messageCell" rowHeight="105" id="Hut-RF-9yD" customClass="MessageTableViewCell" customModule="Readr" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messageCell" rowHeight="105" id="Hut-RF-9yD" customClass="MessageTableViewCell" customModule="Readen" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hut-RF-9yD" id="9q7-oB-N0v">
@@ -2281,8 +2366,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="gNk-4k-DGh"/>
         <segue reference="B9o-UE-y1z"/>
-        <segue reference="XkH-si-XHh"/>
-        <segue reference="d4d-j6-Xm7"/>
+        <segue reference="Pdl-Xb-emP"/>
+        <segue reference="s51-Sp-ODc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="RLogo" width="44" height="48"/>
