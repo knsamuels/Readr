@@ -14,6 +14,7 @@ class BookclubViewController: UIViewController {
     var bookclub: Bookclub? 
     var currentlyReading: Book?
     var pastReads: [Book] = []
+    var members: [User] = []
     
     @IBOutlet weak var imageOfBookClub: UIImageView!
     @IBOutlet weak var descriptionOfBookClub: UILabel!
@@ -108,6 +109,7 @@ class BookclubViewController: UIViewController {
     
     @IBAction func viewAllMembersButtonTapped(_ sender: UIButton) {
     }
+    
     //MARK: - Helper functions
     
     func setUpImage() {
@@ -137,6 +139,7 @@ class BookclubViewController: UIViewController {
             self.descriptionOfBookClub.text = bookclub.description
             self.meetingInfoForBookClub.text = bookclub.meetingInfo
             self.adminNameLabel.text = admin.username
+            self.memberCountLabel.text = "\(bookclub.members.count)"
             self.adminContactInfoLabel.text = bookclub.adminContactInfo
             
             if bookclub.members.contains(userReference) {
@@ -333,9 +336,12 @@ class BookclubViewController: UIViewController {
             guard let destination = segue.destination as? BookDetailViewController else {return}
             let bookToSend = pastReads[2]
             destination.book = bookToSend
+        } else if segue.identifier == "toMemberListVC" {
+            guard let destination = segue.destination as?
+                MemberListTableViewController else {return}
+            let memberToSend = members
+            destination.bookclubMembers = memberToSend
         }
     }
-    
-    //memberCell
 }
 

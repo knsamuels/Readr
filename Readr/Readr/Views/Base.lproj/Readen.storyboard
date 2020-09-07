@@ -657,7 +657,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="257" height="68"/>
                                         <connections>
                                             <action selector="viewAllMembersButtonTapped:" destination="ZEJ-Jj-dV8" eventType="touchUpInside" id="tGk-Sc-zfy"/>
-                                            <segue destination="olf-St-n1g" kind="show" id="erQ-Ba-1fy"/>
+                                            <segue destination="olf-St-n1g" kind="show" identifier="toMemberListVC" id="erQ-Ba-1fy"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2365,7 +2365,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="gNk-4k-DGh"/>
-        <segue reference="B9o-UE-y1z"/>
+        <segue reference="gP7-je-BJn"/>
         <segue reference="Pdl-Xb-emP"/>
         <segue reference="s51-Sp-ODc"/>
     </inferredMetricsTieBreakers>
