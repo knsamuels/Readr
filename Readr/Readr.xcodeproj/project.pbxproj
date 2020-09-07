@@ -38,6 +38,7 @@
 		C938A3B524F1B3370095AD50 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C938A3B424F1B3370095AD50 /* WebKit.framework */; };
 		C93A75CB24F87C820024F62D /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A75CA24F87C820024F62D /* StyleGuide.swift */; };
 		C93A75CD24F998D50024F62D /* ICloudHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A75CC24F998D50024F62D /* ICloudHelper.swift */; };
+		C965088D2506C45200DB002D /* MemberListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C965088C2506C45200DB002D /* MemberListTableViewController.swift */; };
 		C98FC7B024DDC71000C27CBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7AF24DDC71000C27CBF /* AppDelegate.swift */; };
 		C98FC7B224DDC71000C27CBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7B124DDC71000C27CBF /* SceneDelegate.swift */; };
 		C98FC7B724DDC71000C27CBF /* Readen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C98FC7B524DDC71000C27CBF /* Readen.storyboard */; };
@@ -109,6 +110,7 @@
 		C938A3B424F1B3370095AD50 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C93A75CA24F87C820024F62D /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		C93A75CC24F998D50024F62D /* ICloudHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudHelper.swift; sourceTree = "<group>"; };
+		C965088C2506C45200DB002D /* MemberListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListTableViewController.swift; sourceTree = "<group>"; };
 		C98FC7AC24DDC71000C27CBF /* Readen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Readen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98FC7AF24DDC71000C27CBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C98FC7B124DDC71000C27CBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				937640D724EC45B800B51DEC /* MessageViewController.swift */,
 				F3437FA024EF2CCD00C38DA3 /* ReviewDetailViewController.swift */,
 				C9BFE4C924F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift */,
+				C965088C2506C45200DB002D /* MemberListTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				C98FC7D724DDD52000C27CBF /* BookController.swift in Sources */,
 				938A2DA524EAE724002119E1 /* StartViewController.swift in Sources */,
 				C98FC7B224DDC71000C27CBF /* SceneDelegate.swift in Sources */,
+				C965088D2506C45200DB002D /* MemberListTableViewController.swift in Sources */,
 				C98FC7CE24DDCB7800C27CBF /* User.swift in Sources */,
 				937640DA24EC460700B51DEC /* MessageTableViewCell.swift in Sources */,
 				9303FEE724F9B04B00486F65 /* UIViewControllerExtension.swift in Sources */,
