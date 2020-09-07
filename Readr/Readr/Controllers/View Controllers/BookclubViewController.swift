@@ -14,7 +14,7 @@ class BookclubViewController: UIViewController {
     var bookclub: Bookclub? 
     var currentlyReading: Book?
     var pastReads: [Book] = []
-    var members: [User] = []
+    
     
     @IBOutlet weak var imageOfBookClub: UIImageView!
     @IBOutlet weak var descriptionOfBookClub: UILabel!
@@ -75,11 +75,13 @@ class BookclubViewController: UIViewController {
                 
                 bookclub.members.remove(at: index)
                 joinButton.setTitle("Join", for: .normal)
+                self.memberCountLabel.text = "\(bookclub.members.count)"
                 
             } else {
                 user.bookclubs.append(bookclub)
                 bookclub.members.append(userReference)
                 joinButton.setTitle("Leave", for: .normal)
+                self.memberCountLabel.text = "\(bookclub.members.count)"
             }
             //UserController.shared.updateUser(user: user) { (result) in
             //}
@@ -339,8 +341,8 @@ class BookclubViewController: UIViewController {
         } else if segue.identifier == "toMemberListVC" {
             guard let destination = segue.destination as?
                 MemberListTableViewController else {return}
-            let memberToSend = members
-            destination.bookclubMembers = memberToSend
+            let bookclubToSend = bookclub
+            destination.bookclub = bookclubToSend
         }
     }
 }
