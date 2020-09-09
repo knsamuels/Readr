@@ -27,7 +27,7 @@ class BookshelfListTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        fetchAllUsersFavorites()
+        fetchAllUsersBookshelves()
     }
     
     // Mark: Actions
@@ -36,8 +36,8 @@ class BookshelfListTableViewController: UITableViewController {
     }
     //Mark: - Helper Functions
     
-    func fetchAllUsersFavorites() {
-        BookshelfController.shared.fetchAllBookshelfs { (result) in
+    func fetchAllUsersBookshelves() {
+        BookshelfController.shared.fetchAllBookshelves { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let bookshelves):
@@ -64,8 +64,8 @@ class BookshelfListTableViewController: UITableViewController {
         let addBookclubAction = UIAlertAction(title: "Create", style: .default) { (_) in
             guard let text = alertController.textFields?.first?.text, !text.isEmpty else { return }
             
-            
-            BookshelfController.shared.createBookshelf(title: text) { (result) in
+            // BRYAN come back and fix this!
+            BookshelfController.shared.createBookshelf(title: text, color: "#3B506E") { (result) in
                 switch result {
                 case .success(let bookshelf):
                     self.userBookshelves.append(bookshelf)
@@ -107,7 +107,6 @@ class BookshelfListTableViewController: UITableViewController {
         return cell
     }
     
-    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let bookshelfToDelete = userBookshelves[indexPath.row]
@@ -125,12 +124,10 @@ class BookshelfListTableViewController: UITableViewController {
                     }
                 }
             }
-            
-            
         } else if editingStyle == .insert {
-            
         }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "BookshelfListToBookShelf" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
