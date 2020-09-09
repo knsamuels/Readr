@@ -54,7 +54,7 @@
 		C98FC7DA24DDD55700C27CBF /* BookError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7D924DDD55700C27CBF /* BookError.swift */; };
 		C98FC7DC24E19D3900C27CBF /* BookshelfController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7DB24E19D3900C27CBF /* BookshelfController.swift */; };
 		C98FC7DE24E1A0B900C27CBF /* BookshelfError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7DD24E1A0B900C27CBF /* BookshelfError.swift */; };
-		C98FC7E024E1B42000C27CBF /* BookclubControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7DF24E1B42000C27CBF /* BookclubControllers.swift */; };
+		C98FC7E024E1B42000C27CBF /* BookclubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7DF24E1B42000C27CBF /* BookclubController.swift */; };
 		C98FC7E224E1B46200C27CBF /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E124E1B46200C27CBF /* UserController.swift */; };
 		C98FC7E424E1B47100C27CBF /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E324E1B47100C27CBF /* ChatController.swift */; };
 		C98FC7E624E1B49200C27CBF /* BookclubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E524E1B49200C27CBF /* BookclubError.swift */; };
@@ -128,7 +128,7 @@
 		C98FC7D924DDD55700C27CBF /* BookError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookError.swift; sourceTree = "<group>"; };
 		C98FC7DB24E19D3900C27CBF /* BookshelfController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfController.swift; sourceTree = "<group>"; };
 		C98FC7DD24E1A0B900C27CBF /* BookshelfError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfError.swift; sourceTree = "<group>"; };
-		C98FC7DF24E1B42000C27CBF /* BookclubControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubControllers.swift; sourceTree = "<group>"; };
+		C98FC7DF24E1B42000C27CBF /* BookclubController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubController.swift; sourceTree = "<group>"; };
 		C98FC7E124E1B46200C27CBF /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		C98FC7E324E1B47100C27CBF /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		C98FC7E524E1B49200C27CBF /* BookclubError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubError.swift; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 			children = (
 				C98FC7E124E1B46200C27CBF /* UserController.swift */,
 				C98FC7D624DDD52000C27CBF /* BookController.swift */,
-				C98FC7DF24E1B42000C27CBF /* BookclubControllers.swift */,
+				C98FC7DF24E1B42000C27CBF /* BookclubController.swift */,
 				C98FC7DB24E19D3900C27CBF /* BookshelfController.swift */,
 				9304463D24E1ABBC00FBEEF2 /* MessageController.swift */,
 				C98FC7E324E1B47100C27CBF /* ChatController.swift */,
@@ -496,7 +496,7 @@
 				9303FED424F7605A00486F65 /* FavAuthorViewController.swift in Sources */,
 				C98FC7D224DDCBCA00C27CBF /* Chat.swift in Sources */,
 				9303FEDF24F7731000486F65 /* ReadenTextField.swift in Sources */,
-				C98FC7E024E1B42000C27CBF /* BookclubControllers.swift in Sources */,
+				C98FC7E024E1B42000C27CBF /* BookclubController.swift in Sources */,
 				C98FC7B024DDC71000C27CBF /* AppDelegate.swift in Sources */,
 				937A9F5C24F4CAC100AE9067 /* GenresViewController.swift in Sources */,
 				C9BFE4CA24F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift in Sources */,

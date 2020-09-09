@@ -80,7 +80,7 @@ class BookclubController {
         //guard let userReference = UserController.shared.currentUser else {return completion(.failure(.couldNotUnwrap))}
         
         // come back and check this
-        let predicate = NSPredicate(format: "%K CONTAINS %@", argumentArray: [BookclubConstants.membersKey, user.recordID])
+        let predicate = NSPredicate(format: "%K CONTAINS %@", argumentArray: [BookclubConstants.membersKey, user.appleUserRef])
         
         let query = CKQuery(recordType: BookclubConstants.recordTypeKey, predicate: predicate)
         publicDB.perform(query, inZoneWith: nil) { (records, error) in
