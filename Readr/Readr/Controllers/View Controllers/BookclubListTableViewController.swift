@@ -12,6 +12,7 @@ class BookclubListTableViewController: UITableViewController {
 
     
     var bookclubs: [Bookclub] = []
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,7 @@ class BookclubListTableViewController: UITableViewController {
     // Mark: Helpers:
     
     func fetchBookclubs() {
-        guard let user = UserController.shared.currentUser else {return}
+        guard let user = user else {return}
         BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
             DispatchQueue.main.async {
                 switch result {
