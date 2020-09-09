@@ -47,7 +47,7 @@ extension Bookshelf {
         
         let userReference = ckRecord[BookshelfStrings.userRefKey] as? CKRecord.Reference
         
-        self.init(title: title, books: books ?? [], recordID: ckRecord.recordID, userReference: userReference, color: color)
+        self.init(title: title, books: books ?? [], recordID: ckRecord.recordID, userReference: userReference, color: color, timestamp:timestamp)
     }
 }
 
