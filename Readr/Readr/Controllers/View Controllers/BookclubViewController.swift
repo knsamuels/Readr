@@ -68,10 +68,10 @@ class BookclubViewController: UIViewController {
         guard let user = UserController.shared.currentUser else {return}
         guard let bookclub = bookclub else {return}
         let userAppleRef = user.appleUserRef
-        let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
+//        let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
         if userAppleRef != bookclub.admin {
-            if bookclub.members.contains(userReference) {
-                guard let index = bookclub.members.firstIndex(of: userReference) else {return}
+            if bookclub.members.contains(userAppleRef) {
+                guard let index = bookclub.members.firstIndex(of: userAppleRef) else {return}
                 
                 bookclub.members.remove(at: index)
                 joinButton.setTitle("Join", for: .normal)
@@ -79,7 +79,7 @@ class BookclubViewController: UIViewController {
                 
             } else {
                 user.bookclubs.append(bookclub)
-                bookclub.members.append(userReference)
+                bookclub.members.append(userAppleRef)
                 joinButton.setTitle("Leave", for: .normal)
                 self.memberCountLabel.text = "\(bookclub.members.count)"
             }
@@ -134,7 +134,7 @@ class BookclubViewController: UIViewController {
             guard let user = UserController.shared.currentUser else {return}
             guard let bookclub = self.bookclub else {return}
             guard let currentlyReading = self.currentlyReading else {return}
-            let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
+//            let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
             let userAppleRef = user.appleUserRef
             self.title = bookclub.name
             self.imageOfBookClub.image = bookclub.profilePicture
@@ -144,7 +144,7 @@ class BookclubViewController: UIViewController {
             self.memberCountLabel.text = "\(bookclub.members.count)"
             self.adminContactInfoLabel.text = bookclub.adminContactInfo
             
-            if bookclub.members.contains(userReference) {
+            if bookclub.members.contains(userAppleRef) {
                 if bookclub.admin == userAppleRef {
                     self.joinButton.setTitle("Host", for: .normal)
                 } else  {
