@@ -52,7 +52,7 @@ class PopUpBookshelfTableViewController: UITableViewController {
     //Mark: Helpers
     func fetchBookshelves() {
         guard let user = UserController.shared.currentUser else {return}
-        BookshelfController.shared.fetchAllBookshelfs { (result) in
+        BookshelfController.shared.fetchAllBookshelves { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let bookshelves):

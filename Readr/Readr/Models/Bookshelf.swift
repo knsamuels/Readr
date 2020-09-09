@@ -10,9 +10,11 @@ struct BookshelfStrings {
     static let titleKey = "Title"
     static let booksKey = "Books"
     static let userRefKey = "userReference"
+    static let colorRefKey = "color"
+    static let timestampKey = "timestamp"
 }
 
-import Foundation
+import UIKit
 import CloudKit
 
 
@@ -21,25 +23,31 @@ class Bookshelf {
     var books: [String]
     let recordID: CKRecord.ID
     let userReference: CKRecord.Reference?
+    let color: String
+    let timestamp: Date
     
-    init(title:String, books: [String] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), userReference: CKRecord.Reference?) {
+    init(title:String, books: [String] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), userReference: CKRecord.Reference?, color: String, timestamp: Date = Date()) {
         self.title = title
         self.books = books
         self.recordID = recordID
         self.userReference = userReference
+        self.color = color
+        self.timestamp = timestamp
     }
 }
 
 extension Bookshelf {
     convenience init?(ckRecord: CKRecord) {
         
-        guard let title = ckRecord[BookshelfStrings.titleKey] as? String else {return nil}
+        guard let title = ckRecord[BookshelfStrings.titleKey] as? String,
+            let color = ckRecord[BookshelfStrings.colorRefKey] as? String,
+            let timestamp = ckRecord[BookshelfStrings.timestampKey] as? Date else {return nil}
         
-        var books = ckRecord[BookshelfStrings.booksKey] as? [String]
+        let books = ckRecord[BookshelfStrings.booksKey] as? [String]
         
         let userReference = ckRecord[BookshelfStrings.userRefKey] as? CKRecord.Reference
         
-        self.init(title: title, books: books ?? [], recordID: ckRecord.recordID, userReference: userReference)
+        self.init(title: title, books: books ?? [], recordID: ckRecord.recordID, userReference: userReference, color: color)
     }
 }
 
@@ -48,7 +56,9 @@ extension CKRecord {
         self.init(recordType: BookshelfStrings.recordTypeKey, recordID: bookshelf.recordID)
         
         self.setValuesForKeys([
-            BookshelfStrings.titleKey : bookshelf.title
+            BookshelfStrings.titleKey : bookshelf.title,
+            BookshelfStrings.colorRefKey : bookshelf.color,
+            BookshelfStrings.timestampKey : bookshelf.timestamp
         ])
         
         if !bookshelf.books.isEmpty {

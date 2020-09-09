@@ -6,7 +6,7 @@
 //  Copyright © 2020 Kristin Samuels . All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CloudKit
 
 class BookshelfController {
@@ -19,12 +19,12 @@ class BookshelfController {
     let publicDB = CKContainer.default().publicCloudDatabase
     
     
-    func createBookshelf(title: String, completion: @escaping (Result<Bookshelf, BookshelfError>) -> Void ) {
+    func createBookshelf(title: String, color: String, completion: @escaping (Result<Bookshelf, BookshelfError>) -> Void ) {
         
         guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
         let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
         
-        let newBookshelf = Bookshelf(title: title, userReference: userRef)
+        let newBookshelf = Bookshelf(title: title, userReference: userRef, color: color)
         let newBookshelfRecord = CKRecord(bookshelf: newBookshelf)
         publicDB.save(newBookshelfRecord) { (record, error) in
             if let error = error {
@@ -40,7 +40,7 @@ class BookshelfController {
         }
     }
     
-    func fetchAllBookshelfs(completion: @escaping (Result<[Bookshelf], BookshelfError>) -> Void) {
+    func fetchAllBookshelves(completion: @escaping (Result<[Bookshelf], BookshelfError>) -> Void) {
         guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
         let userRef = user.recordID
         //let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
@@ -54,9 +54,10 @@ class BookshelfController {
             guard let records = records else {return completion(.failure(.couldNotUnwrap))}
             
             let bookshelf: [Bookshelf] = records.compactMap { Bookshelf(ckRecord: $0)}
-            self.bookshelf = bookshelf
+            let sortedBookshelves = bookshelf.sorted(by: {$0.timestamp < $1.timestamp})
+            self.bookshelf = sortedBookshelves
             
-            completion(.success(bookshelf))
+            completion(.success(sortedBookshelves))
         }
     }
     
