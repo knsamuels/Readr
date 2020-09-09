@@ -70,14 +70,27 @@ class MemberListTableViewController: UITableViewController {
     //MARK: - Helper Functions
     func fetchUsers() {
         guard let bookclub = bookclub else {return}
+        
+//        BookclubController.shared.fetchMembers(ofBookclub: bookclub) { (result) in
+//            switch result {
+//            case .success(let members):
+//                self.bookclubMembers = members
+//                self.tableView.reloadData()
+//            case .failure(_):
+//                print("FAILED!!")
+//            }
+//        }
+        
         for reference in bookclub.members {
             UserController.shared.fetchUser(withReference: reference) { (result) in
-                switch result {
-                case .success(let member):
-                    self.bookclubMembers.append(member)
-                    self.tableView.reloadData()
-                case .failure(_):
-                    print("Could not fetch member")
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let member):
+                        self.bookclubMembers.append(member)
+                        self.tableView.reloadData()
+                    case .failure(_):
+                        print("Could not fetch member")
+                    }
                 }
             }
         }
