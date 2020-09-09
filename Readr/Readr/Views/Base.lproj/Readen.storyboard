@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSO-MQ-rBx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSO-MQ-rBx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -1612,7 +1612,7 @@
                                             <color key="titleColor" red="0.20988544819999999" green="0.31616640089999998" blue="0.4439439476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="cqk-BO-4bC" kind="show" id="cVK-gp-z3w"/>
+                                            <segue destination="cqk-BO-4bC" kind="show" identifier="viewAllToBCList" id="cVK-gp-z3w"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="692-V5-e3X">
@@ -2367,7 +2367,7 @@
         <segue reference="gNk-4k-DGh"/>
         <segue reference="gP7-je-BJn"/>
         <segue reference="Pdl-Xb-emP"/>
-        <segue reference="s51-Sp-ODc"/>
+        <segue reference="d4d-j6-Xm7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="RLogo" width="44" height="48"/>
