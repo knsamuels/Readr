@@ -10,48 +10,50 @@ import UIKit
 
 class PastReadsListTableViewController: UITableViewController {
 
-    var pastReads: [String]?
-    var books: [Book] = []
+//    var pastReads: [String]?
+    var books: [Book]?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchBooks()
+//        fetchBooks()
     }
     
     // MARK: - Helpers
     
-    func fetchBooks() {
-        guard let pastReads = pastReads else {return}
-        let group = DispatchGroup()
-        for ISBN in pastReads {
-            group.enter()
-            BookController.fetchOneBookWith(ISBN: ISBN) { (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let book):
-                        self.books.append(book)
-                    case .failure(_):
-                        print("we could not load pastreads")
-                    }
-                    group.leave()
-                }
-            }
-        }
-        group.notify(queue: .main) {
-            self.tableView.reloadData()
-        }
-    }
+//    func fetchBooks() {
+//        guard let pastReads = pastReads else {return}
+//        let group = DispatchGroup()
+//        for ISBN in pastReads {
+//            group.enter()
+//            BookController.fetchOneBookWith(ISBN: ISBN) { (result) in
+//                DispatchQueue.main.async {
+//                    switch result {
+//                    case .success(let book):
+//                        self.books.append(book)
+//                    case .failure(_):
+//                        print("we could not load pastreads")
+//                    }
+//                    group.leave()
+//                }
+//            }
+//        }
+//        group.notify(queue: .main) {
+//            self.tableView.reloadData()
+//        }
+//    }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        guard let books = books else {return 0}
         return books.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookCell", for: indexPath) as? PastReadsTableViewCell else {return UITableViewCell()}
+        guard let books = books else {return UITableViewCell()}
         let book = books[indexPath.row]
         cell.book = book
         return cell

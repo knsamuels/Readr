@@ -13,6 +13,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     var activeTextField : UITextField? = nil
     var bookclub: Bookclub?
     var memberCapacity = 10
+    var pastReads: [String] = []
     var currentlyReadingBook: Book? {
         didSet {
             updateCurrentlyReading()
@@ -88,6 +89,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             bookclub.memberCapacity = memberCapacity
             bookclub.currentlyReading = isbn
             bookclub.profilePicture = profilePic
+            bookclub.pastReads = pastReads
             BookclubController.shared.update(bookclub: bookclub) { (result) in
                 DispatchQueue.main.async {
                     switch result {
@@ -148,6 +150,13 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         //self.dismiss(animated: true)
     }
     
+    @IBAction func doneReadingTapped(_ sender: UIButton) {
+        guard let bookclub = bookclub else {return}
+        pastReads.append(bookclub.currentlyReading)
+        currentlyReadingBook = nil
+        currentlyReadingImage.image = UIImage(named: "RLogo")
+        
+    }
     //MARK: - Helpers
     
     func presentBookclub(bookclub: Bookclub) {
@@ -224,6 +233,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         meetingInfoForBookBlub.text = bookclub.meetingInfo
         createBookclubButton.setTitle("Save", for: .normal)
         fetchCurrentlyReadingBook(bookclub: bookclub)
+        pastReads = bookclub.pastReads
     }
     
     // MARK: - Navigation

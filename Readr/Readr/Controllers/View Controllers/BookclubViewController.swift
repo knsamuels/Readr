@@ -15,7 +15,6 @@ class BookclubViewController: UIViewController {
     var currentlyReading: Book?
     var pastReads: [Book] = []
     
-    
     @IBOutlet weak var imageOfBookClub: UIImageView!
     @IBOutlet weak var descriptionOfBookClub: UILabel!
     @IBOutlet weak var meetingInfoForBookClub: UILabel!
@@ -39,7 +38,6 @@ class BookclubViewController: UIViewController {
     @IBOutlet weak var author3ForPastReads: UILabel!
     @IBOutlet weak var rating3ForPastReads: UILabel!
     @IBOutlet weak var memberCountLabel: UILabel!
-    
     
     private lazy var loadingScreen: RLogoLoadingView = {
         let view = RLogoLoadingView()
@@ -164,7 +162,7 @@ class BookclubViewController: UIViewController {
             self.authorForCurrentlyReading.text = currentlyReading.authors?.first
             self.ratingForCurrentlyReading.text = "\(currentlyReading.averageRating ?? 0.0)"
             
-            let pastReadCount = bookclub.pastReads.count
+            let pastReadCount = self.pastReads.count
             switch pastReadCount {
             case 0:
                 self.image1ForPastReads.isHidden = true
@@ -184,6 +182,10 @@ class BookclubViewController: UIViewController {
                 self.title1ForPastReads.isHidden = false
                 self.author1ForPastReads.isHidden = false
                 self.rating1ForPastReads.isHidden = false
+                self.image1ForPastReads.image = self.pastReads[0].coverImage
+                self.title1ForPastReads.text = self.pastReads[0].title
+                self.author1ForPastReads.text = self.pastReads[0].authors?.first
+                self.rating1ForPastReads.text = "\(self.pastReads[0].averageRating ?? 0.0)"
                 self.image2ForPastReads.isHidden = true
                 self.title2ForPastReads.isHidden = true
                 self.author2ForPastReads.isHidden = true
@@ -197,10 +199,18 @@ class BookclubViewController: UIViewController {
                 self.title1ForPastReads.isHidden = false
                 self.author1ForPastReads.isHidden = false
                 self.rating1ForPastReads.isHidden = false
+                self.image1ForPastReads.image = self.pastReads[0].coverImage
+                self.title1ForPastReads.text = self.pastReads[0].title
+                self.author1ForPastReads.text = self.pastReads[0].authors?.first
+                self.rating1ForPastReads.text = "\(self.pastReads[0].averageRating ?? 0.0)"
                 self.image2ForPastReads.isHidden = false
                 self.title2ForPastReads.isHidden = false
                 self.author2ForPastReads.isHidden = false
                 self.rating2ForPastReads.isHidden = false
+                self.image2ForPastReads.image = self.pastReads[1].coverImage
+                self.title2ForPastReads.text = self.pastReads[1].title
+                self.author2ForPastReads.text = self.pastReads[1].authors?.first
+                self.rating2ForPastReads.text = "\(self.pastReads[1].averageRating ?? 0.0)"
                 self.image3ForPastReads.isHidden = true
                 self.title3ForPastReads.isHidden = true
                 self.author3ForPastReads.isHidden = true
@@ -211,14 +221,26 @@ class BookclubViewController: UIViewController {
                 self.title1ForPastReads.isHidden = false
                 self.author1ForPastReads.isHidden = false
                 self.rating1ForPastReads.isHidden = false
+                self.image1ForPastReads.image = self.pastReads[0].coverImage
+                self.title1ForPastReads.text = self.pastReads[0].title
+                self.author1ForPastReads.text = self.pastReads[0].authors?.first
+                self.rating1ForPastReads.text = "\(self.pastReads[0].averageRating ?? 0.0)"
                 self.image2ForPastReads.isHidden = false
                 self.title2ForPastReads.isHidden = false
                 self.author2ForPastReads.isHidden = false
                 self.rating2ForPastReads.isHidden = false
+                self.image2ForPastReads.image = self.pastReads[1].coverImage
+                self.title2ForPastReads.text = self.pastReads[1].title
+                self.author2ForPastReads.text = self.pastReads[1].authors?.first
+                self.rating2ForPastReads.text = "\(self.pastReads[1].averageRating ?? 0.0)"
                 self.image3ForPastReads.isHidden = false
                 self.title3ForPastReads.isHidden = false
                 self.author3ForPastReads.isHidden = false
                 self.rating3ForPastReads.isHidden = false
+                self.image3ForPastReads.image = self.pastReads[2].coverImage
+                self.title3ForPastReads.text = self.pastReads[2].title
+                self.author3ForPastReads.text = self.pastReads[2].authors?.first
+                self.rating3ForPastReads.text = "\(self.pastReads[2].averageRating ?? 0.0)"
             }
             
         }
@@ -231,8 +253,10 @@ class BookclubViewController: UIViewController {
                 switch result {
                 case .success(let admin):
                     self.fetchBook() {
-                        self.updateViews(admin: admin)
-                        self.loadingScreen.removeFromSuperview()
+                        self.fetchPastReads {
+                            self.updateViews(admin: admin)
+                            self.loadingScreen.removeFromSuperview()
+                        }
                         //fetchPastReads --- need to add call updateViews in PastReads closure
                     }
                 case .failure(_):
@@ -242,8 +266,30 @@ class BookclubViewController: UIViewController {
         }
     }
     
+    func fetchPastReads(completion: @escaping() -> Void) {
+        guard let bookclub = bookclub else {return}
+        let group = DispatchGroup()
+        for isbn in bookclub.pastReads {
+            group.enter()
+            BookController.fetchOneBookWith(ISBN: isbn) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let book):
+                        self.pastReads.append(book)
+                    case .failure(_):
+                        print("error fetching past reads book")
+                    }
+                    group.leave()
+                }
+            }
+            group.notify(queue: .main) {
+                completion()
+            }
+        }
+    }
+    
     func fetchBook(completion: @escaping() -> Void) {
-        guard let bookclub = bookclub else { return}
+        guard let bookclub = bookclub else {return}
         BookController.fetchOneBookWith(ISBN: bookclub.currentlyReading) {
             (result) in
             DispatchQueue.main.async {
@@ -343,6 +389,11 @@ class BookclubViewController: UIViewController {
                 MemberListTableViewController else {return}
             let bookclubToSend = bookclub
             destination.bookclub = bookclubToSend
+        }
+        else if segue.identifier == "bcPastReadsViewAllToPRLTVC" {
+            guard let destination = segue.destination as? PastReadsListTableViewController else {return}
+            let booksToSend = pastReads
+            destination.books = booksToSend
         }
     }
 }

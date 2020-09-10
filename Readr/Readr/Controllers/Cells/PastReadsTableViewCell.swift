@@ -9,18 +9,32 @@
 import UIKit
 
 class PastReadsTableViewCell: UITableViewCell {
-
-    var book: Book?
+   
+    // MARK: - Outlets
+    @IBOutlet weak var pastReadsTitleLabel: UILabel!
+    @IBOutlet weak var pastReadsImage: UIImageView!
+    @IBOutlet weak var pastReadsAuthorLabel: UILabel!
+    @IBOutlet weak var pastReadsRatingLabel: UILabel!
     
+    //Mark: Properties
+       var book: Book?{
+           didSet {
+               updateViews()
+           }
+       }
+    
+    // MARK: - Lifecycles
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    //MARK: - Helper Methods
+    func updateViews() {
+        guard let book = book else {return}
+        pastReadsImage.image = book.coverImage
+        pastReadsTitleLabel.text = book.title
+        pastReadsAuthorLabel.text = book.authors?.first
+        pastReadsRatingLabel.text = "\(book.averageRating ?? 0.0)"
     }
-
 }
