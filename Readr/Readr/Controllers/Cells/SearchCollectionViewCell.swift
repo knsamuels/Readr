@@ -10,19 +10,20 @@ import UIKit
 
 class SearchCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Outlets
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var averageRating: UILabel!
     
    
-
+    //Mark: Properties
     var volumeInfo: Book? {
         didSet {
             updateViews()
-            
         }
     }
         
+    //MARK: - Helper Methods
     func updateViews() {
         guard let volumeInfo = volumeInfo else {return}
         titleLabel.text = volumeInfo.title
