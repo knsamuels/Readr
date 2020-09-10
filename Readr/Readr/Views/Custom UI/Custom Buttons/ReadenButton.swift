@@ -20,3 +20,16 @@ class ReadenButton: UIButton {
     }
     
 } //End of class
+
+class colorButton: UIButton {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupView()
+    }
+    func setupView() {
+        self.layer.cornerRadius = self.frame.height / 2
+        self.clipsToBounds = true
+    }
+    
+} //End of class

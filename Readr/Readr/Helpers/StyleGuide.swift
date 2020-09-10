@@ -13,5 +13,6 @@ extension UIColor {
     static let readenGreen = UIColor(named: "readenGreen")!
     static let readenOrange = UIColor(named: "readenOrange")!
     static let readenYellow = UIColor(named: "readenYellow")!
-   
+    static let readenBrown = UIColor(named: "readenBrown")!
+    static let readenPurple = UIColor(named: "readenPurple")!
 }
