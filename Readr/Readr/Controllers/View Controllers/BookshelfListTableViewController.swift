@@ -32,7 +32,14 @@ class BookshelfListTableViewController: UITableViewController {
     
     // Mark: Actions
     @IBAction func addButtonTapped(_ sender: Any) {
-        presentBookshelfAlert(bookshelf: nil)
+        presentCustomAlert {
+            print("hi")
+            self.fetchAllUsersBookshelves()
+        }
+            
+           
+        
+        //presentBookshelfAlert(bookshelf: nil)
     }
     //Mark: - Helper Functions
     
@@ -48,6 +55,14 @@ class BookshelfListTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    func presentCustomAlert(completion: @escaping () -> Void) {
+        guard let customAlert = UIStoryboard(name: "Alert", bundle: .main).instantiateViewController(withIdentifier: "AlertVC") as? PlaceholderViewController else {return}
+        guard let AlertVC = UIStoryboard(name: "Alert", bundle: .main).instantiateViewController(withIdentifier: "CustomVC") as? AlertViewController else {return}
+        AlertVC.customAlertDelegate = self
+        present(customAlert, animated: true)
+        //completion()
     }
     
     func presentBookshelfAlert(bookshelf: Bookshelf?) {
@@ -90,17 +105,19 @@ class BookshelfListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfCell", for: indexPath) as? BookshelfListTableViewCell else {return UITableViewCell()}
-        if indexPath.row == 0 {
-            cell.backgroundColorView.backgroundColor = .readenBlue
-        } else if indexPath.row % 4 == 0 {
-            cell.backgroundColorView.backgroundColor = .readenGreen
-        } else if indexPath.row % 3 == 0 {
-            cell.backgroundColorView.backgroundColor = .readenYellow
-        } else if indexPath.row % 2 == 0 {
-            cell.backgroundColorView.backgroundColor = .readenOrange
-        } else {
-            cell.backgroundColorView.backgroundColor = .readenGreen
-        }
+//        if indexPath.row == 0 {
+//            cell.backgroundColorView.backgroundColor = .readenBlue
+//        } else if indexPath.row % 4 == 0 {
+//            cell.backgroundColorView.backgroundColor = .readenGreen
+//        } else if indexPath.row % 3 == 0 {
+//            cell.backgroundColorView.backgroundColor = .readenYellow
+//        } else if indexPath.row % 2 == 0 {
+//            cell.backgroundColorView.backgroundColor = .readenOrange
+//        } else {
+//            cell.backgroundColorView.backgroundColor = .readenGreen
+//        }
+        
+        
         
         let bookshelf = userBookshelves[indexPath.row]
         cell.bookshelf = bookshelf
@@ -135,6 +152,13 @@ class BookshelfListTableViewController: UITableViewController {
             let bookshelfToSend = userBookshelves[indexPath.row]
             destination.bookshelf = bookshelfToSend
         }
+    }
+} //End of class
+
+extension BookshelfListTableViewController: CustomAlertBookshelfDelegate {
+    func updateBookshelfTableViewWith(bookshelf: Bookshelf) {
+        self.userBookshelves.append(bookshelf)
+        self.tableView.reloadData()
     }
 }
 

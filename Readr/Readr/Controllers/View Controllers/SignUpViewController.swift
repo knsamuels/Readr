@@ -74,7 +74,7 @@ class SignUpViewController: UIViewController, UITextViewDelegate  {
     }
     
     func createFavorites() {
-        BookshelfController.shared.createBookshelf(title: "Favorites", color: "#3B506E") { (result) in
+        BookshelfController.shared.createBookshelf(title: "Favorites", color: "blue") { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(_):
