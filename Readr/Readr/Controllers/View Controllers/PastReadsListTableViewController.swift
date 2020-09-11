@@ -95,14 +95,19 @@ class PastReadsListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "pastReadsToBookDetail" {
+            guard let books = books else {return}
+            guard let destination = segue.destination as?
+                BookDetailViewController else {return}
+            guard let indexPath = tableView.indexPathForSelectedRow else {return}
+            let bookToSend = books[indexPath.row]
+            destination.book = bookToSend
+        }
     }
-    */
-
 }
+
+

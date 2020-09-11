@@ -49,7 +49,7 @@ class BookclubViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoadingScreen()
-        loadDataForUser()
+//        loadDataForUser()
         self.title = bookclub?.name
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
         self.navigationController?.navigationBar.tintColor = .black
@@ -268,6 +268,7 @@ class BookclubViewController: UIViewController {
     
     func fetchPastReads(completion: @escaping() -> Void) {
         guard let bookclub = bookclub else {return}
+        pastReads = []
         let group = DispatchGroup()
         for isbn in bookclub.pastReads {
             group.enter()
@@ -282,9 +283,9 @@ class BookclubViewController: UIViewController {
                     group.leave()
                 }
             }
-            group.notify(queue: .main) {
-                completion()
-            }
+        }
+        group.notify(queue: .main) {
+            completion()
         }
     }
     
