@@ -28,6 +28,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var currentlyReadingButton: UIButton!
     @IBOutlet weak var createBookclubButton: UIButton!
     @IBOutlet weak var selectProfileImage: UIButton!
+    @IBOutlet weak var doneReadingButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +42,14 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
 
         nameOfBookClub.delegate = self
         meetingInfoForBookBlub.delegate = self
+        doneReadingButton.isHidden = true
         if let bookclub = bookclub {
             updateViews(bookclub: bookclub)
+            doneReadingButton.isHidden = false
+            currentlyReadingButton.isHidden = true
         }
     }
+    // MARK: - Actions
     
     @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Select an image", message: "From where would you like to select an image?", preferredStyle: .alert)
@@ -71,6 +76,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     @IBAction func createBookclubButtonTapped(_ sender: UIButton) {
+        createBookclubButton.isEnabled = false
         guard let name = nameOfBookClub.text, !name.isEmpty,
             let description = descriptionOfBookClub.text, !description.isEmpty,
             let meetingInfo = meetingInfoForBookBlub.text, !meetingInfo.isEmpty,
@@ -93,7 +99,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             BookclubController.shared.update(bookclub: bookclub) { (result) in
                 DispatchQueue.main.async {
                     switch result {
-                    case .success(let bookclub):
+                    case .success(_):
                         print("this worked")
                         self.dismiss(animated: true)
                     case .failure(_):
@@ -119,7 +125,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     @IBAction func currentlyReadingButtonTapped(_ sender: Any) {
-        
+        currentlyReadingButton.isHidden = true
         guard let bookPopUpTBVC = UIStoryboard(name: "Readen", bundle: nil).instantiateViewController(withIdentifier: "PopUpBookSearch") as? PopUpBooksSearchTableViewController else {return}
         bookPopUpTBVC.modalPresentationStyle = .automatic
         bookPopUpTBVC.bookDelegate = self
@@ -155,8 +161,9 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         pastReads.append(bookclub.currentlyReading)
         currentlyReadingBook = nil
         currentlyReadingImage.image = UIImage(named: "RLogo")
-        
+        doneReadingButton.isEnabled = false
     }
+    
     //MARK: - Helpers
     
     func presentBookclub(bookclub: Bookclub) {
