@@ -49,7 +49,7 @@ class BookclubViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoadingScreen()
-//        loadDataForUser()
+        loadDataForUser()
         self.title = bookclub?.name
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
         self.navigationController?.navigationBar.tintColor = .black
@@ -242,7 +242,7 @@ class BookclubViewController: UIViewController {
                 self.author3ForPastReads.text = self.pastReads[2].authors?.first
                 self.rating3ForPastReads.text = "\(self.pastReads[2].averageRating ?? 0.0)"
             }
-            
+            self.loadingScreen.removeFromSuperview()
         }
     }
     
@@ -255,7 +255,7 @@ class BookclubViewController: UIViewController {
                     self.fetchBook() {
                         self.fetchPastReads {
                             self.updateViews(admin: admin)
-                            self.loadingScreen.removeFromSuperview()
+//                            self.loadingScreen.removeFromSuperview()
                         }
                         //fetchPastReads --- need to add call updateViews in PastReads closure
                     }
@@ -268,7 +268,7 @@ class BookclubViewController: UIViewController {
     
     func fetchPastReads(completion: @escaping() -> Void) {
         guard let bookclub = bookclub else {return}
-        pastReads = []
+        var tempPastReads: [Book] = []
         let group = DispatchGroup()
         for isbn in bookclub.pastReads {
             group.enter()
@@ -276,7 +276,7 @@ class BookclubViewController: UIViewController {
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let book):
-                        self.pastReads.append(book)
+                        tempPastReads.append(book)
                     case .failure(_):
                         print("error fetching past reads book")
                     }
@@ -285,6 +285,8 @@ class BookclubViewController: UIViewController {
             }
         }
         group.notify(queue: .main) {
+            var sortedPastReads = tempPastReads.sorted(by: {$0.title < $1.title})
+            self.pastReads = sortedPastReads
             completion()
         }
     }
