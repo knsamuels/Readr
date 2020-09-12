@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSO-MQ-rBx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSO-MQ-rBx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -85,9 +85,9 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What days will the book club be meeting?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nM7-Q3-BSg">
-                                <rect key="frame" x="41" y="484" width="280" height="20"/>
+                                <rect key="frame" x="41" y="484" width="325" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="dPX-Ey-lHM"/>
+                                    <constraint firstAttribute="width" constant="325" id="dPX-Ey-lHM"/>
                                     <constraint firstAttribute="height" constant="20" id="tdN-3p-O8Z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
@@ -241,9 +241,8 @@
                                     <segue destination="QHb-db-uZ9" kind="unwind" unwindAction="unwindToUserDetail:" id="TcS-rF-cB7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkJ-Ed-L9J">
-                                <rect key="frame" x="122" y="395" width="171" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkJ-Ed-L9J">
+                                <rect key="frame" x="122" y="395.5" width="171" height="30"/>
                                 <state key="normal" title="Done Reading this book?">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -266,6 +265,7 @@
                             <constraint firstItem="nv1-BD-ce8" firstAttribute="top" secondItem="eAK-vu-HVB" secondAttribute="bottom" constant="23" id="Gzz-Wt-DBK"/>
                             <constraint firstItem="uWh-Ee-neZ" firstAttribute="leading" secondItem="K4V-bs-Iqz" secondAttribute="leading" constant="41" id="Hxv-Fj-h6n"/>
                             <constraint firstItem="FCW-Td-CLe" firstAttribute="centerY" secondItem="q2Y-Nn-bvf" secondAttribute="centerY" id="J5i-Ky-wXo"/>
+                            <constraint firstItem="IkJ-Ed-L9J" firstAttribute="leading" secondItem="FCW-Td-CLe" secondAttribute="trailing" constant="22" id="MpA-vZ-gCn"/>
                             <constraint firstItem="q2Y-Nn-bvf" firstAttribute="leading" secondItem="K4V-bs-Iqz" secondAttribute="leading" constant="50" id="N9T-17-NMr"/>
                             <constraint firstItem="4rZ-9s-Jdb" firstAttribute="top" secondItem="K4V-bs-Iqz" secondAttribute="top" constant="12" id="Owb-6v-GvC"/>
                             <constraint firstItem="FCW-Td-CLe" firstAttribute="width" secondItem="q2Y-Nn-bvf" secondAttribute="width" id="Q5g-jm-rl7"/>
@@ -283,6 +283,7 @@
                             <constraint firstItem="FCW-Td-CLe" firstAttribute="top" secondItem="Jld-Hb-Pwq" secondAttribute="bottom" constant="16" id="qY4-t8-bv4"/>
                             <constraint firstItem="Jld-Hb-Pwq" firstAttribute="top" secondItem="nv1-BD-ce8" secondAttribute="bottom" constant="32" id="t7V-qQ-q4b"/>
                             <constraint firstItem="L59-XB-aFb" firstAttribute="top" secondItem="K4V-bs-Iqz" secondAttribute="top" constant="12" id="tcv-gQ-DdD"/>
+                            <constraint firstItem="IkJ-Ed-L9J" firstAttribute="centerY" secondItem="FCW-Td-CLe" secondAttribute="centerY" id="uXh-3F-nfT"/>
                             <constraint firstItem="bhR-w8-l4M" firstAttribute="centerX" secondItem="K4V-bs-Iqz" secondAttribute="centerX" id="v3c-f7-hmW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K4V-bs-Iqz"/>
@@ -2428,7 +2429,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="APF-Zn-gQx"/>
-        <segue reference="B9o-UE-y1z"/>
+        <segue reference="Vs3-gl-TeT"/>
         <segue reference="4Pb-cf-ugE"/>
         <segue reference="s51-Sp-ODc"/>
     </inferredMetricsTieBreakers>

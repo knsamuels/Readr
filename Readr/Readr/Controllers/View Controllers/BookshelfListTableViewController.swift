@@ -15,6 +15,9 @@ class BookshelfListTableViewController: UITableViewController {
     
     //MARK: - Properties
     var userBookshelves: [Bookshelf] = []
+    var myString = ""
+    var newColor = ""
+    var newTitle = ""
     
     //MARK: - Lifecycles
     override func viewDidLoad() {
@@ -31,13 +34,28 @@ class BookshelfListTableViewController: UITableViewController {
     }
     
     // Mark: Actions
-    @IBAction func addButtonTapped(_ sender: Any) {
-        presentCustomAlert {
-            print("hi")
-            self.fetchAllUsersBookshelves()
+    @IBAction func unwindToShelfList(_ sender: UIStoryboardSegue) {
+        //print(myString)
+        BookshelfController.shared.createBookshelf(title: newTitle, color: newColor) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let bookshelf):
+                    self.userBookshelves.append(bookshelf)
+                    self.tableView.reloadData()
+                    //self.dismiss(animated: true)
+                    //self.customAlertDelegate?.updateBookshelfTableViewWith(bookshelf: bookshelf)
+                case .failure(_):
+                    print("Unable to create bookshelf.")
+                }
+            }
         }
+        
+    }
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+        presentCustomAlert()
             
-           
+       
         
         //presentBookshelfAlert(bookshelf: nil)
     }
@@ -57,46 +75,48 @@ class BookshelfListTableViewController: UITableViewController {
         }
     }
     
-    func presentCustomAlert(completion: @escaping () -> Void) {
+    func presentCustomAlert() {
         guard let customAlert = UIStoryboard(name: "Alert", bundle: .main).instantiateViewController(withIdentifier: "AlertVC") as? PlaceholderViewController else {return}
+        
         guard let AlertVC = UIStoryboard(name: "Alert", bundle: .main).instantiateViewController(withIdentifier: "CustomVC") as? AlertViewController else {return}
         AlertVC.customAlertDelegate = self
+        
         present(customAlert, animated: true)
         //completion()
     }
     
-    func presentBookshelfAlert(bookshelf: Bookshelf?) {
-        let alertController = UIAlertController(title: "Create Bookshelf", message: "", preferredStyle: .alert)
-        
-        alertController.addTextField { (textfield) in
-            textfield.placeholder = "Name of bookshelf..."
-            textfield.autocorrectionType = .yes
-            textfield.autocapitalizationType = .words
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        let addBookclubAction = UIAlertAction(title: "Create", style: .default) { (_) in
-            guard let text = alertController.textFields?.first?.text, !text.isEmpty else { return }
-            
-            // BRYAN come back and fix this!
-            BookshelfController.shared.createBookshelf(title: text, color: "#3B506E") { (result) in
-                switch result {
-                case .success(let bookshelf):
-                    self.userBookshelves.append(bookshelf)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error.errorDescription)
-                }
-            }
-        }
-        alertController.addAction(cancelAction)
-        alertController.addAction(addBookclubAction)
-        
-        self.present(alertController, animated: true)
-    }
+//    func presentBookshelfAlert(bookshelf: Bookshelf?) {
+//        let alertController = UIAlertController(title: "Create Bookshelf", message: "", preferredStyle: .alert)
+//
+//        alertController.addTextField { (textfield) in
+//            textfield.placeholder = "Name of bookshelf..."
+//            textfield.autocorrectionType = .yes
+//            textfield.autocapitalizationType = .words
+//        }
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+//
+//        let addBookclubAction = UIAlertAction(title: "Create", style: .default) { (_) in
+//            guard let text = alertController.textFields?.first?.text, !text.isEmpty else { return }
+//
+//            // BRYAN come back and fix this!
+//            BookshelfController.shared.createBookshelf(title: text, color: "#3B506E") { (result) in
+//                switch result {
+//                case .success(let bookshelf):
+//                    self.userBookshelves.append(bookshelf)
+//                    DispatchQueue.main.async {
+//                        self.tableView.reloadData()
+//                    }
+//                case .failure(let error):
+//                    print(error.errorDescription)
+//                }
+//            }
+//        }
+//        alertController.addAction(cancelAction)
+//        alertController.addAction(addBookclubAction)
+//
+//        self.present(alertController, animated: true)
+//    }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -157,6 +177,7 @@ class BookshelfListTableViewController: UITableViewController {
 
 extension BookshelfListTableViewController: CustomAlertBookshelfDelegate {
     func updateBookshelfTableViewWith(bookshelf: Bookshelf) {
+        print("Delegate function activated")
         self.userBookshelves.append(bookshelf)
         self.tableView.reloadData()
     }

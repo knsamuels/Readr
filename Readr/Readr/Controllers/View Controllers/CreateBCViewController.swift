@@ -162,6 +162,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         currentlyReadingBook = nil
         currentlyReadingImage.image = UIImage(named: "RLogo")
         doneReadingButton.isEnabled = false
+        currentlyReadingButton.isHidden = false 
     }
     
     //MARK: - Helpers
