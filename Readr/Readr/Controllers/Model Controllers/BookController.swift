@@ -158,6 +158,44 @@ class BookController {
             completion(.success(books))
         }
     }
+    
+    func fetchFirstFiveBooks(bookshelf: Bookshelf, completion: @escaping (Result<[Book], BookError>) -> Void) {
+        let group = DispatchGroup()
+        var books: [Book] = []
+        if bookshelf.books.count >= 5 {
+            for i in 0...4 {
+                group.enter()
+                BookController.fetchOneBookWith(ISBN: bookshelf.books[i]) { (result) in
+                    print("yeah the book is back!")
+                    switch result {
+                    case .success(let book):
+                        books.append(book)
+                    case .failure(_):
+                        print("error fetching user's fav books")
+                    }
+                    group.leave()
+                }
+            }
+        } else {
+            for i in bookshelf.books {
+                group.enter()
+                BookController.fetchOneBookWith(ISBN: i) { (result) in
+                    print("yeah the book is back!")
+                    switch result {
+                    case .success(let book):
+                        books.append(book)
+                    case .failure(_):
+                        print("error fetching user's fav books")
+                    }
+                    group.leave()
+                }
+            }
+        }
+        group.notify(queue: .main) {
+            completion(.success(books))
+        }
+       
+    }
 }
 
 
