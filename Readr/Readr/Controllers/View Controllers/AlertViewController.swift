@@ -13,7 +13,7 @@ protocol CustomAlertBookshelfDelegate: AnyObject {
 }
 
 class AlertViewController: UIViewController {
-
+    
     //MARK: - Outlets
     @IBOutlet weak var shelfNameTextField: UITextField!
     @IBOutlet weak var blueButton: UIButton!
@@ -40,6 +40,8 @@ class AlertViewController: UIViewController {
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
     
     //MARK: - Actions
@@ -65,33 +67,33 @@ class AlertViewController: UIViewController {
             myColor = "purple"
         }
         
-//        guard let title = shelfNameTextField.text, !title.isEmpty else {return}
-//        var color: String = ""
-//        if blueIsSelected {
-//            color = "blue"
-//        } else if greenIsSelected {
-//            color = "green"
-//        } else if yellowIsSelected {
-//            color = "yellow"
-//        } else if orangeIsSelected {
-//            color = "orange"
-//        } else if brownIsSelected {
-//            color = "brown"
-//        } else if purpleIsSelected {
-//            color = "purple"
-//        }
-//
-//        BookshelfController.shared.createBookshelf(title: title, color: color) { (result) in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let bookshelf):
-//                    self.dismiss(animated: true)
-//                    self.customAlertDelegate?.updateBookshelfTableViewWith(bookshelf: bookshelf)
-//                case .failure(_):
-//                    print("Unable to create bookshelf.")
-//                }
-//            }
-//        }
+        //        guard let title = shelfNameTextField.text, !title.isEmpty else {return}
+        //        var color: String = ""
+        //        if blueIsSelected {
+        //            color = "blue"
+        //        } else if greenIsSelected {
+        //            color = "green"
+        //        } else if yellowIsSelected {
+        //            color = "yellow"
+        //        } else if orangeIsSelected {
+        //            color = "orange"
+        //        } else if brownIsSelected {
+        //            color = "brown"
+        //        } else if purpleIsSelected {
+        //            color = "purple"
+        //        }
+        //
+        //        BookshelfController.shared.createBookshelf(title: title, color: color) { (result) in
+        //            DispatchQueue.main.async {
+        //                switch result {
+        //                case .success(let bookshelf):
+        //                    self.dismiss(animated: true)
+        //                    self.customAlertDelegate?.updateBookshelfTableViewWith(bookshelf: bookshelf)
+        //                case .failure(_):
+        //                    print("Unable to create bookshelf.")
+        //                }
+        //            }
+        //        }
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true)
@@ -192,5 +194,5 @@ class AlertViewController: UIViewController {
         destination.newColor = myColor
         destination.newTitle = myTitle
     }
-
+    
 } //End of class

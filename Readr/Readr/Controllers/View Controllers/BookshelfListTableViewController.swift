@@ -26,8 +26,6 @@ class BookshelfListTableViewController: UITableViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
         self.navigationController?.navigationBar.tintColor = .black
         tableView.separatorColor = .clear
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
-               view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,18 +49,13 @@ class BookshelfListTableViewController: UITableViewController {
                 }
             }
         }
-        
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {
         presentCustomAlert()
-            
-       
-        
-        //presentBookshelfAlert(bookshelf: nil)
     }
-    //Mark: - Helper Functions
     
+    //Mark: - Helper Functions
     func fetchAllUsersBookshelves() {
         BookshelfController.shared.fetchAllBookshelves { (result) in
             DispatchQueue.main.async {
@@ -87,39 +80,6 @@ class BookshelfListTableViewController: UITableViewController {
         //completion()
     }
     
-//    func presentBookshelfAlert(bookshelf: Bookshelf?) {
-//        let alertController = UIAlertController(title: "Create Bookshelf", message: "", preferredStyle: .alert)
-//
-//        alertController.addTextField { (textfield) in
-//            textfield.placeholder = "Name of bookshelf..."
-//            textfield.autocorrectionType = .yes
-//            textfield.autocapitalizationType = .words
-//        }
-//
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-//
-//        let addBookclubAction = UIAlertAction(title: "Create", style: .default) { (_) in
-//            guard let text = alertController.textFields?.first?.text, !text.isEmpty else { return }
-//
-//            // BRYAN come back and fix this!
-//            BookshelfController.shared.createBookshelf(title: text, color: "#3B506E") { (result) in
-//                switch result {
-//                case .success(let bookshelf):
-//                    self.userBookshelves.append(bookshelf)
-//                    DispatchQueue.main.async {
-//                        self.tableView.reloadData()
-//                    }
-//                case .failure(let error):
-//                    print(error.errorDescription)
-//                }
-//            }
-//        }
-//        alertController.addAction(cancelAction)
-//        alertController.addAction(addBookclubAction)
-//
-//        self.present(alertController, animated: true)
-//    }
-    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userBookshelves.count
@@ -127,19 +87,6 @@ class BookshelfListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfCell", for: indexPath) as? BookshelfListTableViewCell else {return UITableViewCell()}
-//        if indexPath.row == 0 {
-//            cell.backgroundColorView.backgroundColor = .readenBlue
-//        } else if indexPath.row % 4 == 0 {
-//            cell.backgroundColorView.backgroundColor = .readenGreen
-//        } else if indexPath.row % 3 == 0 {
-//            cell.backgroundColorView.backgroundColor = .readenYellow
-//        } else if indexPath.row % 2 == 0 {
-//            cell.backgroundColorView.backgroundColor = .readenOrange
-//        } else {
-//            cell.backgroundColorView.backgroundColor = .readenGreen
-//        }
-        
-        
         
         let bookshelf = userBookshelves[indexPath.row]
         cell.bookshelf = bookshelf
