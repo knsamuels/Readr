@@ -93,7 +93,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func search() {
-        guard let searchTerm = searchBar.text else {return}
+        guard let searchTerm = searchBar.text?.lowercased() else {return}
         if booksIsSelected == true {
             BookController.fetchBooksWith(searchTerm: searchTerm) { (result) in
                 DispatchQueue.main.async {
