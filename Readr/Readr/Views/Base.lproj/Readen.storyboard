@@ -17,7 +17,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g1h-kS-jKT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="tintColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="8Nx-JT-CQK" kind="relationship" relationship="viewControllers" id="g0d-0v-ei3"/>
@@ -112,7 +113,7 @@
                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Create">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="createBookclubButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="dwP-sk-4FN"/>
@@ -139,7 +140,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                         <state key="normal" title="5">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <action selector="fiveMembersTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="grG-Eb-rp4"/>
@@ -153,7 +154,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                         <state key="normal" title="10">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <action selector="tenMembersButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="qMo-3J-oPf"/>
@@ -167,7 +168,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                         <state key="normal" title="15">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <action selector="fifteenMemberButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="y3B-BK-joa"/>
@@ -181,7 +182,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                         <state key="normal" title="20">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <action selector="twentyMembersButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="r7g-yv-igY"/>
@@ -195,7 +196,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                         <state key="normal" title="25+">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <action selector="twentyFivePlusMembersTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="5gz-21-d97"/>
@@ -212,14 +213,18 @@
                                     <constraint firstAttribute="width" constant="132" id="5H5-Ok-8Ko"/>
                                     <constraint firstAttribute="height" constant="132" id="7he-b9-wUp"/>
                                 </constraints>
-                                <state key="normal" title="Select Image"/>
+                                <state key="normal" title="Select Image">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="selectProfileImageButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="xru-Yu-SDq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCW-Td-CLe">
                                 <rect key="frame" x="50" y="454" width="50" height="89"/>
-                                <state key="normal" title="Select "/>
+                                <state key="normal" title="Select ">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="currentlyReadingButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="OqB-uO-WNC"/>
                                 </connections>
@@ -233,7 +238,7 @@
                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Cancel">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="cancelButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="020-n6-KtV"/>
@@ -329,7 +334,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                 <state key="normal" title="JOIN">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="joinButtonTapped:" destination="ZEJ-Jj-dV8" eventType="touchUpInside" id="jNx-iR-gzN"/>
@@ -413,7 +418,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQ5-NO-EBk">
                                         <rect key="frame" x="98.5" y="0.0" width="61" height="32"/>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                        <state key="normal" title="View All"/>
+                                        <state key="normal" title="View All">
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                         <connections>
                                             <segue destination="Em1-qk-fIc" kind="show" identifier="bcPastReadsViewAllToPRLTVC" id="Emr-Ir-RHE"/>
                                         </connections>
@@ -460,7 +467,6 @@
                                                     <constraint firstAttribute="height" constant="19" id="Jqe-Q7-MBz"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTx-4i-g7c">
@@ -469,7 +475,6 @@
                                                     <constraint firstAttribute="height" constant="19.5" id="49E-9e-MwI"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhB-l5-NJo">
@@ -478,7 +483,6 @@
                                                     <constraint firstAttribute="height" constant="19.5" id="Gs1-lv-QPC"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -515,7 +519,6 @@
                                                     <constraint firstAttribute="height" constant="19.5" id="gmt-I1-9aN"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2D3-5e-KTc">
@@ -524,7 +527,6 @@
                                                     <constraint firstAttribute="height" constant="19.5" id="mrZ-Z6-HTL"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lJ-Uw-X88">
@@ -533,7 +535,6 @@
                                                     <constraint firstAttribute="height" constant="18" id="3lJ-Sb-VIg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -569,7 +570,6 @@
                                                     <constraint firstAttribute="height" constant="19.5" id="8QF-Cs-ryt"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqp-df-YyF">
@@ -578,7 +578,6 @@
                                                     <constraint firstAttribute="height" constant="18" id="CTf-Zj-45z"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9D-dM-uI3">
@@ -587,7 +586,6 @@
                                                     <constraint firstAttribute="height" constant="19.5" id="1tm-ix-73W"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -1295,13 +1293,7 @@
                             <outlet property="delegate" destination="GZb-gu-Hfk" id="0UG-On-jOt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="XJB-bU-aJR">
-                        <barButtonItem key="rightBarButtonItem" image="ellipsis" catalog="system" id="xix-iy-FQN">
-                            <connections>
-                                <action selector="removeBookshelfButtonTapped:" destination="GZb-gu-Hfk" id="S3C-IX-VXC"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="XJB-bU-aJR"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WUn-GY-x0I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1746,7 +1738,7 @@
                                         <rect key="frame" x="118" y="0.0" width="48" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="View All">
-                                            <color key="titleColor" red="0.20988544819999999" green="0.31616640089999998" blue="0.4439439476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <segue destination="cqk-BO-4bC" kind="show" identifier="viewAllToBCList" id="cVK-gp-z3w"/>
@@ -1756,7 +1748,7 @@
                                         <rect key="frame" x="196" y="0.0" width="101" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Create Bookclub">
-                                            <color key="titleColor" red="0.20988544819999999" green="0.31616640089999998" blue="0.4439439476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <segue destination="H6T-ob-m4V" kind="show" id="d4d-j6-Xm7"/>
@@ -2313,12 +2305,14 @@
         <scene sceneID="829-Wv-F8f">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A1j-BF-KNH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="person.crop.rectangle" catalog="system" id="4Ds-cK-Ol3"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.crop.rectangle" catalog="system" id="4Ds-cK-Ol3">
+                        <color key="badgeColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MAk-FL-FyI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2334,12 +2328,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Nx-JT-CQK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Bookshelves" image="book" catalog="system" id="Dix-tK-BLz">
-                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="badgeColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Iw-Tb-fZU">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2378,6 +2373,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4iI-th-JMv">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2502,10 +2498,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="I22-a6-LKA"/>
+        <segue reference="gNk-4k-DGh"/>
         <segue reference="d6C-eR-RjD"/>
-        <segue reference="Dzd-T5-xhq"/>
-        <segue reference="s51-Sp-ODc"/>
+        <segue reference="Pdl-Xb-emP"/>
+        <segue reference="d4d-j6-Xm7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="RLogo" width="44" height="48"/>
