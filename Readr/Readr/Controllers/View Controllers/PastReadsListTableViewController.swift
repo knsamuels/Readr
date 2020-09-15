@@ -13,11 +13,17 @@ class PastReadsListTableViewController: UITableViewController {
 //    var pastReads: [String]?
     var books: [Book]?
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        fetchBooks()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(true)
+           self.title = "Past Reads"
+           self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+//           self.navigationController?.navigationBar.tintColor = .black
+       }
     
     // MARK: - Helpers
     

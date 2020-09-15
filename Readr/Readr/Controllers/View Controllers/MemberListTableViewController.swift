@@ -19,6 +19,13 @@ class MemberListTableViewController: UITableViewController {
         fetchUsers()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.title = "Members"
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+//        self.navigationController?.navigationBar.tintColor = .black
+    }
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookclubMembers.count
