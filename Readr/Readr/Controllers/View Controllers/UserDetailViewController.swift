@@ -391,22 +391,22 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             guard let destination = segue.destination as? BookDetailViewController else {return}
             let favBookToSend = userFavBooks[2]
             destination.book = favBookToSend
-        } else if segue.identifier == "userBookclub1ToBookClubVC" {
+        } else if segue.identifier == "UserDetailBC1ToBookClubVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
-            let favBookclubToSend = userBookClubs[0]
-            destination.bookclub = favBookclubToSend
-        } else if segue.identifier == "userBookclub2ToBookClubVC" {
+            let bookclubToSend = userBookClubs[0]
+            destination.bookclub = bookclubToSend
+        } else if segue.identifier == "UserDetailBC2ToBookClubVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
-            let favBookclubToSend = userBookClubs[1]
-            destination.bookclub = favBookclubToSend
-        } else if segue.identifier == "userBookclub3ToBookClubVC" {
+            let bookclubToSend = userBookClubs[1]
+            destination.bookclub = bookclubToSend
+        } else if segue.identifier == "UserDetailBC3ToBookClubVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
-            let favBookclubToSend = userBookClubs[2]
-            destination.bookclub = favBookclubToSend
-        } else if segue.identifier == "userBookclub4ToBookClubVC" {
+            let bookclubToSend = userBookClubs[2]
+            destination.bookclub = bookclubToSend
+        } else if segue.identifier == "UserDetailBC4ToBookClubVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
-            let favBookclubToSend = userBookClubs[3]
-            destination.bookclub = favBookclubToSend
+            let bookclubToSend = userBookClubs[3]
+            destination.bookclub = bookclubToSend
         } else if segue.identifier == "viewAllToBCList" {
             guard let destination = segue.destination as?
                 BookclubListTableViewController else {return}
