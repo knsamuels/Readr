@@ -32,9 +32,9 @@ class MemberListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath) as? MemberTableViewCell else {return UITableViewCell()}
         let member = bookclubMembers[indexPath.row]
-        cell.textLabel?.text = "\(member.firstName) \(member.lastName)"
+        cell.member = member
     
         return cell
     }

@@ -36,9 +36,9 @@ class BookclubListTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bookclubCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookclubCell", for: indexPath) as? BookclubTableViewCell else {return UITableViewCell()}
         let bookclub = bookclubs[indexPath.row]
-        cell.textLabel?.text = bookclub.name
+        cell.bookclub = bookclub
         return cell
     }
 
