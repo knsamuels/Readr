@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSO-MQ-rBx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSO-MQ-rBx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -1442,6 +1442,75 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptH-9t-Wyy">
+                                <rect key="frame" x="36" y="780" width="121" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hGy-sn-FiN">
+                                <rect key="frame" x="165" y="780" width="97" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="fv1-xR-f5J">
+                                <rect key="frame" x="281" y="780" width="97" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BC 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yt5-1d-OKM">
+                                <rect key="frame" x="62" y="842" width="35" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BC 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0E-D6-3Nl">
+                                <rect key="frame" x="190" y="853" width="37" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BC 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFP-9e-nYW">
+                                <rect key="frame" x="308" y="853" width="38" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRS-I8-nHK" userLabel="BC 1 Button">
+                                <rect key="frame" x="73" y="797" width="68" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="BC 1 Button "/>
+                                <connections>
+                                    <action selector="BC1ButtonTapped:" destination="jym-Fn-cVA" eventType="touchUpInside" id="EbZ-er-jnw"/>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" identifier="BC1ButtonToBookDetail" id="6U3-on-sYQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ehn-Hj-o4Y">
+                                <rect key="frame" x="173" y="786" width="68" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="BC 2 Button"/>
+                                <connections>
+                                    <action selector="BC2ButtonTapped:" destination="jym-Fn-cVA" eventType="touchUpInside" id="oPj-Ia-bVX"/>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" identifier="BC2ButtonToBookDetail" id="deS-cM-Joc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ef-HN-Xga">
+                                <rect key="frame" x="284" y="797" width="68" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="BC 3 Button"/>
+                                <connections>
+                                    <action selector="BC3ButtonTapped:" destination="jym-Fn-cVA" eventType="touchUpInside" id="ybN-r5-DKG"/>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" identifier="BC3ButtonToBookDetail" id="S5O-as-k8D"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8Z-rF-Lml">
+                                <rect key="frame" x="230" y="747" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="View All"/>
+                                <connections>
+                                    <action selector="ViewAllBookClubsButtonTapped:" destination="jym-Fn-cVA" eventType="touchUpInside" id="Har-Vz-TPc"/>
+                                    <segue destination="cqk-BO-4bC" kind="show" identifier="BookDetailToBookclubList" id="8Ml-U5-rds"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -1469,11 +1538,21 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="BC1Button" destination="xRS-I8-nHK" id="dYw-wi-ig3"/>
+                        <outlet property="BC1Image" destination="ptH-9t-Wyy" id="gue-j6-y0Z"/>
+                        <outlet property="BC1Label" destination="yt5-1d-OKM" id="zvz-IU-Z5Y"/>
+                        <outlet property="BC2Button" destination="Ehn-Hj-o4Y" id="9OV-nh-NTP"/>
+                        <outlet property="BC2Image" destination="hGy-sn-FiN" id="hxQ-9t-5qz"/>
+                        <outlet property="BC2Label" destination="b0E-D6-3Nl" id="BRf-Jb-bZk"/>
+                        <outlet property="BC3Button" destination="5Ef-HN-Xga" id="Uyz-L8-1Yx"/>
+                        <outlet property="BC3Image" destination="fv1-xR-f5J" id="gx1-GA-TqQ"/>
+                        <outlet property="BC3Label" destination="aFP-9e-nYW" id="PQg-9m-SSw"/>
                         <outlet property="averageRatingLabel" destination="ypl-JG-fig" id="F7l-CR-Hwj"/>
                         <outlet property="bookAuthorLabel" destination="hxY-V4-YkS" id="GnN-QS-Ga2"/>
                         <outlet property="bookImageView" destination="dvS-fk-ZdM" id="TXa-YY-2Ff"/>
                         <outlet property="descriptionLabel" destination="3tF-X3-0iy" id="mZ4-Hr-QW8"/>
                         <outlet property="reviewWebView" destination="iGb-b6-kX7" id="SSg-Vv-qL5"/>
+                        <outlet property="viewAllButton" destination="v8Z-rF-Lml" id="oKY-io-Kq7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Spx-d2-OZV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1544,6 +1623,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJu-nO-xen" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4239" y="-16"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="GUh-bI-CHE">
+            <objects>
+                <tableViewController id="aJq-yH-Few" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Di7-oD-jLs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="120" id="UGs-Wd-8yq">
+                                <rect key="frame" x="0.0" y="28" width="414" height="120"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UGs-Wd-8yq" id="mx8-nR-JgA">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="aJq-yH-Few" id="XTh-Hh-UIv"/>
+                            <outlet property="delegate" destination="aJq-yH-Few" id="YyZ-cI-dGe"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MvZ-HC-21u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5079.7101449275369" y="-15.401785714285714"/>
         </scene>
         <!--User Detail View Controller-->
         <scene sceneID="94Q-M8-USP">
@@ -1855,24 +1962,45 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNd-wb-CeY">
                                 <rect key="frame" x="34" y="609.5" width="71" height="35.5"/>
+                                <connections>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" identifier="UserDetailBC1ToBookClubVC" id="G6q-Hb-4fz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-0f-vXp">
                                 <rect key="frame" x="130" y="609.5" width="71" height="35.5"/>
+                                <connections>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" identifier="UserDetailBC2ToBookClubVC" id="Ygt-zA-UqY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igC-sf-kDW">
                                 <rect key="frame" x="226" y="609.5" width="71" height="35.5"/>
+                                <connections>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" identifier="UserDetailBC3ToBookClubVC" id="F1x-N8-uqk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gT6-zV-9hr">
                                 <rect key="frame" x="322" y="609.5" width="71" height="35.5"/>
+                                <connections>
+                                    <segue destination="ZEJ-Jj-dV8" kind="show" identifier="UserDetailBC4ToBookClubVC" id="fbc-Mo-F7a"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itL-HM-qWl">
                                 <rect key="frame" x="44" y="283.5" width="55" height="84"/>
+                                <connections>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="bioFavBook1toBDVC" id="bWE-Lv-3sc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOW-RJ-WR7">
                                 <rect key="frame" x="158" y="283.5" width="55" height="84"/>
+                                <connections>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="bioFavBook2toBDVC" id="WCX-X9-RAT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fx2-JB-jIe">
                                 <rect key="frame" x="272" y="283.5" width="55" height="84"/>
+                                <connections>
+                                    <segue destination="jym-Fn-cVA" kind="show" identifier="bioFavBook3toBDVC" id="ypD-cy-r1T"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imi-Tp-fxf">
                                 <rect key="frame" x="159" y="174.5" width="96" height="17.5"/>
@@ -2499,8 +2627,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="gNk-4k-DGh"/>
-        <segue reference="d6C-eR-RjD"/>
-        <segue reference="Pdl-Xb-emP"/>
+        <segue reference="ypD-cy-r1T"/>
+        <segue reference="cVK-gp-z3w"/>
+        <segue reference="G6q-Hb-4fz"/>
         <segue reference="d4d-j6-Xm7"/>
     </inferredMetricsTieBreakers>
     <resources>
