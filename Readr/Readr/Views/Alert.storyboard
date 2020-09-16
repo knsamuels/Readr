@@ -99,9 +99,11 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Yw6-JM-xKn" secondAttribute="height" multiplier="1:1" id="Ypm-4n-PSx"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="checkmark" catalog="system">
+                                                <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="21"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="blueButtonTapped:" destination="0GB-iq-y9D" eventType="touchUpInside" id="T64-IH-14r"/>
@@ -185,7 +187,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="ra7-a2-H9s" firstAttribute="width" secondItem="3ED-sl-RS1" secondAttribute="width" multiplier="0.683636" id="2tY-pZ-Xfl"/>
                                     <constraint firstItem="lJd-ez-nD6" firstAttribute="leading" secondItem="3ED-sl-RS1" secondAttribute="leading" constant="12" id="3jm-E6-JLr"/>
@@ -215,7 +217,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="rgY-Wl-REM" firstAttribute="top" secondItem="tXF-Ja-MHz" secondAttribute="top" constant="25" id="NJG-wb-aQc"/>
                                     <constraint firstItem="f8I-82-uCp" firstAttribute="centerX" secondItem="tXF-Ja-MHz" secondAttribute="centerX" id="RNw-iJ-FYy"/>
@@ -258,7 +260,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkmark" catalog="system" width="128" height="114"/>
         <namedColor name="readenBlue">
             <color red="0.23137254901960785" green="0.31372549019607843" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
