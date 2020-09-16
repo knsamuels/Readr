@@ -35,6 +35,8 @@ class AlertViewController: UIViewController {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+        
+        blueButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
     }
     
     //MARK: - Actions
