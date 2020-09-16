@@ -15,7 +15,6 @@ class BookshelfListTableViewController: UITableViewController {
     
     //MARK: - Properties
     var userBookshelves: [Bookshelf] = []
-    var myString = ""
     var newColor = ""
     var newTitle = ""
     
@@ -35,15 +34,12 @@ class BookshelfListTableViewController: UITableViewController {
     
     // Mark: Actions
     @IBAction func unwindToShelfList(_ sender: UIStoryboardSegue) {
-        //print(myString)
         BookshelfController.shared.createBookshelf(title: newTitle, color: newColor) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let bookshelf):
                     self.userBookshelves.append(bookshelf)
                     self.tableView.reloadData()
-                    //self.dismiss(animated: true)
-                    //self.customAlertDelegate?.updateBookshelfTableViewWith(bookshelf: bookshelf)
                 case .failure(_):
                     print("Unable to create bookshelf.")
                 }
@@ -73,11 +69,7 @@ class BookshelfListTableViewController: UITableViewController {
     func presentCustomAlert() {
         guard let customAlert = UIStoryboard(name: "Alert", bundle: .main).instantiateViewController(withIdentifier: "AlertVC") as? PlaceholderViewController else {return}
         
-        guard let AlertVC = UIStoryboard(name: "Alert", bundle: .main).instantiateViewController(withIdentifier: "CustomVC") as? AlertViewController else {return}
-        AlertVC.customAlertDelegate = self
-        
         present(customAlert, animated: true)
-        //completion()
     }
     
     // MARK: - Table view data source
@@ -123,12 +115,4 @@ class BookshelfListTableViewController: UITableViewController {
         }
     }
 } //End of class
-
-extension BookshelfListTableViewController: CustomAlertBookshelfDelegate {
-    func updateBookshelfTableViewWith(bookshelf: Bookshelf) {
-        print("Delegate function activated")
-        self.userBookshelves.append(bookshelf)
-        self.tableView.reloadData()
-    }
-}
 
