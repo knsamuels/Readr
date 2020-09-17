@@ -39,6 +39,7 @@ struct ImageLinks: Decodable {
 }
 
 struct IndustryIdentifiers: Decodable {
+    let type: String
     let identifier: String
 }
 
