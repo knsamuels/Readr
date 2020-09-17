@@ -9,14 +9,23 @@
 import UIKit
 
 class BookclubListTableViewController: UITableViewController {
-
     
+    //MARK: - Properties
     var bookclubs: [Bookclub] = []
     var user: User?
     
+    //MARK: - Outlets
+    @IBOutlet weak var createNewBookclubButton: UIBarButtonItem!
+    
+    //MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        guard let user = user else {return}
+        if user != UserController.shared.currentUser {
+            createNewBookclubButton.isEnabled = false
+        } else {
+            createNewBookclubButton.isEnabled = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,11 +39,9 @@ class BookclubListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
         return bookclubs.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookclubCell", for: indexPath) as? BookclubTableViewCell else {return UITableViewCell()}
         let bookclub = bookclubs[indexPath.row]
@@ -43,7 +50,6 @@ class BookclubListTableViewController: UITableViewController {
     }
 
     // Mark: Helpers:
-    
     func fetchBookclubs() {
         guard let user = user else {return}
         BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
@@ -60,7 +66,6 @@ class BookclubListTableViewController: UITableViewController {
     }
     
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if segue.identifier == "bookclubListToVC" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}

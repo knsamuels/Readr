@@ -46,7 +46,17 @@ class BookDetailViewController: UIViewController {
     }
     @IBAction func optionButton(_ sender: Any) {
         guard let user = UserController.shared.currentUser else {return}
-        guard let isbn = book?.industryIdentifiers?.first?.identifier else {return}
+        guard let industryIdentifiers = book?.industryIdentifiers else {return}
+        var isbn = ""
+        for industryIdentifier in industryIdentifiers {
+            if industryIdentifier.type == "ISBN_13" {
+                isbn = industryIdentifier.identifier
+            }
+        }
+        if isbn == "" {
+            isbn = industryIdentifiers.first?.identifier ?? "" 
+        }
+        
         let alertController = UIAlertController(title: nil , message: nil, preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -54,6 +64,7 @@ class BookDetailViewController: UIViewController {
             guard let popUpTBVC = UIStoryboard.init(name: "Readen", bundle: nil).instantiateViewController(withIdentifier: "popUpBookshelfTBVC") as? PopUpBookshelfTableViewController else {return}
             popUpTBVC.modalPresentationStyle = .automatic
             popUpTBVC.bookISBN = isbn
+            print(isbn)
             self.present(popUpTBVC, animated: true, completion: nil)
         }
         alertController.addAction(cancelAction)
