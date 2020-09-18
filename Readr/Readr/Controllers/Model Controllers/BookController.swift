@@ -67,7 +67,7 @@ class BookController {
                         books.append(newBook)
                     }
                 }
-    
+                
                 dispatchGroup.notify(queue: .main) {
                     return completion(.success(books))
                 }
@@ -101,21 +101,37 @@ class BookController {
             guard let data = data else {return completion(.failure(.noData))}
             do {
                 let topLevelObject = try JSONDecoder().decode(TopLevelObject.self, from: data)
-                guard let item = topLevelObject.items.first else {return completion(.failure(.unableToDecode))}
-                var book = item.book
-                guard let imageLinks = book.imageLinks else {
-                    return completion(.success(book))
-                }
-                self.fetchImage(imageLinks: imageLinks) { (result) in
-                    switch result {
-                    case .success(let image):
-                        book.coverImage = image
-                        return completion(.success(book))
-                    case .failure(_):
-                        print("We were not able to find an image for the book")
-                        return completion(.failure(.invalidURL))
+                for item in topLevelObject.items {
+                    guard let industryIdentifiers = item.book.industryIdentifiers else {return}
+                    var itemIsbn = ""
+                    for industryIdentifier in industryIdentifiers {
+                        if industryIdentifier.type == "ISBN_13" {
+                            itemIsbn = industryIdentifier.identifier
+                        }
+                    }
+                    if itemIsbn == "" {
+                        itemIsbn = industryIdentifiers.first?.identifier ?? ""
+                    }
+                    
+                    if itemIsbn == ISBN {
+                        var book = item.book
+                        guard let imageLinks = book.imageLinks else {
+                            return completion(.success(book))
+                        }
+                        self.fetchImage(imageLinks: imageLinks) { (result) in
+                            switch result {
+                            case .success(let image):
+                                book.coverImage = image
+                                return completion(.success(book))
+                            case .failure(_):
+                                print("We were not able to find an image for the book")
+                                return completion(.failure(.invalidURL))
+                            }
+                        }
                     }
                 }
+                //                guard let item = topLevelObject.items.first else {return completion(.failure(.unableToDecode))}
+                
             } catch {
                 print(error.localizedDescription)
                 print(error)
@@ -194,7 +210,7 @@ class BookController {
         group.notify(queue: .main) {
             completion(.success(books))
         }
-       
+        
     }
 }
 

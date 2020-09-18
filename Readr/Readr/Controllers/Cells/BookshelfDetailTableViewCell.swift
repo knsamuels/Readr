@@ -45,9 +45,17 @@ class BookshelfDetailTableViewCell: UITableViewCell {
     
     @IBAction func removeBookButtonTapped(_ sender: UIButton) {
         guard let user = UserController.shared.currentUser else {return}
-        guard let isbn = book?.industryIdentifiers?.first?.identifier else {return}
+        guard let industryIdentifiers = book?.industryIdentifiers else {return}
+        var isbn = ""
+        for industryIdentifier in industryIdentifiers {
+            if industryIdentifier.type == "ISBN_13" {
+                isbn = industryIdentifier.identifier
+            }
+        }
+        if isbn == "" {
+            isbn = industryIdentifiers.first?.identifier ?? ""
+        }
         guard let bookshelf = bookshelf else {return}
         bookshelfDelegate?.presentAlertController(user: user, isbn: isbn, bookshelf: bookshelf, cell: self)
     }
-    
 }

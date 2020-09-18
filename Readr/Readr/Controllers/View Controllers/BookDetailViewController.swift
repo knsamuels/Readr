@@ -87,13 +87,31 @@ class BookDetailViewController: UIViewController {
     
     //Mark: Helper functions
     func fetchReview() {
-        guard let isbn = book?.industryIdentifiers?.first?.identifier else {return}
+         guard let industryIdentifiers = book?.industryIdentifiers else {return}
+         var isbn = ""
+         for industryIdentifier in industryIdentifiers {
+             if industryIdentifier.type == "ISBN_13" {
+                 isbn = industryIdentifier.identifier
+             }
+         }
+         if isbn == "" {
+             isbn = industryIdentifiers.first?.identifier ?? ""
+         }
         reviewWebView.load(URLRequest(url: URL(string: "https://www.goodreads.com/api/reviews_widget_iframe?did=75599&format=html&header_text=Goodreads+reviews+for+The+Adventures+of+Huckleberry+Finn&isbn=\(isbn)&links=660&min_rating=&num_reviews=&review_back=ffffff&stars=000000&stylesheet=&text=444")!))
     }
     
     func fetchBookClubsReadingThisBook() {
         guard let book = book else {return}
-        guard let isbn = book.industryIdentifiers?.first?.identifier else {return}
+        guard let industryIdentifiers = book.industryIdentifiers else {return}
+        var isbn = ""
+        for industryIdentifier in industryIdentifiers {
+            if industryIdentifier.type == "ISBN_13" {
+                isbn = industryIdentifier.identifier
+            }
+        }
+        if isbn == "" {
+            isbn = industryIdentifiers.first?.identifier ?? ""
+        }
         BookclubController.shared.fetchBookClubWithSameCurrentlyReading(book: isbn) { (result) in
             DispatchQueue.main.async {
                 switch result {
