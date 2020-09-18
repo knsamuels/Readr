@@ -138,7 +138,7 @@ class BookclubViewController: UIViewController {
             self.imageOfBookClub.image = bookclub.profilePicture
             self.descriptionOfBookClub.text = bookclub.description
             self.meetingInfoForBookClub.text = bookclub.meetingInfo
-            self.adminNameLabel.text = admin.username
+            self.adminNameLabel.text = "Admin:   \(admin.username)"
             self.memberCountLabel.text = "\(bookclub.members.count)"
             self.adminContactInfoLabel.text = bookclub.adminContactInfo
             
