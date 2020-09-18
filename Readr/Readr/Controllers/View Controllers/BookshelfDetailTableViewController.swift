@@ -84,7 +84,6 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
         cell.book = book
         cell.bookshelfDelegate = self
         cell.bookshelf = bookshelf
-        print(book.industryIdentifiers?.first?.identifier)
         return cell
     }
     

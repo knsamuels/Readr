@@ -344,11 +344,11 @@
             <objects>
                 <viewController storyboardIdentifier="BookclubVC" id="ZEJ-Jj-dV8" customClass="BookclubViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VQs-3E-Ioz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gx-mJ-QgY">
-                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6AR-Rn-zzP">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="775"/>
@@ -864,7 +864,7 @@
             <objects>
                 <tableViewController id="Em1-qk-fIc" customClass="PastReadsListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5fA-Jg-7kV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -941,7 +941,7 @@
             <objects>
                 <tableViewController id="olf-St-n1g" customClass="MemberListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IkP-RT-d1p">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -1096,7 +1096,7 @@
             <objects>
                 <tableViewController id="cqk-BO-4bC" customClass="BookclubListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VVF-3l-rjw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -1463,11 +1463,11 @@
             <objects>
                 <viewController id="jym-Fn-cVA" customClass="BookDetailViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Umr-4i-5Dn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IqF-ni-NG0">
-                                <rect key="frame" x="0.0" y="88" width="414" height="651"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z30-hv-cbQ" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="850"/>
@@ -1577,7 +1577,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="75" id="H5Q-XP-iMy"/>
                                                 </constraints>
-                                                <state key="normal" title="View All"/>
+                                                <state key="normal" title="View All">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="ViewAllBookClubsButtonTapped:" destination="jym-Fn-cVA" eventType="touchUpInside" id="Har-Vz-TPc"/>
                                                     <segue destination="cqk-BO-4bC" kind="show" identifier="BookDetailToBookclubList" id="8Ml-U5-rds"/>
@@ -1722,6 +1724,7 @@
                                             <constraint firstItem="ypl-JG-fig" firstAttribute="top" secondItem="dvS-fk-ZdM" secondAttribute="bottom" constant="10" id="efW-XH-SSd"/>
                                             <constraint firstItem="3tF-X3-0iy" firstAttribute="top" secondItem="ypl-JG-fig" secondAttribute="bottom" constant="12" id="fTJ-AN-wb2"/>
                                             <constraint firstItem="ypl-JG-fig" firstAttribute="width" secondItem="z30-hv-cbQ" secondAttribute="width" multiplier="0.3" id="fhx-Pn-5TK"/>
+                                            <constraint firstItem="odI-eN-yY0" firstAttribute="width" secondItem="z30-hv-cbQ" secondAttribute="width" multiplier="0.851449" id="gQP-gb-xO2"/>
                                             <constraint firstItem="ypl-JG-fig" firstAttribute="centerX" secondItem="z30-hv-cbQ" secondAttribute="centerX" id="iQ3-XB-K5V"/>
                                             <constraint firstItem="3tF-X3-0iy" firstAttribute="width" secondItem="z30-hv-cbQ" secondAttribute="width" multiplier="0.7" id="toa-Dz-c2V"/>
                                             <constraint firstItem="odI-eN-yY0" firstAttribute="centerX" secondItem="z30-hv-cbQ" secondAttribute="centerX" id="tpN-rQ-ZNY"/>
@@ -1783,20 +1786,20 @@
             <objects>
                 <viewController id="P61-HG-6Je" customClass="ReviewDetailViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4SM-oH-C9M">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jBq-pC-tjn">
-                                <rect key="frame" x="20" y="88" width="374" height="676"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="808"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVX-3u-dHA">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="67.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="81"/>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMm-po-58g">
-                                        <rect key="frame" x="0.0" y="67.5" width="374" height="541"/>
+                                        <rect key="frame" x="0.0" y="81" width="374" height="646"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <wkWebViewConfiguration key="configuration">
                                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -1804,7 +1807,7 @@
                                         </wkWebViewConfiguration>
                                     </wkWebView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered By: Good Reads API" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkp-MX-z9w">
-                                        <rect key="frame" x="0.0" y="608.5" width="374" height="67.5"/>
+                                        <rect key="frame" x="0.0" y="727" width="374" height="81"/>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2114,7 +2117,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="oFf-wZ-WFv">
-                                                <rect key="frame" x="34" y="547.5" width="359" height="96"/>
+                                                <rect key="frame" x="27.5" y="547.5" width="359" height="96"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="vYZ-vq-rqz">
                                                         <rect key="frame" x="0.0" y="0.0" width="71" height="96"/>
@@ -2255,6 +2258,7 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstItem="oFf-wZ-WFv" firstAttribute="centerX" secondItem="cG5-ch-zNd" secondAttribute="centerX" id="2XH-oO-x0J"/>
                                             <constraint firstItem="qSd-Wp-fAz" firstAttribute="leading" secondItem="cG5-ch-zNd" secondAttribute="leading" constant="34" id="4S8-qb-ZCv"/>
                                             <constraint firstItem="85S-fV-h2t" firstAttribute="leading" secondItem="cG5-ch-zNd" secondAttribute="leading" constant="34" id="7QY-Td-3Ys"/>
                                             <constraint firstItem="oFf-wZ-WFv" firstAttribute="top" secondItem="qSd-Wp-fAz" secondAttribute="bottom" constant="20" id="8Zk-wo-fI5"/>
@@ -2276,8 +2280,8 @@
                                             <constraint firstAttribute="height" constant="725" id="kg9-kU-X0e"/>
                                             <constraint firstItem="qSd-Wp-fAz" firstAttribute="top" secondItem="85S-fV-h2t" secondAttribute="bottom" constant="20" id="oLn-z8-tOj"/>
                                             <constraint firstItem="ssl-Xh-Obr" firstAttribute="top" secondItem="qSd-Wp-fAz" secondAttribute="bottom" constant="20" id="rgA-ns-Buy"/>
+                                            <constraint firstItem="oFf-wZ-WFv" firstAttribute="width" secondItem="cG5-ch-zNd" secondAttribute="width" multiplier="0.86715" id="vux-Dl-S4t"/>
                                             <constraint firstItem="gPn-Xd-GT8" firstAttribute="top" secondItem="oEZ-ug-co2" secondAttribute="bottom" constant="20" id="y0K-bZ-ym8"/>
-                                            <constraint firstItem="oFf-wZ-WFv" firstAttribute="leading" secondItem="cG5-ch-zNd" secondAttribute="leading" constant="34" id="zqm-Uy-veJ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2863,9 +2867,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="I22-a6-LKA"/>
-        <segue reference="dxg-Yu-uUx"/>
-        <segue reference="cVK-gp-z3w"/>
-        <segue reference="Dzd-T5-xhq"/>
+        <segue reference="Ajn-VF-Y29"/>
+        <segue reference="8Ml-U5-rds"/>
+        <segue reference="S5O-as-k8D"/>
         <segue reference="d4d-j6-Xm7"/>
     </inferredMetricsTieBreakers>
     <resources>

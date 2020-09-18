@@ -80,7 +80,17 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         guard let name = nameOfBookClub.text, !name.isEmpty,
             let description = descriptionOfBookClub.text, !description.isEmpty,
             let meetingInfo = meetingInfoForBookBlub.text, !meetingInfo.isEmpty,
-            let isbn = currentlyReadingBook?.industryIdentifiers?.first?.identifier else {return}
+            //            let isbn = currentlyReadingBook?.industryIdentifiers?.first?.identifier else {return}
+            let industryIdentifiers = currentlyReadingBook?.industryIdentifiers else {return}
+        var isbn = ""
+        for industryIdentifier in industryIdentifiers {
+            if industryIdentifier.type == "ISBN_13" {
+                isbn = industryIdentifier.identifier
+            }
+        }
+        if isbn == "" {
+            isbn = industryIdentifiers.first?.identifier ?? ""
+        }
         
         let profilePic: UIImage?
         if imageOfBookClub.image != nil {
@@ -115,7 +125,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
                         self.bookclub = bookclub
                         self.performSegue(withIdentifier:
                             "toBookclubVC", sender: self)
-                  self.navigationController?.popViewController(animated: true)
+                        self.navigationController?.popViewController(animated: true)
                     case .failure(_):
                         self.navigationController?.popViewController(animated: true)
                     }
