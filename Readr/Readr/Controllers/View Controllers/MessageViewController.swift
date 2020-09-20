@@ -13,6 +13,9 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var bookclubImageView: UIImageView!
+    @IBOutlet weak var bookclubTitleLabel: UILabel!
+    @IBOutlet weak var memberCountLabel: UILabel!
     
     // MARK: - Properties
     var bookclub: Bookclub?
@@ -60,6 +63,12 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     func updateViews() {
         guard let bookclub = bookclub else {return}
         self.title = bookclub.name
+        bookclubImageView.image = bookclub.profilePicture
+        bookclubTitleLabel.text = bookclub.name
+        memberCountLabel.text = "\(bookclub.members.count) people"
+        
+        bookclubImageView.layer.cornerRadius = bookclubImageView.frame.width / 2
+        bookclubImageView.clipsToBounds = true
     }
     
     func fetchMessages() {
