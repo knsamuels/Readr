@@ -19,6 +19,8 @@ class ChatTableViewController: UITableViewController {
         self.title = "Bookclub Messaging"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
 //        self.navigationController?.navigationBar.tintColor = .black
+        
+        tableView.separatorColor = .clear
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,11 +50,11 @@ class ChatTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as? ChatTableViewCell else {return UITableViewCell()}
         
         let bookclub = bookclubsArray[indexPath.row]
         
-        cell.textLabel?.text = bookclub.name
+        cell.bookclub = bookclub
         
         return cell
     }
