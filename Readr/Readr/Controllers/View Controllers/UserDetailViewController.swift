@@ -193,15 +193,12 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             }
             self.favBookPic1.isHidden = false
             self.titleLabel1.isHidden = false
-            self.authorLabel1.isHidden = false
             self.favBook1ButtonLabel.isHidden = false
             self.favBookPic2.isHidden = false
             self.titleLabel2.isHidden = false
-            self.authorLabel2.isHidden = false
             self.favBook2ButtonLabel.isHidden = false
             self.favBookPic3.isHidden = false
             self.titleLabel3.isHidden = false
-            self.authorLabel3.isHidden = false
             self.favBook3ButtonLabel.isHidden = false
             self.title = self.user?.username ?? "N/A"
             self.bioLabel.text = self.user?.bio ?? "N/A"
@@ -210,55 +207,43 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             case 0:
                 self.favBookPic1.isHidden = true
                 self.titleLabel1.isHidden = true
-                self.authorLabel1.isHidden = true
                 self.favBook1ButtonLabel.isHidden = true
                 self.favBookPic2.isHidden = true
                 self.titleLabel2.isHidden = true
-                self.authorLabel2.isHidden = true
                 self.favBook2ButtonLabel.isHidden = true
                 self.favBookPic3.isHidden = true
                 self.titleLabel3.isHidden = true
-                self.authorLabel3.isHidden = true
                 self.favBook3ButtonLabel.isHidden = true
                 
             case 1:
                 self.favBookPic1.image = self.userFavBooks[0].coverImage
                 self.titleLabel1.text = self.userFavBooks[0].title
-                self.authorLabel1.text = self.userFavBooks[0].authors?.first
                 self.favBook1ButtonLabel.isHidden = false
                 self.favBookPic2.isHidden = true
                 self.titleLabel2.isHidden = true
-                self.authorLabel2.isHidden = true
                 self.favBook2ButtonLabel.isHidden = true
                 self.favBookPic3.isHidden = true
                 self.titleLabel3.isHidden = true
-                self.authorLabel3.isHidden = true
                 self.favBook3ButtonLabel.isHidden = true
             case 2:
                 self.favBookPic1.image = self.userFavBooks[0].coverImage
                 self.titleLabel1.text = self.userFavBooks[0].title
-                self.authorLabel1.text = self.userFavBooks[0].authors?.first
                 self.favBook1ButtonLabel.isHidden = false
                 self.favBookPic2.image = self.userFavBooks[1].coverImage
                 self.titleLabel2.text = self.userFavBooks[1].title
-                self.authorLabel2.text = self.userFavBooks[1].authors?.first
                 self.favBook2ButtonLabel.isHidden = false
                 self.favBookPic3.isHidden = true
                 self.titleLabel3.isHidden = true
-                self.authorLabel3.isHidden = true
                 self.favBook3ButtonLabel.isHidden = true
             default:
                 self.favBookPic1.image = self.userFavBooks[0].coverImage
                 self.titleLabel1.text = self.userFavBooks[0].title
-                self.authorLabel1.text = self.userFavBooks[0].authors?.first
                 self.favBook1ButtonLabel.isHidden = false
                 self.favBookPic2.image = self.userFavBooks[1].coverImage
                 self.titleLabel2.text = self.userFavBooks[1].title
-                self.authorLabel2.text = self.userFavBooks[1].authors?.first
                 self.favBook2ButtonLabel.isHidden = false
                 self.favBookPic3.image = self.userFavBooks[2].coverImage
                 self.titleLabel3.text = self.userFavBooks[2].title
-                self.authorLabel3.text = self.userFavBooks[2].authors?.first
                 self.favBook3ButtonLabel.isHidden = false
             }
             let numberOfGenres = self.user?.favoriteGenres.count ?? 0
