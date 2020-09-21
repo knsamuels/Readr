@@ -18,6 +18,13 @@ class BookshelfListTableViewController: UITableViewController {
     var newColor = ""
     var newTitle = ""
     
+    private lazy var loadingScreen: RLogoLoadingView = {
+           let view = RLogoLoadingView()
+           view.backgroundColor = .white
+           view.translatesAutoresizingMaskIntoConstraints = false
+           return view
+       }()
+    
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +32,7 @@ class BookshelfListTableViewController: UITableViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
 //        self.navigationController?.navigationBar.tintColor = .black
         tableView.separatorColor = .clear
+        showLoadingScreen()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +80,16 @@ class BookshelfListTableViewController: UITableViewController {
         present(customAlert, animated: true)
     }
     
+    private func showLoadingScreen() {
+        view.addSubview(loadingScreen)
+        NSLayoutConstraint.activate([
+            loadingScreen.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingScreen.topAnchor.constraint(equalTo: view.topAnchor),
+            loadingScreen.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingScreen.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userBookshelves.count
@@ -82,6 +100,7 @@ class BookshelfListTableViewController: UITableViewController {
         
         let bookshelf = userBookshelves[indexPath.row]
         cell.bookshelf = bookshelf
+        cell.spinnerDelegate = self
         return cell
     }
     
@@ -115,4 +134,10 @@ class BookshelfListTableViewController: UITableViewController {
         }
     }
 } //End of class
+
+extension BookshelfListTableViewController: BookshelfSpinnerDelegate {
+    func stopSpinning() {
+        self.loadingScreen.removeFromSuperview()
+    }
+}
 
