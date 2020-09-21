@@ -285,7 +285,7 @@ class BookclubViewController: UIViewController {
             }
         }
         group.notify(queue: .main) {
-            var sortedPastReads = tempPastReads.sorted(by: {$0.title < $1.title})
+            let sortedPastReads = tempPastReads.sorted(by: {$0.title < $1.title})
             self.pastReads = sortedPastReads
             completion()
         }

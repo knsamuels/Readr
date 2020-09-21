@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol BookshelfSpinnerDelegate: AnyObject {
+    func stopSpinning()
+}
+
 class BookshelfListTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
@@ -27,6 +31,8 @@ class BookshelfListTableViewCell: UITableViewCell {
         }
     }
     var books: [Book] = []
+    
+    weak var spinnerDelegate: BookshelfSpinnerDelegate?
     
     //MARK: - Helper Methods
     func updateViews() {
@@ -93,6 +99,7 @@ class BookshelfListTableViewCell: UITableViewCell {
             book4Label.text = books[3].title
             book5Label.text = books[4].title
         }
+        spinnerDelegate?.stopSpinning()
     }
     
         func fetchBooks() {

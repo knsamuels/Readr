@@ -208,9 +208,9 @@ class BookController {
             }
         }
         group.notify(queue: .main) {
-            completion(.success(books))
+             let sortedBooks = books.sorted(by: {$0.title < $1.title})
+            completion(.success(sortedBooks))
         }
-        
     }
 }
 
