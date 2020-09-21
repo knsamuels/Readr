@@ -2802,7 +2802,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="(message)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUm-W4-M3c">
                                                     <rect key="frame" x="8" y="8" width="358" height="68.5"/>
-                                                    <color key="backgroundColor" red="0.99354188300000001" green="0.92976821730000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2838,7 +2838,7 @@
                                         <rect key="frame" x="342" y="12" width="36" height="32"/>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                         <state key="normal" title="Send">
-                                            <color key="titleColor" name="offWhite"/>
+                                            <color key="titleColor" name="readenBlue"/>
                                             <color key="titleShadowColor" red="0.56872302279391707" green="0.86131477981737203" blue="1" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                         </state>
@@ -2848,13 +2848,13 @@
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mc4-lp-tDo">
                                         <rect key="frame" x="16" y="12" width="318" height="148.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="mc4-lp-tDo" firstAttribute="top" secondItem="ePs-NI-yOp" secondAttribute="top" constant="12" id="RMH-9l-MrM"/>
                                     <constraint firstItem="mc4-lp-tDo" firstAttribute="leading" secondItem="ePs-NI-yOp" secondAttribute="leading" constant="12" id="XBg-1m-wb9"/>
@@ -2885,7 +2885,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bsW-x6-cA8"/>
-                        <color key="backgroundColor" red="0.95734975960000002" green="0.96620899439999997" blue="0.62787127700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bsW-x6-cA8" firstAttribute="trailing" secondItem="ePs-NI-yOp" secondAttribute="trailing" constant="12" id="C2G-t2-PdI"/>
                             <constraint firstItem="x9x-Hj-aRF" firstAttribute="top" secondItem="fVL-8T-dtb" secondAttribute="bottom" id="CxA-Kt-sBb"/>
@@ -2947,6 +2947,9 @@
         <namedColor name="opaqueBlack">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="readenBlue">
+            <color red="0.23137254901960785" green="0.31372549019607843" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -2967,9 +2970,6 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
