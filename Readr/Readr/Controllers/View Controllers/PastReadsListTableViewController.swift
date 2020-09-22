@@ -12,7 +12,8 @@ class PastReadsListTableViewController: UITableViewController {
 
 //    var pastReads: [String]?
     var books: [Book]?
-
+    var bookclub: Bookclub?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        fetchBooks()
@@ -74,17 +75,13 @@ class PastReadsListTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let bookclub = bookclub else {return}
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.

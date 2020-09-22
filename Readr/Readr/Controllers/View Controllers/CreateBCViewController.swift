@@ -14,6 +14,11 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     var bookclub: Bookclub?
     var memberCapacity = 10
     var pastReads: [String] = []
+    var fiveSelected: Bool = false
+    var tenSelected: Bool = true
+    var fifteenSelected: Bool = false
+    var twentySelected: Bool = false
+    var twentyFiveSelected: Bool = false
     var currentlyReadingBook: Book? {
         didSet {
             updateCurrentlyReading()
@@ -29,22 +34,29 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var createBookclubButton: UIButton!
     @IBOutlet weak var selectProfileImage: UIButton!
     @IBOutlet weak var doneReadingButton: UIButton!
+    @IBOutlet weak var fiveButton: circleButton!
+    @IBOutlet weak var tenButton: circleButton!
+    @IBOutlet weak var fifteenButton: circleButton!
+    @IBOutlet weak var twentyButton: circleButton!
+    @IBOutlet weak var twentyFiveButton: circleButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextViews()
+        updateButtonColor()
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
         
         NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+        
         nameOfBookClub.delegate = self
         meetingInfoForBookBlub.delegate = self
         doneReadingButton.isHidden = true
         if let bookclub = bookclub {
             updateViews(bookclub: bookclub)
+            updateButtonColor()
             doneReadingButton.isHidden = false
             currentlyReadingButton.isHidden = true
         }
@@ -144,22 +156,52 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     
     @IBAction func fiveMembersTapped(_ sender: Any) {
         memberCapacity = 5
+        fiveSelected = true
+        tenSelected = false
+        fifteenSelected = false
+        twentySelected = false
+        twentyFiveSelected = false
+        updateButtonColor()
     }
     
     @IBAction func tenMembersButtonTapped(_ sender: Any) {
         memberCapacity = 10
+        fiveSelected = false
+        tenSelected = true
+        fifteenSelected = false
+        twentySelected = false
+        twentyFiveSelected = false
+        updateButtonColor()
     }
     
     @IBAction func fifteenMemberButtonTapped(_ sender: Any) {
         memberCapacity = 15
+        fiveSelected = false
+        tenSelected = false
+        fifteenSelected = true
+        twentySelected = false
+        twentyFiveSelected = false
+        updateButtonColor()
     }
     
     @IBAction func twentyMembersButtonTapped(_ sender: Any) {
         memberCapacity = 20
+        fiveSelected = false
+        tenSelected = false
+        fifteenSelected = false
+        twentySelected = true
+        twentyFiveSelected = false
+        updateButtonColor()
     }
     
     @IBAction func twentyFivePlusMembersTapped(_ sender: Any) {
         memberCapacity = 100
+        fiveSelected = false
+        tenSelected = false
+        fifteenSelected = false
+        twentySelected = false
+        twentyFiveSelected = true
+        updateButtonColor()
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
@@ -176,6 +218,117 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     //MARK: - Helpers
+    
+    func updateButtonColor() {
+        if fiveSelected {
+            fiveButton.layer.borderColor = UIColor.readenBlue.cgColor
+            fiveButton.setTitleColor(.readenBlue, for: .normal)
+            fiveButton.layer.borderWidth = 3.0
+            fiveButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+            tenButton.layer.borderColor = UIColor.black.cgColor
+            tenButton.setTitleColor(.black, for: .normal)
+            tenButton.layer.borderWidth = 1.0
+            tenButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            fifteenButton.layer.borderColor = UIColor.black.cgColor
+            fifteenButton.setTitleColor(.black, for: .normal)
+            fifteenButton.layer.borderWidth = 1.0
+            fifteenButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            twentyButton.layer.borderColor = UIColor.black.cgColor
+            twentyButton.setTitleColor(.black, for: .normal)
+            twentyButton.layer.borderWidth = 1.0
+            twentyButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            twentyFiveButton.layer.borderColor = UIColor.black.cgColor
+            twentyFiveButton.setTitleColor(.black, for: .normal)
+            twentyFiveButton.layer.borderWidth = 1.0
+            twentyFiveButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            
+        } else if tenSelected {
+            fiveButton.layer.borderColor = UIColor.black.cgColor
+            fiveButton.setTitleColor(.black, for: .normal)
+            fiveButton.layer.borderWidth = 1.0
+            fiveButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            tenButton.layer.borderColor = UIColor.readenBlue.cgColor
+            tenButton.setTitleColor(.readenBlue, for: .normal)
+            tenButton.layer.borderWidth = 3.0
+            tenButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+            fifteenButton.layer.borderColor = UIColor.black.cgColor
+            fifteenButton.setTitleColor(.black, for: .normal)
+            fifteenButton.layer.borderWidth = 1.0
+            fifteenButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            twentyButton.layer.borderColor = UIColor.black.cgColor
+            twentyButton.setTitleColor(.black, for: .normal)
+            twentyButton.layer.borderWidth = 1.0
+            twentyButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            twentyFiveButton.layer.borderColor = UIColor.black.cgColor
+            twentyFiveButton.setTitleColor(.black, for: .normal)
+            twentyFiveButton.layer.borderWidth = 1.0
+            twentyFiveButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+        } else if fifteenSelected {
+            fiveButton.layer.borderColor = UIColor.black.cgColor
+            fiveButton.setTitleColor(.black, for: .normal)
+            fiveButton.layer.borderWidth = 1.0
+            fiveButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            tenButton.layer.borderColor = UIColor.black.cgColor
+            tenButton.setTitleColor(.black, for: .normal)
+            tenButton.layer.borderWidth = 1.0
+            tenButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            fifteenButton.layer.borderColor = UIColor.readenBlue.cgColor
+            fifteenButton.setTitleColor(.readenBlue, for: .normal)
+            fifteenButton.layer.borderWidth = 3.0
+            fifteenButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+            twentyButton.layer.borderColor = UIColor.black.cgColor
+            twentyButton.setTitleColor(.black, for: .normal)
+            twentyButton.layer.borderWidth = 1.0
+            twentyButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            twentyFiveButton.layer.borderColor = UIColor.black.cgColor
+            twentyFiveButton.setTitleColor(.black, for: .normal)
+            twentyFiveButton.layer.borderWidth = 1.0
+            twentyFiveButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+        } else if twentySelected {
+            fiveButton.layer.borderColor = UIColor.black.cgColor
+            fiveButton.setTitleColor(.black, for: .normal)
+            fiveButton.layer.borderWidth = 1.0
+            fiveButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            tenButton.layer.borderColor = UIColor.black.cgColor
+            tenButton.setTitleColor(.black, for: .normal)
+            tenButton.layer.borderWidth = 1.0
+            tenButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            fifteenButton.layer.borderColor = UIColor.black.cgColor
+            fifteenButton.setTitleColor(.black, for: .normal)
+            fifteenButton.layer.borderWidth = 1.0
+            fifteenButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            twentyButton.layer.borderColor = UIColor.readenBlue.cgColor
+            twentyButton.setTitleColor(.readenBlue, for: .normal)
+            twentyButton.layer.borderWidth = 3.0
+            twentyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+            twentyFiveButton.layer.borderColor = UIColor.black.cgColor
+            twentyFiveButton.setTitleColor(.black, for: .normal)
+            twentyFiveButton.layer.borderWidth = 1.0
+            twentyFiveButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+        } else if twentyFiveSelected {
+            fiveButton.layer.borderColor = UIColor.black.cgColor
+            fiveButton.setTitleColor(.black, for: .normal)
+            fiveButton.layer.borderWidth = 1.0
+            fiveButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            tenButton.layer.borderColor = UIColor.black.cgColor
+            tenButton.setTitleColor(.black, for: .normal)
+            tenButton.layer.borderWidth = 1.0
+            tenButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            fifteenButton.layer.borderColor = UIColor.black.cgColor
+            fifteenButton.setTitleColor(.black, for: .normal)
+            fifteenButton.layer.borderWidth = 1.0
+            fifteenButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            twentyButton.layer.borderColor = UIColor.black.cgColor
+            twentyButton.setTitleColor(.black, for: .normal)
+            twentyButton.layer.borderWidth = 1.0
+            twentyButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            twentyFiveButton.layer.borderColor = UIColor.readenBlue.cgColor
+            twentyFiveButton.setTitleColor(.readenBlue, for: .normal)
+            twentyFiveButton.layer.borderWidth = 3.0
+            
+            twentyFiveButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        }
+    }
     
     func presentBookclub(bookclub: Bookclub) {
         guard let bookclubVC = UIStoryboard.init(name: "Readen", bundle: nil).instantiateViewController(withIdentifier: "BookclubVC") as? BookclubViewController else {return}
@@ -216,8 +369,8 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-               return
-            }
+            return
+        }
         
         if meetingInfoForBookBlub.isEditing {
             self.view.window?.frame.origin.y = -keyboardSize.height
@@ -252,6 +405,24 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         createBookclubButton.setTitle("Save", for: .normal)
         fetchCurrentlyReadingBook(bookclub: bookclub)
         pastReads = bookclub.pastReads
+        
+        if bookclub.memberCapacity == 5 {
+            fiveSelected = true
+            memberCapacity = 5
+        } else if bookclub.memberCapacity == 10 {
+            tenSelected = true
+            memberCapacity = 10
+        } else if bookclub.memberCapacity == 15 {
+            fifteenSelected = true
+            memberCapacity = 15
+        } else if bookclub.memberCapacity == 20 {
+            twentySelected = true
+            memberCapacity = 20
+        } else if bookclub.memberCapacity == 100 {
+            twentyFiveSelected = true
+            memberCapacity = 100
+        }
+        updateButtonColor()
     }
     
     // MARK: - Navigation
@@ -282,11 +453,11 @@ extension CreateBCViewController: PopUpBookSearchDelegate {
 }
 
 extension CreateBCViewController: UITextFieldDelegate {
-  func textFieldWillBeginEditing( textField: UITextField) {
-    self.activeTextField = textField
-  }
-
-  func textFieldDidEndEditing( textField: UITextField) {
-    self.activeTextField = nil
-  }
+    func textFieldWillBeginEditing( textField: UITextField) {
+        self.activeTextField = textField
+    }
+    
+    func textFieldDidEndEditing( textField: UITextField) {
+        self.activeTextField = nil
+    }
 }
