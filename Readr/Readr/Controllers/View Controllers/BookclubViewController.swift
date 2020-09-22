@@ -394,9 +394,11 @@ class BookclubViewController: UIViewController {
             destination.bookclub = bookclubToSend
         }
         else if segue.identifier == "bcPastReadsViewAllToPRLTVC" {
+            guard let bookclub = bookclub else {return}
             guard let destination = segue.destination as? PastReadsListTableViewController else {return}
             let booksToSend = pastReads
             destination.books = booksToSend
+            destination.bookclub = bookclub
         }
     }
 }
