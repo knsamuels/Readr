@@ -108,7 +108,7 @@
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nv1-BD-ce8">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nv1-BD-ce8" customClass="ReadenTextView" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="66" y="212" width="282" height="90"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -1857,20 +1857,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdt-wb-hqS">
-                                <rect key="frame" x="0.0" y="88" width="418.5" height="664"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="664"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cG5-ch-zNd">
-                                        <rect key="frame" x="0.0" y="0.0" width="418.5" height="725"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReadenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="RWL-fw-0u8">
-                                                <rect key="frame" x="161.5" y="20" width="96" height="96"/>
+                                                <rect key="frame" x="159" y="20" width="96" height="96"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="96" id="Vo7-dh-xrz"/>
                                                     <constraint firstAttribute="width" constant="96" id="hL5-ai-H0e"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imi-Tp-fxf">
-                                                <rect key="frame" x="165" y="96" width="89" height="20"/>
+                                                <rect key="frame" x="162.5" y="96" width="89" height="20"/>
                                                 <color key="backgroundColor" name="opaqueBlack"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="DpR-vM-J4J"/>
@@ -1883,7 +1883,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEZ-ug-co2">
-                                                <rect key="frame" x="127" y="136" width="165" height="19.5"/>
+                                                <rect key="frame" x="124.5" y="136" width="165" height="19.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="165" id="bVM-ph-fEA"/>
                                                 </constraints>
@@ -2092,20 +2092,20 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="oFf-wZ-WFv">
-                                                <rect key="frame" x="28" y="496.5" width="363" height="96"/>
+                                                <rect key="frame" x="27.5" y="496.5" width="359" height="96"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="vYZ-vq-rqz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="72" height="96"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="71" height="96"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="x5e-Bs-Zga">
-                                                                <rect key="frame" x="0.0" y="0.0" width="72" height="71"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="71" id="QKV-of-Vib"/>
                                                                     <constraint firstAttribute="width" constant="71" id="rS1-zF-aK4"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6s-wK-5qQ">
-                                                                <rect key="frame" x="0.0" y="82" width="72" height="14"/>
+                                                                <rect key="frame" x="0.0" y="82" width="71" height="14"/>
                                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2118,16 +2118,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="PZZ-Em-wQe">
-                                                        <rect key="frame" x="97" y="0.0" width="72" height="96"/>
+                                                        <rect key="frame" x="96" y="0.0" width="71" height="96"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="xub-2H-yGv">
-                                                                <rect key="frame" x="0.0" y="0.0" width="72" height="71"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="71" id="fPC-Fh-CWK"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1u-9M-oFF">
-                                                                <rect key="frame" x="0.0" y="82" width="72" height="14"/>
+                                                                <rect key="frame" x="0.0" y="82" width="71" height="14"/>
                                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2140,16 +2140,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="GtA-Zl-Fx1">
-                                                        <rect key="frame" x="194" y="0.0" width="72" height="96"/>
+                                                        <rect key="frame" x="192" y="0.0" width="71" height="96"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="1JP-NA-gFw">
-                                                                <rect key="frame" x="0.0" y="0.0" width="72" height="71"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="71" id="Bgs-Ar-bSM"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ere-Z5-dQZ">
-                                                                <rect key="frame" x="0.0" y="82" width="72" height="14"/>
+                                                                <rect key="frame" x="0.0" y="82" width="71" height="14"/>
                                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2162,16 +2162,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="0LG-Xn-GUF">
-                                                        <rect key="frame" x="291" y="0.0" width="72" height="96"/>
+                                                        <rect key="frame" x="288" y="0.0" width="71" height="96"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="CAt-JS-iNV">
-                                                                <rect key="frame" x="0.0" y="0.0" width="72" height="71"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="71" id="Jmf-3A-n0j"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5i-mh-qOq">
-                                                                <rect key="frame" x="0.0" y="82" width="72" height="14"/>
+                                                                <rect key="frame" x="0.0" y="82" width="71" height="14"/>
                                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
