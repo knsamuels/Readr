@@ -33,3 +33,22 @@ class colorButton: UIButton {
     }
     
 } //End of class
+
+class circleButton: UIButton {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupView()
+    }
+    func setupView() {
+        self.layer.cornerRadius = self.frame.height / 2
+        self.clipsToBounds = true
+        
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor.black.cgColor
+
+    }
+    
+} //End of class
+
+
