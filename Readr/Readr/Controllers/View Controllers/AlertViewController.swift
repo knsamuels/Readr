@@ -153,7 +153,7 @@ class AlertViewController: UIViewController {
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? BookshelfListTableViewController else {return}
+        guard let destination = segue.destination as? BookshelfListViewController else {return}
         destination.newColor = myColor
         destination.newTitle = myTitle
     }

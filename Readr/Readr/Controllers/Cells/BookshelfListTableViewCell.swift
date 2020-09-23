@@ -114,8 +114,6 @@ class BookshelfListTableViewCell: UITableViewCell {
                 }
             }
         }
-        
-    
 }//End of class
 
 
