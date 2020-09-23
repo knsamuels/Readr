@@ -15,7 +15,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     var memberCapacity = 10
     var pastReads: [String] = []
     var fiveSelected: Bool = false
-    var tenSelected: Bool = true
+    var tenSelected: Bool = false
     var fifteenSelected: Bool = false
     var twentySelected: Bool = false
     var twentyFiveSelected: Bool = false
@@ -39,6 +39,8 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var fifteenButton: circleButton!
     @IBOutlet weak var twentyButton: circleButton!
     @IBOutlet weak var twentyFiveButton: circleButton!
+    @IBOutlet weak var cancelButtonToBC: UIButton!
+    @IBOutlet weak var cancelButtonToUser: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,10 +57,16 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         meetingInfoForBookBlub.delegate = self
         doneReadingButton.isHidden = true
         if let bookclub = bookclub {
+            cancelButtonToBC.isHidden = false
+            cancelButtonToUser.isHidden = true
             updateViews(bookclub: bookclub)
             updateButtonColor()
             doneReadingButton.isHidden = false
             currentlyReadingButton.isHidden = true
+        } else {
+            tenSelected = true
+            cancelButtonToBC.isHidden = true
+            cancelButtonToUser.isHidden = false
         }
     }
     // MARK: - Actions

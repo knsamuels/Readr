@@ -62,6 +62,8 @@ class BookclubViewController: UIViewController {
         setUpImage()
     }
     
+    @IBAction func unwindToBookclubVC(_ sender: UIStoryboardSegue) {}
+    
     @IBAction func joinButtonTapped(_ sender: Any) {
         guard let user = UserController.shared.currentUser else {return}
         guard let bookclub = bookclub else {return}
