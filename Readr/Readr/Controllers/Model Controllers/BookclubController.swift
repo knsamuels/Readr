@@ -156,6 +156,7 @@ class BookclubController {
         
         let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
         operation.savePolicy = .changedKeys
+        operation.qualityOfService = .userInteractive
         operation.modifyRecordsCompletionBlock = { (records, _, error) in 
             if let error = error {
                 print("There was an error modifying the Bookclub - \(error) - \(error.localizedDescription) ")
@@ -170,7 +171,7 @@ class BookclubController {
             }
             
             completion(.success(updatedBC))
-            return
+//            return
         }
         
         publicDB.add(operation)
