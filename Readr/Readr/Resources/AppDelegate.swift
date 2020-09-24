@@ -23,10 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(fetchedUserStatment)
         }
         
-        UITabBar.appearance().tintColor = .black
-        print(CKContainer.default().publicCloudDatabase)
+//        UITabBar.appearance().tintColor = .black
+//        print(CKContainer.default().publicCloudDatabase)
         
-        application.applicationIconBadgeNumber = 0
+//        application.applicationIconBadgeNumber = 0
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
             if let error = error {
@@ -60,6 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     switch status {
                     case .available:
+                        tabBarController?.presentSimpleAlertWith(title: "Yayyy", message: ":) :) :) :) :)")
+                        print("MAAAADE ITTTTTT")
                         completion(true);
                         
                     case .noAccount:
@@ -94,33 +96,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            print("We failed to register for remote notifications. -- \(error) -- \(error.localizedDescription)")
 //        }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        guard let user = UserController.shared.currentUser else {return}
-
-        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let bookclubs):
-                    user.bookclubs = bookclubs
-                    fetchMessages()
-                case .failure(_):
-                    print("no bookclubs")
-                }
-            }
-        }
-        
-        func fetchMessages() {
-            for bookclub in user.bookclubs {
-                MessageController.shared.fetchMessages(for: bookclub) { (result) in
-                    switch result {
-                    case .success(_):
-                        print("fetched messages")
-                    case .failure(_):
-                        print("no messages")
-                    }
-                }
-            }
-        }
-    }
+    
+    
+    
+    
+//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+//        guard let user = UserController.shared.currentUser else {return}
+//
+//        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let bookclubs):
+//                    user.bookclubs = bookclubs
+//                    fetchMessages()
+//                case .failure(_):
+//                    print("no bookclubs")
+//                }
+//            }
+//        }
+//
+//        func fetchMessages() {
+//            for bookclub in user.bookclubs {
+//                MessageController.shared.fetchMessages(for: bookclub) { (result) in
+//                    switch result {
+//                    case .success(_):
+//                        print("fetched messages")
+//                    case .failure(_):
+//                        print("no messages")
+//                    }
+//                }
+//            }
+//        }
+//    }
 } //End of class
 
