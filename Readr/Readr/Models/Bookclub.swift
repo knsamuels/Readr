@@ -95,9 +95,7 @@ extension CKRecord {
             BookclubConstants.meetingInfoKey : bookclub.meetingInfo,
             BookclubConstants.memberCapacityKey : bookclub.memberCapacity
         ])
-        if bookclub.pastReads.count > 0 {
-            self.setValue(bookclub.pastReads, forKey: BookclubConstants.pastReadsKey)
-               }
+        self.setValue(bookclub.pastReads, forKey: BookclubConstants.pastReadsKey)
         if let photoAsset = bookclub.photoAsset {
             self.setValue(photoAsset, forKey: BookclubConstants.photoAssetKey)
         }
