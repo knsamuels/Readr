@@ -18,6 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="kAf-D0-val" kind="relationship" relationship="viewControllers" id="GbZ-t4-np7"/>
@@ -1518,7 +1520,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OX3-JK-Jlp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelfSearchCell" rowHeight="106" id="FZ0-jc-r4d" customClass="BookshelfDetailTableViewCell" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="106"/>
@@ -1588,7 +1590,7 @@
                                         <constraint firstAttribute="trailing" secondItem="uSU-AO-bLY" secondAttribute="trailing" constant="8" id="ees-qH-igQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="offWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="bookAuthorLabel" destination="cua-pZ-GzI" id="Tlg-bZ-W9n"/>
                                     <outlet property="bookImageView" destination="vL4-yj-MrH" id="1Oa-4N-yBJ"/>
@@ -2417,7 +2419,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="oFf-wZ-WFv" firstAttribute="centerX" secondItem="cG5-ch-zNd" secondAttribute="centerX" id="2XH-oO-x0J"/>
                                             <constraint firstItem="qSd-Wp-fAz" firstAttribute="leading" secondItem="cG5-ch-zNd" secondAttribute="leading" constant="34" id="4S8-qb-ZCv"/>
@@ -2458,7 +2460,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="SFU-aI-l0b"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xdt-wb-hqS" firstAttribute="trailing" secondItem="L98-mv-r2w" secondAttribute="trailing" id="0fs-xk-BmR"/>
                             <constraint firstItem="xdt-wb-hqS" firstAttribute="leading" secondItem="L98-mv-r2w" secondAttribute="leading" id="5Tc-yp-l86"/>
@@ -2867,6 +2869,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2908,6 +2911,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7kI-rl-ct7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2927,7 +2932,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4iI-th-JMv">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -3106,9 +3113,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="gNk-4k-DGh"/>
-        <segue reference="ypD-cy-r1T"/>
+        <segue reference="bWE-Lv-3sc"/>
         <segue reference="cVK-gp-z3w"/>
-        <segue reference="XkH-si-XHh"/>
+        <segue reference="fbc-Mo-F7a"/>
         <segue reference="d4d-j6-Xm7"/>
     </inferredMetricsTieBreakers>
     <resources>

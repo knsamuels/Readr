@@ -33,10 +33,8 @@ class BookshelfListTableViewController: UITableViewController {
 //        self.navigationController?.navigationBar.tintColor = .black
         tableView.separatorColor = .clear
         showLoadingScreen()
-        UITabBar.appearance().tintColor = .white
-        UITabBar.appearance().shadowImage = UIImage()
-        UITabBar.appearance().backgroundImage = UIImage()
-        UINavigationBar.appearance().shadowImage = UIImage()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
