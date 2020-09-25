@@ -13,13 +13,16 @@ class StartViewController: UIViewController, UITextViewDelegate {
     //MARK: - Outlets
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
-  
+    
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
         signInButton.isHidden = true
         UINavigationBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().tintColor = .black
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
     }
     
     //MARK: - Actions
@@ -51,5 +54,5 @@ class StartViewController: UIViewController, UITextViewDelegate {
             self.present(viewController, animated: true)
         }
     }
-   
+    
 } //End of class
