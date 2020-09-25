@@ -65,9 +65,11 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             currentlyReadingButton.isHidden = true
         } else {
             tenSelected = true
+            updateButtonColor()
             cancelButtonToBC.isHidden = true
             cancelButtonToUser.isHidden = false
         }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
     }
     // MARK: - Actions
     

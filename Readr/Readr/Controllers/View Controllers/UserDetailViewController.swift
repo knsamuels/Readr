@@ -63,6 +63,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         showLoadingScreen()
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
 //        self.navigationController?.navigationBar.tintColor = .systemRed
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateBookclubs), name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -362,6 +363,12 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             }
         }
     }
+    
+    @objc func updateBookclubs() {
+        getUsersBookclubs()
+    }
+        
+        
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "bioFavBook1toBDVC" {
