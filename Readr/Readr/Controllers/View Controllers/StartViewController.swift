@@ -19,6 +19,7 @@ class StartViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         fetchUser()
         signInButton.isHidden = true
+        UINavigationBar.appearance().shadowImage = UIImage()
     }
     
     //MARK: - Actions
