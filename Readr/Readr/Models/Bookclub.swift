@@ -33,7 +33,7 @@ class Bookclub {
     var members: [CKRecord.Reference]
     var currentlyReading: String
     var pastReads: [String]
-//    var pastReadBooks: [Book]
+    //    var pastReadBooks: [Book]
     var meetingInfo: String
     var memberCapacity: Int
     var recordID: CKRecord.ID
@@ -105,7 +105,7 @@ extension CKRecord {
 extension Bookclub {
     
     convenience init?(ckRecord: CKRecord) {
-            guard let name = ckRecord[BookclubConstants.nameKey] as? String,
+        guard let name = ckRecord[BookclubConstants.nameKey] as? String,
             let admin = ckRecord[BookclubConstants.adminKey] as? CKRecord.Reference,
             let adminContactInfo = ckRecord[BookclubConstants.adminContactInfoKey] as? String,
             let members = ckRecord[BookclubConstants.membersKey] as? [CKRecord.Reference],
