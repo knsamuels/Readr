@@ -151,27 +151,25 @@ class BookclubController {
     
     //Update
     func update(bookclub: Bookclub, completion: @escaping(Result<Bookclub, BookclubError>) -> Void) {
-        
         let record = CKRecord(bookclub: bookclub)
         
         let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
         operation.savePolicy = .changedKeys
+        
         operation.qualityOfService = .userInteractive
-        operation.modifyRecordsCompletionBlock = { (records, _, error) in 
+        operation.modifyRecordsCompletionBlock = { (records, _, error) in
             if let error = error {
                 print("There was an error modifying the Bookclub - \(error) - \(error.localizedDescription) ")
                 completion(.failure(.ckError(error)))
                 return
             }
             
-            guard let record = records?.first, let updatedBC = Bookclub(ckRecord: record)
-                else {
-                    completion(.failure(.couldNotUnwrap))
-                    return
+            guard let record = records?.first, let updatedBC = Bookclub(ckRecord: record) else {
+                completion(.failure(.couldNotUnwrap))
+                return
             }
             
             completion(.success(updatedBC))
-//            return
         }
         
         publicDB.add(operation)

@@ -71,10 +71,10 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
 //        userFavBooks = []
         favBookISBNs = []
         if self.user == nil {
-                   fetchUser()
-               } else {
-                   fetchUserBooks()
-               }
+            fetchUser()
+        } else {
+            fetchUserBooks()
+        }
     }
     
     //MARK: - Actions
@@ -167,12 +167,12 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 switch result {
                 case .success(let books):
                     self.userFavBooks = books
-                    self.getUsersBookclubs()
                 case .failure(_):
                     print("failed getting user's favorite books")
                 }
             }
         }
+        self.getUsersBookclubs()
     }
     
     func updateViews() {

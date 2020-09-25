@@ -82,6 +82,7 @@ class PastReadsListTableViewController: UITableViewController {
             return UITableViewCell.EditingStyle.delete
         }
     }
+   
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard var books = books else {return}
         guard let bookclub = bookclub else {return}
