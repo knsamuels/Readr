@@ -26,6 +26,7 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
         super.viewDidLoad()
 //        searchBar.delegate = self
         fetchBooks()
+        tableView.separatorColor = .clear
         self.title = bookshelf?.title
                self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
     }
