@@ -27,7 +27,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         guard let volumeInfo = volumeInfo else {return}
         titleLabel.text = volumeInfo.title
-        averageRating.text = "Rating: \(String(volumeInfo.averageRating ?? 0))"
+        averageRating.text = " \(String(volumeInfo.averageRating ?? 0))"
         bookImageView.image = volumeInfo.coverImage ?? UIImage(named: "noImage")
     }
 }
