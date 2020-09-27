@@ -38,6 +38,9 @@ class BookclubViewController: UIViewController {
     @IBOutlet weak var author3ForPastReads: UILabel!
     @IBOutlet weak var rating3ForPastReads: UILabel!
     @IBOutlet weak var memberCountLabel: UILabel!
+    @IBOutlet weak var pastReadsRatingStar1: UIImageView!
+    @IBOutlet weak var pastReadsRatingStar2: UIImageView!
+    @IBOutlet weak var pastReadsRatingStar3: UIImageView!
     
     private lazy var loadingScreen: RLogoLoadingView = {
         let view = RLogoLoadingView()
@@ -162,7 +165,7 @@ class BookclubViewController: UIViewController {
             self.ImageForCurrentlyReading.image = currentlyReading.coverImage
             self.titleForCurrentlyReading.text = currentlyReading.title
             self.authorForCurrentlyReading.text = currentlyReading.authors?.first
-            self.ratingForCurrentlyReading.text = "\(currentlyReading.averageRating ?? 0.0)"
+            self.ratingForCurrentlyReading.text = " \(currentlyReading.averageRating ?? 0.0)"
             
             let pastReadCount = self.pastReads.count
             switch pastReadCount {
@@ -179,6 +182,9 @@ class BookclubViewController: UIViewController {
                 self.title3ForPastReads.isHidden = true
                 self.author3ForPastReads.isHidden = true
                 self.rating3ForPastReads.isHidden = true
+                self.pastReadsRatingStar1.isHidden = true
+                self.pastReadsRatingStar2.isHidden = true
+                self.pastReadsRatingStar3.isHidden = true
             case 1:
                 self.image1ForPastReads.isHidden = false
                 self.title1ForPastReads.isHidden = false
@@ -196,6 +202,9 @@ class BookclubViewController: UIViewController {
                 self.title3ForPastReads.isHidden = true
                 self.author3ForPastReads.isHidden = true
                 self.rating3ForPastReads.isHidden = true
+                self.pastReadsRatingStar1.isHidden = false
+                self.pastReadsRatingStar2.isHidden = true
+                self.pastReadsRatingStar3.isHidden = true
             case 2:
                 self.image1ForPastReads.isHidden = false
                 self.title1ForPastReads.isHidden = false
@@ -217,7 +226,9 @@ class BookclubViewController: UIViewController {
                 self.title3ForPastReads.isHidden = true
                 self.author3ForPastReads.isHidden = true
                 self.rating3ForPastReads.isHidden = true
-                
+                self.pastReadsRatingStar1.isHidden = false
+                self.pastReadsRatingStar2.isHidden = false
+                self.pastReadsRatingStar3.isHidden = true
             default:
                 self.image1ForPastReads.isHidden = false
                 self.title1ForPastReads.isHidden = false
@@ -243,6 +254,9 @@ class BookclubViewController: UIViewController {
                 self.title3ForPastReads.text = self.pastReads[2].title
                 self.author3ForPastReads.text = self.pastReads[2].authors?.first
                 self.rating3ForPastReads.text = "\(self.pastReads[2].averageRating ?? 0.0)"
+                self.pastReadsRatingStar1.isHidden = false
+                self.pastReadsRatingStar2.isHidden = false
+                self.pastReadsRatingStar3.isHidden = false 
             }
             self.loadingScreen.removeFromSuperview()
         }
