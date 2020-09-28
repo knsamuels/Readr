@@ -597,7 +597,7 @@
                                                                     <constraint firstAttribute="bottom" secondItem="MKp-s1-zcr" secondAttribute="bottom" id="fA6-rE-ic3"/>
                                                                 </constraints>
                                                             </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esc-Bl-JPI">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esc-Bl-JPI">
                                                                 <rect key="frame" x="0.0" y="127" width="69" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="Jqe-Q7-MBz"/>
