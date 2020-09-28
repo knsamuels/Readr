@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="width" constant="275" id="wka-0C-dVs"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="0GB-iq-y9D" kind="embed" id="k9x-f5-dOV"/>
+                                    <segue destination="0GB-iq-y9D" kind="embed" identifier="toAlertVC" id="k9x-f5-dOV"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -246,6 +246,7 @@
                     <connections>
                         <outlet property="blueButton" destination="Yw6-JM-xKn" id="Hgi-7R-x2B"/>
                         <outlet property="brownButton" destination="xbf-4O-bHp" id="o1r-p6-eTt"/>
+                        <outlet property="createButton" destination="e08-yE-FaO" id="azA-8j-Cch"/>
                         <outlet property="greenButton" destination="Ygq-j9-wdG" id="Q6O-lf-mgu"/>
                         <outlet property="orangeButton" destination="cqz-TW-V0a" id="FVK-xE-0Yo"/>
                         <outlet property="purpleButton" destination="2zr-E5-kDd" id="R4u-Tz-AUY"/>

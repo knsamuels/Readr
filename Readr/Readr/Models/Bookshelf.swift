@@ -23,7 +23,7 @@ class Bookshelf {
     var books: [String]
     let recordID: CKRecord.ID
     let userReference: CKRecord.Reference?
-    let color: String
+    var color: String
     let timestamp: Date
     
     init(title:String, books: [String] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), userReference: CKRecord.Reference?, color: String, timestamp: Date = Date()) {

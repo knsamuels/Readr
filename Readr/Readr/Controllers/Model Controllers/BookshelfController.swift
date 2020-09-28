@@ -88,8 +88,10 @@ class BookshelfController {
         
     }
 
-    func updateBookshelf(bookshelf: Bookshelf, completion: @escaping (Result<Bookshelf, BookshelfError>) -> Void) {
+    func updateBookshelf(bookshelf: Bookshelf, title: String, color: String, completion: @escaping (Result<Bookshelf, BookshelfError>) -> Void) {
         
+        bookshelf.title = title
+        bookshelf.color = color 
         let record = CKRecord(bookshelf: bookshelf)
         let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
         

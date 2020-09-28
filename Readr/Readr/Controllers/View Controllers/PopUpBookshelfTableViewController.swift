@@ -37,7 +37,7 @@ class PopUpBookshelfTableViewController: UITableViewController {
         guard let isbn = bookISBN else {return}
         let pickedBookshelf = user.bookshelves[indexPath.row]
         pickedBookshelf.books.append(isbn)
-        BookshelfController.shared.updateBookshelf(bookshelf: pickedBookshelf) { (result) in
+        BookshelfController.shared.updateBookshelf(bookshelf: pickedBookshelf, title: pickedBookshelf.title, color: pickedBookshelf.color) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(_):

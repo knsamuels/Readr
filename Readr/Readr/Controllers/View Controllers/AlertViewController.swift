@@ -18,15 +18,17 @@ class AlertViewController: UIViewController {
     @IBOutlet weak var orangeButton: UIButton!
     @IBOutlet weak var brownButton: UIButton!
     @IBOutlet weak var purpleButton: UIButton!
+    @IBOutlet weak var createButton: UIButton!
     
     //MARK: - Properties
-    var blueIsSelected = true
+    var blueIsSelected = false
     var greenIsSelected = false
     var yellowIsSelected = false
     var orangeIsSelected = false
     var brownIsSelected = false
     var purpleIsSelected = false
     
+    var bookshelf: Bookshelf?
     var myColor = ""
     var myTitle = ""
     
@@ -36,7 +38,14 @@ class AlertViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
         
-        blueButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
+        if let bookshelf = bookshelf {
+            createButton.setTitle("Update", for: .normal)
+            updateViews(with: bookshelf)
+        } else {
+            blueIsSelected = true 
+            blueButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
+            createButton.setTitle("Create", for: .normal)
+        }
     }
     
     //MARK: - Actions
@@ -149,13 +158,51 @@ class AlertViewController: UIViewController {
     
     
     //MARK: - Helper Methods
+    func updateViews(with bookshelf: Bookshelf) {
+        shelfNameTextField.text = bookshelf.title
+        
+        if bookshelf.color == "blue" {
+            blueIsSelected = true
+        } else if bookshelf.color == "green" {
+            greenIsSelected = true
+        } else if bookshelf.color == "yellow" {
+            yellowIsSelected = true
+        } else if bookshelf.color == "orange" {
+           orangeIsSelected = true
+        } else if bookshelf.color == "brown" {
+            brownIsSelected = true
+        } else if bookshelf.color == "purple" {
+            purpleIsSelected = true
+        }
+        updateColor()
+    }
     
+    func updateColor() {
+        if blueIsSelected {
+             blueButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
+        } else if greenIsSelected {
+            greenButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
+        } else if yellowIsSelected {
+            yellowButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
+        } else if orangeIsSelected {
+           orangeButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
+        } else if brownIsSelected {
+            brownButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
+        } else if purpleIsSelected {
+           purpleButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
+        }
+    }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? BookshelfListViewController else {return}
         destination.newColor = myColor
         destination.newTitle = myTitle
+        if let bookshelf = bookshelf {
+            destination.isNewBookshelf = false
+        } else {
+            destination.isNewBookshelf = true 
+        }
     }
     
 } //End of class

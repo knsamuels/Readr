@@ -18,9 +18,10 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
     var userBookshelves: [Bookshelf] = []
     var newColor = ""
     var newTitle = ""
+    var isNewBookshelf = false
+    var bookshelfToUpdate: Bookshelf?
     let group = DispatchGroup()
-    
-    
+
     private lazy var loadingScreen: RLogoLoadingView = {
         let view = RLogoLoadingView()
         view.backgroundColor = .white
@@ -51,14 +52,28 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
     
     // MARK: - Actions
     @IBAction func unwindToShelfList( sender: UIStoryboardSegue) {
-        BookshelfController.shared.createBookshelf(title: newTitle, color: newColor) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let bookshelf):
-                    self.userBookshelves.append(bookshelf)
-                    self.tableView.reloadData()
-                case .failure(_):
-                    print("Unable to create bookshelf.")
+        if isNewBookshelf == true {
+            BookshelfController.shared.createBookshelf(title: newTitle, color: newColor) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let bookshelf):
+                        self.userBookshelves.append(bookshelf)
+                        self.tableView.reloadData()
+                    case .failure(_):
+                        print("Unable to create bookshelf.")
+                    }
+                }
+            }
+        } else {
+            guard let bookshelfToUpdate = bookshelfToUpdate else {return}
+            BookshelfController.shared.updateBookshelf(bookshelf: bookshelfToUpdate, title: newTitle, color: newColor) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(_):
+                        self.tableView.reloadData()
+                    case .failure(_):
+                        print("could not update Bookshelf")
+                    }
                 }
             }
         }
@@ -84,7 +99,16 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func presentCustomAlert() {
-        guard let customAlert = UIStoryboard(name: "Alert", bundle: .main).instantiateViewController(withIdentifier: "AlertVC") as? PlaceholderViewController else {return}
+        guard let customAlert = UIStoryboard(name: "Alert", bundle: .main).instantiateViewController(withIdentifier: "AlertVC") as? PlaceholderViewController else
+        {return}
+        
+        present(customAlert, animated: true)
+    }
+    
+    func presentEditCustomAlert(bookshelf: Bookshelf) {
+        guard let customAlert = UIStoryboard.init(name: "Alert", bundle: .main).instantiateViewController(withIdentifier: "AlertVC") as? PlaceholderViewController else
+        {return}
+        customAlert.bookshelf = bookshelf
         
         present(customAlert, animated: true)
     }
@@ -114,28 +138,36 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
         cell.bookshelf = bookshelf
         cell.spinnerDelegate = self
         return cell
-        
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let bookshelfToDelete = userBookshelves[indexPath.row]
-            guard let index = userBookshelves.firstIndex(of: bookshelfToDelete) else { return}
-            if bookshelfToDelete.title != "Favorites" {
-                BookshelfController.shared.deleteBookshelf(bookshelf: bookshelfToDelete) { (result) in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success(_):
-                            self.userBookshelves.remove(at: index)
-                            self.tableView.reloadData()
-                        case .failure(_):
-                            print("no - error")
-                        }
-                    }
-                }
-            }
-        } else if editingStyle == .insert {
+     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, actionPerformed) in
+            let bookshelfToDelete = self.userBookshelves[indexPath.row]
+            guard let index = self.userBookshelves.firstIndex(of: bookshelfToDelete) else { return}
+           if bookshelfToDelete.title != "Favorites" {
+               BookshelfController.shared.deleteBookshelf(bookshelf: bookshelfToDelete) { (result) in
+                   DispatchQueue.main.async {
+                       switch result {
+                       case .success(_):
+                           self.userBookshelves.remove(at: index)
+                           self.tableView.reloadData()
+                       case .failure(_):
+                           print("no - error")
+                       }
+                   }
+               }
+           }
         }
+        
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, actionPerformed) in
+            let bookshelfToSend = self.userBookshelves[indexPath.row]
+            self.bookshelfToUpdate = bookshelfToSend 
+            self.presentEditCustomAlert(bookshelf: bookshelfToSend)
+        }
+    
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction,editAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
     }
     
     // MARK: - Navigation

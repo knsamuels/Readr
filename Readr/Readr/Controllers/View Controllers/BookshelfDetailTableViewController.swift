@@ -182,7 +182,7 @@ extension BookshelfDetailTableViewController: BookshelfCellDelegate {
             self.fetchBooks()
 //            guard let filteredIndex = self.bookshelfBooks.firstIndex(of: <#T##Book#>)
 //            self.bookshelfBooks.remove(at: index)
-            BookshelfController.shared.updateBookshelf(bookshelf: bookshelf) { (result) in
+            BookshelfController.shared.updateBookshelf(bookshelf: bookshelf, title: bookshelf.title, color: bookshelf.color) { (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(_):
