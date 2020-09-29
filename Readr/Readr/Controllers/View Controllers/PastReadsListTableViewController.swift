@@ -23,7 +23,8 @@ class PastReadsListTableViewController: UITableViewController {
         super.viewWillAppear(true)
         self.title = "Past Reads"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-        //           self.navigationController?.navigationBar.tintColor = .black
+                   self.navigationController?.navigationBar.tintColor = .black
+          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
     // MARK: - Helpers

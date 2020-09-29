@@ -24,6 +24,7 @@ class ReviewDetailViewController: UIViewController {
         updateViews()
         self.title = "REVIEWS"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
     func fetchReview() {

@@ -37,7 +37,9 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         self.title = "Bookshelf"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-//        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.tintColor = .black
+          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+      
         tableView.separatorColor = .clear
         showLoadingScreen()
         UITabBar.appearance().tintColor = .white
@@ -47,6 +49,7 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         fetchAllUsersBookshelves()
     }
     
