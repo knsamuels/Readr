@@ -18,9 +18,10 @@ class ChatTableViewCell: UITableViewCell {
     //MARK: - Properties
     var bookclub: Bookclub? {
         didSet {
-            updateViews()
+            fetchMessage()
         }
     }
+    var clubMessages: [Message] = []
     
     //MARK: - Lifecycles
     override func awakeFromNib() {
@@ -28,11 +29,31 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     //MARK: - Helper Methods
+    func fetchMessage() {
+        guard let bookclub = bookclub else {return}
+        MessageController.shared.fetchMessages(for: bookclub) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let messages):
+                    self.clubMessages = messages
+                    self.updateViews()
+                case .failure(_):
+                    print("Unable to fetch messages for this bookclub.")
+                }
+            }
+        }
+    }
+    
     func updateViews() {
         guard let bookclub = bookclub else {return}
         bookclubImageView.image = bookclub.profilePicture
         bookclubTitleLabel.text = bookclub.name
-        lastmessageLabel.text = "Message here..."
+        if clubMessages.count > 0 {
+            lastmessageLabel.text = clubMessages[clubMessages.count - 1].text
+        } else {
+            lastmessageLabel.text = " "
+        }
+        
         
         bookclubImageView.layer.cornerRadius = bookclubImageView.frame.width / 2
         bookclubImageView.clipsToBounds = true
