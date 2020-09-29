@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSO-MQ-rBx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSO-MQ-rBx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +19,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g1h-kS-jKT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemGray6Color"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -53,20 +55,20 @@
                                                     <constraint firstAttribute="height" constant="132" id="VnF-bE-uyP"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rZ-9s-Jdb">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rZ-9s-Jdb">
                                                 <rect key="frame" x="141" y="15" width="132" height="132"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="132" id="5H5-Ok-8Ko"/>
                                                     <constraint firstAttribute="height" constant="132" id="7he-b9-wUp"/>
                                                 </constraints>
                                                 <state key="normal" title="Select Image">
-                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="selectProfileImageButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="xru-Yu-SDq"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1T-md-QjY">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1T-md-QjY">
                                                 <rect key="frame" x="36" y="15" width="70" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="MC6-7l-pBL"/>
@@ -75,7 +77,7 @@
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="20"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Cancel">
-                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="cancelButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="020-n6-KtV"/>
@@ -83,7 +85,7 @@
                                                     <segue destination="QHb-db-uZ9" kind="unwind" unwindAction="unwindToBookclubVC:" id="06w-15-tzN"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L59-XB-aFb">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L59-XB-aFb">
                                                 <rect key="frame" x="308" y="15" width="70" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="8nR-bu-e4p"/>
@@ -92,7 +94,7 @@
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="20"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Create">
-                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="createBookclubButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="dwP-sk-4FN"/>
@@ -103,7 +105,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Znk-hi-DHn"/>
                                                 </constraints>
-                                                <color key="textColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -123,7 +125,7 @@
                                                     <constraint firstAttribute="height" constant="20" id="TSt-P6-u3f"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="q2Y-Nn-bvf">
@@ -133,14 +135,14 @@
                                                     <constraint firstAttribute="width" secondItem="q2Y-Nn-bvf" secondAttribute="height" multiplier="3:4" id="shd-ee-tZG"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCW-Td-CLe">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCW-Td-CLe">
                                                 <rect key="frame" x="86.5" y="366" width="75" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="75" id="enR-aF-aJA"/>
                                                     <constraint firstAttribute="width" secondItem="FCW-Td-CLe" secondAttribute="height" multiplier="3:4" id="imz-wc-jdh"/>
                                                 </constraints>
                                                 <state key="normal" title="Select ">
-                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="currentlyReadingButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="OqB-uO-WNC"/>
@@ -152,7 +154,7 @@
                                                     <constraint firstAttribute="height" constant="20" id="tdN-3p-O8Z"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter meeting info..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uWh-Ee-neZ">
@@ -169,13 +171,13 @@
                                                     <constraint firstAttribute="height" constant="40" id="KUj-jx-sJs"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="jld-pn-bW5">
                                                 <rect key="frame" x="65" y="656" width="284" height="36"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIo-St-xHo" customClass="circleButton" customModule="Readen" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIo-St-xHo" customClass="circleButton" customModule="Readen" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="CIo-St-xHo" secondAttribute="height" multiplier="1:1" id="Agr-za-9gL"/>
@@ -183,13 +185,13 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                         <state key="normal" title="5">
-                                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="fiveMembersTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="grG-Eb-rp4"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dly-sl-EfY" customClass="circleButton" customModule="Readen" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dly-sl-EfY" customClass="circleButton" customModule="Readen" customModuleProvider="target">
                                                         <rect key="frame" x="62" y="0.0" width="36" height="36"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="36" id="MId-dd-CIS"/>
@@ -197,13 +199,13 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                         <state key="normal" title="10">
-                                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="tenMembersButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="qMo-3J-oPf"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjE-Gu-Sw6" customClass="circleButton" customModule="Readen" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjE-Gu-Sw6" customClass="circleButton" customModule="Readen" customModuleProvider="target">
                                                         <rect key="frame" x="124" y="0.0" width="36" height="36"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="36" id="bKb-s7-Sal"/>
@@ -211,13 +213,13 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                         <state key="normal" title="15">
-                                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="fifteenMemberButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="y3B-BK-joa"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfc-MP-78t" customClass="circleButton" customModule="Readen" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfc-MP-78t" customClass="circleButton" customModule="Readen" customModuleProvider="target">
                                                         <rect key="frame" x="186" y="0.0" width="36" height="36"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="36" id="Ent-wn-IU1"/>
@@ -225,13 +227,13 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                         <state key="normal" title="20">
-                                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="twentyMembersButtonTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="r7g-yv-igY"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvz-6B-N6e" customClass="circleButton" customModule="Readen" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvz-6B-N6e" customClass="circleButton" customModule="Readen" customModuleProvider="target">
                                                         <rect key="frame" x="248" y="0.0" width="36" height="36"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="yvz-6B-N6e" secondAttribute="height" multiplier="1:1" id="nKt-H4-luh"/>
@@ -239,7 +241,7 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                         <state key="normal" title="25+">
-                                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="twentyFivePlusMembersTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="5gz-21-d97"/>
@@ -250,7 +252,7 @@
                                                     <constraint firstAttribute="height" constant="36" id="45y-wO-6ro"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkJ-Ed-L9J">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkJ-Ed-L9J">
                                                 <rect key="frame" x="171.5" y="401" width="171" height="30"/>
                                                 <state key="normal" title="Done Reading this book?">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -259,7 +261,7 @@
                                                     <action selector="doneReadingTapped:" destination="H6T-ob-m4V" eventType="touchUpInside" id="4Xd-Hk-rGD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Erv-tI-07H" userLabel="Cancel2">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Erv-tI-07H" userLabel="Cancel2">
                                                 <rect key="frame" x="36" y="15" width="70" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="bzN-4g-Pzg"/>
@@ -268,14 +270,14 @@
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="20"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Cancel">
-                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <segue destination="QHb-db-uZ9" kind="unwind" unwindAction="unwindToUserDetail:" id="3Y3-cw-htq"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="800" id="3Lc-EG-6Db"/>
                                             <constraint firstItem="4rZ-9s-Jdb" firstAttribute="leading" secondItem="Erv-tI-07H" secondAttribute="trailing" constant="35" id="AMF-Gl-TEA"/>
@@ -328,14 +330,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="7rY-9X-QXU"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="K4V-bs-Iqz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="JAA-Z6-asI" firstAttribute="leading" secondItem="K4V-bs-Iqz" secondAttribute="leading" id="CHM-lw-UpT"/>
                             <constraint firstItem="K4V-bs-Iqz" firstAttribute="trailing" secondItem="JAA-Z6-asI" secondAttribute="trailing" id="LM7-ed-n7e"/>
                             <constraint firstItem="K4V-bs-Iqz" firstAttribute="bottom" secondItem="JAA-Z6-asI" secondAttribute="bottom" id="dta-SS-EnA"/>
                             <constraint firstItem="JAA-Z6-asI" firstAttribute="top" secondItem="K4V-bs-Iqz" secondAttribute="top" id="h5H-c5-j0Z"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="K4V-bs-Iqz"/>
                     </view>
                     <navigationItem key="navigationItem" id="UFt-H5-d3g"/>
                     <size key="freeformSize" width="414" height="900"/>
@@ -369,11 +371,11 @@
             <objects>
                 <viewController storyboardIdentifier="BookclubVC" id="ZEJ-Jj-dV8" customClass="BookclubViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VQs-3E-Ioz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gx-mJ-QgY">
-                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6AR-Rn-zzP">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="775"/>
@@ -400,7 +402,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Urn-21-WLU">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Urn-21-WLU">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="47"/>
                                                         <connections>
                                                             <action selector="viewAllMembersButtonTapped:" destination="ZEJ-Jj-dV8" eventType="touchUpInside" id="tGk-Sc-zfy"/>
@@ -408,7 +410,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="CRR-dI-Qin" secondAttribute="trailing" id="2pa-nj-Xs9"/>
                                                     <constraint firstItem="60P-fO-6RP" firstAttribute="top" secondItem="CRR-dI-Qin" secondAttribute="bottom" constant="8" id="EQq-bN-OX5"/>
@@ -424,14 +426,14 @@
                                                     <constraint firstAttribute="bottom" secondItem="60P-fO-6RP" secondAttribute="bottom" id="zLY-1h-jKw"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niH-US-JMo">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niH-US-JMo">
                                                 <rect key="frame" x="176" y="77" width="207" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="QCj-Ef-nZp"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                 <state key="normal" title="JOIN">
-                                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="joinButtonTapped:" destination="ZEJ-Jj-dV8" eventType="touchUpInside" id="jNx-iR-gzN"/>
@@ -475,14 +477,14 @@
                                                                     <constraint firstAttribute="width" constant="69" id="RG4-vo-7C0"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UlA-hB-L8A">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UlA-hB-L8A">
                                                                 <rect key="frame" x="0.0" y="0.0" width="69" height="122"/>
                                                                 <connections>
                                                                     <segue destination="jym-Fn-cVA" kind="show" identifier="bcCurrentlyReadingImageToBDVC" id="Ajn-VF-Y29"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="UlA-hB-L8A" firstAttribute="leading" secondItem="jn6-Sx-EYw" secondAttribute="leading" id="6Pt-zq-RDK"/>
                                                             <constraint firstAttribute="bottom" secondItem="UlA-hB-L8A" secondAttribute="bottom" id="JZm-Xy-Qyh"/>
@@ -550,11 +552,11 @@
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQ5-NO-EBk">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQ5-NO-EBk">
                                                         <rect key="frame" x="156" y="0.0" width="134" height="32"/>
                                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                         <state key="normal" title="View All">
-                                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" systemColor="labelColor"/>
                                                         </state>
                                                         <connections>
                                                             <segue destination="Em1-qk-fIc" kind="show" identifier="bcPastReadsViewAllToPRLTVC" id="Emr-Ir-RHE"/>
@@ -578,14 +580,14 @@
                                                                             <constraint firstAttribute="height" constant="122" id="fb6-49-Ui0"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfn-gh-Kpa">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfn-gh-Kpa">
                                                                         <rect key="frame" x="0.0" y="0.0" width="69" height="122"/>
                                                                         <connections>
                                                                             <segue destination="jym-Fn-cVA" kind="show" identifier="bcPastReadsImage1ToBDVC" id="lEI-bc-Q5y"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="Zfn-gh-Kpa" secondAttribute="trailing" id="4q2-rJ-V9Z"/>
                                                                     <constraint firstItem="Zfn-gh-Kpa" firstAttribute="top" secondItem="qv7-U3-Agg" secondAttribute="top" id="68i-iI-r8v"/>
@@ -646,14 +648,14 @@
                                                                             <constraint firstAttribute="width" constant="69" id="SBf-ya-ysp"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFE-wg-27c">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFE-wg-27c">
                                                                         <rect key="frame" x="0.0" y="0.0" width="69" height="132.5"/>
                                                                         <connections>
                                                                             <segue destination="jym-Fn-cVA" kind="show" identifier="bcPastReadsImage2ToBDVC" id="gP7-je-BJn"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="bottom" secondItem="LFE-wg-27c" secondAttribute="bottom" id="5qx-s8-ZOe"/>
                                                                     <constraint firstAttribute="bottom" secondItem="Xyc-yg-YXu" secondAttribute="bottom" id="Ach-ar-a9j"/>
@@ -713,14 +715,14 @@
                                                                             <constraint firstAttribute="width" constant="69" id="gbH-ds-ml4"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQr-j6-LL1">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQr-j6-LL1">
                                                                         <rect key="frame" x="0.0" y="0.0" width="69" height="132.5"/>
                                                                         <connections>
                                                                             <segue destination="jym-Fn-cVA" kind="show" identifier="bcPastReadsImage3ToBDVC" id="B9o-UE-y1z"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="bottom" secondItem="Is2-rJ-eoE" secondAttribute="bottom" id="8XU-Sk-ku7"/>
                                                                     <constraint firstAttribute="bottom" secondItem="AQr-j6-LL1" secondAttribute="bottom" id="9TT-tW-Evw"/>
@@ -791,7 +793,7 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="rDd-b0-krF" firstAttribute="centerX" secondItem="6AR-Rn-zzP" secondAttribute="centerX" id="1i2-El-Sd1"/>
                                             <constraint firstItem="niH-US-JMo" firstAttribute="centerX" secondItem="Urn-21-WLU" secondAttribute="centerX" id="1q9-cK-eGx"/>
@@ -837,14 +839,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="CvE-yZ-fWe"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="gFe-QI-9yi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0gx-mJ-QgY" firstAttribute="leading" secondItem="gFe-QI-9yi" secondAttribute="leading" id="7zj-3m-UsX"/>
                             <constraint firstItem="0gx-mJ-QgY" firstAttribute="bottom" secondItem="gFe-QI-9yi" secondAttribute="bottom" id="DuX-DO-X3K"/>
                             <constraint firstItem="0gx-mJ-QgY" firstAttribute="trailing" secondItem="gFe-QI-9yi" secondAttribute="trailing" id="QrF-OE-mMt"/>
                             <constraint firstItem="0gx-mJ-QgY" firstAttribute="top" secondItem="gFe-QI-9yi" secondAttribute="top" id="mcx-KV-fdf"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="gFe-QI-9yi"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Jv3-U4-nwv">
@@ -891,9 +893,9 @@
             <objects>
                 <tableViewController id="Em1-qk-fIc" customClass="PastReadsListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5fA-Jg-7kV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" rowHeight="156" id="89F-OI-sqU" customClass="PastReadsTableViewCell" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="156"/>
@@ -968,9 +970,9 @@
             <objects>
                 <tableViewController id="olf-St-n1g" customClass="MemberListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IkP-RT-d1p">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberCell" rowHeight="108" id="J5p-gu-puU" customClass="MemberTableViewCell" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="108"/>
@@ -1029,7 +1031,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RMJ-93-lP4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="KHK-vm-7fg">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -1125,7 +1127,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VVF-3l-rjw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookclubCell" rowHeight="108" id="RU0-c6-2NN" customClass="BookclubTableViewCell" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="108"/>
@@ -1209,7 +1211,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opT-9S-iaQ" customClass="ReadenView" customModule="Readen" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="5" width="384" height="115"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ylw-jQ-O0q">
                                                     <rect key="frame" x="30" y="20" width="354" height="85"/>
@@ -1340,6 +1342,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="LzO-PK-Wda"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LzO-PK-Wda" firstAttribute="trailing" secondItem="GmN-xc-BWj" secondAttribute="trailing" id="Lns-Ux-8Rk"/>
@@ -1347,7 +1350,6 @@
                             <constraint firstItem="GmN-xc-BWj" firstAttribute="leading" secondItem="LzO-PK-Wda" secondAttribute="leading" id="NNR-QX-kZV"/>
                             <constraint firstItem="LzO-PK-Wda" firstAttribute="bottom" secondItem="GmN-xc-BWj" secondAttribute="bottom" id="vna-nb-ZJl"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="LzO-PK-Wda"/>
                     </view>
                     <navigationItem key="navigationItem" id="4tv-VE-07I">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="Y6d-sN-ztr">
@@ -1371,7 +1373,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9ya-bl-i9B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelfCell" rowHeight="125" id="upu-kq-gYK" customClass="BookshelfListTableViewCell" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="125"/>
@@ -1382,7 +1384,7 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hft-Fo-39K" customClass="ReadenView" customModule="Readen" customModuleProvider="target">
                                             <rect key="frame" x="15" y="5" width="384" height="115"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="thf-iI-32f">
                                             <rect key="frame" x="30" y="20" width="354" height="85"/>
@@ -1504,7 +1506,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="f02-Rh-Hxf">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="fX1-VH-vya">
-                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" systemColor="systemGrayColor"/>
                             <connections>
                                 <action selector="addButtonTapped:" destination="SEJ-cH-CT6" id="Zzs-kr-DxT"/>
                             </connections>
@@ -1578,7 +1580,7 @@
                                                                 </stackView>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhN-JS-yY0">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhN-JS-yY0">
                                                             <rect key="frame" x="338.5" y="0.0" width="59.5" height="90"/>
                                                             <state key="normal" title="|">
                                                                 <color key="titleColor" name="opaqueBlack"/>
@@ -1632,7 +1634,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TGH-Ga-Foy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookshelfCell" textLabel="Mg2-hy-AHM" rowHeight="90" style="IBUITableViewCellStyleDefault" id="U5Y-GF-Wll">
                                 <rect key="frame" x="0.0" y="28" width="414" height="90"/>
@@ -1708,7 +1710,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="ypl-JG-fig" secondAttribute="trailing" id="7SI-ti-0VO"/>
                                                     <constraint firstAttribute="bottom" secondItem="Kgw-m0-Y7D" secondAttribute="bottom" id="J36-Uv-osa"/>
@@ -1740,11 +1742,11 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLN-wX-l7d">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLN-wX-l7d">
                                                                 <rect key="frame" x="281" y="0.0" width="61" height="32"/>
                                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                                                 <state key="normal" title="View All">
-                                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="titleColor" systemColor="darkTextColor"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="viewAllButtonTapped:" destination="jym-Fn-cVA" eventType="touchUpInside" id="ksB-jF-daQ"/>
@@ -1797,13 +1799,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8Z-rF-Lml">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8Z-rF-Lml">
                                                 <rect key="frame" x="303" y="673" width="75" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="75" id="H5Q-XP-iMy"/>
                                                 </constraints>
                                                 <state key="normal" title="View All">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleColor" systemColor="darkTextColor"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="ViewAllBookClubsButtonTapped:" destination="jym-Fn-cVA" eventType="touchUpInside" id="Har-Vz-TPc"/>
@@ -1828,7 +1830,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRS-I8-nHK" userLabel="BC 1 Button">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRS-I8-nHK" userLabel="BC 1 Button">
                                                                 <rect key="frame" x="0.0" y="0.0" width="105.5" height="101"/>
                                                                 <connections>
                                                                     <action selector="BC1ButtonTapped:" destination="jym-Fn-cVA" eventType="touchUpInside" id="EbZ-er-jnw"/>
@@ -1836,7 +1838,7 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="ptH-9t-Wyy" firstAttribute="centerX" secondItem="ZTC-fS-GCK" secondAttribute="centerX" id="3Ac-VD-EHh"/>
                                                             <constraint firstItem="xRS-I8-nHK" firstAttribute="top" secondItem="ZTC-fS-GCK" secondAttribute="top" id="585-48-zfq"/>
@@ -1866,7 +1868,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9U-fj-6a4">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9U-fj-6a4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="105.5" height="101"/>
                                                                 <connections>
                                                                     <action selector="BC2ButtonTapped:" destination="jym-Fn-cVA" eventType="touchUpInside" id="4lQ-zz-Y8B"/>
@@ -1874,7 +1876,7 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="101" id="EWI-81-SHK"/>
                                                             <constraint firstAttribute="trailing" secondItem="b0E-D6-3Nl" secondAttribute="trailing" id="LCa-A3-VdT"/>
@@ -1904,7 +1906,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ef-HN-Xga">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ef-HN-Xga">
                                                                 <rect key="frame" x="0.0" y="0.0" width="105.5" height="101"/>
                                                                 <connections>
                                                                     <action selector="BC3ButtonTapped:" destination="jym-Fn-cVA" eventType="touchUpInside" id="ybN-r5-DKG"/>
@@ -1912,7 +1914,7 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="5Ef-HN-Xga" secondAttribute="trailing" id="0FN-cn-Zb1"/>
                                                             <constraint firstItem="5Ef-HN-Xga" firstAttribute="leading" secondItem="ouq-qS-wcN" secondAttribute="leading" id="Af2-QA-ZGr"/>
@@ -1930,7 +1932,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="KOj-eY-X3h" firstAttribute="top" secondItem="Xw4-jZ-mRQ" secondAttribute="bottom" constant="25" id="0hT-Mg-kt5"/>
                                             <constraint firstItem="hxY-V4-YkS" firstAttribute="top" secondItem="z30-hv-cbQ" secondAttribute="top" constant="8" id="0oF-Vz-Rr3"/>
@@ -1967,14 +1969,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="eAb-7M-wAc"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="TCb-KI-fr3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IqF-ni-NG0" firstAttribute="leading" secondItem="TCb-KI-fr3" secondAttribute="leading" id="9gY-Qd-ak9"/>
                             <constraint firstItem="IqF-ni-NG0" firstAttribute="trailing" secondItem="TCb-KI-fr3" secondAttribute="trailing" id="Cf3-VZ-dml"/>
                             <constraint firstItem="IqF-ni-NG0" firstAttribute="top" secondItem="TCb-KI-fr3" secondAttribute="top" id="N2P-ut-eX2"/>
                             <constraint firstItem="TCb-KI-fr3" firstAttribute="bottom" secondItem="IqF-ni-NG0" secondAttribute="bottom" id="x9t-sf-1fn"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="TCb-KI-fr3"/>
                     </view>
                     <navigationItem key="navigationItem" id="Jdw-a9-Zz3">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="zAd-lJ-xIS">
@@ -2050,7 +2052,8 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="U8T-0N-vKz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="jBq-pC-tjn" secondAttribute="bottom" id="30A-DN-J9Z"/>
                             <constraint firstItem="jBq-pC-tjn" firstAttribute="centerY" secondItem="U8T-0N-vKz" secondAttribute="centerY" id="4Wc-3R-YgC"/>
@@ -2058,7 +2061,6 @@
                             <constraint firstItem="jBq-pC-tjn" firstAttribute="width" secondItem="4SM-oH-C9M" secondAttribute="width" multiplier="0.903382" id="fay-GQ-wKu"/>
                             <constraint firstItem="jBq-pC-tjn" firstAttribute="top" secondItem="4SM-oH-C9M" secondAttribute="topMargin" id="k00-SM-scg"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="U8T-0N-vKz"/>
                     </view>
                     <navigationItem key="navigationItem" id="kYr-F9-4aG"/>
                     <connections>
@@ -2092,7 +2094,7 @@
                                                     <constraint firstAttribute="width" constant="96" id="hL5-ai-H0e"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imi-Tp-fxf">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imi-Tp-fxf">
                                                 <rect key="frame" x="162.5" y="96" width="89" height="20"/>
                                                 <color key="backgroundColor" name="opaqueBlack"/>
                                                 <constraints>
@@ -2111,7 +2113,7 @@
                                                     <constraint firstAttribute="width" constant="165" id="bVM-ph-fEA"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Books:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPn-Xd-GT8">
@@ -2121,7 +2123,7 @@
                                                     <constraint firstAttribute="height" constant="20" id="sNs-Hr-78P"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="59" translatesAutoresizingMaskIntoConstraints="NO" id="Pfs-SQ-Idq">
@@ -2140,7 +2142,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZK-Rp-NBp">
                                                                 <rect key="frame" x="0.0" y="95" width="55" height="14"/>
                                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -2165,7 +2167,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5P2-Lq-V4R">
                                                                 <rect key="frame" x="0.0" y="95" width="55" height="14"/>
                                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -2188,7 +2190,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRF-4K-hJo">
                                                                 <rect key="frame" x="0.0" y="95" width="55" height="14"/>
                                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -2206,7 +2208,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="dvb-Ln-AzK">
                                                 <rect key="frame" x="34" y="215.5" width="287" height="84"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itL-HM-qWl">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itL-HM-qWl">
                                                         <rect key="frame" x="0.0" y="0.0" width="55" height="84"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="84" id="lzr-KJ-cVY"/>
@@ -2216,7 +2218,7 @@
                                                             <segue destination="jym-Fn-cVA" kind="show" identifier="bioFavBook1toBDVC" id="bWE-Lv-3sc"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOW-RJ-WR7">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOW-RJ-WR7">
                                                         <rect key="frame" x="116" y="0.0" width="55" height="84"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="55" id="55O-Kz-ba6"/>
@@ -2226,7 +2228,7 @@
                                                             <segue destination="jym-Fn-cVA" kind="show" identifier="bioFavBook2toBDVC" id="WCX-X9-RAT"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fx2-JB-jIe">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fx2-JB-jIe">
                                                         <rect key="frame" x="232" y="0.0" width="55" height="84"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="55" id="4TS-p3-25U"/>
@@ -2245,7 +2247,7 @@
                                                     <constraint firstAttribute="width" constant="126" id="mlI-ou-yny"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="85S-fV-h2t">
@@ -2257,7 +2259,7 @@
                                                             <constraint firstAttribute="height" constant="18" id="hN7-oV-6E4"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="11"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m94-5l-xu2">
@@ -2266,7 +2268,7 @@
                                                             <constraint firstAttribute="height" constant="18" id="Ym9-JY-e2p"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="II2-nj-USZ">
@@ -2275,7 +2277,7 @@
                                                             <constraint firstAttribute="height" constant="18" id="SEk-54-umL"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -2286,24 +2288,24 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Clubs:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoK-5m-OcF">
                                                         <rect key="frame" x="0.0" y="0.0" width="88" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xV9-Mh-bCo">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xV9-Mh-bCo">
                                                         <rect key="frame" x="118" y="0.0" width="48" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <state key="normal" title="View All">
-                                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <segue destination="cqk-BO-4bC" kind="show" identifier="viewAllToBCList" id="cVK-gp-z3w"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="692-V5-e3X">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="692-V5-e3X">
                                                         <rect key="frame" x="196" y="0.0" width="101" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <state key="normal" title="Create Bookclub">
-                                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <segue destination="H6T-ob-m4V" kind="show" id="d4d-j6-Xm7"/>
@@ -2330,7 +2332,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6s-wK-5qQ">
                                                                 <rect key="frame" x="0.0" y="82" width="71" height="14"/>
                                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -2352,7 +2354,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1u-9M-oFF">
                                                                 <rect key="frame" x="0.0" y="82" width="71" height="14"/>
                                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -2374,7 +2376,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ere-Z5-dQZ">
                                                                 <rect key="frame" x="0.0" y="82" width="71" height="14"/>
                                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -2396,7 +2398,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5i-mh-qOq">
                                                                 <rect key="frame" x="0.0" y="82" width="71" height="14"/>
                                                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="12"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -2411,7 +2413,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="ssl-Xh-Obr">
                                                 <rect key="frame" x="34" y="496.5" width="353" height="71"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNd-wb-CeY">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNd-wb-CeY">
                                                         <rect key="frame" x="0.0" y="0.0" width="71" height="71"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="71" id="zdN-ND-Jbe"/>
@@ -2421,7 +2423,7 @@
                                                             <segue destination="ZEJ-Jj-dV8" kind="show" identifier="UserDetailBC1ToBookClubVC" id="G6q-Hb-4fz"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-0f-vXp">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-0f-vXp">
                                                         <rect key="frame" x="94" y="0.0" width="71" height="71"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="71" id="26Z-eH-g3z"/>
@@ -2431,7 +2433,7 @@
                                                             <segue destination="ZEJ-Jj-dV8" kind="show" identifier="UserDetailBC2ToBookClubVC" id="Ygt-zA-UqY"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igC-sf-kDW">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igC-sf-kDW">
                                                         <rect key="frame" x="188" y="0.0" width="71" height="71"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="71" id="1Up-Vd-wbd"/>
@@ -2441,7 +2443,7 @@
                                                             <segue destination="ZEJ-Jj-dV8" kind="show" identifier="UserDetailBC3ToBookClubVC" id="F1x-N8-uqk"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gT6-zV-9hr">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gT6-zV-9hr">
                                                         <rect key="frame" x="282" y="0.0" width="71" height="71"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="71" id="0Q1-Sl-RlU"/>
@@ -2495,6 +2497,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="SFU-aI-l0b"/>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="L98-mv-r2w"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xdt-wb-hqS" firstAttribute="trailing" secondItem="L98-mv-r2w" secondAttribute="trailing" id="0fs-xk-BmR"/>
@@ -2502,7 +2505,6 @@
                             <constraint firstItem="xdt-wb-hqS" firstAttribute="bottom" secondItem="L98-mv-r2w" secondAttribute="bottom" id="ABL-WX-uYQ"/>
                             <constraint firstItem="xdt-wb-hqS" firstAttribute="top" secondItem="L98-mv-r2w" secondAttribute="top" id="lkJ-Ss-oSg"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="L98-mv-r2w"/>
                     </view>
                     <navigationItem key="navigationItem" id="NDh-wL-Kam"/>
                     <size key="freeformSize" width="414" height="850"/>
@@ -2566,9 +2568,9 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="o5Z-eD-v9G">
                                 <rect key="frame" x="34" y="290" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -2600,7 +2602,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2T-hF-qWA">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2T-hF-qWA">
                                 <rect key="frame" x="117" y="148" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -2608,7 +2610,7 @@
                                     <action selector="selectProfileImageButtonTapped:" destination="quA-1n-G68" eventType="touchUpInside" id="u1X-LS-QKb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14C-7X-53i">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14C-7X-53i">
                                 <rect key="frame" x="172" y="640" width="50" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
@@ -2618,8 +2620,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="RSq-Pu-LSW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="hMF-0Q-m9J"/>
                     <connections>
@@ -2648,12 +2650,13 @@
                                     <constraint firstAttribute="height" constant="44" id="vkg-IR-0de"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="yem-a0-cSH">
                                 <rect key="frame" x="15" y="132" width="384" height="35"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVg-0Y-v6H">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVg-0Y-v6H">
                                         <rect key="frame" x="0.0" y="0.0" width="74.5" height="35"/>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                         <state key="normal" title="Books">
@@ -2663,7 +2666,7 @@
                                             <action selector="booksButtonTapped:" destination="9QW-qj-en5" eventType="touchUpInside" id="ULo-hW-YIf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8x-Iy-CKj">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8x-Iy-CKj">
                                         <rect key="frame" x="154.5" y="0.0" width="75" height="35"/>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                         <state key="normal" title="Clubs">
@@ -2673,7 +2676,7 @@
                                             <action selector="clubsButtonTapped:" destination="9QW-qj-en5" eventType="touchUpInside" id="6tI-bE-6Ax"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Eh-QI-byV">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Eh-QI-byV">
                                         <rect key="frame" x="309.5" y="0.0" width="74.5" height="35"/>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
                                         <state key="normal" title="People">
@@ -2691,7 +2694,7 @@
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T4q-iv-CFS">
                                 <rect key="frame" x="0.0" y="167" width="414" height="597"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="offWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchCell" rowHeight="92" id="qko-dU-HGu" customClass="SearchTableViewCell" customModule="Readen" customModuleProvider="target">
@@ -2811,6 +2814,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Sbj-1G-YcY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7aR-rl-UHk" firstAttribute="leading" secondItem="Sbj-1G-YcY" secondAttribute="leading" id="54v-Av-JAt"/>
@@ -2828,7 +2832,6 @@
                             <constraint firstItem="9qi-Zf-pJy" firstAttribute="leading" secondItem="Sbj-1G-YcY" secondAttribute="leading" id="rEW-IY-dc2"/>
                             <constraint firstItem="yem-a0-cSH" firstAttribute="leading" secondItem="Sbj-1G-YcY" secondAttribute="leading" constant="15" id="vuQ-zj-dIx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Sbj-1G-YcY"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Hmz-O5-K8T"/>
@@ -2852,7 +2855,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="91A-3D-ePW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="100" id="rED-RW-LSS" customClass="ChatTableViewCell" customModule="Readen" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="100"/>
@@ -2874,7 +2877,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(bookclub)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a19-NM-TqA">
                                                     <rect key="frame" x="0.0" y="0.0" width="244" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(message)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u14-vS-mr3">
@@ -2918,7 +2921,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A1j-BF-KNH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="person.crop.rectangle" catalog="system" id="4Ds-cK-Ol3">
-                        <color key="badgeColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="badgeColor" systemColor="systemGrayColor"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MAk-FL-FyI">
@@ -2947,13 +2950,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Nx-JT-CQK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Bookshelves" image="book" catalog="system" id="Dix-tK-BLz">
-                        <color key="badgeColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="badgeColor" systemColor="systemGrayColor"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Iw-Tb-fZU">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemGrayColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2995,7 +2998,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="tintColor" systemColor="labelColor"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3017,7 +3020,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kMO-EG-irr">
                                 <rect key="frame" x="20" y="219" width="374" height="370"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="offWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messageCell" rowHeight="105" id="Hut-RF-9yD" customClass="MessageTableViewCell" customModule="Readen" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="105"/>
@@ -3030,13 +3033,13 @@
                                                     <rect key="frame" x="8" y="8" width="358" height="68.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(username)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwS-Hg-HBg">
                                                     <rect key="frame" x="8" y="79.5" width="358" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -3074,8 +3077,8 @@
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mc4-lp-tDo">
                                         <rect key="frame" x="16" y="12" width="318" height="148.5"/>
-                                        <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -3110,6 +3113,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="bsW-x6-cA8"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bsW-x6-cA8" firstAttribute="trailing" secondItem="ePs-NI-yOp" secondAttribute="trailing" constant="12" id="C2G-t2-PdI"/>
@@ -3129,7 +3133,6 @@
                             <constraint firstItem="ePs-NI-yOp" firstAttribute="top" secondItem="kMO-EG-irr" secondAttribute="bottom" constant="10" id="wWg-pr-ZOV"/>
                             <constraint firstItem="eIO-0n-FX6" firstAttribute="centerX" secondItem="bsW-x6-cA8" secondAttribute="centerX" id="xod-zb-wfU"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bsW-x6-cA8"/>
                     </view>
                     <navigationItem key="navigationItem" id="kKN-wD-A0E">
                         <barButtonItem key="rightBarButtonItem" title="Bookclub" id="jeO-46-6Yy">
@@ -3181,15 +3184,15 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="I22-a6-LKA"/>
-        <segue reference="B9o-UE-y1z"/>
-        <segue reference="8Ml-U5-rds"/>
-        <segue reference="Dzd-T5-xhq"/>
+        <segue reference="ypD-cy-r1T"/>
+        <segue reference="cVK-gp-z3w"/>
+        <segue reference="4Pb-cf-ugE"/>
         <segue reference="d4d-j6-Xm7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="RLogo" width="44" height="48"/>
         <image name="ReadenLogo" width="512" height="512"/>
-        <image name="book" catalog="system" width="128" height="101"/>
+        <image name="book" catalog="system" width="128" height="102"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="message" catalog="system" width="128" height="113"/>
@@ -3205,5 +3208,26 @@
         <namedColor name="readenBlue">
             <color red="0.23137254901960785" green="0.31372549019607843" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

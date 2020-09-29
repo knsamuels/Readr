@@ -16,14 +16,14 @@ class ChatTableViewController: UITableViewController {
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Bookclub Messaging"
+        self.title = "Chat"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
 //        self.navigationController?.navigationBar.tintColor = .black
         
         tableView.separatorColor = .clear
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         fetchBookclubs()
     }

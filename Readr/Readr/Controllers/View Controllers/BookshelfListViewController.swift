@@ -35,7 +35,7 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        self.title = "BOOKSHELF"
+        self.title = "Bookshelf"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
 //        self.navigationController?.navigationBar.tintColor = .black
         tableView.separatorColor = .clear
