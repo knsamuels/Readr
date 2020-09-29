@@ -29,6 +29,7 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
         tableView.separatorColor = .clear
         self.title = bookshelf?.title
                self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
     override func viewWillAppear(_ animated: Bool) {

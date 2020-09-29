@@ -62,7 +62,8 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         super.viewDidLoad()
         showLoadingScreen()
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-//        self.navigationController?.navigationBar.tintColor = .systemRed
+        self.navigationController?.navigationBar.tintColor = .black
+          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateBookclubs), name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
     }
     

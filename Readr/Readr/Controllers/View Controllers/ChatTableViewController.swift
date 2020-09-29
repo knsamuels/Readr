@@ -18,7 +18,8 @@ class ChatTableViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "Chat"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-//        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.tintColor = .black
+          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         
         tableView.separatorColor = .clear
     }
