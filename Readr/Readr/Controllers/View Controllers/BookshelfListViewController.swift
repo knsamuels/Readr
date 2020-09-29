@@ -142,21 +142,30 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
     
      func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, actionPerformed) in
-            let bookshelfToDelete = self.userBookshelves[indexPath.row]
-            guard let index = self.userBookshelves.firstIndex(of: bookshelfToDelete) else { return}
-           if bookshelfToDelete.title != "Favorites" {
-               BookshelfController.shared.deleteBookshelf(bookshelf: bookshelfToDelete) { (result) in
-                   DispatchQueue.main.async {
-                       switch result {
-                       case .success(_):
-                           self.userBookshelves.remove(at: index)
-                           self.tableView.reloadData()
-                       case .failure(_):
-                           print("no - error")
-                       }
-                   }
-               }
-           }
+            
+            let alertController = UIAlertController(title: "Delete Shelf?", message: nil, preferredStyle: .alert)
+            let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+                
+                let bookshelfToDelete = self.userBookshelves[indexPath.row]
+                guard let index = self.userBookshelves.firstIndex(of: bookshelfToDelete) else { return}
+                if bookshelfToDelete.title != "Favorites" {
+                    BookshelfController.shared.deleteBookshelf(bookshelf: bookshelfToDelete) { (result) in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(_):
+                                self.userBookshelves.remove(at: index)
+                                self.tableView.reloadData()
+                            case .failure(_):
+                                print("no - error")
+                            }
+                        }
+                    }
+                }
+            }
+            alertController.addAction(cancelAlertAction)
+            alertController.addAction(deleteAlertAction)
+            self.present(alertController, animated: true)
         }
         
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, actionPerformed) in
