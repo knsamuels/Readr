@@ -33,4 +33,4 @@ class MemberTableViewCell: UITableViewCell {
             memberImage.image = member.profilePhoto ?? UIImage(named: "ReadenLogo")
         }
     }
-}
+} //End of class

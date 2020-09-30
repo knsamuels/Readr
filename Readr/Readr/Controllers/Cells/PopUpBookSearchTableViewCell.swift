@@ -32,5 +32,5 @@ class PopUpBookSearchTableViewCell: UITableViewCell {
         }
 
     
-}
+} //End of class
 

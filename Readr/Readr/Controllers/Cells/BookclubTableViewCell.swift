@@ -27,4 +27,4 @@ class BookclubTableViewCell: UITableViewCell {
         bookclubImage.image = bookclub.profilePicture
         bookclubLabel.text = bookclub.name
     }
-}
+} //End of class
