@@ -28,7 +28,7 @@ class PopUpBookSearchTableViewCell: UITableViewCell {
             bookImageView.image = book.coverImage
             bookTitleLabel.text = book.title
             bookAuthorLabel.text = book.authors?.first
-            bookRatingLabel.text = "Rating: \(String(book.averageRating ?? 0))"
+            bookRatingLabel.text = " \(String(book.averageRating ?? 0))"
         }
 
     
