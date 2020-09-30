@@ -30,6 +30,7 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var BC1Button: UIButton!
     @IBOutlet weak var BC2Button: UIButton!
     @IBOutlet weak var BC3Button: UIButton!
+    @IBOutlet weak var descriptionScrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,11 @@ class BookDetailViewController: UIViewController {
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
           self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        
+        descriptionScrollView.layer.borderWidth = 0.25
+        descriptionScrollView.layer.borderColor = UIColor.readenBlue.cgColor
+        reviewWebView.layer.borderWidth = 0.25
+        reviewWebView.layer.borderColor = UIColor.readenBlue.cgColor
     }
     
     //Mark- Actions
