@@ -111,6 +111,15 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     func setUpImage() {
         profilePic.layer.cornerRadius = profilePic.frame.height / 2
         profilePic.clipsToBounds = true
+        
+        bookclubImage1.layer.cornerRadius = profilePic.frame.width / 2
+        bookclubImage1.clipsToBounds = true
+        bookclubImage2.layer.cornerRadius = profilePic.frame.width / 2
+        bookclubImage2.clipsToBounds = true
+        bookclubImage3.layer.cornerRadius = profilePic.frame.width / 2
+        bookclubImage3.clipsToBounds = true
+        bookclubImage4.layer.cornerRadius = profilePic.frame.width / 2
+        bookclubImage4.clipsToBounds = true
     }
     
     private func showLoadingScreen() {
@@ -168,7 +177,8 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             DispatchQueue.main.async {
                 switch result {
                 case .success(let books):
-                    self.userFavBooks = books
+                    let sortedBooks = books.sorted(by: { $0.title < $1.title })
+                    self.userFavBooks = sortedBooks
                 case .failure(_):
                     print("failed getting user's favorite books")
                 }
