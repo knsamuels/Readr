@@ -40,8 +40,8 @@ class BookDetailViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
           self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         
-        descriptionScrollView.layer.borderWidth = 0.25
-        descriptionScrollView.layer.borderColor = UIColor.readenBlue.cgColor
+//        descriptionScrollView.layer.borderWidth = 0.25
+//        descriptionScrollView.layer.borderColor = UIColor.readenBlue.cgColor
         reviewWebView.layer.borderWidth = 0.25
         reviewWebView.layer.borderColor = UIColor.readenBlue.cgColor
     }

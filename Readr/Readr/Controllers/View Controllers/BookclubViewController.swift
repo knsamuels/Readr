@@ -38,6 +38,9 @@ class BookclubViewController: UIViewController {
     @IBOutlet weak var pastReadsRatingStar1: UIImageView!
     @IBOutlet weak var pastReadsRatingStar2: UIImageView!
     @IBOutlet weak var pastReadsRatingStar3: UIImageView!
+    @IBOutlet weak var pastReads1Button: UIButton!
+    @IBOutlet weak var pastReads2Button: UIButton!
+    @IBOutlet weak var pastReads3Button: UIButton!
     
     private lazy var loadingScreen: RLogoLoadingView = {
         let view = RLogoLoadingView()
@@ -165,18 +168,37 @@ class BookclubViewController: UIViewController {
             self.authorForCurrentlyReading.text = currentlyReading.authors?.first
             self.ratingForCurrentlyReading.text = " \(currentlyReading.averageRating ?? 0.0)"
             
+            self.image1ForPastReads.isHidden = false
+            self.title1ForPastReads.isHidden = false
+            self.rating1ForPastReads.isHidden = false
+            self.pastReads1Button.isHidden = false
+            self.image2ForPastReads.isHidden = false
+            self.title2ForPastReads.isHidden = false
+            self.rating2ForPastReads.isHidden = false
+            self.pastReads2Button.isHidden = false
+            self.image3ForPastReads.isHidden = false
+            self.title3ForPastReads.isHidden = false
+            self.rating3ForPastReads.isHidden = false
+            self.pastReads3Button.isHidden = false
+            self.pastReadsRatingStar1.isHidden = false
+            self.pastReadsRatingStar2.isHidden = false
+            self.pastReadsRatingStar3.isHidden = false
+            
             let pastReadCount = self.pastReads.count
             switch pastReadCount {
             case 0:
                 self.image1ForPastReads.isHidden = true
                 self.title1ForPastReads.isHidden = true
                 self.rating1ForPastReads.isHidden = true
+                self.pastReads1Button.isHidden = true
                 self.image2ForPastReads.isHidden = true
                 self.title2ForPastReads.isHidden = true
                 self.rating2ForPastReads.isHidden = true
+                self.pastReads2Button.isHidden = true
                 self.image3ForPastReads.isHidden = true
                 self.title3ForPastReads.isHidden = true
                 self.rating3ForPastReads.isHidden = true
+                self.pastReads3Button.isHidden = true
                 self.pastReadsRatingStar1.isHidden = true
                 self.pastReadsRatingStar2.isHidden = true
                 self.pastReadsRatingStar3.isHidden = true
@@ -184,15 +206,18 @@ class BookclubViewController: UIViewController {
                 self.image1ForPastReads.isHidden = false
                 self.title1ForPastReads.isHidden = false
                 self.rating1ForPastReads.isHidden = false
+                self.pastReads1Button.isHidden = false
                 self.image1ForPastReads.image = self.pastReads[0].coverImage
                 self.title1ForPastReads.text = self.pastReads[0].title
                 self.rating1ForPastReads.text = "\(self.pastReads[0].averageRating ?? 0.0)"
                 self.image2ForPastReads.isHidden = true
                 self.title2ForPastReads.isHidden = true
                 self.rating2ForPastReads.isHidden = true
+                self.pastReads2Button.isHidden = true
                 self.image3ForPastReads.isHidden = true
                 self.title3ForPastReads.isHidden = true
                 self.rating3ForPastReads.isHidden = true
+                self.pastReads3Button.isHidden = true
                 self.pastReadsRatingStar1.isHidden = false
                 self.pastReadsRatingStar2.isHidden = true
                 self.pastReadsRatingStar3.isHidden = true
@@ -200,18 +225,21 @@ class BookclubViewController: UIViewController {
                 self.image1ForPastReads.isHidden = false
                 self.title1ForPastReads.isHidden = false
                 self.rating1ForPastReads.isHidden = false
+                self.pastReads1Button.isHidden = false
                 self.image1ForPastReads.image = self.pastReads[0].coverImage
                 self.title1ForPastReads.text = self.pastReads[0].title
                 self.rating1ForPastReads.text = "\(self.pastReads[0].averageRating ?? 0.0)"
                 self.image2ForPastReads.isHidden = false
                 self.title2ForPastReads.isHidden = false
                 self.rating2ForPastReads.isHidden = false
+                self.pastReads2Button.isHidden = false
                 self.image2ForPastReads.image = self.pastReads[1].coverImage
                 self.title2ForPastReads.text = self.pastReads[1].title
                 self.rating2ForPastReads.text = "\(self.pastReads[1].averageRating ?? 0.0)"
                 self.image3ForPastReads.isHidden = true
                 self.title3ForPastReads.isHidden = true
                 self.rating3ForPastReads.isHidden = true
+                self.pastReads3Button.isHidden = true
                 self.pastReadsRatingStar1.isHidden = false
                 self.pastReadsRatingStar2.isHidden = false
                 self.pastReadsRatingStar3.isHidden = true
@@ -219,18 +247,21 @@ class BookclubViewController: UIViewController {
                 self.image1ForPastReads.isHidden = false
                 self.title1ForPastReads.isHidden = false
                 self.rating1ForPastReads.isHidden = false
+                self.pastReads1Button.isHidden = false
                 self.image1ForPastReads.image = self.pastReads[0].coverImage
                 self.title1ForPastReads.text = self.pastReads[0].title
                 self.rating1ForPastReads.text = "\(self.pastReads[0].averageRating ?? 0.0)"
                 self.image2ForPastReads.isHidden = false
                 self.title2ForPastReads.isHidden = false
                 self.rating2ForPastReads.isHidden = false
+                self.pastReads2Button.isHidden = false
                 self.image2ForPastReads.image = self.pastReads[1].coverImage
                 self.title2ForPastReads.text = self.pastReads[1].title
                 self.rating2ForPastReads.text = "\(self.pastReads[1].averageRating ?? 0.0)"
                 self.image3ForPastReads.isHidden = false
                 self.title3ForPastReads.isHidden = false
                 self.rating3ForPastReads.isHidden = false
+                self.pastReads3Button.isHidden = false 
                 self.image3ForPastReads.image = self.pastReads[2].coverImage
                 self.title3ForPastReads.text = self.pastReads[2].title
                 self.rating3ForPastReads.text = "\(self.pastReads[2].averageRating ?? 0.0)"

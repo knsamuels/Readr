@@ -216,18 +216,21 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="wCD-0f-vZ3"/>
                                                 </constraints>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJA-PN-1Do" customClass="ReadenTextField" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="55" width="310.5" height="45"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUg-CT-wvG" customClass="ReadenTextField" customModule="Readen" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="110" width="310.5" height="45"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -269,7 +272,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="K3R-5X-fQP" firstAttribute="centerY" secondItem="hEy-qB-bL7" secondAttribute="centerY" multiplier="0.8" id="6ba-HR-wmK"/>
                             <constraint firstItem="3U0-ST-X6n" firstAttribute="leading" secondItem="hEy-qB-bL7" secondAttribute="leading" id="HJF-gO-t2A"/>
@@ -638,7 +641,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nCq-jQ-W07" firstAttribute="trailing" secondItem="Soq-fp-3O0" secondAttribute="trailing" constant="30" id="6jO-0D-ZBB"/>
                             <constraint firstItem="Soq-fp-3O0" firstAttribute="top" secondItem="E7T-Zz-Sxs" secondAttribute="bottom" constant="30" id="GdY-ee-TjP"/>
@@ -698,7 +701,7 @@
                                 <rect key="frame" x="87" y="316" width="240" height="128"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bPV-TX-Hlw" firstAttribute="centerX" secondItem="FoW-8p-Ken" secondAttribute="centerX" id="EHo-3u-SxX"/>
                             <constraint firstItem="bPV-TX-Hlw" firstAttribute="centerY" secondItem="FoW-8p-Ken" secondAttribute="centerY" multiplier="0.8" id="GtS-xs-66S"/>
@@ -781,7 +784,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZF7-HN-NW6" firstAttribute="trailing" secondItem="xg4-m6-CF0" secondAttribute="trailing" id="2EG-ib-UZj"/>
                             <constraint firstItem="3Pp-8e-4IX" firstAttribute="height" secondItem="XUW-Iz-Hio" secondAttribute="height" multiplier="0.142857" id="6N1-kw-95h"/>
@@ -832,11 +835,11 @@
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lSE-60-ru5" customClass="ReadenTextView" customModule="Readen" customModuleProvider="target">
                                         <rect key="frame" x="52" y="153" width="310.5" height="90"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="offWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="aCF-Bu-ccy"/>
                                         </constraints>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -886,7 +889,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zTh-g2-Gv8" firstAttribute="centerY" secondItem="m6q-wD-9FK" secondAttribute="centerY" multiplier="0.8" id="9al-uM-XxG"/>
                             <constraint firstItem="zTh-g2-Gv8" firstAttribute="height" secondItem="Ik3-6U-nRv" secondAttribute="height" multiplier="0.142857" id="Ozn-YM-gZc"/>
@@ -928,6 +931,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="a4r-R1-Oz3"/>
                                         </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -979,7 +983,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4a0-Oq-CXv" firstAttribute="leading" secondItem="PqF-na-fyH" secondAttribute="leading" id="ENH-3q-OsU"/>
                             <constraint firstItem="1hN-sG-Gav" firstAttribute="centerY" secondItem="PqF-na-fyH" secondAttribute="centerY" multiplier="0.8" id="GMg-Rs-Sqx"/>
@@ -1022,6 +1026,9 @@
     </scenes>
     <resources>
         <image name="ReadenLogo" width="512" height="512"/>
+        <namedColor name="offWhite">
+            <color red="1" green="1" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="readenGray">
             <color red="0.25098039215686274" green="0.24705882352941178" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
