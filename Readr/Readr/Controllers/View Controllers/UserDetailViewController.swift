@@ -25,8 +25,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     
     //MARK: - Outlets
     @IBOutlet weak var profilePic: UIImageView!
-    @IBOutlet weak var followerLabel: UILabel!
-    @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var favBookPic1: UIImageView!
     @IBOutlet weak var titleLabel1: UILabel!
     @IBOutlet weak var authorLabel1: UILabel!
@@ -57,6 +55,9 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var bookclub4ButtonLabel: UIButton!
     @IBOutlet weak var selectProfileImage: UIButton!
     @IBOutlet weak var createBookclubButton: UIButton!
+    @IBOutlet weak var followingCountLabel: UILabel!
+    @IBOutlet weak var followersCountLabel: UILabel!
+    @IBOutlet weak var followButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +106,23 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
     }
+    
+    @IBAction func followButtonTapped(_ sender: Any) {
+        guard let user = user else {return}
+        guard let currentUser = UserController.shared.currentUser else {return}
+        
+        if user.followerList.contains(currentUser.username) {
+            guard let followerIndex = user.followerList.firstIndex(of: currentUser.username) else {return}
+            user.followerList.remove(at: followerIndex)
+            guard let followingIndex = currentUser.followingList.firstIndex(of: user.username) else {return}
+            currentUser.followerList.remove(at: followingIndex)
+        } else {
+            user.followerList.append(currentUser.username)
+            currentUser.followingList.append(user.username)
+        }
+        updateViews()
+    }
+
     
     //MARK: - Helper Methods
     
@@ -193,9 +211,17 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             if user == UserController.shared.currentUser {
                 self.selectProfileImage.isHidden = false
                 self.createBookclubButton.isHidden = false
+                self.followButton.isHidden = true
             } else {
                 self.selectProfileImage.isHidden = true
                 self.createBookclubButton.isHidden = true
+                self.followButton.isHidden = false
+                guard let currentUser = UserController.shared.currentUser else {return}
+                if user.followerList.contains(currentUser.username) {
+                    self.followButton.setTitle("Following", for: .normal)
+                } else {
+                    self.followButton.setTitle("Follow", for: .normal)
+                }
             }
             if let image = self.user?.profilePhoto {
                 self.selectProfileImage.setTitle("Edit Photo", for: .normal)
@@ -203,6 +229,10 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             } else {
                 self.profilePic.image = self.user?.profilePhoto ?? UIImage(named: "ReadenLogo")
             }
+    
+            self.followersCountLabel.text = "\(user.followerList.count)"
+            self.followingCountLabel.text = "\(user.followingList.count)"
+            
             self.favBookPic1.isHidden = false
             self.titleLabel1.isHidden = false
             self.favBook1ButtonLabel.isHidden = false

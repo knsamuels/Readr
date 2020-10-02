@@ -19,6 +19,7 @@ class AlertViewController: UIViewController {
     @IBOutlet weak var brownButton: UIButton!
     @IBOutlet weak var purpleButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var favoritesLabel: UILabel!
     
     //MARK: - Properties
     var blueIsSelected = false
@@ -45,6 +46,8 @@ class AlertViewController: UIViewController {
             blueIsSelected = true 
             blueButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
             createButton.setTitle("Create", for: .normal)
+            favoritesLabel.isHidden = true
+            shelfNameTextField.isHidden = false 
         }
     }
     
@@ -159,8 +162,15 @@ class AlertViewController: UIViewController {
     
     //MARK: - Helper Methods
     func updateViews(with bookshelf: Bookshelf) {
-        shelfNameTextField.text = bookshelf.title
-        
+        if bookshelf.title == "Favorites" {
+            favoritesLabel.isHidden = false
+            shelfNameTextField.isHidden = true
+        } else {
+            shelfNameTextField.text = bookshelf.title
+            favoritesLabel.isHidden = true
+            shelfNameTextField.isHidden = false
+        }
+    
         if bookshelf.color == "blue" {
             blueIsSelected = true
         } else if bookshelf.color == "green" {

@@ -177,9 +177,15 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
             self.presentEditCustomAlert(bookshelf: bookshelfToSend)
         }
     
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction,editAction])
-        configuration.performsFirstActionWithFullSwipe = false
-        return configuration
+        if userBookshelves[indexPath.row].title != "Favorites" {
+            let configuration = UISwipeActionsConfiguration(actions: [deleteAction,editAction])
+            configuration.performsFirstActionWithFullSwipe = false
+             return configuration
+        } else {
+           let configuration = UISwipeActionsConfiguration(actions: [editAction])
+            configuration.performsFirstActionWithFullSwipe = false
+             return configuration
+        }
     }
     
     // MARK: - Navigation
