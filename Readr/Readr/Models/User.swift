@@ -18,7 +18,7 @@ struct UserStrings {
     fileprivate static let favoriteAuthorKey = "favoriteAuthor"
     fileprivate static let favoriteBooksKey = "favoriteBooks"
     fileprivate static let bookclubKey = "bookClub"
-    fileprivate static let friendListKey = "friendList"
+    fileprivate static let followingListKey = "followingList"
     fileprivate static let followerListKey = "followerList"
     fileprivate static let blockedUsersKey = "blockedUsers"
     fileprivate static let favoriteGenresKey = "favoriteGenres"
@@ -35,7 +35,7 @@ class User {
     var favoriteAuthor: String
     var favoriteBooks: [String]
     var bookclubs: [Bookclub]
-    var friendList: [String]
+    var followingList: [String]
     var followerList: [String]
     var blockedUsers: [String]
     var favoriteGenres: [String]
@@ -69,7 +69,7 @@ class User {
         }
     }
     
-    init(username: String, firstName: String, lastName: String, bio: String = "", favoriteAuthor: String = "", favoriteBooks: [String] = [], bookclubs: [Bookclub] = [], friendList: [String] = [], followerList: [String] = [], blockedUsers: [String] = [], favoriteGenres: [String] = [], bookshelves: [Bookshelf] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), appleUserRef: CKRecord.Reference, profilePhoto: UIImage? = nil) {
+    init(username: String, firstName: String, lastName: String, bio: String = "", favoriteAuthor: String = "", favoriteBooks: [String] = [], bookclubs: [Bookclub] = [], followingList: [String] = [], followerList: [String] = [], blockedUsers: [String] = [], favoriteGenres: [String] = [], bookshelves: [Bookshelf] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), appleUserRef: CKRecord.Reference, profilePhoto: UIImage? = nil) {
         self.username = username
         self.firstName = firstName
         self.lastName = lastName
@@ -77,7 +77,7 @@ class User {
         self.favoriteAuthor = favoriteAuthor
         self.favoriteBooks = favoriteBooks
         self.bookclubs = bookclubs
-        self.friendList = friendList
+        self.followingList = followingList
         self.followerList = followerList
         self.blockedUsers = blockedUsers
         self.favoriteGenres = favoriteGenres
@@ -113,6 +113,16 @@ extension User {
             blockedUsers = result
         }
         
+        var followingList: [String] = []
+        if let result = ckRecord[UserStrings.followingListKey] as? [String] {
+            followingList = result
+        }
+        
+        var followerList: [String] = []
+        if let result = ckRecord[UserStrings.followerListKey] as? [String] {
+            followerList = result
+        }
+        
         var foundPhoto: UIImage?
         if let photoAsset = ckRecord[UserStrings.photoAssetKey] as? CKAsset {
             do {
@@ -124,7 +134,7 @@ extension User {
             }
         }
         
-        self.init(username: username, firstName: firstName, lastName: lastName, bio: bio, favoriteAuthor: favoriteAuthor, favoriteBooks: favoriteBooks, bookclubs: [], friendList: [], followerList: [], blockedUsers: blockedUsers, favoriteGenres: favoriteGenres, bookshelves: [], recordID: ckRecord.recordID, appleUserRef: appleUserRef, profilePhoto: foundPhoto)
+        self.init(username: username, firstName: firstName, lastName: lastName, bio: bio, favoriteAuthor: favoriteAuthor, favoriteBooks: favoriteBooks, bookclubs: [], followingList: followingList, followerList: followerList, blockedUsers: blockedUsers, favoriteGenres: favoriteGenres, bookshelves: [], recordID: ckRecord.recordID, appleUserRef: appleUserRef, profilePhoto: foundPhoto)
     }
     
 } //End of extension
@@ -138,10 +148,16 @@ extension CKRecord {
             UserStrings.usernameKey : user.username,
             UserStrings.bioKey : user.bio,
             UserStrings.favoriteAuthorKey : user.favoriteAuthor,
-            //UserStrings.friendListKey : user.friendList,
-            //UserStrings.followerListKey : user.followerList,
+//            UserStrings.followingListKey : user.followingList,
+//            UserStrings.followerListKey : user.followerList,
             UserStrings.appleUserRefKey : user.appleUserRef
         ])
+        if user.followingList.count > 0 {
+            self.setValue(user.followingList, forKey: UserStrings.followingListKey)
+        }
+        if user.followerList.count > 0 {
+            self.setValue(user.followerList, forKey: UserStrings.followerListKey)
+        }
         if user.favoriteGenres.count > 0 {
             self.setValue(user.favoriteGenres, forKey: UserStrings.favoriteGenresKey)
         }

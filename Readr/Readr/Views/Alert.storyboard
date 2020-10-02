@@ -217,14 +217,23 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9q-yE-TG3">
+                                        <rect key="frame" x="34.5" y="67" width="206" height="29"/>
+                                        <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="25"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="r9q-yE-TG3" firstAttribute="width" secondItem="tXF-Ja-MHz" secondAttribute="width" multiplier="0.75" id="LLa-ES-1Cg"/>
                                     <constraint firstItem="rgY-Wl-REM" firstAttribute="top" secondItem="tXF-Ja-MHz" secondAttribute="top" constant="25" id="NJG-wb-aQc"/>
                                     <constraint firstItem="f8I-82-uCp" firstAttribute="centerX" secondItem="tXF-Ja-MHz" secondAttribute="centerX" id="RNw-iJ-FYy"/>
+                                    <constraint firstItem="r9q-yE-TG3" firstAttribute="top" secondItem="rgY-Wl-REM" secondAttribute="bottom" constant="20.5" id="W4v-Wz-s5f"/>
                                     <constraint firstItem="rgY-Wl-REM" firstAttribute="leading" secondItem="tXF-Ja-MHz" secondAttribute="leading" constant="12" id="X7V-LX-DRw"/>
                                     <constraint firstItem="f8I-82-uCp" firstAttribute="width" secondItem="tXF-Ja-MHz" secondAttribute="width" multiplier="0.75" id="cW3-gN-UDa"/>
                                     <constraint firstItem="f8I-82-uCp" firstAttribute="top" secondItem="rgY-Wl-REM" secondAttribute="bottom" constant="20" id="eAk-9X-ARe"/>
+                                    <constraint firstItem="r9q-yE-TG3" firstAttribute="centerX" secondItem="tXF-Ja-MHz" secondAttribute="centerX" id="kQF-xa-XZV"/>
                                     <constraint firstAttribute="trailing" secondItem="rgY-Wl-REM" secondAttribute="trailing" constant="12" id="rsB-fj-qlO"/>
                                 </constraints>
                             </view>
@@ -248,6 +257,7 @@
                         <outlet property="blueButton" destination="Yw6-JM-xKn" id="Hgi-7R-x2B"/>
                         <outlet property="brownButton" destination="xbf-4O-bHp" id="o1r-p6-eTt"/>
                         <outlet property="createButton" destination="e08-yE-FaO" id="azA-8j-Cch"/>
+                        <outlet property="favoritesLabel" destination="r9q-yE-TG3" id="ieB-jm-u7I"/>
                         <outlet property="greenButton" destination="Ygq-j9-wdG" id="Q6O-lf-mgu"/>
                         <outlet property="orangeButton" destination="cqz-TW-V0a" id="FVK-xE-0Yo"/>
                         <outlet property="purpleButton" destination="2zr-E5-kDd" id="R4u-Tz-AUY"/>
@@ -258,7 +268,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qvq-R7-gWR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="G8m-MA-VJy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="773" y="52"/>
+            <point key="canvasLocation" x="771.73913043478262" y="51.897321428571423"/>
         </scene>
     </scenes>
     <resources>
