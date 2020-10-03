@@ -64,20 +64,23 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         showLoadingScreen()
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
         self.navigationController?.navigationBar.tintColor = .black
-          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateBookclubs), name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(true)
         setUpImage()
-//        userFavBooks = []
+        updateViews()
         favBookISBNs = []
         if self.user == nil {
             fetchUser()
         } else {
             fetchUserBooks()
         }
+        guard let user = user else {return}
+        print("FOLLOWERS: \(user.followerList.count)")
+        print("FOLLOWING: \(user.followingList.count)")
     }
     
     //MARK: - Actions
@@ -115,14 +118,33 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             guard let followerIndex = user.followerList.firstIndex(of: currentUser.username) else {return}
             user.followerList.remove(at: followerIndex)
             guard let followingIndex = currentUser.followingList.firstIndex(of: user.username) else {return}
-            currentUser.followerList.remove(at: followingIndex)
+            currentUser.followingList.remove(at: followingIndex)
         } else {
             user.followerList.append(currentUser.username)
             currentUser.followingList.append(user.username)
         }
-        updateViews()
+        UserController.shared.updateUser(user: user) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    self.updateViews()
+                case .failure(_):
+                    print("Could not update user with followers")
+                }
+            }
+        }
+        UserController.shared.updateUser(user: currentUser) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    self.updateViews()
+                case .failure(_):
+                    print("Could not update user with followers")
+                }
+            }
+        }
     }
-
+    
     
     //MARK: - Helper Methods
     
@@ -141,14 +163,14 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     }
     
     private func showLoadingScreen() {
-          view.addSubview(loadingScreen)
-          NSLayoutConstraint.activate([
-              loadingScreen.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-              loadingScreen.topAnchor.constraint(equalTo: view.topAnchor),
-              loadingScreen.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-              loadingScreen.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-          ])
-      }
+        view.addSubview(loadingScreen)
+        NSLayoutConstraint.activate([
+            loadingScreen.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingScreen.topAnchor.constraint(equalTo: view.topAnchor),
+            loadingScreen.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingScreen.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
     
     func fetchUser() {
         UserController.shared.fetchUser { (result) in
@@ -229,7 +251,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             } else {
                 self.profilePic.image = self.user?.profilePhoto ?? UIImage(named: "ReadenLogo")
             }
-    
+            
             self.followersCountLabel.text = "\(user.followerList.count)"
             self.followingCountLabel.text = "\(user.followingList.count)"
             
@@ -408,8 +430,8 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     @objc func updateBookclubs() {
         getUsersBookclubs()
     }
-        
-        
+    
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "bioFavBook1toBDVC" {
@@ -444,6 +466,16 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             guard let destination = segue.destination as?
                 BookclubListTableViewController else {return}
             guard let user = user else {return}
+            destination.user = user
+        } else if segue.identifier == "followingToFollowList" {
+            guard let destination = segue.destination as?
+                FollowViewController else {return}
+//            destination.followSegmentController.selectedSegmentIndex = 0
+            destination.user = user
+        } else if segue.identifier == "followersToFollowList" {
+            guard let destination = segue.destination as?
+                FollowViewController else {return}
+//            destination.followSegmentController.selectedSegmentIndex = 1
             destination.user = user
         }
     }

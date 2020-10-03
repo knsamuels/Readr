@@ -73,6 +73,8 @@
 		C9BFE4CC24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFE4CB24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift */; };
 		C9BFE4CE24F6CBC700242CE7 /* UserBioEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFE4CD24F6CBC600242CE7 /* UserBioEditViewController.swift */; };
 		C9BFE4D024F7106000242CE7 /* RLogoLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFE4CF24F7106000242CE7 /* RLogoLoadingView.swift */; };
+		C9CAF24E2529147D001E4C2A /* FollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CAF24D2529147D001E4C2A /* FollowViewController.swift */; };
+		C9CAF250252917B2001E4C2A /* FollowListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CAF24F252917B2001E4C2A /* FollowListTableViewCell.swift */; };
 		C9DBB76524F4117900285DC7 /* PopUpBookshelfTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DBB76424F4117900285DC7 /* PopUpBookshelfTableViewController.swift */; };
 		C9DBB76724F469B900285DC7 /* PastReadsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DBB76624F469B800285DC7 /* PastReadsTableViewCell.swift */; };
 		F31A488524E480A80071652A /* BookshelfListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A488424E480A80071652A /* BookshelfListTableViewController.swift */; };
@@ -155,6 +157,8 @@
 		C9BFE4CB24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBookSearchTableViewCell.swift; sourceTree = "<group>"; };
 		C9BFE4CD24F6CBC600242CE7 /* UserBioEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBioEditViewController.swift; sourceTree = "<group>"; };
 		C9BFE4CF24F7106000242CE7 /* RLogoLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLogoLoadingView.swift; sourceTree = "<group>"; };
+		C9CAF24D2529147D001E4C2A /* FollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewController.swift; sourceTree = "<group>"; };
+		C9CAF24F252917B2001E4C2A /* FollowListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowListTableViewCell.swift; sourceTree = "<group>"; };
 		C9DBB76424F4117900285DC7 /* PopUpBookshelfTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBookshelfTableViewController.swift; sourceTree = "<group>"; };
 		C9DBB76624F469B800285DC7 /* PastReadsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastReadsTableViewCell.swift; sourceTree = "<group>"; };
 		F31A488424E480A80071652A /* BookshelfListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfListTableViewController.swift; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 				93AC78732509E4BF00B6A5F8 /* PlaceholderViewController.swift */,
 				93AC78752509E52F00B6A5F8 /* AlertViewController.swift */,
 				C91051AA251BC4EA008C3928 /* BookshelfListViewController.swift */,
+				C9CAF24D2529147D001E4C2A /* FollowViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 				C91051A62512A05D008C3928 /* BookclubTableViewCell.swift */,
 				C91051A82512A574008C3928 /* MemberTableViewCell.swift */,
 				935DAEAD2517E9EB008BE502 /* ChatTableViewCell.swift */,
+				C9CAF24F252917B2001E4C2A /* FollowListTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -519,10 +525,12 @@
 				937A9F5C24F4CAC100AE9067 /* GenresViewController.swift in Sources */,
 				C9BFE4CA24F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift in Sources */,
 				C98FC7E824E1B4A300C27CBF /* MessageError.swift in Sources */,
+				C9CAF250252917B2001E4C2A /* FollowListTableViewCell.swift in Sources */,
 				C98FC7DE24E1A0B900C27CBF /* BookshelfError.swift in Sources */,
 				9303FED224F7600D00486F65 /* CustomizeViewController.swift in Sources */,
 				C98FC7D724DDD52000C27CBF /* BookController.swift in Sources */,
 				93AC78762509E52F00B6A5F8 /* AlertViewController.swift in Sources */,
+				C9CAF24E2529147D001E4C2A /* FollowViewController.swift in Sources */,
 				938A2DA524EAE724002119E1 /* StartViewController.swift in Sources */,
 				C98FC7B224DDC71000C27CBF /* SceneDelegate.swift in Sources */,
 				C965088D2506C45200DB002D /* MemberListTableViewController.swift in Sources */,

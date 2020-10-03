@@ -2616,6 +2616,34 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
+
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVQ-FR-t1b">
+                                                <rect key="frame" x="247" y="90" width="115" height="39"/>
+                                                <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="23"/>
+                                                <state key="normal" title="follow">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="followButtonTapped:" destination="Dff-Fc-vSR" eventType="touchUpInside" id="pe9-Ho-49n"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCf-Il-BDb">
+                                                <rect key="frame" x="316" y="11" width="90" height="71"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <segue destination="CEw-Rj-swW" kind="show" identifier="followersToFollowList" id="gAY-BR-rCM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lr3-p3-XaA">
+                                                <rect key="frame" x="168" y="8" width="122" height="74"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <segue destination="CEw-Rj-swW" kind="show" identifier="followingToFollowList" id="JQQ-qd-Fav"/>
+                                                </connections>
+                                            </button>
+
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2713,6 +2741,92 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FEp-ME-Jpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1453.6231884057972" y="-16.071428571428569"/>
+        </scene>
+        <!--Follow View Controller-->
+        <scene sceneID="YdL-mE-qS6">
+            <objects>
+                <viewController id="CEw-Rj-swW" customClass="FollowViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nqf-Vf-d7x">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dou-Kd-fvB">
+                                <rect key="frame" x="0.0" y="152" width="414" height="612"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="followCell" rowHeight="95" id="zn5-oS-Jnr" customClass="FollowListTableViewCell" customModule="Readen" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="95"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zn5-oS-Jnr" id="Opx-1g-vyg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HxX-qt-IZq">
+                                                    <rect key="frame" x="20" y="0.0" width="154" height="95"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="154" id="4oP-GW-oFO"/>
+                                                        <constraint firstAttribute="height" constant="88" id="PAR-OP-NkE"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ3-7K-Y7o">
+                                                    <rect key="frame" x="194" y="10" width="210" height="65"/>
+                                                    <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="20"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JJ3-7K-Y7o" firstAttribute="leading" secondItem="HxX-qt-IZq" secondAttribute="trailing" constant="20" id="8ht-Qv-N4o"/>
+                                                <constraint firstAttribute="bottom" secondItem="JJ3-7K-Y7o" secondAttribute="bottom" constant="20" id="BXL-Vj-c69"/>
+                                                <constraint firstAttribute="trailing" secondItem="JJ3-7K-Y7o" secondAttribute="trailing" constant="10" id="MG8-Gk-JNz"/>
+                                                <constraint firstAttribute="bottom" secondItem="HxX-qt-IZq" secondAttribute="bottom" id="WlC-oC-ugv"/>
+                                                <constraint firstItem="HxX-qt-IZq" firstAttribute="top" secondItem="Opx-1g-vyg" secondAttribute="top" id="XqR-72-1aK"/>
+                                                <constraint firstItem="JJ3-7K-Y7o" firstAttribute="top" secondItem="Opx-1g-vyg" secondAttribute="top" constant="10" id="cDq-nf-sSL"/>
+                                                <constraint firstItem="HxX-qt-IZq" firstAttribute="leading" secondItem="Opx-1g-vyg" secondAttribute="leading" constant="20" id="elL-MN-UiE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="followImage" destination="HxX-qt-IZq" id="fQA-ee-3B5"/>
+                                            <outlet property="followNameLabel" destination="JJ3-7K-Y7o" id="XDj-Y3-iNI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="K2n-cZ-NhJ">
+                                <rect key="frame" x="142" y="102" width="130" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="bZW-qg-q6h"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Following"/>
+                                    <segment title="Followers"/>
+                                </segments>
+                                <connections>
+                                    <action selector="FollowSegmentControllerTapped:" destination="CEw-Rj-swW" eventType="valueChanged" id="tKy-ki-J7d"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="K2n-cZ-NhJ" firstAttribute="leading" secondItem="7HU-0b-bbo" secondAttribute="leading" constant="142" id="5iz-10-4AE"/>
+                            <constraint firstItem="K2n-cZ-NhJ" firstAttribute="centerX" secondItem="Dou-Kd-fvB" secondAttribute="centerX" id="75b-K2-7fb"/>
+                            <constraint firstItem="Dou-Kd-fvB" firstAttribute="leading" secondItem="7HU-0b-bbo" secondAttribute="leading" id="ESV-Pi-0pG"/>
+                            <constraint firstItem="K2n-cZ-NhJ" firstAttribute="top" secondItem="7HU-0b-bbo" secondAttribute="top" constant="14" id="RGK-Pm-OB2"/>
+                            <constraint firstItem="7HU-0b-bbo" firstAttribute="trailing" secondItem="Dou-Kd-fvB" secondAttribute="trailing" id="Yaf-Wk-ekB"/>
+                            <constraint firstItem="7HU-0b-bbo" firstAttribute="bottom" secondItem="Dou-Kd-fvB" secondAttribute="bottom" id="qEe-l3-cwS"/>
+                            <constraint firstItem="Dou-Kd-fvB" firstAttribute="top" secondItem="K2n-cZ-NhJ" secondAttribute="bottom" constant="20" id="sfO-IS-1xN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7HU-0b-bbo"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9lY-9d-Fv0"/>
+                    <connections>
+                        <outlet property="followSegmentController" destination="K2n-cZ-NhJ" id="zYZ-U2-DIr"/>
+                        <outlet property="followTableView" destination="Dou-Kd-fvB" id="yer-zw-MEs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WV8-xL-CXk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1757.9710144927537" y="-678.34821428571422"/>
         </scene>
         <!--User Bio Edit View Controller-->
         <scene sceneID="Xzn-XF-ttZ">
@@ -3368,6 +3482,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="gAY-BR-rCM"/>
         <segue reference="I22-a6-LKA"/>
         <segue reference="bWE-Lv-3sc"/>
         <segue reference="cVK-gp-z3w"/>
