@@ -2567,16 +2567,6 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVQ-FR-t1b">
-                                                <rect key="frame" x="163.5" y="85" width="218" height="31"/>
-                                                <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="21"/>
-                                                <state key="normal" title="follow">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="followButtonTapped:" destination="Dff-Fc-vSR" eventType="touchUpInside" id="pe9-Ho-49n"/>
-                                                </connections>
-                                            </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YAp-A4-n8P" userLabel="followersStackView">
                                                 <rect key="frame" x="163.5" y="20" width="218" height="60"/>
                                                 <subviews>
