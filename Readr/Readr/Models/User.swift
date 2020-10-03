@@ -148,16 +148,11 @@ extension CKRecord {
             UserStrings.usernameKey : user.username,
             UserStrings.bioKey : user.bio,
             UserStrings.favoriteAuthorKey : user.favoriteAuthor,
-//            UserStrings.followingListKey : user.followingList,
-//            UserStrings.followerListKey : user.followerList,
             UserStrings.appleUserRefKey : user.appleUserRef
         ])
-        if user.followingList.count > 0 {
-            self.setValue(user.followingList, forKey: UserStrings.followingListKey)
-        }
-        if user.followerList.count > 0 {
-            self.setValue(user.followerList, forKey: UserStrings.followerListKey)
-        }
+        self.setValue(user.followingList, forKey: UserStrings.followingListKey)
+        self.setValue(user.followerList, forKey: UserStrings.followerListKey)
+        
         if user.favoriteGenres.count > 0 {
             self.setValue(user.favoriteGenres, forKey: UserStrings.favoriteGenresKey)
         }
