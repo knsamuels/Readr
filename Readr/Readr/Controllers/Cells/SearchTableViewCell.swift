@@ -29,12 +29,22 @@ class SearchTableViewCell: UITableViewCell {
     
     func updateUserViews() {
         guard let user = user else {return}
-        personOrClubImage.image = user.profilePhoto
         personOrClubLabel.text = "\(user.firstName) \(user.lastName)"
+        
+        if let image = user.profilePhoto {
+            personOrClubImage.image = image
+        } else {
+            personOrClubImage.image = user.profilePhoto ?? UIImage(named: "ReadenLogo")
+        }
+        personOrClubImage.layer.cornerRadius = personOrClubImage.frame.height / 2
+        personOrClubImage.clipsToBounds = true
+        
     }
     func updateBookclubViews() {
         guard let bookclub = bookclub else {return}
         personOrClubImage.image = bookclub.profilePicture
+        personOrClubImage.layer.cornerRadius = personOrClubImage.frame.height / 2
+        personOrClubImage.clipsToBounds = true
         personOrClubLabel.text = bookclub.name
     }
 

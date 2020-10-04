@@ -32,5 +32,7 @@ class FollowListTableViewCell: UITableViewCell {
         } else {
            followImage.image = member.profilePhoto ?? UIImage(named: "ReadenLogo")
         }
+        followImage.layer.cornerRadius = followImage.frame.height / 2
+        followImage.clipsToBounds = true
     }
 } //End of class

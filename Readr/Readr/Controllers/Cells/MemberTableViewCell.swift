@@ -32,5 +32,7 @@ class MemberTableViewCell: UITableViewCell {
         } else {
             memberImage.image = member.profilePhoto ?? UIImage(named: "ReadenLogo")
         }
+        memberImage.layer.cornerRadius = memberImage.frame.height / 2
+        memberImage.clipsToBounds = true
     }
 } //End of class

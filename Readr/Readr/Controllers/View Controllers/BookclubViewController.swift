@@ -79,12 +79,16 @@ class BookclubViewController: UIViewController {
                 
                 bookclub.members.remove(at: index)
                 joinButton.setTitle("Join", for: .normal)
+                self.joinButton.setTitleColor(.black, for: .normal)
+                self.joinButton.backgroundColor = .white
                 self.memberCountLabel.text = "\(bookclub.members.count)"
                 
             } else {
                 user.bookclubs.append(bookclub)
                 bookclub.members.append(userAppleRef)
-                joinButton.setTitle("Leave", for: .normal)
+                joinButton.setTitle("Member", for: .normal)
+                self.joinButton.setTitleColor(.white, for: .normal)
+                self.joinButton.backgroundColor = .accentBlack
                 self.memberCountLabel.text = "\(bookclub.members.count)"
             }
             //UserController.shared.updateUser(user: user) { (result) in
@@ -149,12 +153,16 @@ class BookclubViewController: UIViewController {
             self.adminContactInfoLabel.text = bookclub.adminContactInfo
             
             if bookclub.members.contains(userAppleRef) {
+                self.joinButton.setTitleColor(.white, for: .normal)
+                self.joinButton.backgroundColor = .accentBlack
                 if bookclub.admin == userAppleRef {
                     self.joinButton.setTitle("Host", for: .normal)
                 } else  {
-                    self.joinButton.setTitle("Leave", for: .normal)
+                    self.joinButton.setTitle("Member", for: .normal)
                 }
             } else {
+                self.joinButton.setTitleColor(.black, for: .normal)
+                self.joinButton.backgroundColor = .white
                 if bookclub.members.count == bookclub.memberCapacity {
                     self.joinButton.setTitle("Full", for: .normal)
                     self.joinButton.isEnabled = false

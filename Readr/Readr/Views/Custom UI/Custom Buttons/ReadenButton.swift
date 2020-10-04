@@ -51,4 +51,21 @@ class circleButton: UIButton {
     
 } //End of class
 
+class statusButton: UIButton {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupView()
+    }
+    func setupView() {
+        self.layer.cornerRadius = 10.0
+        self.clipsToBounds = true
+        
+        self.layer.borderWidth = 2.0
+        self.layer.borderColor = UIColor.accentBlack.cgColor
+
+    }
+    
+} //End of class
+
 
