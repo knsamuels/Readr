@@ -12,6 +12,7 @@ class ChatTableViewController: UITableViewController {
     
     // MARK: - Properties
     var bookclubsArray: [Bookclub] = []
+    var recentMessage: Message?
     
     // MARK: - Lifecycles
     override func viewDidLoad() {
@@ -21,12 +22,13 @@ class ChatTableViewController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = .black
           self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         
-        tableView.separatorColor = .clear
+//        tableView.separatorColor = .clear
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         fetchBookclubs()
+        
     }
     
     // MARK: - Helper Methods

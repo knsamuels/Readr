@@ -221,12 +221,13 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 case .success(let books):
                     let sortedBooks = books.sorted(by: { $0.title < $1.title })
                     self.userFavBooks = sortedBooks
+                    self.getUsersBookclubs()
                 case .failure(_):
                     print("failed getting user's favorite books")
                 }
             }
         }
-        self.getUsersBookclubs()
+//        self.getUsersBookclubs()
     }
     
     func updateViews() {
