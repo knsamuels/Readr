@@ -22,6 +22,7 @@ class ChatTableViewCell: UITableViewCell {
         }
     }
     var clubMessages: [Message] = []
+    var recentMessage: Message?
     
     //MARK: - Lifecycles
     override func awakeFromNib() {
@@ -36,6 +37,7 @@ class ChatTableViewCell: UITableViewCell {
                 switch result {
                 case .success(let messages):
                     self.clubMessages = messages
+                    self.recentMessage = messages.last
                     self.updateViews()
                 case .failure(_):
                     print("Unable to fetch messages for this bookclub.")
@@ -49,7 +51,8 @@ class ChatTableViewCell: UITableViewCell {
         bookclubImageView.image = bookclub.profilePicture
         bookclubTitleLabel.text = bookclub.name
         if clubMessages.count > 0 {
-            lastmessageLabel.text = clubMessages[clubMessages.count - 1].text
+            guard let recentMessage = recentMessage else {return}
+            lastmessageLabel.text = recentMessage.text
         } else {
             lastmessageLabel.text = " "
         }

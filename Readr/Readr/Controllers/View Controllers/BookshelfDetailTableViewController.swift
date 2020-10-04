@@ -8,23 +8,14 @@
 
 import UIKit
 
-class BookshelfDetailTableViewController: UITableViewController, UISearchBarDelegate {
+class BookshelfDetailTableViewController: UITableViewController {
     
     var bookshelf: Bookshelf?
     var bookshelfBooks: [Book] = []
-    var resultsArray: [SearchableRecord] = []
-    var isSearching = false
-    var dataSource: [SearchableRecord] {
-        return isSearching ? resultsArray : bookshelfBooks
-        
-    }
     
     // Mark Outlets
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        searchBar.delegate = self
         fetchBooks()
         tableView.separatorColor = .clear
         self.title = bookshelf?.title
@@ -34,11 +25,6 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        DispatchQueue.main.async {
-            self.resultsArray = self.bookshelfBooks
-            self.tableView.reloadData()
-        }
     }
     
     //Mark - Helper function
@@ -69,26 +55,21 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
     @IBAction func removeBookshelfButtonTapped(_ sender: UIBarButtonItem) {
         
     }
-    // MARK: - Table view data source
     
+    // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-//        return dataSource.count
         return bookshelfBooks.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookshelfSearchCell", for: indexPath) as? BookshelfDetailTableViewCell else { return UITableViewCell() }
         guard let bookshelf = bookshelf else {return UITableViewCell()}
-//        let book = dataSource[indexPath.row] as? Book
         let book = bookshelfBooks[indexPath.row] 
         cell.book = book
         cell.bookshelfDelegate = self
         cell.bookshelf = bookshelf
         return cell
     }
-    
     
     /*
      // Override to support conditional editing of the table view.
@@ -135,44 +116,8 @@ class BookshelfDetailTableViewController: UITableViewController, UISearchBarDele
             destination.book = bookToSend
         }
      }
-}
+} //End of class
 
-//extension BookshelfDetailTableViewController {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//
-//        if !searchText.isEmpty {
-//            resultsArray = bookshelfBooks.filter { $0.matches(searchTerm: searchText) }
-//            tableView.reloadData()
-//        } else {
-//            resultsArray = bookshelfBooks
-//            tableView.reloadData()
-//        }
-//    }
-//    func searchBarCancelButtonClicked( searchBar: UISearchBar) {
-//
-//        resultsArray = bookshelfBooks
-//        tableView.reloadData()
-//        searchBar.text = ""
-//        searchBar.resignFirstResponder()
-//    }
-//
-//    func searchBarSearchButtonClicked( searchBar: UISearchBar) {
-//
-//        searchBar.resignFirstResponder()
-//        isSearching = false
-//    }
-//
-//    func searchBarTextDidBeginEditing( searchBar: UISearchBar) {
-//        isSearching = true
-//    }
-//
-//    func searchBarTextDidEndEditing( searchBar: UISearchBar) {
-//
-//        searchBar.text = ""
-//        isSearching = false
-//    }
-//
-//}
 extension BookshelfDetailTableViewController: BookshelfCellDelegate {
     func presentAlertController(user: User, isbn: String, bookshelf: Bookshelf, cell: BookshelfDetailTableViewCell) {
         let alertController = UIAlertController(title: nil , message: nil, preferredStyle: .actionSheet)
@@ -181,8 +126,6 @@ extension BookshelfDetailTableViewController: BookshelfCellDelegate {
             guard let index = bookshelf.books.firstIndex(of: isbn) else {return}
             bookshelf.books.remove(at: index)
             self.fetchBooks()
-//            guard let filteredIndex = self.bookshelfBooks.firstIndex(of: <#T##Book#>)
-//            self.bookshelfBooks.remove(at: index)
             BookshelfController.shared.updateBookshelf(bookshelf: bookshelf, title: bookshelf.title, color: bookshelf.color) { (result) in
                 DispatchQueue.main.async {
                     switch result {
@@ -206,4 +149,4 @@ extension BookshelfDetailTableViewController: BookshelfCellDelegate {
         alertController.addAction(addAction)
         self.present(alertController, animated: true)
     }
-}
+} //End of extension
