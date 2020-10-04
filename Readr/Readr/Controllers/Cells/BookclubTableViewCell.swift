@@ -25,6 +25,8 @@ class BookclubTableViewCell: UITableViewCell {
     func updateViews() {
         guard let bookclub = bookclub else {return}
         bookclubImage.image = bookclub.profilePicture
+        bookclubImage.layer.cornerRadius = bookclubImage.frame.height / 2
+        bookclubImage.clipsToBounds = true
         bookclubLabel.text = bookclub.name
     }
 } //End of class

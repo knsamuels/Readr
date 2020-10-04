@@ -20,7 +20,7 @@ class FollowViewController: UIViewController, UITableViewDataSource, UITableView
 
     var user: User?
     var followArray: [User] = []
-    
+    var isFirstSegment = true 
     
     //MARK: Lifecycle Methods
     
@@ -28,6 +28,12 @@ class FollowViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         followTableView.delegate = self
         followTableView.dataSource = self
+        
+        if isFirstSegment == true {
+            followSegmentController.selectedSegmentIndex = 0
+        } else {
+            followSegmentController.selectedSegmentIndex = 1
+        }
         fetchFollowUsers()
     }
     

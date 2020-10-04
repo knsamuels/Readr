@@ -275,7 +275,7 @@
                                         <size key="shadowOffset" width="-1" height="1"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.25069501999999999" green="0.25073647500000001" blue="0.25068593030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="mA0-Ek-riv" firstAttribute="centerX" secondItem="3U0-ST-X6n" secondAttribute="centerX" id="8aO-TP-xJy"/>
                                     <constraint firstItem="mA0-Ek-riv" firstAttribute="width" secondItem="3U0-ST-X6n" secondAttribute="width" multiplier="0.374396" id="Cuc-A5-Lev"/>

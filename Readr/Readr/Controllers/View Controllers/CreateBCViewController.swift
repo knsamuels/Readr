@@ -80,6 +80,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self
             imagePickerController.sourceType = .camera
+            imagePickerController.allowsEditing = true
             self.present(imagePickerController, animated: true, completion: nil)
         }
         
@@ -87,6 +88,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self
             imagePickerController.sourceType = .photoLibrary
+            imagePickerController.allowsEditing = true
             self.present(imagePickerController, animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -444,10 +446,17 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             destination.bookclub = bookclubToSend
         }
     }
-}
+} //End of class
+
 extension CreateBCViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let selectedImage = info[.originalImage] as? UIImage else {return}
+        
+        var selectedImage = UIImage()
+        if let img = info[.editedImage] as? UIImage {
+            selectedImage = img
+        } else if let img = info[.originalImage] as? UIImage {
+            selectedImage = img
+        }
         
         selectProfileImage.setTitle("", for: .normal)
         imageOfBookClub.image = selectedImage
@@ -460,7 +469,7 @@ extension CreateBCViewController: PopUpBookSearchDelegate {
         currentlyReadingBook = book
         
     }
-}
+} //End of extension
 
 extension CreateBCViewController: UITextFieldDelegate {
     func textFieldWillBeginEditing( textField: UITextField) {
@@ -470,4 +479,4 @@ extension CreateBCViewController: UITextFieldDelegate {
     func textFieldDidEndEditing( textField: UITextField) {
         self.activeTextField = nil
     }
-}
+} //End of extension

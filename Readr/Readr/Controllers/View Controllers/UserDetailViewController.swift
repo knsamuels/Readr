@@ -73,14 +73,14 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         setUpImage()
         updateViews()
         favBookISBNs = []
-        if self.user == nil {
+        if self.user == nil || self.user == UserController.shared.currentUser {
             fetchUser()
         } else {
             fetchUserBooks()
         }
         guard let user = user else {return}
-        print("FOLLOWERS: \(user.followerList.count)")
         print("FOLLOWING: \(user.followingList.count)")
+        print("FOLLOWERS: \(user.followerList.count)")
     }
     
     //MARK: - Actions
@@ -93,6 +93,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self
             imagePickerController.sourceType = .camera
+            imagePickerController.allowsEditing = true
             self.present(imagePickerController, animated: true, completion: nil)
         }
         
@@ -100,6 +101,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self
             imagePickerController.sourceType = .photoLibrary
+            imagePickerController.allowsEditing = true
             self.present(imagePickerController, animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -241,8 +243,12 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 guard let currentUser = UserController.shared.currentUser else {return}
                 if user.followerList.contains(currentUser.username) {
                     self.followButton.setTitle("Following", for: .normal)
+                    self.followButton.setTitleColor(.white, for: .normal)
+                    self.followButton.backgroundColor = .accentBlack
                 } else {
                     self.followButton.setTitle("Follow", for: .normal)
+                    self.followButton.setTitleColor(.black, for: .normal)
+                    self.followButton.backgroundColor = .white
                 }
             }
             if let image = self.user?.profilePhoto {
@@ -470,12 +476,12 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         } else if segue.identifier == "followingToFollowList" {
             guard let destination = segue.destination as?
                 FollowViewController else {return}
-//            destination.followSegmentController.selectedSegmentIndex = 0
+            destination.isFirstSegment = true
             destination.user = user
         } else if segue.identifier == "followersToFollowList" {
             guard let destination = segue.destination as?
                 FollowViewController else {return}
-//            destination.followSegmentController.selectedSegmentIndex = 1
+            destination.isFirstSegment = false
             destination.user = user
         }
     }
@@ -483,7 +489,13 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
 
 extension UserDetailViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let selectedImage = info[.originalImage] as? UIImage else {return}
+        
+        var selectedImage = UIImage()
+        if let img = info[.editedImage] as? UIImage {
+            selectedImage = img
+        } else if let img = info[.originalImage] as? UIImage {
+            selectedImage = img
+        }
         
         selectProfileImage.setTitle("Edit Photo", for: .normal)
         profilePic.image = selectedImage
