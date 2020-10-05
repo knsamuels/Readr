@@ -22,7 +22,7 @@ class BookshelfController {
     func createBookshelf(title: String, color: String, completion: @escaping (Result<Bookshelf, BookshelfError>) -> Void ) {
         
         guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
-        let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
+        let userRef = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
         
         let newBookshelf = Bookshelf(title: title, userReference: userRef, color: color)
         let newBookshelfRecord = CKRecord(bookshelf: newBookshelf)
