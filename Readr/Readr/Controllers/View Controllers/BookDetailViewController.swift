@@ -74,6 +74,8 @@ class BookDetailViewController: UIViewController {
             print(isbn)
             self.present(popUpTBVC, animated: true, completion: nil)
         }
+        alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alertController.view.tintColor = .accentBlack
         alertController.addAction(cancelAction)
         alertController.addAction(addAction)
         self.present(alertController, animated: true)

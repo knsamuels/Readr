@@ -61,10 +61,8 @@ extension CKRecord {
             BookshelfStrings.timestampKey : bookshelf.timestamp
         ])
         
-        if !bookshelf.books.isEmpty {
-            self.setValue(bookshelf.books, forKey: BookshelfStrings.booksKey)
-        }
-        
+        self.setValue(bookshelf.books, forKey: BookshelfStrings.booksKey)
+    
         if let reference = bookshelf.userReference {
             self.setValue(reference, forKey: BookshelfStrings.userRefKey)
         }

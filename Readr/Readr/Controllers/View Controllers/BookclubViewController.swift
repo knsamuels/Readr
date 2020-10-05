@@ -352,7 +352,7 @@ class BookclubViewController: UIViewController {
     
     func presentEditAlert(bookclub: Bookclub?) {
         guard let bookclub = bookclub else {return}
-        let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
@@ -378,6 +378,8 @@ class BookclubViewController: UIViewController {
                 }
             }
         }
+      alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alertController.view.tintColor = .accentBlack
         alertController.addAction(cancelAction)
         alertController.addAction(editAction)
         alertController.addAction(deleteAction)
@@ -388,7 +390,7 @@ class BookclubViewController: UIViewController {
     
     func presentShareAlert(bookclub: Bookclub?) {
         guard let bookclub = bookclub else {return}
-        let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: nil, message: "Would you like to invite others?", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
@@ -397,7 +399,8 @@ class BookclubViewController: UIViewController {
             
             self.present(shareSheet, animated: true, completion: nil)
         }
-        
+        alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alertController.view.tintColor = .accentBlack
         alertController.addAction(cancelAction)
         alertController.addAction(shareAction)
         
