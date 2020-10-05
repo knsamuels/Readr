@@ -147,20 +147,19 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
-    
     //MARK: - Helper Methods
     
     func setUpImage() {
         profilePic.layer.cornerRadius = profilePic.frame.height / 2
         profilePic.clipsToBounds = true
         
-        bookclubImage1.layer.cornerRadius = profilePic.frame.width / 2
+        bookclubImage1.layer.cornerRadius = profilePic.frame.height / 2
         bookclubImage1.clipsToBounds = true
-        bookclubImage2.layer.cornerRadius = profilePic.frame.width / 2
+        bookclubImage2.layer.cornerRadius = profilePic.frame.height / 2
         bookclubImage2.clipsToBounds = true
-        bookclubImage3.layer.cornerRadius = profilePic.frame.width / 2
+        bookclubImage3.layer.cornerRadius = profilePic.frame.height / 2
         bookclubImage3.clipsToBounds = true
-        bookclubImage4.layer.cornerRadius = profilePic.frame.width / 2
+        bookclubImage4.layer.cornerRadius = profilePic.frame.height / 2
         bookclubImage4.clipsToBounds = true
     }
     

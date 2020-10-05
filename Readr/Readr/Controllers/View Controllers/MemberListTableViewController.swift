@@ -107,7 +107,7 @@ class MemberListTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "memberListToUserDetail" {
+        if segue.identifier == "memberListToUser" {
             guard let destination = segue.destination as?
                 UserDetailViewController else {return}
             guard let indexPath = tableView.indexPathForSelectedRow else {return}

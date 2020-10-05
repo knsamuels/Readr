@@ -25,6 +25,7 @@ class BookshelfDetailTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        tableView.reloadData()
     }
     
     //Mark - Helper function
@@ -144,6 +145,8 @@ extension BookshelfDetailTableViewController: BookshelfCellDelegate {
             popUpTBVC.bookISBN = isbn
             self.present(popUpTBVC, animated: true, completion: nil)
         }
+     alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alertController.view.tintColor = .accentBlack
         alertController.addAction(cancelAction)
         alertController.addAction(removeAction)
         alertController.addAction(addAction)

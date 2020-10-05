@@ -37,6 +37,11 @@ class FollowViewController: UIViewController, UITableViewDataSource, UITableView
         fetchFollowUsers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        followTableView.reloadData()
+    }
+    
 
     //MARK: - TableView Data Source
     
@@ -114,16 +119,15 @@ class FollowViewController: UIViewController, UITableViewDataSource, UITableView
                   
         }
     }
-   
     
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "followVCToUser" {
+            guard let indexPath = followTableView.indexPathForSelectedRow else {return}
+            guard let destination = segue.destination as? UserDetailViewController else {return}
+            let userToSend = followArray[indexPath.row]
+            destination.user = userToSend
+        }
     }
-    */
-
 }
