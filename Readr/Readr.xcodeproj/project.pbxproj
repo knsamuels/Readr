@@ -62,7 +62,6 @@
 		C98FC7DE24E1A0B900C27CBF /* BookshelfError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7DD24E1A0B900C27CBF /* BookshelfError.swift */; };
 		C98FC7E024E1B42000C27CBF /* BookclubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7DF24E1B42000C27CBF /* BookclubController.swift */; };
 		C98FC7E224E1B46200C27CBF /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E124E1B46200C27CBF /* UserController.swift */; };
-		C98FC7E424E1B47100C27CBF /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E324E1B47100C27CBF /* ChatController.swift */; };
 		C98FC7E624E1B49200C27CBF /* BookclubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E524E1B49200C27CBF /* BookclubError.swift */; };
 		C98FC7E824E1B4A300C27CBF /* MessageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E724E1B4A300C27CBF /* MessageError.swift */; };
 		C98FC7EA24E1B4BB00C27CBF /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E924E1B4BB00C27CBF /* UserError.swift */; };
@@ -143,7 +142,6 @@
 		C98FC7DD24E1A0B900C27CBF /* BookshelfError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfError.swift; sourceTree = "<group>"; };
 		C98FC7DF24E1B42000C27CBF /* BookclubController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubController.swift; sourceTree = "<group>"; };
 		C98FC7E124E1B46200C27CBF /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
-		C98FC7E324E1B47100C27CBF /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		C98FC7E524E1B49200C27CBF /* BookclubError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubError.swift; sourceTree = "<group>"; };
 		C98FC7E724E1B4A300C27CBF /* MessageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageError.swift; sourceTree = "<group>"; };
 		C98FC7E924E1B4BB00C27CBF /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
@@ -316,7 +314,6 @@
 				C98FC7DF24E1B42000C27CBF /* BookclubController.swift */,
 				C98FC7DB24E19D3900C27CBF /* BookshelfController.swift */,
 				9304463D24E1ABBC00FBEEF2 /* MessageController.swift */,
-				C98FC7E324E1B47100C27CBF /* ChatController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -497,7 +494,6 @@
 				C91051A92512A574008C3928 /* MemberTableViewCell.swift in Sources */,
 				937640D624EC44F100B51DEC /* ChatTableViewController.swift in Sources */,
 				C9BFE4CC24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift in Sources */,
-				C98FC7E424E1B47100C27CBF /* ChatController.swift in Sources */,
 				9303FEC824F73CC400486F65 /* RViewController.swift in Sources */,
 				937640D224EC3BFE00B51DEC /* SearchTableViewCell.swift in Sources */,
 				C98FC7CA24DDCB4100C27CBF /* Bookclub.swift in Sources */,
@@ -688,7 +684,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Readr/Readr.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = KAP7J6U3Y3;
 				INFOPLIST_FILE = "$(SRCROOT)/Readr/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -709,7 +705,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Readr/Readr.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = KAP7J6U3Y3;
 				INFOPLIST_FILE = "$(SRCROOT)/Readr/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
