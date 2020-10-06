@@ -41,7 +41,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.isHidden = true
         collectionView.isHidden = false
         
-//        booksCategoryLabel.setTitleColor(.readenBlue, for: .normal)
+        booksCategoryLabel.setTitleColor(.readenBlue, for: .normal)
         
         booksCategoryLabel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         
@@ -66,9 +66,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.isHidden = true
         collectionView.isHidden = false
         
-//        booksCategoryLabel.setTitleColor(.readenBlue, for: .normal)
-//        clubsCategoryLabel.setTitleColor(.black, for: .normal)
-//        peopleCategoryLabel.setTitleColor(.black, for: .normal)
+        booksCategoryLabel.setTitleColor(.readenBlue, for: .normal)
+        clubsCategoryLabel.setTitleColor(.black, for: .normal)
+        peopleCategoryLabel.setTitleColor(.black, for: .normal)
         
         booksCategoryLabel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         clubsCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
@@ -94,9 +94,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.isHidden = false
         collectionView.isHidden = true
         
-//        booksCategoryLabel.setTitleColor(.black, for: .normal)
-//        clubsCategoryLabel.setTitleColor(.readenBlue, for: .normal)
-//        peopleCategoryLabel.setTitleColor(.black, for: .normal)
+        booksCategoryLabel.setTitleColor(.black, for: .normal)
+        clubsCategoryLabel.setTitleColor(.readenBlue, for: .normal)
+        peopleCategoryLabel.setTitleColor(.black, for: .normal)
         
         booksCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         clubsCategoryLabel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
@@ -123,23 +123,23 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.isHidden = false
         collectionView.isHidden = true
         
-//        booksCategoryLabel.setTitleColor(.black, for: .normal)
-//        clubsCategoryLabel.setTitleColor(.black, for: .normal)
-//        peopleCategoryLabel.setTitleColor(.readenBlue, for: .normal)
+        booksCategoryLabel.setTitleColor(.black, for: .normal)
+        clubsCategoryLabel.setTitleColor(.black, for: .normal)
+        peopleCategoryLabel.setTitleColor(.readenBlue, for: .normal)
         
         booksCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         clubsCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         peopleCategoryLabel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         
 //        let attrs = [NSAttributedString.Key.underlineStyle: 1]
-//        let clubsString = NSMutableAttributedString(string:"Clubs", attributes: attrs)
-//        clubsCategoryLabel.setAttributedTitle(clubsString, for: .normal)
+//        let peopleString = NSMutableAttributedString(string:"People", attributes: attrs)
+//        peopleCategoryLabel.setAttributedTitle(peopleString, for: .normal)
 //
 //        let nonAttrs = [NSAttributedString.Key.underlineStyle: 0]
 //        let booksString = NSMutableAttributedString(string:"Books", attributes: nonAttrs)
-//        let peopleString = NSMutableAttributedString(string:"People", attributes: nonAttrs)
+//        let clubsString = NSMutableAttributedString(string:"Clubs", attributes: nonAttrs)
 //        booksCategoryLabel.setAttributedTitle(booksString, for: .normal)
-//        peopleCategoryLabel.setAttributedTitle(peopleString, for: .normal)
+//        clubsCategoryLabel.setAttributedTitle(clubsString, for: .normal)
         
         tableView.reloadData()
         search()
