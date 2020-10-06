@@ -100,6 +100,13 @@ class BookshelfListTableViewCell: UITableViewCell {
             book5Label.text = books[4].title
         }
         spinnerDelegate?.stopSpinning()
+        
+        backgroundColorView.layer.shadowColor = UIColor.gray.cgColor
+        backgroundColorView.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        backgroundColorView.layer.shadowRadius = 2.0
+        backgroundColorView.layer.shadowOpacity = 1.0
+        backgroundColorView.layer.masksToBounds = false
+        backgroundColorView.layer.shadowPath = UIBezierPath(roundedRect: backgroundColorView.bounds, cornerRadius: backgroundColorView.layer.cornerRadius).cgPath
     }
     
         func fetchBooks() {
