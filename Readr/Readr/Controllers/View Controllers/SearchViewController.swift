@@ -23,6 +23,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var booksCategoryLabel: UIButton!
+    @IBOutlet weak var clubsCategoryLabel: UIButton!
+    @IBOutlet weak var peopleCategoryLabel: UIButton!
     
     
     
@@ -37,10 +40,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         collectionView.dataSource = self
         tableView.isHidden = true
         collectionView.isHidden = false
+        
+//        booksCategoryLabel.setTitleColor(.readenBlue, for: .normal)
+        
+        booksCategoryLabel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        
+//        let attrs = [NSAttributedString.Key.underlineStyle: 1]
+//        let booksString = NSMutableAttributedString(string: "Books", attributes: attrs)
+//        booksCategoryLabel.setAttributedTitle(booksString, for: .normal)
+        
         fetchBooksWithAuthor()
         self.title = "SEARCH"
-               self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false 
         view.addGestureRecognizer(tap)
@@ -53,6 +65,25 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         clubsIsSelected = false
         tableView.isHidden = true
         collectionView.isHidden = false
+        
+//        booksCategoryLabel.setTitleColor(.readenBlue, for: .normal)
+//        clubsCategoryLabel.setTitleColor(.black, for: .normal)
+//        peopleCategoryLabel.setTitleColor(.black, for: .normal)
+        
+        booksCategoryLabel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        clubsCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        peopleCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        
+//        let attrs = [NSAttributedString.Key.underlineStyle: 1]
+//        let booksString = NSMutableAttributedString(string:"Books", attributes: attrs)
+//        booksCategoryLabel.setAttributedTitle(booksString, for: .normal)
+//
+//        let nonAttrs = [NSAttributedString.Key.underlineStyle: 0]
+//        let clubsString = NSMutableAttributedString(string:"Clubs", attributes: nonAttrs)
+//        let peopleString = NSMutableAttributedString(string:"People", attributes: nonAttrs)
+//        clubsCategoryLabel.setAttributedTitle(clubsString, for: .normal)
+//        peopleCategoryLabel.setAttributedTitle(peopleString, for: .normal)
+        
         search()
     }
     
@@ -62,6 +93,25 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         clubsIsSelected = true
         tableView.isHidden = false
         collectionView.isHidden = true
+        
+//        booksCategoryLabel.setTitleColor(.black, for: .normal)
+//        clubsCategoryLabel.setTitleColor(.readenBlue, for: .normal)
+//        peopleCategoryLabel.setTitleColor(.black, for: .normal)
+        
+        booksCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        clubsCategoryLabel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        peopleCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        
+//        let attrs = [NSAttributedString.Key.underlineStyle: 1]
+//        let clubsString = NSMutableAttributedString(string:"Clubs", attributes: attrs)
+//        clubsCategoryLabel.setAttributedTitle(clubsString, for: .normal)
+//
+//        let nonAttrs = [NSAttributedString.Key.underlineStyle: 0]
+//        let booksString = NSMutableAttributedString(string:"Books", attributes: nonAttrs)
+//        let peopleString = NSMutableAttributedString(string:"People", attributes: nonAttrs)
+//        booksCategoryLabel.setAttributedTitle(booksString, for: .normal)
+//        peopleCategoryLabel.setAttributedTitle(peopleString, for: .normal)
+        
         tableView.reloadData()
         search()
     }
@@ -72,6 +122,25 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         clubsIsSelected = false
         tableView.isHidden = false
         collectionView.isHidden = true
+        
+//        booksCategoryLabel.setTitleColor(.black, for: .normal)
+//        clubsCategoryLabel.setTitleColor(.black, for: .normal)
+//        peopleCategoryLabel.setTitleColor(.readenBlue, for: .normal)
+        
+        booksCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        clubsCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        peopleCategoryLabel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        
+//        let attrs = [NSAttributedString.Key.underlineStyle: 1]
+//        let clubsString = NSMutableAttributedString(string:"Clubs", attributes: attrs)
+//        clubsCategoryLabel.setAttributedTitle(clubsString, for: .normal)
+//
+//        let nonAttrs = [NSAttributedString.Key.underlineStyle: 0]
+//        let booksString = NSMutableAttributedString(string:"Books", attributes: nonAttrs)
+//        let peopleString = NSMutableAttributedString(string:"People", attributes: nonAttrs)
+//        booksCategoryLabel.setAttributedTitle(booksString, for: .normal)
+//        peopleCategoryLabel.setAttributedTitle(peopleString, for: .normal)
+        
         tableView.reloadData()
         search()
     }
@@ -230,7 +299,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             guard let cell = sender as? UICollectionViewCell else {return}
             guard let indexPath = collectionView.indexPath(for: cell) else {return}
             guard let destination = segue.destination as?
-                BookDetailViewController else {return}
+                    BookDetailViewController else {return}
             let bookToSend = booksArray[indexPath.row]
             destination.book = bookToSend
         }
