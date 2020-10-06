@@ -163,6 +163,7 @@ class AlertViewController: UIViewController {
     //MARK: - Helper Methods
     func updateViews(with bookshelf: Bookshelf) {
         if bookshelf.title == "Favorites" {
+            shelfNameTextField.text = bookshelf.title
             favoritesLabel.isHidden = false
             shelfNameTextField.isHidden = true
         } else {
