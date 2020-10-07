@@ -52,6 +52,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 switch result {
                 case .success(let bookclubs):
                     self.bookclubsArray = bookclubs
+                    if bookclubs.count == 0 {
+                        self.loadingScreen.removeFromSuperview()
+                    }
                     self.tableView.reloadData()
                 case .failure(_):
                     print("Error fetching bookclubs.")
