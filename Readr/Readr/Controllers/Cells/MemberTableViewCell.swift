@@ -30,7 +30,7 @@ class MemberTableViewCell: UITableViewCell {
         if let image = member.profilePhoto {
             memberImage.image = image
         } else {
-            memberImage.image = member.profilePhoto ?? UIImage(named: "ReadenLogo")
+            memberImage.image = member.profilePhoto ?? UIImage(named: "ReadenLogoWhiteSpace")
         }
         memberImage.layer.cornerRadius = memberImage.frame.height / 2
         memberImage.clipsToBounds = true

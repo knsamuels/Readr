@@ -255,7 +255,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 self.selectProfileImage.setTitle("Edit Photo", for: .normal)
                 self.profilePic.image = image
             } else {
-                self.profilePic.image = self.user?.profilePhoto ?? UIImage(named: "ReadenLogo")
+                self.profilePic.image = self.user?.profilePhoto ?? UIImage(named: "ReadenLogoWhiteSpace")
             }
             
             self.followersCountLabel.text = "\(user.followerList.count)"
@@ -364,7 +364,14 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 self.bookclubName4.isHidden = true
                 self.bookclub4ButtonLabel.isHidden = true
             case 1:
-                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
+                
+                if let image1 = self.userBookClubs[0].profilePicture {
+                    self.bookclubImage1.image = image1
+                } else {
+                    self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
+                }
+                
+                //self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                 self.bookclubName1.text = self.userBookClubs[0].name
                 self.bookclub1ButtonLabel.isHidden = false
                 self.bookclubImage2.isHidden = true
@@ -377,10 +384,23 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 self.bookclubName4.isHidden = true
                 self.bookclub4ButtonLabel.isHidden = true
             case 2:
-                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
+                if let image1 = self.userBookClubs[0].profilePicture {
+                    self.bookclubImage1.image = image1
+                } else {
+                    self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
+                }
+                
+                //self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                 self.bookclubName1.text = self.userBookClubs[0].name
                 self.bookclub1ButtonLabel.isHidden = false
-                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
+                
+                
+                if let image2 = self.userBookClubs[1].profilePicture {
+                    self.bookclubImage2.image = image2
+                } else {
+                    self.bookclubImage2.image = UIImage(named: "ReadenLogo")
+                }
+                //self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                 self.bookclubName2.text = self.userBookClubs[1].name
                 self.bookclub2ButtonLabel.isHidden = false
                 self.bookclubImage3.isHidden = true

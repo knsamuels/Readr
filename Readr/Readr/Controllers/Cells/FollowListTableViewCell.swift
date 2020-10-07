@@ -30,7 +30,7 @@ class FollowListTableViewCell: UITableViewCell {
         if let image = member.profilePhoto {
             followImage.image = image
         } else {
-           followImage.image = member.profilePhoto ?? UIImage(named: "ReadenLogo")
+           followImage.image = member.profilePhoto ?? UIImage(named: "ReadenLogoWhiteSpace")
         }
         followImage.layer.cornerRadius = followImage.frame.height / 2
         followImage.clipsToBounds = true

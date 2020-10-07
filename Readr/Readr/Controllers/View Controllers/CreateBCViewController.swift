@@ -117,10 +117,10 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         }
         
         let profilePic: UIImage?
-        if imageOfBookClub.image != nil {
+        if imageOfBookClub.image != nil && imageOfBookClub.image != UIImage(named: "RLogo") {
             profilePic = imageOfBookClub.image
         } else {
-            profilePic = UIImage(named: "RLogo")
+            profilePic = UIImage(named: "ReadenLogo")
         }
         if let bookclub = bookclub {
             bookclub.description = description
