@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ChatSpinnerDelegate: AnyObject {
+    func stopSpinning()
+}
+
 class ChatTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
@@ -23,6 +27,8 @@ class ChatTableViewCell: UITableViewCell {
     }
     var clubMessages: [Message] = []
     var recentMessage: Message?
+    
+    weak var chatSpinnerDelegate: ChatSpinnerDelegate?
     
     //MARK: - Lifecycles
     override func awakeFromNib() {
@@ -56,10 +62,9 @@ class ChatTableViewCell: UITableViewCell {
         } else {
             lastmessageLabel.text = " "
         }
-        
-        
         bookclubImageView.layer.cornerRadius = bookclubImageView.frame.width / 2
         bookclubImageView.clipsToBounds = true
+        chatSpinnerDelegate?.stopSpinning()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
