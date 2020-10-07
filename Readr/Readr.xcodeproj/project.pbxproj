@@ -26,7 +26,6 @@
 		937640D024EC36CF00B51DEC /* BookclubListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640CF24EC36CF00B51DEC /* BookclubListTableViewController.swift */; };
 		937640D224EC3BFE00B51DEC /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640D124EC3BFE00B51DEC /* SearchTableViewCell.swift */; };
 		937640D424EC3C1900B51DEC /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640D324EC3C1900B51DEC /* SearchCollectionViewCell.swift */; };
-		937640D624EC44F100B51DEC /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640D524EC44F100B51DEC /* ChatTableViewController.swift */; };
 		937640D824EC45B800B51DEC /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640D724EC45B800B51DEC /* MessageViewController.swift */; };
 		937640DA24EC460700B51DEC /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640D924EC460700B51DEC /* MessageTableViewCell.swift */; };
 		937A9F5C24F4CAC100AE9067 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937A9F5B24F4CAC100AE9067 /* GenresViewController.swift */; };
@@ -38,6 +37,7 @@
 		C91051A72512A05D008C3928 /* BookclubTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91051A62512A05D008C3928 /* BookclubTableViewCell.swift */; };
 		C91051A92512A574008C3928 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91051A82512A574008C3928 /* MemberTableViewCell.swift */; };
 		C91051AB251BC4EB008C3928 /* BookshelfListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91051AA251BC4EA008C3928 /* BookshelfListViewController.swift */; };
+		C92352F3252E3BEC00472910 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92352F2252E3BEC00472910 /* ChatViewController.swift */; };
 		C938A38D24EEF0AA0095AD50 /* BookshelfDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A38C24EEF0AA0095AD50 /* BookshelfDetailTableViewController.swift */; };
 		C938A38F24EEF0E60095AD50 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A38E24EEF0E60095AD50 /* BookDetailViewController.swift */; };
 		C938A39124EEF3C10095AD50 /* BookshelfDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938A39024EEF3C10095AD50 /* BookshelfDetailTableViewCell.swift */; };
@@ -104,7 +104,6 @@
 		937640CF24EC36CF00B51DEC /* BookclubListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubListTableViewController.swift; sourceTree = "<group>"; };
 		937640D124EC3BFE00B51DEC /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		937640D324EC3C1900B51DEC /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
-		937640D524EC44F100B51DEC /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		937640D724EC45B800B51DEC /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		937640D924EC460700B51DEC /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		937A9F5B24F4CAC100AE9067 /* GenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		C91051A62512A05D008C3928 /* BookclubTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubTableViewCell.swift; sourceTree = "<group>"; };
 		C91051A82512A574008C3928 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
 		C91051AA251BC4EA008C3928 /* BookshelfListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfListViewController.swift; sourceTree = "<group>"; };
+		C92352F2252E3BEC00472910 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		C938A38C24EEF0AA0095AD50 /* BookshelfDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfDetailTableViewController.swift; sourceTree = "<group>"; };
 		C938A38E24EEF0E60095AD50 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		C938A39024EEF3C10095AD50 /* BookshelfDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -367,7 +367,6 @@
 				F3437FA224F0348F00C38DA3 /* PastReadsListTableViewController.swift */,
 				C938A38C24EEF0AA0095AD50 /* BookshelfDetailTableViewController.swift */,
 				C9DBB76424F4117900285DC7 /* PopUpBookshelfTableViewController.swift */,
-				937640D524EC44F100B51DEC /* ChatTableViewController.swift */,
 				937640D724EC45B800B51DEC /* MessageViewController.swift */,
 				F3437FA024EF2CCD00C38DA3 /* ReviewDetailViewController.swift */,
 				C9BFE4C924F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift */,
@@ -376,6 +375,7 @@
 				93AC78752509E52F00B6A5F8 /* AlertViewController.swift */,
 				C91051AA251BC4EA008C3928 /* BookshelfListViewController.swift */,
 				C9CAF24D2529147D001E4C2A /* FollowViewController.swift */,
+				C92352F2252E3BEC00472910 /* ChatViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -492,7 +492,6 @@
 				C9DBB76724F469B900285DC7 /* PastReadsTableViewCell.swift in Sources */,
 				C98FC7EA24E1B4BB00C27CBF /* UserError.swift in Sources */,
 				C91051A92512A574008C3928 /* MemberTableViewCell.swift in Sources */,
-				937640D624EC44F100B51DEC /* ChatTableViewController.swift in Sources */,
 				C9BFE4CC24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift in Sources */,
 				9303FEC824F73CC400486F65 /* RViewController.swift in Sources */,
 				937640D224EC3BFE00B51DEC /* SearchTableViewCell.swift in Sources */,
@@ -534,6 +533,7 @@
 				F31A488C24E485880071652A /* BookshelfListTableViewCell.swift in Sources */,
 				9303FEF924FCB40500486F65 /* LogInViewController.swift in Sources */,
 				C98FC7DA24DDD55700C27CBF /* BookError.swift in Sources */,
+				C92352F3252E3BEC00472910 /* ChatViewController.swift in Sources */,
 				9303FEE524F77B4300486F65 /* ReadenLabel.swift in Sources */,
 				C938A38D24EEF0AA0095AD50 /* BookshelfDetailTableViewController.swift in Sources */,
 				C938A39124EEF3C10095AD50 /* BookshelfDetailTableViewCell.swift in Sources */,
@@ -684,7 +684,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Readr/Readr.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = KAP7J6U3Y3;
 				INFOPLIST_FILE = "$(SRCROOT)/Readr/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -705,7 +705,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Readr/Readr.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = KAP7J6U3Y3;
 				INFOPLIST_FILE = "$(SRCROOT)/Readr/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
