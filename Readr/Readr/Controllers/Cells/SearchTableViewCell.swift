@@ -34,7 +34,7 @@ class SearchTableViewCell: UITableViewCell {
         if let image = user.profilePhoto {
             personOrClubImage.image = image
         } else {
-            personOrClubImage.image = user.profilePhoto ?? UIImage(named: "ReadenLogo")
+            personOrClubImage.image = user.profilePhoto ?? UIImage(named: "ReadenLogoWhiteSpace")
         }
         personOrClubImage.layer.cornerRadius = personOrClubImage.frame.height / 2
         personOrClubImage.clipsToBounds = true
