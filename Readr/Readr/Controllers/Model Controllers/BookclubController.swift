@@ -200,4 +200,50 @@ class BookclubController {
         
         publicDB.add(operation)
     }
+    
+    func addSubscriptionTo(messagesForBookclub bookclub: Bookclub, completion: ((Bool, Error?) -> ())?){
+
+        let bookclubRecordID = bookclub.recordID
+
+        let predicate = NSPredicate(format: "%K = %@", MessageStrings.bookclubReferenceKey, bookclubRecordID)
+
+        let subscription = CKQuerySubscription(recordType: "Message", predicate: predicate, subscriptionID: bookclub.recordID.recordName, options: CKQuerySubscription.Options.firesOnRecordCreation)
+
+        let notificationInfo = CKSubscription.NotificationInfo()
+        notificationInfo.title = "New Message"
+        notificationInfo.alertBody = "A new message was added to one of your bookclubs!"
+        notificationInfo.soundName = "default"
+        notificationInfo.shouldSendContentAvailable = true
+        notificationInfo.shouldBadge = true
+        notificationInfo.desiredKeys = [MessageStrings.textKey, MessageStrings.timestampKey]
+        subscription.notificationInfo = notificationInfo
+
+        publicDB.save(subscription) { (_, error) in
+
+            if let error = error {
+                print("There was an error in \(#function) ; \(error)  ; \(error.localizedDescription)")
+                completion?(false, error)
+                return
+            } else {
+                completion?(true, nil)
+            }
+        }
+    }
+
+    func removeSubscriptionTo(messagesForBookclub bookclub: Bookclub, completion: ((Bool) -> ())?) {
+
+        let subscriptionID = bookclub.recordID.recordName
+
+        publicDB.delete(withSubscriptionID: subscriptionID) { (_, error) in
+
+            if let error = error {
+                print("There was an error in \(#function) ; \(error)  ; \(error.localizedDescription)")
+                completion?(false)
+                return
+            } else {
+                print("Subscription deleted")
+                completion?(true)
+            }
+        }
+    }
 } //End of class
