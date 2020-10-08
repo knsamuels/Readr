@@ -34,7 +34,7 @@ class SearchTableViewCell: UITableViewCell {
         if let image = user.profilePhoto {
             personOrClubImage.image = image
         } else {
-            personOrClubImage.image = user.profilePhoto ?? UIImage(named: "ReadenLogoWhiteSpace")
+            personOrClubImage.image = UIImage(named: "ReadenLogoWhiteSpace")
         }
         personOrClubImage.layer.cornerRadius = personOrClubImage.frame.height / 2
         personOrClubImage.clipsToBounds = true
@@ -42,7 +42,12 @@ class SearchTableViewCell: UITableViewCell {
     }
     func updateBookclubViews() {
         guard let bookclub = bookclub else {return}
-        personOrClubImage.image = bookclub.profilePicture
+//        personOrClubImage.image = bookclub.profilePicture
+        if let image = bookclub.profilePicture {
+            personOrClubImage.image = image
+        } else {
+            personOrClubImage.image = UIImage(named: "ReadenLogoWhiteSpace")
+        }
         personOrClubImage.layer.cornerRadius = personOrClubImage.frame.height / 2
         personOrClubImage.clipsToBounds = true
         personOrClubLabel.text = bookclub.name

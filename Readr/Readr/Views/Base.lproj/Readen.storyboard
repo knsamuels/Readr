@@ -2475,7 +2475,7 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.73926635129999996" green="0.96620899439999997" blue="0.60104105829999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstItem="rNd-wb-CeY" firstAttribute="top" secondItem="Kxr-pi-jS1" secondAttribute="top" id="DL1-Z3-BpN"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="GEn-xg-Q3u"/>
@@ -2513,7 +2513,7 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.73926635129999996" green="0.96620899439999997" blue="0.60104105829999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstItem="gS9-0f-vXp" firstAttribute="top" secondItem="YPZ-C9-AwD" secondAttribute="top" id="5Fv-9q-NJt"/>
                                                             <constraint firstItem="xub-2H-yGv" firstAttribute="centerX" secondItem="YPZ-C9-AwD" secondAttribute="centerX" id="6aW-dm-5mo"/>
@@ -2599,10 +2599,10 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.73926635129999996" green="0.96620899439999997" blue="0.60104105829999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.73926635129999996" green="0.96620899439999997" blue="0.60104105829999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="YAp-A4-n8P" firstAttribute="leading" secondItem="RWL-fw-0u8" secondAttribute="trailing" constant="28" id="2Tn-8u-fNs"/>
                                             <constraint firstItem="qSd-Wp-fAz" firstAttribute="leading" secondItem="cG5-ch-zNd" secondAttribute="leading" constant="34" id="4S8-qb-ZCv"/>

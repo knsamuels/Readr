@@ -24,7 +24,12 @@ class BookclubTableViewCell: UITableViewCell {
     //MARK: - Helper Methods
     func updateViews() {
         guard let bookclub = bookclub else {return}
-        bookclubImage.image = bookclub.profilePicture
+//        bookclubImage.image = bookclub.profilePicture
+        if let image1 = bookclub.profilePicture {
+            self.bookclubImage.image = image1
+        } else {
+            self.bookclubImage.image = UIImage(named: "ReadenLogoWhiteSpace")
+        }
         bookclubImage.layer.cornerRadius = bookclubImage.frame.height / 2
         bookclubImage.clipsToBounds = true
         bookclubLabel.text = bookclub.name
