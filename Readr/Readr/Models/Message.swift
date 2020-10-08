@@ -11,9 +11,9 @@ import CloudKit
 
 struct MessageStrings {
     static let recordTypeKey = "Message"
-    fileprivate static let textKey = "text"
+    static let textKey = "text"
     fileprivate static let userKey = "user"
-    fileprivate static let timestampKey = "timestamp"
+    static let timestampKey = "timestamp"
     fileprivate static let photoAsset = "photoAsset"
     fileprivate static let userReferenceKey = "userReference"
     static let bookclubReferenceKey = "bookclubReference"

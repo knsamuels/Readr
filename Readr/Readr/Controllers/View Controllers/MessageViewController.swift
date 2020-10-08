@@ -63,7 +63,11 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     func updateViews() {
         guard let bookclub = bookclub else {return}
         //self.title = bookclub.name
-        bookclubImageView.image = bookclub.profilePicture
+        if let image = bookclub.profilePicture {
+            bookclubImageView.image = image
+        } else {
+            bookclubImageView.image = UIImage(named: "ReadenLogoWhiteSpace")
+        }
         bookclubTitleLabel.text = bookclub.name
         memberCountLabel.text = "\(bookclub.members.count) people"
         
