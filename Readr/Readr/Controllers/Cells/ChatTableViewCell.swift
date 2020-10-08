@@ -54,7 +54,12 @@ class ChatTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let bookclub = bookclub else {return}
-        bookclubImageView.image = bookclub.profilePicture
+//        bookclubImageView.image = bookclub.profilePicture
+        if let image = bookclub.profilePicture {
+            bookclubImageView.image = image
+        } else {
+            bookclubImageView.image = UIImage(named: "ReadenLogoWhiteSpace")
+        }
         bookclubTitleLabel.text = bookclub.name
         if clubMessages.count > 0 {
             guard let recentMessage = recentMessage else {return}

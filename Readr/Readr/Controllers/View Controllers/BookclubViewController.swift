@@ -145,7 +145,12 @@ class BookclubViewController: UIViewController {
 //            let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
             let userAppleRef = user.appleUserRef
             self.title = bookclub.name
-            self.imageOfBookClub.image = bookclub.profilePicture
+//            self.imageOfBookClub.image = bookclub.profilePicture
+            if let image1 = bookclub.profilePicture {
+                self.imageOfBookClub.image = image1
+            } else {
+                self.imageOfBookClub.image = UIImage(named: "ReadenLogoWhiteSpace")
+            }
             self.descriptionOfBookClub.text = bookclub.description
             self.meetingInfoForBookClub.text = "Meets \(bookclub.meetingInfo)"
             self.adminNameLabel.text = "Admin:   \(admin.username)"

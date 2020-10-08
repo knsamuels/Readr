@@ -389,16 +389,14 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 } else {
                     self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
                 }
-                
                 //self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                 self.bookclubName1.text = self.userBookClubs[0].name
                 self.bookclub1ButtonLabel.isHidden = false
                 
-                
                 if let image2 = self.userBookClubs[1].profilePicture {
                     self.bookclubImage2.image = image2
                 } else {
-                    self.bookclubImage2.image = UIImage(named: "ReadenLogo")
+                    self.bookclubImage2.image = UIImage(named: "ReadenLogoWhiteSpace")
                 }
                 //self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                 self.bookclubName2.text = self.userBookClubs[1].name
@@ -410,29 +408,64 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 self.bookclubName4.isHidden = true
                 self.bookclub4ButtonLabel.isHidden = true
             case 3:
-                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
+                if let image1 = self.userBookClubs[0].profilePicture {
+                    self.bookclubImage1.image = image1
+                } else {
+                    self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
+                }
+//                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                 self.bookclubName1.text = self.userBookClubs[0].name
                 self.bookclub1ButtonLabel.isHidden = false
-                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
+                if let image2 = self.userBookClubs[1].profilePicture {
+                    self.bookclubImage2.image = image2
+                } else {
+                    self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
+                }
+//                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                 self.bookclubName2.text = self.userBookClubs[1].name
                 self.bookclub2ButtonLabel.isHidden = false
-                self.bookclubImage3.image = self.userBookClubs[2].profilePicture
+                if let image3 = self.userBookClubs[2].profilePicture {
+                    self.bookclubImage3.image = image3
+                } else {
+                    self.bookclubImage3.image = UIImage(named: "ReadenLogoWhiteSpace")
+                }
+//                self.bookclubImage3.image = self.userBookClubs[2].profilePicture
                 self.bookclubName3.text = self.userBookClubs[2].name
                 self.bookclub3ButtonLabel.isHidden = false
                 self.bookclubImage4.isHidden = true
                 self.bookclubName4.isHidden = true
                 self.bookclub4ButtonLabel.isHidden = true
             default:
-                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
+                if let image1 = self.userBookClubs[0].profilePicture {
+                    self.bookclubImage1.image = image1
+                } else {
+                    self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
+                }
+//                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                 self.bookclubName1.text = self.userBookClubs[0].name
                 self.bookclub1ButtonLabel.isHidden = false
-                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
+                if let image2 = self.userBookClubs[1].profilePicture {
+                    self.bookclubImage2.image = image2
+                } else {
+                    self.bookclubImage2.image = UIImage(named: "ReadenLogoWhiteSpace")
+                }
+//                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                 self.bookclubName2.text = self.userBookClubs[1].name
                 self.bookclub2ButtonLabel.isHidden = false
-                self.bookclubImage3.image = self.userBookClubs[2].profilePicture
+                if let image3 = self.userBookClubs[2].profilePicture {
+                    self.bookclubImage3.image = image3
+                } else {
+                    self.bookclubImage3.image = UIImage(named: "ReadenLogoWhiteSpace")
+                }
+//                self.bookclubImage3.image = self.userBookClubs[2].profilePicture
                 self.bookclubName3.text = self.userBookClubs[2].name
                 self.bookclub3ButtonLabel.isHidden = false
-                self.bookclubImage4.image = self.userBookClubs[3].profilePicture
+                if let image4 = self.userBookClubs[3].profilePicture {
+                    self.bookclubImage4.image = image4
+                } else {
+                    self.bookclubImage4.image = UIImage(named: "ReadenLogoWhiteSpace")
+                }
+//                self.bookclubImage4.image = self.userBookClubs[3].profilePicture
                 self.bookclubName4.text = self.userBookClubs[3].name
                 self.bookclub4ButtonLabel.isHidden = false
             }
