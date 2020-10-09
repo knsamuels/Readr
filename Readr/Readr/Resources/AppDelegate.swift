@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         checkAccountStatus { (success) in
             let fetchedUserStatment = success ? "Successfully retrieved a logged in user" : "Failed to retrieve a logged in user"
-            
+            application.applicationIconBadgeNumber = 0
             print(fetchedUserStatment)
         }
         
@@ -96,12 +96,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
     
     
-    
-    
-    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        guard let user = UserController.shared.currentUser else {return}
-        print("This is a test")
+        debugPrint("Received: \(userInfo)")
+        completionHandler(.newData)
+//    }
+    
+//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+//        guard let user = UserController.shared.currentUser else {return}
+//        print("This is a test")
+//
+//        let dict = userInfo as! [String: NSObject]
+//        let notification = CKNotification(fromRemoteNotificationDictionary: dict)
+//
+//        if let sub = notification?.subscriptionID {
+//          print("iOS Notification: \(sub)")
+//        }
+        
 //        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
 //            DispatchQueue.main.async {
 //                switch result {
