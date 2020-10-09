@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UITabBar.appearance().tintColor = .black
 //        print(CKContainer.default().publicCloudDatabase)
         
-//        application.applicationIconBadgeNumber = 0
+        application.applicationIconBadgeNumber = 0
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
             if let error = error {
@@ -99,9 +99,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     
-//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-//        guard let user = UserController.shared.currentUser else {return}
-//
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        guard let user = UserController.shared.currentUser else {return}
+        print("This is a test")
 //        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
 //            DispatchQueue.main.async {
 //                switch result {
@@ -126,6 +126,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                }
 //            }
 //        }
-//    }
+    }
 } //End of class
 
