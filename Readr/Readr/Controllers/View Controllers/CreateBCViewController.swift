@@ -147,6 +147,16 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
                     switch result {
                     case .success(let bookclub):
                         self.bookclub = bookclub
+                        BookclubController.shared.addSubscriptionTo(messagesForBookclub: bookclub) { (result, error) in
+                            DispatchQueue.main.async {
+                                switch result {
+                                case true:
+                                    print("Bookclub creator added to subscriptions")
+                                case false:
+                                    print("Could not add bookclub creator to subscriptions")
+                                }
+                            }
+                        }
                         self.performSegue(withIdentifier:
                             "toBookclubVC", sender: self)
                         self.navigationController?.popViewController(animated: true)

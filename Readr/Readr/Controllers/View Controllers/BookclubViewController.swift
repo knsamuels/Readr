@@ -76,13 +76,21 @@ class BookclubViewController: UIViewController {
         if userAppleRef != bookclub.admin {
             if bookclub.members.contains(userAppleRef) {
                 guard let index = bookclub.members.firstIndex(of: userAppleRef) else {return}
-                
                 bookclub.members.remove(at: index)
                 joinButton.setTitle("Join", for: .normal)
                 self.joinButton.setTitleColor(.black, for: .normal)
                 self.joinButton.backgroundColor = .white
                 self.memberCountLabel.text = "\(bookclub.members.count)"
-                
+                BookclubController.shared.removeSubscriptionTo(messagesForBookclub: bookclub) { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case true:
+                             print("Removed subscription")
+                        case false:
+                            print("Could not remove subscription")
+                        }
+                    }
+                }
             } else {
                 user.bookclubs.append(bookclub)
                 bookclub.members.append(userAppleRef)
@@ -90,6 +98,16 @@ class BookclubViewController: UIViewController {
                 self.joinButton.setTitleColor(.white, for: .normal)
                 self.joinButton.backgroundColor = .accentBlack
                 self.memberCountLabel.text = "\(bookclub.members.count)"
+                BookclubController.shared.addSubscriptionTo(messagesForBookclub: bookclub) { (result, error) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case true:
+                            print("User is now subscribed to notifications")
+                        case false:
+                            print("Could not subscribe the user to notifications")
+                        }
+                    }
+                }
             }
             //UserController.shared.updateUser(user: user) { (result) in
             //}
