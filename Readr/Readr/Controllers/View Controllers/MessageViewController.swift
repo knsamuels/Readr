@@ -35,6 +35,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         NotificationCenter.default.addObserver(self, selector: #selector(MessageViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(MessageViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onReloadEventsTable), name: Notification.Name(rawValue: "reloadEventsTable"), object: nil)
     }
     
     // MARK: - Actions
@@ -83,6 +85,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
                 case .success(let messages):
                     self.messagesArray = messages
                     self.tableView.reloadData()
+                    print("testing to see if we can fetch messages")
                     if self.messagesArray.count > 0 {
                         let indexPath = IndexPath(row: self.messagesArray.count - 1, section: 0)
                         self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
@@ -134,6 +137,10 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
+    }
+    
+    @objc func onReloadEventsTable() {
+        fetchMessages()
     }
     
     // MARK: - Table View Data Source

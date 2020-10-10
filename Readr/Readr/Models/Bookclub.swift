@@ -23,6 +23,7 @@ struct BookclubConstants {
     fileprivate static let meetingInfoKey = "meetingInfo"
     fileprivate static let memberCapacityKey = "memberCapacity"
     fileprivate static let photoAssetKey = "photoAsset"
+    static let recordIDKey = "recordID"
 }
 
 class Bookclub {
