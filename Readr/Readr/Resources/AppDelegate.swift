@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(fetchedUserStatment)
         }
         
-//        UITabBar.appearance().tintColor = .black
-//        print(CKContainer.default().publicCloudDatabase)
+        //        UITabBar.appearance().tintColor = .black
+        //        print(CKContainer.default().publicCloudDatabase)
         
         application.applicationIconBadgeNumber = 0
         
@@ -91,51 +91,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //        }
     //    }
     
-//        func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-//            print("We failed to register for remote notifications. -- \(error) -- \(error.localizedDescription)")
-//        }
+    //        func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    //            print("We failed to register for remote notifications. -- \(error) -- \(error.localizedDescription)")
+    //        }
     
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         debugPrint("Received: \(userInfo)")
-        completionHandler(.newData)
-//    }
-    
-//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-//        guard let user = UserController.shared.currentUser else {return}
-//        print("This is a test")
-//
-//        let dict = userInfo as! [String: NSObject]
-//        let notification = CKNotification(fromRemoteNotificationDictionary: dict)
-//
-//        if let sub = notification?.subscriptionID {
-//          print("iOS Notification: \(sub)")
-//        }
+        let dict = userInfo as! [String: NSObject]
+        let notification = CKNotification(fromRemoteNotificationDictionary: dict)
         
-//        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let bookclubs):
-//                    user.bookclubs = bookclubs
-//                    fetchMessages()
-//                case .failure(_):
-//                    print("no bookclubs")
-//                }
-//            }
-//        }
-//
-//        func fetchMessages() {
-//            for bookclub in user.bookclubs {
-//                MessageController.shared.fetchMessages(for: bookclub) { (result) in
+        if let sub = notification?.subscriptionID {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "reloadEventsTable"), object: nil)
+            print("iOS Notification: \(sub)")
+//            BookclubController.shared.fetchBookclubWithRecordName(recordName: sub) { (result) in
+//                DispatchQueue.main.async {
 //                    switch result {
-//                    case .success(_):
-//                        print("fetched messages")
+//                    case .success(let bookclub):
+//                        MessageController.shared.fetchMessages(for: bookclub) { (result) in
+//                            DispatchQueue.main.async {
+//                                switch result {
+//                                case .success(_):
+//                                    NotificationCenter.default.post(name: Notification.Name(rawValue: "reloadEventsTable"), object: nil)
+//                                case .failure(_):
+//                                    print("Did not get the messages")
+//                                }
+//                            }
+//                        }
 //                    case .failure(_):
-//                        print("no messages")
+//                         print("We were NOT able to fetch bookclub with record name")
 //                    }
 //                }
 //            }
-//        }
+        }
+        completionHandler(.newData)
     }
 } //End of class
 
