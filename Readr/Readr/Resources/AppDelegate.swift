@@ -103,6 +103,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let sub = notification?.subscriptionID {
             NotificationCenter.default.post(name: Notification.Name(rawValue: "reloadEventsTable"), object: nil)
+            NotificationCenter.default.post(name: Notification.Name("ReceiveData"), object: nil)
+            
             print("iOS Notification: \(sub)")
 //            BookclubController.shared.fetchBookclubWithRecordName(recordName: sub) { (result) in
 //                DispatchQueue.main.async {

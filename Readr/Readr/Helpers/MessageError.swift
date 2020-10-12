@@ -14,6 +14,7 @@ enum MessageError: LocalizedError {
     case couldNotUnwrap
     case unableToDeleteRecord
     case noUserLoggedIn
+    case noRecord
     
     var errorDescription: String? {
         switch self {
@@ -25,6 +26,8 @@ enum MessageError: LocalizedError {
             return "Unable to delete a message from the cloud."
         case .noUserLoggedIn:
             return "There is no user currently logged in."
+        case .noRecord:
+            return "There are no new messages"
         }
     }
 } //End enum
