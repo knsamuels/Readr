@@ -146,4 +146,31 @@ class MessageController {
         }
     }
     
+    func fetchNewMessages(for bookclub: Bookclub, existingMessages: [Message], completion: @escaping (Result<[Message], MessageError>) -> Void){
+
+        let bookclubRefence = bookclub.recordID
+
+        let predicate = NSPredicate(format: "%K == %@", MessageStrings.bookclubReferenceKey, bookclubRefence)
+
+        let messageIDs = existingMessages.compactMap({$0.recordID})
+
+        let predicate2 = NSPredicate(format: "NOT(recordID IN %@)", messageIDs)
+
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, predicate2])
+
+        let query = CKQuery(recordType: "Message", predicate: compoundPredicate)
+
+        publicDB.perform(query, inZoneWith: nil) { (records, error) in
+
+            if let error = error {
+                return completion(.failure(.ckError(error)))
+            }
+            guard let records = records else { return completion(.failure(.noRecord)) }
+
+            let newMessages = records.compactMap{ Message(ckRecord: $0) }
+
+            completion(.success(newMessages))
+        }
+    }
+
 } //End class

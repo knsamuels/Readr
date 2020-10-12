@@ -37,6 +37,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         NotificationCenter.default.addObserver(self, selector: #selector(MessageViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onReloadEventsTable), name: Notification.Name(rawValue: "reloadEventsTable"), object: nil)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(onReceiveData(_:)), name: NSNotification.Name(rawValue: "ReceiveData"), object: nil)
     }
     
     // MARK: - Actions
@@ -79,22 +81,27 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func fetchMessages() {
         guard let bookclub = bookclub else {return}
-        MessageController.shared.fetchMessages(for: bookclub) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let messages):
-                    self.messagesArray = messages
-                    self.tableView.reloadData()
-                    print("testing to see if we can fetch messages")
-                    if self.messagesArray.count > 0 {
-                        let indexPath = IndexPath(row: self.messagesArray.count - 1, section: 0)
-                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: { [weak self] in
+            MessageController.shared.fetchMessages(for: bookclub) { (result) in
+                DispatchQueue.main.async {
+                    guard let strongSelf = self else {return}
+                    switch result {
+                    case .success(let messages):
+                        strongSelf.messagesArray = messages
+                        strongSelf.tableView.reloadData()
+                        print("testing to see if we can fetch messages")
+                        print(strongSelf.messagesArray.count)
+                        if strongSelf.messagesArray.count > 0 {
+                            let indexPath = IndexPath(row: strongSelf.messagesArray.count - 1, section: 0)
+                            strongSelf.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                            return
+                        }
+                    case .failure(_):
+                        print("Error fetching messages")
                     }
-                case .failure(_):
-                    print("Error fetching messages")
                 }
             }
-        }
+        })
     }
     
     func setupTableView() {
@@ -143,6 +150,22 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         fetchMessages()
     }
     
+//    @objc func onReceiveData(_ notification:Notification) {
+//        guard let bookclub = bookclub else {return}
+//        MessageController.shared.fetchNewMessages(for: bookclub, existingMessages: messagesArray) { (result) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let messages):
+//                    self.messagesArray.append(contentsOf: messages)
+//                    print("We made it this far")
+//                    self.tableView.reloadData()
+//                case .failure(_):
+//                    print("Could not fetch new messages")
+//                }
+//            }
+//        }
+//    }
+    
     // MARK: - Table View Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messagesArray.count
@@ -152,7 +175,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageTableViewCell else {return UITableViewCell()}
         
         let message = messagesArray[indexPath.row]
-        
+        print(message.text)
         cell.message = message
         
         //        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
