@@ -2655,7 +2655,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L98-mv-r2w"/>
                     </view>
-                    <navigationItem key="navigationItem" id="NDh-wL-Kam"/>
+                    <navigationItem key="navigationItem" id="NDh-wL-Kam">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="jY2-gG-Opb">
+                            <connections>
+                                <action selector="optionButtonTapped:" destination="Dff-Fc-vSR" id="RmH-gY-blO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <size key="freeformSize" width="414" height="850"/>
                     <connections>
                         <outlet property="bioLabel" destination="oEZ-ug-co2" id="iF5-Er-oBv"/>
@@ -2684,6 +2690,7 @@
                         <outlet property="followButton" destination="iVQ-FR-t1b" id="bRl-is-Ntw"/>
                         <outlet property="followersCountLabel" destination="XlF-FV-pyc" id="VBH-LF-EGW"/>
                         <outlet property="followingCountLabel" destination="c6g-Qo-8qj" id="vjK-H8-cqE"/>
+                        <outlet property="optionButton" destination="jY2-gG-Opb" id="Wah-72-0S7"/>
                         <outlet property="profilePic" destination="RWL-fw-0u8" id="F4p-gD-JgW"/>
                         <outlet property="selectProfileImage" destination="Imi-Tp-fxf" id="nfb-1L-GCr"/>
                         <outlet property="titleLabel1" destination="EZK-Rp-NBp" id="L85-qM-qlJ"/>
