@@ -81,7 +81,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func fetchMessages() {
         guard let bookclub = bookclub else {return}
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
             MessageController.shared.fetchMessages(for: bookclub) { (result) in
                 DispatchQueue.main.async {
                     guard let strongSelf = self else {return}

@@ -58,6 +58,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var optionButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,8 +148,11 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
-    //MARK: - Helper Methods
+    @IBAction func optionButtonTapped(_ sender: Any) {
+        presentOptionAlert()
+    }
     
+    //MARK: - Helper Methods
     func setUpImage() {
         profilePic.layer.cornerRadius = profilePic.frame.height / 2
         profilePic.clipsToBounds = true
@@ -226,7 +230,33 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 }
             }
         }
-//        self.getUsersBookclubs()
+        //        self.getUsersBookclubs()
+    }
+    
+    func presentOptionAlert() {
+        guard let user = user else {return}
+        guard let currentUser = UserController.shared.currentUser else {return}
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let blockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
+            let confirmBlockController = UIAlertController(title: "Block User?", message: "You will never be able to unblock once you block.", preferredStyle: .alert)
+            let cancelBlockAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let confirmBlockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
+                currentUser.blockedUsers.append(user.username)
+            }
+            confirmBlockController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+            confirmBlockController.view.tintColor = .accentBlack
+            confirmBlockController.addAction(cancelBlockAction)
+            confirmBlockController.addAction(confirmBlockAction)
+            self.present(confirmBlockController, animated: true)
+        }
+        alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alertController.view.tintColor = .accentBlack
+        alertController.addAction(cancelAction)
+        alertController.addAction(blockAction)
+        
+        self.present(alertController, animated: true)
     }
     
     func updateViews() {
@@ -413,7 +443,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 } else {
                     self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
                 }
-//                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
+                //                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                 self.bookclubName1.text = self.userBookClubs[0].name
                 self.bookclub1ButtonLabel.isHidden = false
                 if let image2 = self.userBookClubs[1].profilePicture {
@@ -421,7 +451,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 } else {
                     self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
                 }
-//                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
+                //                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                 self.bookclubName2.text = self.userBookClubs[1].name
                 self.bookclub2ButtonLabel.isHidden = false
                 if let image3 = self.userBookClubs[2].profilePicture {
@@ -429,7 +459,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 } else {
                     self.bookclubImage3.image = UIImage(named: "ReadenLogoWhiteSpace")
                 }
-//                self.bookclubImage3.image = self.userBookClubs[2].profilePicture
+                //                self.bookclubImage3.image = self.userBookClubs[2].profilePicture
                 self.bookclubName3.text = self.userBookClubs[2].name
                 self.bookclub3ButtonLabel.isHidden = false
                 self.bookclubImage4.isHidden = true
@@ -441,7 +471,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 } else {
                     self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
                 }
-//                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
+                //                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                 self.bookclubName1.text = self.userBookClubs[0].name
                 self.bookclub1ButtonLabel.isHidden = false
                 if let image2 = self.userBookClubs[1].profilePicture {
@@ -449,7 +479,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 } else {
                     self.bookclubImage2.image = UIImage(named: "ReadenLogoWhiteSpace")
                 }
-//                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
+                //                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                 self.bookclubName2.text = self.userBookClubs[1].name
                 self.bookclub2ButtonLabel.isHidden = false
                 if let image3 = self.userBookClubs[2].profilePicture {
@@ -457,7 +487,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 } else {
                     self.bookclubImage3.image = UIImage(named: "ReadenLogoWhiteSpace")
                 }
-//                self.bookclubImage3.image = self.userBookClubs[2].profilePicture
+                //                self.bookclubImage3.image = self.userBookClubs[2].profilePicture
                 self.bookclubName3.text = self.userBookClubs[2].name
                 self.bookclub3ButtonLabel.isHidden = false
                 if let image4 = self.userBookClubs[3].profilePicture {
@@ -465,7 +495,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 } else {
                     self.bookclubImage4.image = UIImage(named: "ReadenLogoWhiteSpace")
                 }
-//                self.bookclubImage4.image = self.userBookClubs[3].profilePicture
+                //                self.bookclubImage4.image = self.userBookClubs[3].profilePicture
                 self.bookclubName4.text = self.userBookClubs[3].name
                 self.bookclub4ButtonLabel.isHidden = false
             }
