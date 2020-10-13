@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IG3-hp-YR1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IG3-hp-YR1">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -59,6 +60,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="HmA-4F-0gm"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HmA-4F-0gm" firstAttribute="trailing" secondItem="VF8-CB-XhA" secondAttribute="trailing" constant="8" id="4zG-kC-HqJ"/>
@@ -69,7 +71,6 @@
                             <constraint firstItem="qIU-kH-fMM" firstAttribute="centerX" secondItem="HmA-4F-0gm" secondAttribute="centerX" id="rhX-pA-fw1"/>
                             <constraint firstItem="VF8-CB-XhA" firstAttribute="top" secondItem="qIU-kH-fMM" secondAttribute="bottom" constant="50" id="x0D-jh-rve"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="HmA-4F-0gm"/>
                     </view>
                     <connections>
                         <outlet property="iCloudStackView" destination="VF8-CB-XhA" id="HH7-dS-8bI"/>
