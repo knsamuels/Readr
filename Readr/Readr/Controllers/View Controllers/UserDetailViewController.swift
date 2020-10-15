@@ -59,6 +59,10 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var optionButton: UIBarButtonItem!
+    @IBOutlet weak var favoriteBooksLabel: UILabel!
+    @IBOutlet weak var favoriteGenresLabel: UILabel!
+    @IBOutlet weak var bookclubLabelStackView: UIStackView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +81,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         if self.user == nil || self.user == UserController.shared.currentUser {
             fetchUser()
         } else {
-            fetchUserBooks()
+            checkIfUserIsBlocked()
         }
         guard let user = user else {return}
         print("FOLLOWING: \(user.followingList.count)")
@@ -233,6 +237,53 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         //        self.getUsersBookclubs()
     }
     
+    func checkIfUserIsBlocked() {
+        guard let user = user else {return}
+        guard let currentUser = UserController.shared.currentUser else {return}
+        
+        if user.blockedUsers.contains(currentUser.username) {
+            updateBlockedViews()
+        } else {
+            fetchUserBooks()
+        }
+    }
+    
+    func updateBlockedViews() {
+        profilePic.image = UIImage(named: "ReadenLogoWhiteSpace")
+        followersCountLabel.text = "0"
+        followingCountLabel.text = "0"
+        self.favBookPic1.isHidden = true
+        self.titleLabel1.isHidden = true
+        self.favBook1ButtonLabel.isHidden = true
+        self.favBookPic2.isHidden = true
+        self.titleLabel2.isHidden = true
+        self.favBook2ButtonLabel.isHidden = true
+        self.favBookPic3.isHidden = true
+        self.titleLabel3.isHidden = true
+        self.favBook3ButtonLabel.isHidden = true
+        self.favGenreName1.isHidden = true
+        self.favGenreName2.isHidden = true
+        self.favGenreName3.isHidden = true
+        self.bookclubImage1.isHidden = true
+        self.bookclubName1.isHidden = true
+        self.bookclub1ButtonLabel.isHidden = true
+        self.bookclubImage2.isHidden = true
+        self.bookclubName2.isHidden = true
+        self.bookclub2ButtonLabel.isHidden = true
+        self.bookclubImage3.isHidden = true
+        self.bookclubName3.isHidden = true
+        self.bookclub3ButtonLabel.isHidden = true
+        self.bookclubImage4.isHidden = true
+        self.bookclubName4.isHidden = true
+        self.bookclub4ButtonLabel.isHidden = true
+        self.bioLabel.isHidden = true
+        self.followButton.isHidden = true
+        self.optionButton.isEnabled = false
+        self.favoriteBooksLabel.isHidden = true
+        self.favoriteGenresLabel.isHidden = true
+        self.bookclubLabelStackView.isHidden = true
+    }
+    
     func presentOptionAlert() {
         guard let user = user else {return}
         guard let currentUser = UserController.shared.currentUser else {return}
@@ -244,6 +295,24 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             let cancelBlockAction = UIAlertAction(title: "Cancel", style: .cancel)
             let confirmBlockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
                 currentUser.blockedUsers.append(user.username)
+                user.blockedUsers.append(currentUser.username)
+                UserController.shared.updateUser(user: currentUser) { (result) in
+                    switch result {
+                    case .success(_):
+                        UserController.shared.updateUser(user: user) { (result) in
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success(_):
+                                    self.updateBlockedViews()
+                                case .failure(_):
+                                    print("could not update block lists")
+                                }
+                            }
+                        }
+                    case .failure(_):
+                        print("could not update block user list")
+                    }
+                }
             }
             confirmBlockController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
             confirmBlockController.view.tintColor = .accentBlack
