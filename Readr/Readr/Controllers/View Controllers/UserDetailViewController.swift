@@ -299,6 +299,22 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             let confirmBlockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
                 currentUser.blockedUsers.append(user.username)
                 user.blockedUsers.append(currentUser.username)
+                if user.followerList.contains(currentUser.username) {
+                    guard let index = user.followerList.firstIndex(of: currentUser.username) else {return}
+                    user.followerList.remove(at: index)
+                }
+                if user.followingList.contains(currentUser.username) {
+                    guard let index = user.followingList.firstIndex(of: currentUser.username) else {return}
+                    user.followingList.remove(at: index)
+                }
+                if currentUser.followerList.contains(user.username) {
+                    guard let index = currentUser.followerList.firstIndex(of: user.username) else {return}
+                    currentUser.followerList.remove(at: index)
+                }
+                if currentUser.followingList.contains(user.username) {
+                    guard let index = currentUser.followingList.firstIndex(of: user.username) else {return}
+                    currentUser.followingList.remove(at: index)
+                }
                 UserController.shared.updateUser(user: currentUser) { (result) in
                     switch result {
                     case .success(_):
@@ -597,7 +613,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     @objc func updateBookclubs() {
         getUsersBookclubs()
     }
-    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
