@@ -39,6 +39,8 @@ class FollowViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        sleep(5)
+        fetchFollowUsers()
         followTableView.reloadData()
     }
     
