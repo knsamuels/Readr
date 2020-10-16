@@ -280,6 +280,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         self.bioLabel.isHidden = true
         self.followButton.isHidden = true
         self.optionButton.isEnabled = false
+        self.optionButton.tintColor = .clear
         self.favoriteBooksLabel.isHidden = true
         self.favoriteGenresLabel.isHidden = true
         self.bookclubLabelStackView.isHidden = true
@@ -341,6 +342,8 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     self.selectProfileImage.isHidden = false
                     self.createBookclubButton.isHidden = false
                     self.followButton.isHidden = true
+                    self.optionButton.isEnabled = false
+                    self.optionButton.tintColor = .clear
                 } else {
                     self.selectProfileImage.isHidden = true
                     self.createBookclubButton.isHidden = true
