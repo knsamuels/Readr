@@ -10,21 +10,7 @@ import UIKit
 
 class CreateBCViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate {
     
-    var activeTextField : UITextField? = nil
-    var bookclub: Bookclub?
-    var memberCapacity = 10
-    var pastReads: [String] = []
-    var fiveSelected: Bool = false
-    var tenSelected: Bool = false
-    var fifteenSelected: Bool = false
-    var twentySelected: Bool = false
-    var twentyFiveSelected: Bool = false
-    var currentlyReadingBook: Book? {
-        didSet {
-            updateCurrentlyReading()
-        }
-    }
-    
+    //MARK: - Outlets
     @IBOutlet weak var imageOfBookClub: UIImageView!
     @IBOutlet weak var nameOfBookClub: UITextField!
     @IBOutlet weak var descriptionOfBookClub: UITextView!
@@ -42,6 +28,23 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var cancelButtonToBC: UIButton!
     @IBOutlet weak var cancelButtonToUser: UIButton!
     
+    //MARK: - Properties
+    var activeTextField : UITextField? = nil
+    var bookclub: Bookclub?
+    var memberCapacity = 10
+    var pastReads: [String] = []
+    var fiveSelected: Bool = false
+    var tenSelected: Bool = false
+    var fifteenSelected: Bool = false
+    var twentySelected: Bool = false
+    var twentyFiveSelected: Bool = false
+    var currentlyReadingBook: Book? {
+        didSet {
+            updateCurrentlyReading()
+        }
+    }
+    
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextViews()
@@ -71,8 +74,8 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
     }
-    // MARK: - Actions
     
+    // MARK: - Actions
     @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Select an image", message: "From where would you like to select an image?", preferredStyle: .alert)
         
@@ -100,12 +103,13 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     @IBAction func createBookclubButtonTapped(_ sender: UIButton) {
+        guard let name = nameOfBookClub.text, !name.isEmpty else {return}
+        guard let description = descriptionOfBookClub.text, !description.isEmpty else {return}
+        guard let meetingInfo = meetingInfoForBookBlub.text, !meetingInfo.isEmpty else {return}
+            //let isbn = currentlyReadingBook?.industryIdentifiers?.first?.identifier else {return}
+        guard let industryIdentifiers = currentlyReadingBook?.industryIdentifiers else {return}
         createBookclubButton.isEnabled = false
-        guard let name = nameOfBookClub.text, !name.isEmpty,
-            let description = descriptionOfBookClub.text, !description.isEmpty,
-            let meetingInfo = meetingInfoForBookBlub.text, !meetingInfo.isEmpty,
-            //            let isbn = currentlyReadingBook?.industryIdentifiers?.first?.identifier else {return}
-            let industryIdentifiers = currentlyReadingBook?.industryIdentifiers else {return}
+        createBookclubButton.setTitleColor(.gray, for: .normal)
         var isbn = ""
         for industryIdentifier in industryIdentifiers {
             if industryIdentifier.type == "ISBN_13" {
@@ -166,6 +170,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
                 }
             }
         }
+        print("hiya!")
     }
     
     @IBAction func currentlyReadingButtonTapped(_ sender: Any) {
@@ -360,7 +365,14 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     func setupTextViews() {
+//        nameOfBookClub.layer.borderWidth = 1.0
+//        nameOfBookClub.layer.borderColor = UIColor.white.cgColor
+        meetingInfoForBookBlub.layer.borderWidth = 1.0
+        meetingInfoForBookBlub.layer.borderColor = UIColor.black.cgColor
+        
         descriptionOfBookClub.delegate = self
+        descriptionOfBookClub.layer.borderWidth = 1.0
+        descriptionOfBookClub.layer.borderColor = UIColor.black.cgColor
         
         if descriptionOfBookClub.text.isEmpty {
             descriptionOfBookClub.text = "Introduce your bookclub!"
@@ -369,7 +381,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.black {
+        if textView.text == "Introduce your bookclub!" {
             textView.text = nil
             textView.textColor = UIColor.black
         }
@@ -470,6 +482,8 @@ extension CreateBCViewController: UIImagePickerControllerDelegate {
         
         selectProfileImage.setTitle("", for: .normal)
         imageOfBookClub.image = selectedImage
+        imageOfBookClub.layer.cornerRadius = imageOfBookClub.frame.height / 2
+        imageOfBookClub.clipsToBounds = true
         dismiss(animated: true, completion: nil)
     }
 } //End of extension
