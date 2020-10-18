@@ -56,10 +56,13 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         
         NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        
         nameOfBookClub.delegate = self
         meetingInfoForBookBlub.delegate = self
         doneReadingButton.isHidden = true
         if let bookclub = bookclub {
+//            imageOfBookClub.layer.borderWidth = 1.0
+//            imageOfBookClub.layer.borderColor = UIColor.black.cgColor
             cancelButtonToBC.isHidden = false
             cancelButtonToUser.isHidden = true
             updateViews(bookclub: bookclub)
@@ -432,7 +435,17 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     func updateViews(bookclub: Bookclub) {
-        imageOfBookClub.image = bookclub.profilePicture
+        if let image = bookclub.profilePicture {
+            imageOfBookClub.image = image
+        } else {
+            imageOfBookClub.image = UIImage(named: "ReadenLogoWhiteSpace")
+//            imageOfBookClub.layer.borderWidth = 0.25
+//            imageOfBookClub.layer.borderColor = UIColor.black.cgColor
+        }
+        imageOfBookClub.layer.cornerRadius = imageOfBookClub.frame.height / 2
+        imageOfBookClub.clipsToBounds = true
+        selectProfileImage.setTitle("", for: .normal)
+        
         nameOfBookClub.text = bookclub.name
         descriptionOfBookClub.text = bookclub.description
         meetingInfoForBookBlub.text = bookclub.meetingInfo

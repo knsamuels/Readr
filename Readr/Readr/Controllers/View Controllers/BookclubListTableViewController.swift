@@ -36,9 +36,24 @@ class BookclubListTableViewController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = .black
           self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
+    
+    // Mark: Helpers:
+    func fetchBookclubs() {
+        guard let user = user else {return}
+        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let bookclubs):
+                    self.bookclubs = bookclubs.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
+                    self.tableView.reloadData()
+                case .failure(_):
+                    print("Could not fetch user's bookclubs")
+                }
+            }
+        }
+    }
 
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookclubs.count
     }
@@ -50,21 +65,6 @@ class BookclubListTableViewController: UITableViewController {
         return cell
     }
 
-    // Mark: Helpers:
-    func fetchBookclubs() {
-        guard let user = user else {return}
-        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let bookclubs):
-                    self.bookclubs = bookclubs
-                    self.tableView.reloadData()
-                case .failure(_):
-                    print("Could not fetch user's bookclubs")
-                }
-            }
-        }
-    }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

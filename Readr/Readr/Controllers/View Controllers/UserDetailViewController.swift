@@ -602,7 +602,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
             switch result {
             case .success(let bookclubs):
-                self.userBookClubs = bookclubs
+                self.userBookClubs = bookclubs.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
                 self.updateViews()
             case .failure(_):
                 print("we could not get the user's bookclubs")
