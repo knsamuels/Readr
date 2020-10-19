@@ -166,146 +166,150 @@ class BookclubViewController: UIViewController {
             guard let bookclub = self.bookclub else {return}
             guard let currentlyReading = self.currentlyReading else {return}
             //            let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
-            let userAppleRef = user.appleUserRef
-            self.title = bookclub.name
-            //            self.imageOfBookClub.image = bookclub.profilePicture
-            if let image1 = bookclub.profilePicture {
-                self.imageOfBookClub.image = image1
+            if bookclub.blockedUsers.contains(user.username) {
+                self.updateBlockedViews()
             } else {
-                self.imageOfBookClub.image = UIImage(named: "ReadenLogoWhiteSpace")
-            }
-            self.descriptionOfBookClub.text = bookclub.description
-            self.meetingInfoForBookClub.text = "Meets \(bookclub.meetingInfo)"
-            self.adminNameLabel.text = "Admin:   \(admin.username)"
-            self.memberCountLabel.text = "\(bookclub.members.count)"
-            self.adminContactInfoLabel.text = bookclub.adminContactInfo
-            
-            if bookclub.members.contains(userAppleRef) {
-                self.joinButton.setTitleColor(.white, for: .normal)
-                self.joinButton.backgroundColor = .accentBlack
-                if bookclub.admin == userAppleRef {
-                    self.joinButton.setTitle("Host", for: .normal)
-                } else  {
-                    self.joinButton.setTitle("Member", for: .normal)
-                }
-            } else {
-                self.joinButton.setTitleColor(.black, for: .normal)
-                self.joinButton.backgroundColor = .white
-                if bookclub.members.count == bookclub.memberCapacity {
-                    self.joinButton.setTitle("Full", for: .normal)
-                    self.joinButton.isEnabled = false
+                let userAppleRef = user.appleUserRef
+                self.title = bookclub.name
+                //            self.imageOfBookClub.image = bookclub.profilePicture
+                if let image1 = bookclub.profilePicture {
+                    self.imageOfBookClub.image = image1
                 } else {
-                    self.joinButton.setTitle("Join", for: .normal)
-                    self.joinButton.isEnabled = true
+                    self.imageOfBookClub.image = UIImage(named: "ReadenLogoWhiteSpace")
                 }
-            }
-            self.ImageForCurrentlyReading.image = currentlyReading.coverImage
-            self.titleForCurrentlyReading.text = currentlyReading.title
-            self.authorForCurrentlyReading.text = currentlyReading.authors?.first
-            self.ratingForCurrentlyReading.text = " \(currentlyReading.averageRating ?? 0.0)"
-            
-            self.image1ForPastReads.isHidden = false
-            self.title1ForPastReads.isHidden = false
-            self.rating1ForPastReads.isHidden = false
-            self.pastReads1Button.isHidden = false
-            self.image2ForPastReads.isHidden = false
-            self.title2ForPastReads.isHidden = false
-            self.rating2ForPastReads.isHidden = false
-            self.pastReads2Button.isHidden = false
-            self.image3ForPastReads.isHidden = false
-            self.title3ForPastReads.isHidden = false
-            self.rating3ForPastReads.isHidden = false
-            self.pastReads3Button.isHidden = false
-            self.pastReadsRatingStar1.isHidden = false
-            self.pastReadsRatingStar2.isHidden = false
-            self.pastReadsRatingStar3.isHidden = false
-            
-            let pastReadCount = self.pastReads.count
-            switch pastReadCount {
-            case 0:
-                self.image1ForPastReads.isHidden = true
-                self.title1ForPastReads.isHidden = true
-                self.rating1ForPastReads.isHidden = true
-                self.pastReads1Button.isHidden = true
-                self.image2ForPastReads.isHidden = true
-                self.title2ForPastReads.isHidden = true
-                self.rating2ForPastReads.isHidden = true
-                self.pastReads2Button.isHidden = true
-                self.image3ForPastReads.isHidden = true
-                self.title3ForPastReads.isHidden = true
-                self.rating3ForPastReads.isHidden = true
-                self.pastReads3Button.isHidden = true
-                self.pastReadsRatingStar1.isHidden = true
-                self.pastReadsRatingStar2.isHidden = true
-                self.pastReadsRatingStar3.isHidden = true
-            case 1:
+                self.descriptionOfBookClub.text = bookclub.description
+                self.meetingInfoForBookClub.text = "Meets \(bookclub.meetingInfo)"
+                self.adminNameLabel.text = "Admin:   \(admin.username)"
+                self.memberCountLabel.text = "\(bookclub.members.count)"
+                self.adminContactInfoLabel.text = bookclub.adminContactInfo
+                
+                if bookclub.members.contains(userAppleRef) {
+                    self.joinButton.setTitleColor(.white, for: .normal)
+                    self.joinButton.backgroundColor = .accentBlack
+                    if bookclub.admin == userAppleRef {
+                        self.joinButton.setTitle("Host", for: .normal)
+                    } else  {
+                        self.joinButton.setTitle("Member", for: .normal)
+                    }
+                } else {
+                    self.joinButton.setTitleColor(.black, for: .normal)
+                    self.joinButton.backgroundColor = .white
+                    if bookclub.members.count == bookclub.memberCapacity {
+                        self.joinButton.setTitle("Full", for: .normal)
+                        self.joinButton.isEnabled = false
+                    } else {
+                        self.joinButton.setTitle("Join", for: .normal)
+                        self.joinButton.isEnabled = true
+                    }
+                }
+                self.ImageForCurrentlyReading.image = currentlyReading.coverImage
+                self.titleForCurrentlyReading.text = currentlyReading.title
+                self.authorForCurrentlyReading.text = currentlyReading.authors?.first
+                self.ratingForCurrentlyReading.text = " \(currentlyReading.averageRating ?? 0.0)"
+                
                 self.image1ForPastReads.isHidden = false
                 self.title1ForPastReads.isHidden = false
                 self.rating1ForPastReads.isHidden = false
                 self.pastReads1Button.isHidden = false
-                self.image1ForPastReads.image = self.pastReads[0].coverImage
-                self.title1ForPastReads.text = self.pastReads[0].title
-                self.rating1ForPastReads.text = "\(self.pastReads[0].averageRating ?? 0.0)"
-                self.image2ForPastReads.isHidden = true
-                self.title2ForPastReads.isHidden = true
-                self.rating2ForPastReads.isHidden = true
-                self.pastReads2Button.isHidden = true
-                self.image3ForPastReads.isHidden = true
-                self.title3ForPastReads.isHidden = true
-                self.rating3ForPastReads.isHidden = true
-                self.pastReads3Button.isHidden = true
-                self.pastReadsRatingStar1.isHidden = false
-                self.pastReadsRatingStar2.isHidden = true
-                self.pastReadsRatingStar3.isHidden = true
-            case 2:
-                self.image1ForPastReads.isHidden = false
-                self.title1ForPastReads.isHidden = false
-                self.rating1ForPastReads.isHidden = false
-                self.pastReads1Button.isHidden = false
-                self.image1ForPastReads.image = self.pastReads[0].coverImage
-                self.title1ForPastReads.text = self.pastReads[0].title
-                self.rating1ForPastReads.text = "\(self.pastReads[0].averageRating ?? 0.0)"
                 self.image2ForPastReads.isHidden = false
                 self.title2ForPastReads.isHidden = false
                 self.rating2ForPastReads.isHidden = false
                 self.pastReads2Button.isHidden = false
-                self.image2ForPastReads.image = self.pastReads[1].coverImage
-                self.title2ForPastReads.text = self.pastReads[1].title
-                self.rating2ForPastReads.text = "\(self.pastReads[1].averageRating ?? 0.0)"
-                self.image3ForPastReads.isHidden = true
-                self.title3ForPastReads.isHidden = true
-                self.rating3ForPastReads.isHidden = true
-                self.pastReads3Button.isHidden = true
-                self.pastReadsRatingStar1.isHidden = false
-                self.pastReadsRatingStar2.isHidden = false
-                self.pastReadsRatingStar3.isHidden = true
-            default:
-                self.image1ForPastReads.isHidden = false
-                self.title1ForPastReads.isHidden = false
-                self.rating1ForPastReads.isHidden = false
-                self.pastReads1Button.isHidden = false
-                self.image1ForPastReads.image = self.pastReads[0].coverImage
-                self.title1ForPastReads.text = self.pastReads[0].title
-                self.rating1ForPastReads.text = "\(self.pastReads[0].averageRating ?? 0.0)"
-                self.image2ForPastReads.isHidden = false
-                self.title2ForPastReads.isHidden = false
-                self.rating2ForPastReads.isHidden = false
-                self.pastReads2Button.isHidden = false
-                self.image2ForPastReads.image = self.pastReads[1].coverImage
-                self.title2ForPastReads.text = self.pastReads[1].title
-                self.rating2ForPastReads.text = "\(self.pastReads[1].averageRating ?? 0.0)"
                 self.image3ForPastReads.isHidden = false
                 self.title3ForPastReads.isHidden = false
                 self.rating3ForPastReads.isHidden = false
-                self.pastReads3Button.isHidden = false 
-                self.image3ForPastReads.image = self.pastReads[2].coverImage
-                self.title3ForPastReads.text = self.pastReads[2].title
-                self.rating3ForPastReads.text = "\(self.pastReads[2].averageRating ?? 0.0)"
+                self.pastReads3Button.isHidden = false
                 self.pastReadsRatingStar1.isHidden = false
                 self.pastReadsRatingStar2.isHidden = false
-                self.pastReadsRatingStar3.isHidden = false 
+                self.pastReadsRatingStar3.isHidden = false
+                
+                let pastReadCount = self.pastReads.count
+                switch pastReadCount {
+                case 0:
+                    self.image1ForPastReads.isHidden = true
+                    self.title1ForPastReads.isHidden = true
+                    self.rating1ForPastReads.isHidden = true
+                    self.pastReads1Button.isHidden = true
+                    self.image2ForPastReads.isHidden = true
+                    self.title2ForPastReads.isHidden = true
+                    self.rating2ForPastReads.isHidden = true
+                    self.pastReads2Button.isHidden = true
+                    self.image3ForPastReads.isHidden = true
+                    self.title3ForPastReads.isHidden = true
+                    self.rating3ForPastReads.isHidden = true
+                    self.pastReads3Button.isHidden = true
+                    self.pastReadsRatingStar1.isHidden = true
+                    self.pastReadsRatingStar2.isHidden = true
+                    self.pastReadsRatingStar3.isHidden = true
+                case 1:
+                    self.image1ForPastReads.isHidden = false
+                    self.title1ForPastReads.isHidden = false
+                    self.rating1ForPastReads.isHidden = false
+                    self.pastReads1Button.isHidden = false
+                    self.image1ForPastReads.image = self.pastReads[0].coverImage
+                    self.title1ForPastReads.text = self.pastReads[0].title
+                    self.rating1ForPastReads.text = "\(self.pastReads[0].averageRating ?? 0.0)"
+                    self.image2ForPastReads.isHidden = true
+                    self.title2ForPastReads.isHidden = true
+                    self.rating2ForPastReads.isHidden = true
+                    self.pastReads2Button.isHidden = true
+                    self.image3ForPastReads.isHidden = true
+                    self.title3ForPastReads.isHidden = true
+                    self.rating3ForPastReads.isHidden = true
+                    self.pastReads3Button.isHidden = true
+                    self.pastReadsRatingStar1.isHidden = false
+                    self.pastReadsRatingStar2.isHidden = true
+                    self.pastReadsRatingStar3.isHidden = true
+                case 2:
+                    self.image1ForPastReads.isHidden = false
+                    self.title1ForPastReads.isHidden = false
+                    self.rating1ForPastReads.isHidden = false
+                    self.pastReads1Button.isHidden = false
+                    self.image1ForPastReads.image = self.pastReads[0].coverImage
+                    self.title1ForPastReads.text = self.pastReads[0].title
+                    self.rating1ForPastReads.text = "\(self.pastReads[0].averageRating ?? 0.0)"
+                    self.image2ForPastReads.isHidden = false
+                    self.title2ForPastReads.isHidden = false
+                    self.rating2ForPastReads.isHidden = false
+                    self.pastReads2Button.isHidden = false
+                    self.image2ForPastReads.image = self.pastReads[1].coverImage
+                    self.title2ForPastReads.text = self.pastReads[1].title
+                    self.rating2ForPastReads.text = "\(self.pastReads[1].averageRating ?? 0.0)"
+                    self.image3ForPastReads.isHidden = true
+                    self.title3ForPastReads.isHidden = true
+                    self.rating3ForPastReads.isHidden = true
+                    self.pastReads3Button.isHidden = true
+                    self.pastReadsRatingStar1.isHidden = false
+                    self.pastReadsRatingStar2.isHidden = false
+                    self.pastReadsRatingStar3.isHidden = true
+                default:
+                    self.image1ForPastReads.isHidden = false
+                    self.title1ForPastReads.isHidden = false
+                    self.rating1ForPastReads.isHidden = false
+                    self.pastReads1Button.isHidden = false
+                    self.image1ForPastReads.image = self.pastReads[0].coverImage
+                    self.title1ForPastReads.text = self.pastReads[0].title
+                    self.rating1ForPastReads.text = "\(self.pastReads[0].averageRating ?? 0.0)"
+                    self.image2ForPastReads.isHidden = false
+                    self.title2ForPastReads.isHidden = false
+                    self.rating2ForPastReads.isHidden = false
+                    self.pastReads2Button.isHidden = false
+                    self.image2ForPastReads.image = self.pastReads[1].coverImage
+                    self.title2ForPastReads.text = self.pastReads[1].title
+                    self.rating2ForPastReads.text = "\(self.pastReads[1].averageRating ?? 0.0)"
+                    self.image3ForPastReads.isHidden = false
+                    self.title3ForPastReads.isHidden = false
+                    self.rating3ForPastReads.isHidden = false
+                    self.pastReads3Button.isHidden = false
+                    self.image3ForPastReads.image = self.pastReads[2].coverImage
+                    self.title3ForPastReads.text = self.pastReads[2].title
+                    self.rating3ForPastReads.text = "\(self.pastReads[2].averageRating ?? 0.0)"
+                    self.pastReadsRatingStar1.isHidden = false
+                    self.pastReadsRatingStar2.isHidden = false
+                    self.pastReadsRatingStar3.isHidden = false
+                }
+                self.loadingScreen.removeFromSuperview()
             }
-            self.loadingScreen.removeFromSuperview()
         }
     }
     
@@ -438,6 +442,7 @@ class BookclubViewController: UIViewController {
         guard let user = UserController.shared.currentUser else {return}
         guard let bookclub = bookclub else {return}
         if bookclub.blockedUsers.contains(user.username) {
+            self.loadingScreen.removeFromSuperview()
             updateBlockedViews()
         } else {
             loadDataForUser()

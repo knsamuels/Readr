@@ -10,7 +10,6 @@ import UIKit
 
 class FollowViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
     // MARK: - Outlets
     
     @IBOutlet weak var followTableView: UITableView!
@@ -28,6 +27,10 @@ class FollowViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         followTableView.delegate = self
         followTableView.dataSource = self
+        
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        followSegmentController.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        followSegmentController.setTitleTextAttributes(titleTextAttributes, for: .selected)
         
         if isFirstSegment == true {
             followSegmentController.selectedSegmentIndex = 0
