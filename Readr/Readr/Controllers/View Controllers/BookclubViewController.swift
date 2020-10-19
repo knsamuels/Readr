@@ -41,6 +41,11 @@ class BookclubViewController: UIViewController {
     @IBOutlet weak var pastReads1Button: UIButton!
     @IBOutlet weak var pastReads2Button: UIButton!
     @IBOutlet weak var pastReads3Button: UIButton!
+    @IBOutlet weak var currentlyReadingLabel: UILabel!
+    @IBOutlet weak var currentlyReadingStackView: UIStackView!
+    @IBOutlet weak var pastReadsStakView: UIStackView!
+    @IBOutlet weak var adminStackView: UIStackView!
+    
     
     private lazy var loadingScreen: RLogoLoadingView = {
         let view = RLogoLoadingView()
@@ -55,14 +60,14 @@ class BookclubViewController: UIViewController {
         loadDataForUser()
         self.title = bookclub?.name
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-       self.navigationController?.navigationBar.tintColor = .black
-          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        loadDataForUser()
+        checkIfUserIsBlocked()
         setUpImage()
     }
     
@@ -72,7 +77,7 @@ class BookclubViewController: UIViewController {
         guard let user = UserController.shared.currentUser else {return}
         guard let bookclub = bookclub else {return}
         let userAppleRef = user.appleUserRef
-//        let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
+        //        let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
         if userAppleRef != bookclub.admin {
             if bookclub.members.contains(userAppleRef) {
                 guard let index = bookclub.members.firstIndex(of: userAppleRef) else {return}
@@ -85,7 +90,7 @@ class BookclubViewController: UIViewController {
                     DispatchQueue.main.async {
                         switch result {
                         case true:
-                             print("Removed subscription")
+                            print("Removed subscription")
                         case false:
                             print("Could not remove subscription")
                         }
@@ -160,10 +165,10 @@ class BookclubViewController: UIViewController {
             guard let user = UserController.shared.currentUser else {return}
             guard let bookclub = self.bookclub else {return}
             guard let currentlyReading = self.currentlyReading else {return}
-//            let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
+            //            let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
             let userAppleRef = user.appleUserRef
             self.title = bookclub.name
-//            self.imageOfBookClub.image = bookclub.profilePicture
+            //            self.imageOfBookClub.image = bookclub.profilePicture
             if let image1 = bookclub.profilePicture {
                 self.imageOfBookClub.image = image1
             } else {
@@ -313,7 +318,7 @@ class BookclubViewController: UIViewController {
                     self.fetchBook() {
                         self.fetchPastReads {
                             self.updateViews(admin: admin)
-//                            self.loadingScreen.removeFromSuperview()
+                            //                            self.loadingScreen.removeFromSuperview()
                         }
                         //fetchPastReads --- need to add call updateViews in PastReads closure
                     }
@@ -401,7 +406,7 @@ class BookclubViewController: UIViewController {
                 }
             }
         }
-      alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
         alertController.view.tintColor = .accentBlack
         alertController.addAction(cancelAction)
         alertController.addAction(editAction)
@@ -428,6 +433,42 @@ class BookclubViewController: UIViewController {
         alertController.addAction(shareAction)
         
         self.present(alertController, animated: true)
+    }
+    func checkIfUserIsBlocked() {
+        guard let user = UserController.shared.currentUser else {return}
+        guard let bookclub = bookclub else {return}
+        if bookclub.blockedUsers.contains(user.username) {
+            updateBlockedViews()
+        } else {
+            loadDataForUser()
+        }
+    }
+    
+    func updateBlockedViews() {
+        self.image1ForPastReads.isHidden = true
+        self.title1ForPastReads.isHidden = true
+        self.rating1ForPastReads.isHidden = true
+        self.pastReads1Button.isHidden = true
+        self.image2ForPastReads.isHidden = true
+        self.title2ForPastReads.isHidden = true
+        self.rating2ForPastReads.isHidden = true
+        self.pastReads2Button.isHidden = true
+        self.image3ForPastReads.isHidden = true
+        self.title3ForPastReads.isHidden = true
+        self.rating3ForPastReads.isHidden = true
+        self.pastReads3Button.isHidden = true
+        self.pastReadsRatingStar1.isHidden = true
+        self.pastReadsRatingStar2.isHidden = true
+        self.pastReadsRatingStar3.isHidden = true
+        self.descriptionOfBookClub.isHidden = true
+        self.meetingInfoForBookClub.isHidden = true
+        self.currentlyReadingLabel.isHidden = true
+        self.currentlyReadingStackView.isHidden = true
+        self.adminStackView.isHidden = true
+        self.pastReadsStakView.isHidden = true
+        self.joinButton.isHidden = true
+        self.imageOfBookClub.image = UIImage(named: "ReadenLogoWhiteSpace")
+        self.memberCountLabel.text = "0"
     }
     
     // MARK: - Navigation

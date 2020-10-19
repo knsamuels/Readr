@@ -45,7 +45,7 @@ class MemberListTableViewController: UITableViewController {
         }
         let member = bookclubMembers[indexPath.row]
         cell.member = member
-        //        cell.bookclub = bookclub
+        cell.blockDelegate = self
         return cell
     }
     
@@ -123,5 +123,70 @@ class MemberListTableViewController: UITableViewController {
             let userToSend = bookclubMembers[indexPath.row]
             destination.user = userToSend
         }
+    }
+}
+
+extension MemberListTableViewController: BlockMemberDelegate {
+    func presentBlockAlert(member: User) {
+        guard let bookclub = bookclub else {return}
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let removeAction = UIAlertAction(title: "Remove", style: .default) { (_) in
+            let confirmRemoveController = UIAlertController(title: "Remove User?", message: "Are you sure you want to remove this user from the bookclub?", preferredStyle: .alert)
+            let cancelRemoveAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let confirmRemoveAction = UIAlertAction(title: "Remove", style: .destructive) { (_) in
+                guard let index = bookclub.members.firstIndex(of: member.appleUserRef) else {return}
+                bookclub.members.remove(at: index)
+                BookclubController.shared.update(bookclub: bookclub) { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(_):
+                            print("This WORKED")
+                            self.bookclubMembers = []
+                            self.fetchUsers()
+                        case .failure(_):
+                            print("could not remove the user from the bookclub")
+                        }
+                    }
+                }
+            }
+            confirmRemoveController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+            confirmRemoveController.view.tintColor = .accentBlack
+            confirmRemoveController.addAction(cancelRemoveAction)
+            confirmRemoveController.addAction(confirmRemoveAction)
+            self.present(confirmRemoveController, animated: true)
+        }
+        let blockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
+            let confirmBlockController = UIAlertController(title: "Block User?", message: "You will never be able to unblock once you block.", preferredStyle: .alert)
+            let cancelBlockAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let confirmBlockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
+                bookclub.blockedUsers.append(member.username)
+                guard let index = bookclub.members.firstIndex(of: member.appleUserRef) else {return}
+                bookclub.members.remove(at: index)
+                BookclubController.shared.update(bookclub: bookclub) { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(_):
+                            self.bookclubMembers = []
+                            self.fetchUsers()
+                        case .failure(_):
+                            print("could not update the user")
+                        }
+                    }
+                }
+            }
+            confirmBlockController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+            confirmBlockController.view.tintColor = .accentBlack
+            confirmBlockController.addAction(cancelBlockAction)
+            confirmBlockController.addAction(confirmBlockAction)
+            self.present(confirmBlockController, animated: true)
+        }
+        alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alertController.view.tintColor = .accentBlack
+        alertController.addAction(cancelAction)
+        alertController.addAction(removeAction)
+        alertController.addAction(blockAction)
+        self.present(alertController, animated: true)
     }
 }
