@@ -37,11 +37,11 @@
             <objects>
                 <viewController storyboardIdentifier="toCreateBCVC" id="H6T-ob-m4V" customClass="CreateBCViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i6a-oG-BLL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAA-Z6-asI">
-                                <rect key="frame" x="0.0" y="44" width="414" height="773"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhV-sO-mgR" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
@@ -1049,7 +1049,7 @@
             <objects>
                 <tableViewController id="olf-St-n1g" customClass="MemberListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IkP-RT-d1p">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="offWhite"/>
                         <prototypes>
@@ -1285,7 +1285,7 @@
             <objects>
                 <tableViewController id="cqk-BO-4bC" customClass="BookclubListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VVF-3l-rjw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="offWhite"/>
                         <prototypes>
@@ -2182,11 +2182,11 @@
             <objects>
                 <viewController id="Dff-Fc-vSR" customClass="UserDetailViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RZP-id-95u">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="850"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdt-wb-hqS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="757"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cG5-ch-zNd">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
@@ -2786,11 +2786,11 @@
             <objects>
                 <viewController id="CEw-Rj-swW" customClass="FollowViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nqf-Vf-d7x">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dou-Kd-fvB">
-                                <rect key="frame" x="0.0" y="79" width="414" height="734"/>
+                                <rect key="frame" x="0.0" y="35" width="414" height="773"/>
                                 <color key="backgroundColor" name="offWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="followCell" rowHeight="110" id="zn5-oS-Jnr" customClass="FollowListTableViewCell" customModule="Readen" customModuleProvider="target">
@@ -2833,7 +2833,7 @@
                                 </prototypes>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="K2n-cZ-NhJ">
-                                <rect key="frame" x="103.5" y="44" width="207" height="31"/>
+                                <rect key="frame" x="103.5" y="0.0" width="207" height="31"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="bZW-qg-q6h"/>
@@ -2842,6 +2842,7 @@
                                     <segment title="Following"/>
                                     <segment title="Followers"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="FollowSegmentControllerTapped:" destination="CEw-Rj-swW" eventType="valueChanged" id="tKy-ki-J7d"/>
                                 </connections>
@@ -3514,9 +3515,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="erQ-Ba-1fy"/>
         <segue reference="gAY-BR-rCM"/>
-        <segue reference="lJ2-3A-1QV"/>
+        <segue reference="8Q8-Ma-2eL"/>
         <segue reference="Ajn-VF-Y29"/>
         <segue reference="cVK-gp-z3w"/>
         <segue reference="4Pb-cf-ugE"/>
