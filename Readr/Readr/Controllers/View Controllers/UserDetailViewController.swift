@@ -70,7 +70,9 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateBookclubs), name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.updateBookclubs), name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -597,7 +599,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             }
         }
     }
-    func getUsersBookclubs() {
+    @objc func getUsersBookclubs() {
         guard let user = self.user else {return}
         BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
             switch result {
@@ -611,7 +613,9 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     }
     
     @objc func updateBookclubs() {
-        getUsersBookclubs()
+        Timer.scheduledTimer(timeInterval: 3.0, target:self, selector: #selector(getUsersBookclubs), userInfo:nil, repeats: false)
+//        sleep(5)
+//        getUsersBookclubs()
     }
     
     // MARK: - Navigation
@@ -659,6 +663,10 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 FollowViewController else {return}
             destination.isFirstSegment = false
             destination.user = user
+        } else if segue.identifier == "userToCreateBCVC" {
+            guard let destination = segue.destination as?
+                CreateBCViewController else {return}
+            destination.reloadBCDelegate = self
         }
     }
 } //End of class
@@ -688,5 +696,11 @@ extension UserDetailViewController: UIImagePickerControllerDelegate {
                 }
             }
         }
+    }
+} //End of extension
+
+extension UserDetailViewController: ReloadBookclubsDelegate {
+    func reloadUserBookclubs() {
+        self.updateBookclubs()
     }
 } //End of extension

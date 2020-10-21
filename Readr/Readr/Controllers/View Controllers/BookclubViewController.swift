@@ -9,12 +9,13 @@
 import UIKit
 import CloudKit
 
+protocol ReloadBCChainDelegate: AnyObject {
+    func callDelegateFunc()
+}
+
 class BookclubViewController: UIViewController {
     
-    var bookclub: Bookclub? 
-    var currentlyReading: Book?
-    var pastReads: [Book] = []
-    
+    //MARK: - Outlets
     @IBOutlet weak var imageOfBookClub: UIImageView!
     @IBOutlet weak var descriptionOfBookClub: UILabel!
     @IBOutlet weak var meetingInfoForBookClub: UILabel!
@@ -46,6 +47,11 @@ class BookclubViewController: UIViewController {
     @IBOutlet weak var pastReadsStakView: UIStackView!
     @IBOutlet weak var adminStackView: UIStackView!
     
+    //MARK: - Properties
+    var bookclub: Bookclub?
+    var currentlyReading: Book?
+    var pastReads: [Book] = []
+    weak var chainDelegate: ReloadBCChainDelegate?
     
     private lazy var loadingScreen: RLogoLoadingView = {
         let view = RLogoLoadingView()
@@ -54,6 +60,7 @@ class BookclubViewController: UIViewController {
         return view
     }()
     
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoadingScreen()
@@ -62,13 +69,20 @@ class BookclubViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         checkIfUserIsBlocked()
         setUpImage()
+        
+        chainDelegate?.callDelegateFunc()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+//        print("run this shitttt")
     }
     
     @IBAction func unwindToBookclubVC(_ sender: UIStoryboardSegue) {}
