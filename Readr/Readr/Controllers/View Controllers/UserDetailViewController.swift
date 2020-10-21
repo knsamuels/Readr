@@ -295,6 +295,9 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let reportAction = UIAlertAction(title: "Report User", style: .destructive) { (_) in
+            print("Report")
+        }
         let blockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
             let confirmBlockController = UIAlertController(title: "Block User?", message: "You will never be able to unblock once you block.", preferredStyle: .alert)
             let cancelBlockAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -344,6 +347,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
         alertController.view.tintColor = .accentBlack
         alertController.addAction(cancelAction)
+        alertController.addAction(reportAction)
         alertController.addAction(blockAction)
         
         self.present(alertController, animated: true)

@@ -24,6 +24,7 @@ struct UserStrings {
     fileprivate static let favoriteGenresKey = "favoriteGenres"
     fileprivate static let bookshelvesKey = "Bookshelf"
     static let appleUserRefKey = "appleUserRef"
+    fileprivate static let reportCountKey = "reportCount"
     fileprivate static let photoAssetKey = "photoAsset"
 }
 
@@ -42,6 +43,7 @@ class User {
     var bookshelves: [Bookshelf]
     var recordID: CKRecord.ID
     var appleUserRef: CKRecord.Reference
+    var reportCount: Int
     
     var profilePhoto: UIImage? {
         get {
@@ -69,7 +71,7 @@ class User {
         }
     }
     
-    init(username: String, firstName: String, lastName: String, bio: String = "", favoriteAuthor: String = "", favoriteBooks: [String] = [], bookclubs: [Bookclub] = [], followingList: [String] = [], followerList: [String] = [], blockedUsers: [String] = [], favoriteGenres: [String] = [], bookshelves: [Bookshelf] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), appleUserRef: CKRecord.Reference, profilePhoto: UIImage? = nil) {
+    init(username: String, firstName: String, lastName: String, bio: String = "", favoriteAuthor: String = "", favoriteBooks: [String] = [], bookclubs: [Bookclub] = [], followingList: [String] = [], followerList: [String] = [], blockedUsers: [String] = [], favoriteGenres: [String] = [], bookshelves: [Bookshelf] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), appleUserRef: CKRecord.Reference, reportCount: Int = 0, profilePhoto: UIImage? = nil) {
         self.username = username
         self.firstName = firstName
         self.lastName = lastName
@@ -84,6 +86,7 @@ class User {
         self.bookshelves = bookshelves
         self.recordID = recordID
         self.appleUserRef = appleUserRef
+        self.reportCount = reportCount
         self.profilePhoto = profilePhoto
     }
 } //End of class
@@ -123,6 +126,11 @@ extension User {
             followerList = result
         }
         
+        var reportCount: Int = 0
+        if let result = ckRecord[UserStrings.reportCountKey] as? Int {
+            reportCount = result
+        }
+        
         var foundPhoto: UIImage?
         if let photoAsset = ckRecord[UserStrings.photoAssetKey] as? CKAsset {
             do {
@@ -134,7 +142,7 @@ extension User {
             }
         }
         
-        self.init(username: username, firstName: firstName, lastName: lastName, bio: bio, favoriteAuthor: favoriteAuthor, favoriteBooks: favoriteBooks, bookclubs: [], followingList: followingList, followerList: followerList, blockedUsers: blockedUsers, favoriteGenres: favoriteGenres, bookshelves: [], recordID: ckRecord.recordID, appleUserRef: appleUserRef, profilePhoto: foundPhoto)
+        self.init(username: username, firstName: firstName, lastName: lastName, bio: bio, favoriteAuthor: favoriteAuthor, favoriteBooks: favoriteBooks, bookclubs: [], followingList: followingList, followerList: followerList, blockedUsers: blockedUsers, favoriteGenres: favoriteGenres, bookshelves: [], recordID: ckRecord.recordID, appleUserRef: appleUserRef, reportCount: reportCount, profilePhoto: foundPhoto)
     }
     
 } //End of extension
@@ -154,6 +162,7 @@ extension CKRecord {
         self.setValue(user.followingList, forKey: UserStrings.followingListKey)
         self.setValue(user.followerList, forKey: UserStrings.followerListKey)
         self.setValue(user.blockedUsers, forKey: UserStrings.blockedUsersKey)
+        self.setValue(user.reportCount, forKey: UserStrings.reportCountKey)
         
         if user.favoriteGenres.count > 0 {
             self.setValue(user.favoriteGenres, forKey: UserStrings.favoriteGenresKey)
