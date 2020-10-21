@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ReloadBookclubsDelegate: AnyObject {
+    func reloadUserBookclubs()
+}
+
 class CreateBCViewController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate {
     
     //MARK: - Outlets
@@ -43,6 +47,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             updateCurrentlyReading()
         }
     }
+    weak var reloadBCDelegate: ReloadBookclubsDelegate?
     
     //MARK: - Lifecycles
     override func viewDidLoad() {
@@ -75,7 +80,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             cancelButtonToBC.isHidden = true
             cancelButtonToUser.isHidden = false
         }
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
     }
     
     // MARK: - Actions
@@ -479,6 +484,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             guard let destination = segue.destination as? BookclubViewController else {return}
             let bookclubToSend = bookclub
             destination.bookclub = bookclubToSend
+            destination.chainDelegate = self 
         }
     }
 } //End of class
@@ -517,3 +523,9 @@ extension CreateBCViewController: UITextFieldDelegate {
         self.activeTextField = nil
     }
 } //End of extension
+
+extension CreateBCViewController: ReloadBCChainDelegate {
+    func callDelegateFunc() {
+        self.reloadBCDelegate?.reloadUserBookclubs()
+    }
+}
