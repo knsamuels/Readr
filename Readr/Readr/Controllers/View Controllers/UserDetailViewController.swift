@@ -288,6 +288,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         self.bookclubLabelStackView.isHidden = true
         self.selectProfileImage.isHidden = true 
     }
+    
     func reportConfirm() {
         let alertController = UIAlertController(title: nil, message: "User has been reported", preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Okay", style: .cancel)
@@ -295,6 +296,89 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         alertController.view.tintColor = .accentBlack
         alertController.addAction(confirmAction)
         self.present(alertController, animated: true)
+    }
+    
+    func deleteAllBookclubs() {
+        guard let user = user else {return}
+        var bookclubsToCheck: [Bookclub] = []
+        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let bookclubs):
+                    bookclubsToCheck = bookclubs
+                    checkBookclubs()
+                case .failure(_):
+                    print("Could not fetch bookclubs.")
+                }
+            }
+        }
+        
+        func checkBookclubs() {
+            for bookclub in bookclubsToCheck {
+                if bookclub.admin == user.appleUserRef {
+                    BookclubController.shared.delete(bookclub: bookclub) { (result) in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(_):
+                                print("Successfully deleted bookclub")
+                            case .failure(_):
+                                print("Could not delete bookclub")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func removeAllFollows() {
+        guard let user = user else {return}
+        for followerUsername in user.followerList {
+            UserController.shared.fetchUsername(username: followerUsername) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let follower):
+                        guard let index = follower.followingList.firstIndex(of: user.username) else {return}
+                        follower.followingList.remove(at: index)
+                        UserController.shared.updateUser(user: follower) { (result) in
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success(_):
+                                    print("User's following list updated.")
+                                case .failure(_):
+                                    print("Error updating follower.")
+                                }
+                            }
+                        }
+                    case .failure(_):
+                        print("Could not fetch follower.")
+                    }
+                }
+            }
+        }
+        for followingUsername in user.followingList {
+            UserController.shared.fetchUsername(username: followingUsername) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let following):
+                        guard let index = following.followerList.firstIndex(of: user.username) else {return}
+                        following.followerList.remove(at: index)
+                        UserController.shared.updateUser(user: following) { (result) in
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success(_):
+                                    print("User's follower list updated.")
+                                case .failure(_):
+                                    print("Error updating following.")
+                                }
+                            }
+                        }
+                    case .failure(_):
+                        print("Could not fetch following.")
+                    }
+                }
+            }
+        }
     }
     
     func presentOptionAlert() {
@@ -309,6 +393,8 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             let confirmReportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
                 user.reportCount += 1
                 if user.reportCount == 2 {
+                    self.deleteAllBookclubs()
+                    self.removeAllFollows()
                     UserController.shared.deleteUser(user: user) { (result) in
                         DispatchQueue.main.async {
                             switch result{
@@ -694,22 +780,22 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             destination.bookclub = bookclubToSend
         } else if segue.identifier == "viewAllToBCList" {
             guard let destination = segue.destination as?
-                BookclubListTableViewController else {return}
+                    BookclubListTableViewController else {return}
             guard let user = user else {return}
             destination.user = user
         } else if segue.identifier == "followingToFollowList" {
             guard let destination = segue.destination as?
-                FollowViewController else {return}
+                    FollowViewController else {return}
             destination.isFirstSegment = true
             destination.user = user
         } else if segue.identifier == "followersToFollowList" {
             guard let destination = segue.destination as?
-                FollowViewController else {return}
+                    FollowViewController else {return}
             destination.isFirstSegment = false
             destination.user = user
         } else if segue.identifier == "userToCreateBCVC" {
             guard let destination = segue.destination as?
-                CreateBCViewController else {return}
+                    CreateBCViewController else {return}
             destination.reloadBCDelegate = self
         }
     }
