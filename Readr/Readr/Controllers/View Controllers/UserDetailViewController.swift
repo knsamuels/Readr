@@ -71,7 +71,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.updateBookclubs), name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(self.updateBookclubs), name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
         
     }
     
@@ -288,6 +288,14 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         self.bookclubLabelStackView.isHidden = true
         self.selectProfileImage.isHidden = true 
     }
+    func reportConfirm() {
+        let alertController = UIAlertController(title: nil, message: "User has been reported", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Okay", style: .cancel)
+        alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alertController.view.tintColor = .accentBlack
+        alertController.addAction(confirmAction)
+        self.present(alertController, animated: true)
+    }
     
     func presentOptionAlert() {
         guard let user = user else {return}
@@ -296,7 +304,39 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let reportAction = UIAlertAction(title: "Report User", style: .destructive) { (_) in
-            print("Report")
+            let confirmReportController = UIAlertController(title: "Report User?", message: nil, preferredStyle: .alert)
+            let cancelReportAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let confirmReportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
+                user.reportCount += 1
+                if user.reportCount == 2 {
+                    UserController.shared.deleteUser(user: user) { (result) in
+                        DispatchQueue.main.async {
+                            switch result{
+                            case .success(_):
+                                self.reportConfirm()
+                            case .failure(_):
+                                print("Could not delete User")
+                            }
+                        }
+                    }
+                } else {
+                    UserController.shared.updateUser(user: user) { (result) in
+                        DispatchQueue.main.async {
+                            switch result{
+                            case .success(_):
+                                self.reportConfirm()
+                            case .failure(_):
+                                print("Could not update User")
+                            }
+                        }
+                    }
+                }
+            }
+            confirmReportController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+            confirmReportController.view.tintColor = .accentBlack
+            confirmReportController.addAction(cancelReportAction)
+            confirmReportController.addAction(confirmReportAction)
+            self.present(confirmReportController, animated: true)
         }
         let blockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
             let confirmBlockController = UIAlertController(title: "Block User?", message: "You will never be able to unblock once you block.", preferredStyle: .alert)
@@ -347,8 +387,8 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
         alertController.view.tintColor = .accentBlack
         alertController.addAction(cancelAction)
-        alertController.addAction(reportAction)
         alertController.addAction(blockAction)
+        alertController.addAction(reportAction)
         
         self.present(alertController, animated: true)
     }
@@ -618,8 +658,8 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     
     @objc func updateBookclubs() {
         Timer.scheduledTimer(timeInterval: 3.0, target:self, selector: #selector(getUsersBookclubs), userInfo:nil, repeats: false)
-//        sleep(5)
-//        getUsersBookclubs()
+        //        sleep(5)
+        //        getUsersBookclubs()
     }
     
     // MARK: - Navigation
