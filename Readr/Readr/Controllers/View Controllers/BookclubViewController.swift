@@ -436,9 +436,23 @@ class BookclubViewController: UIViewController {
     
     func presentShareAlert(bookclub: Bookclub?) {
         guard let bookclub = bookclub else {return}
-        let alertController = UIAlertController(title: nil, message: "Would you like to invite others?", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let reportAction = UIAlertAction(title: "Report Bookclub", style: .destructive) { (_) in
+            let confirmReportController = UIAlertController(title: "Report Bookclub?", message: nil, preferredStyle: .alert)
+            let cancelReportAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let confirmReportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
+                print("report")
+            }
+            confirmReportController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+            confirmReportController.view.tintColor = .accentBlack
+            confirmReportController.addAction(cancelReportAction)
+            confirmReportController.addAction(confirmReportAction)
+            
+            self.present(confirmReportController, animated: true)
+        }
+        
         let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
             
             let shareSheet = UIActivityViewController(activityItems: [bookclub], applicationActivities: nil)
@@ -449,6 +463,7 @@ class BookclubViewController: UIViewController {
         alertController.view.tintColor = .accentBlack
         alertController.addAction(cancelAction)
         alertController.addAction(shareAction)
+        alertController.addAction(reportAction)
         
         self.present(alertController, animated: true)
     }
