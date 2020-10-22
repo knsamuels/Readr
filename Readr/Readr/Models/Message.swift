@@ -16,6 +16,7 @@ struct MessageStrings {
     static let timestampKey = "timestamp"
     fileprivate static let photoAsset = "photoAsset"
     fileprivate static let userReferenceKey = "userReference"
+    fileprivate static let reportCountKey = "reportCount"
     static let bookclubReferenceKey = "bookclubReference"
 }
 
@@ -25,6 +26,7 @@ class Message {
     var timestamp: Date
 //    var bookclub: Bookclub
     var bookclubReference: CKRecord.Reference?
+    var reportCount: Int
     var image: UIImage? {
         get {
             guard let photoData = photoData else {return nil}
@@ -52,13 +54,14 @@ class Message {
     var recordID: CKRecord.ID
     var userReference: CKRecord.Reference?
     
-    init(text: String?, user: String, timestamp: Date = Date(), image: UIImage?, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), userReference: CKRecord.Reference?, bookclubReference: CKRecord.Reference?) {
+    init(text: String?, user: String, timestamp: Date = Date(), image: UIImage?, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString), userReference: CKRecord.Reference?, reportCount: Int = 0, bookclubReference: CKRecord.Reference?) {
         self.text = text
         self.user = user
         self.timestamp = timestamp
         self.recordID = recordID
         self.userReference = userReference
         self.bookclubReference = bookclubReference
+        self.reportCount = reportCount
     }
 } //End of class
 
@@ -73,7 +76,11 @@ extension Message {
         let userReference = ckRecord[MessageStrings.userReferenceKey] as? CKRecord.Reference
         
         let bookclubReference = ckRecord[MessageStrings.bookclubReferenceKey] as? CKRecord.Reference
-        
+       
+        var reportCount: Int = 0
+        if let result = ckRecord[MessageStrings.reportCountKey] as? Int {
+            reportCount = result
+        }
         var image: UIImage?
         if let photoAsset = ckRecord[MessageStrings.photoAsset] as? CKAsset {
             do {
@@ -85,7 +92,7 @@ extension Message {
             }
         }
         
-        self.init(text: text, user: user, timestamp: timestamp, image: image, recordID: ckRecord.recordID, userReference: userReference, bookclubReference: bookclubReference)
+        self.init(text: text, user: user, timestamp: timestamp, image: image, recordID: ckRecord.recordID, userReference: userReference, reportCount: reportCount, bookclubReference: bookclubReference)
     }
 } //End of extension
 
@@ -98,6 +105,7 @@ extension CKRecord {
             MessageStrings.userKey : message.user,
             MessageStrings.timestampKey : message.timestamp
         ])
+        self.setValue(message.reportCount, forKey: MessageStrings.reportCountKey)
         
         if let text = message.text {
             self.setValue(text, forKey: MessageStrings.textKey)

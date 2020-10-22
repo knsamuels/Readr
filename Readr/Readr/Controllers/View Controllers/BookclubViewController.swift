@@ -443,7 +443,31 @@ class BookclubViewController: UIViewController {
             let confirmReportController = UIAlertController(title: "Report Bookclub?", message: nil, preferredStyle: .alert)
             let cancelReportAction = UIAlertAction(title: "Cancel", style: .cancel)
             let confirmReportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
-                print("report")
+                bookclub.reportCount += 1
+                if bookclub.reportCount == 2 {
+                    BookclubController.shared.delete(bookclub: bookclub) { (result) in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(_):
+                                self.reportConfirm()
+                                self.userReportIncrease()
+                            case .failure(_):
+                                print("could not delete bookclub")
+                            }
+                        }
+                    }
+                } else {
+                    BookclubController.shared.update(bookclub: bookclub) { (result) in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(_):
+                                self.reportConfirm()
+                            case .failure(_):
+                                print("could not update bookclub")
+                            }
+                        }
+                    }
+                }
             }
             confirmReportController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
             confirmReportController.view.tintColor = .accentBlack
@@ -467,6 +491,113 @@ class BookclubViewController: UIViewController {
         
         self.present(alertController, animated: true)
     }
+    
+    func reportConfirm() {
+        let alertController = UIAlertController(title: nil, message: "Bookclub has been reported", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Okay", style: .cancel)
+        alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alertController.view.tintColor = .accentBlack
+        alertController.addAction(confirmAction)
+        self.present(alertController, animated: true)
+    }
+    
+    func deleteAllBookclubs(user: User) {
+        var bookclubsToCheck: [Bookclub] = []
+        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let bookclubs):
+                    bookclubsToCheck = bookclubs
+                    checkBookclubs()
+                case .failure(_):
+                    print("Could not fetch bookclubs.")
+                }
+            }
+        }
+
+        func checkBookclubs() {
+            for bookclub in bookclubsToCheck {
+                if bookclub.admin == user.appleUserRef {
+                    BookclubController.shared.delete(bookclub: bookclub) { (result) in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(_):
+                                print("Successfully deleted bookclub")
+                            case .failure(_):
+                                print("Could not delete bookclub")
+                            }
+                        }
+                    }
+                } else {
+                    guard let index = bookclub.members.firstIndex(of: user.appleUserRef) else {return}
+                    bookclub.members.remove(at: index)
+                    BookclubController.shared.update(bookclub: bookclub) { (result) in }
+                }
+            }
+        }
+    }
+    
+    func userReportIncrease() {
+        guard let bookclub = bookclub else {return}
+        UserController.shared.fetchUser(withReference: bookclub.admin) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let user):
+                    user.reportCount += 1
+                    if user.reportCount == 2 {
+                        self.deleteAllBookclubs(user: user)
+                        self.removeAllFollows(user: user)
+                        UserController.shared.deleteUser(user: user) { (result) in }
+                    } else {
+                        UserController.shared.updateUser(user: user) { (result) in }
+                    }
+                case .failure(_):
+                    print("Could not fetch bookclub admin")
+                }
+            }
+        }
+    }
+    
+    func removeAllFollows(user: User) {
+        for followerUsername in user.followerList {
+            UserController.shared.fetchUsername(username: followerUsername) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let follower):
+                        guard let index = follower.followingList.firstIndex(of: user.username) else {return}
+                        follower.followingList.remove(at: index)
+                        UserController.shared.updateUser(user: follower) { (result) in
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success(_):
+                                    print("User's following list updated.")
+                                case .failure(_):
+                                    print("Error updating follower.")
+                                }
+                            }
+                        }
+                    case .failure(_):
+                        print("Could not fetch follower.")
+                    }
+                }
+            }
+        }
+        for followingUsername in user.followingList {
+            UserController.shared.fetchUsername(username: followingUsername) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let following):
+                        guard let index = following.followerList.firstIndex(of: user.username) else {return}
+                        following.followerList.remove(at: index)
+                        UserController.shared.updateUser(user: following) { (result) in }
+                    case .failure(_):
+                        print("Could not fetch following.")
+                    }
+                }
+            }
+        }
+    }
+    
     func checkIfUserIsBlocked() {
         guard let user = UserController.shared.currentUser else {return}
         guard let bookclub = bookclub else {return}
