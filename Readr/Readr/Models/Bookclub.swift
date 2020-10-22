@@ -24,6 +24,7 @@ struct BookclubConstants {
     fileprivate static let memberCapacityKey = "memberCapacity"
     fileprivate static let blockedUsersKey = "blockedUsers"
     fileprivate static let photoAssetKey = "photoAsset"
+    fileprivate static let reportCountKey = "reportCount"
     static let recordIDKey = "recordID"
 }
 
@@ -40,6 +41,7 @@ class Bookclub {
     var memberCapacity: Int
     var recordID: CKRecord.ID
     var blockedUsers: [String]
+    var reportCount: Int
     var profilePicture: UIImage? {
         get {
             guard let photoData = photoData else { return nil }
@@ -67,7 +69,7 @@ class Bookclub {
         }
     }
     
-    init(name: String, admin: CKRecord.Reference, adminContactInfo: String, members: [CKRecord.Reference], description: String, profilePicture: UIImage?, currentlyReading: String, pastReads: [String] = [],  meetingInfo: String = "", memberCapacity: Int, blockedUsers: [String] = [], recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
+    init(name: String, admin: CKRecord.Reference, adminContactInfo: String, members: [CKRecord.Reference], description: String, profilePicture: UIImage?, currentlyReading: String, pastReads: [String] = [],  meetingInfo: String = "", memberCapacity: Int, blockedUsers: [String] = [], reportCount: Int = 0, recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
         self.name = name
         self.admin = admin
         self.adminContactInfo = adminContactInfo
@@ -79,6 +81,7 @@ class Bookclub {
         self.memberCapacity = memberCapacity
         self.blockedUsers = blockedUsers
         self.recordID = recordID
+        self.reportCount = reportCount
         self.profilePicture = profilePicture
     }
 }
@@ -100,6 +103,7 @@ extension CKRecord {
             BookclubConstants.memberCapacityKey : bookclub.memberCapacity
         ])
         self.setValue(bookclub.pastReads, forKey: BookclubConstants.pastReadsKey)
+        self.setValue(bookclub.reportCount, forKey: BookclubConstants.reportCountKey)
         if bookclub.blockedUsers.count > 0 {
             self.setValue(bookclub.blockedUsers, forKey: BookclubConstants.blockedUsersKey)
         }
@@ -129,6 +133,10 @@ extension Bookclub {
         if let result = ckRecord[BookclubConstants.blockedUsersKey] as? [String] {
             blockedUsers = result
         }
+        var reportCount: Int = 0
+        if let result = ckRecord[BookclubConstants.reportCountKey] as? Int {
+            reportCount = result
+        }
         
         var foundPhoto: UIImage?
         if let photoAsset = ckRecord[BookclubConstants.photoAssetKey] as? CKAsset {
@@ -140,7 +148,7 @@ extension Bookclub {
             }
         }
         
-        self.init(name: name, admin: admin, adminContactInfo: adminContactInfo, members: members, description: description, profilePicture: foundPhoto, currentlyReading: currentlyReading, pastReads: pastReads, meetingInfo: meetingInfo, memberCapacity: memberCapacity, blockedUsers: blockedUsers, recordID: ckRecord.recordID)
+        self.init(name: name, admin: admin, adminContactInfo: adminContactInfo, members: members, description: description, profilePicture: foundPhoto, currentlyReading: currentlyReading, pastReads: pastReads, meetingInfo: meetingInfo, memberCapacity: memberCapacity, blockedUsers: blockedUsers, reportCount: reportCount, recordID: ckRecord.recordID)
     }
 }
 
