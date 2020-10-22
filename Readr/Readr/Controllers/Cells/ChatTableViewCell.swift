@@ -27,13 +27,7 @@ class ChatTableViewCell: UITableViewCell {
     }
     var clubMessages: [Message] = []
     var recentMessage: Message?
-    
     weak var chatSpinnerDelegate: ChatSpinnerDelegate?
-    
-    //MARK: - Lifecycles
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
     
     //MARK: - Helper Methods
     func fetchMessage() {
@@ -54,7 +48,6 @@ class ChatTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let bookclub = bookclub else {return}
-//        bookclubImageView.image = bookclub.profilePicture
         if let image = bookclub.profilePicture {
             bookclubImageView.image = image
         } else {
@@ -70,11 +63,6 @@ class ChatTableViewCell: UITableViewCell {
         bookclubImageView.layer.cornerRadius = bookclubImageView.frame.width / 2
         bookclubImageView.clipsToBounds = true
         chatSpinnerDelegate?.stopSpinning()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
     }
 
 } //End of class

@@ -363,19 +363,29 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     case .success(let following):
                         guard let index = following.followerList.firstIndex(of: user.username) else {return}
                         following.followerList.remove(at: index)
-                        UserController.shared.updateUser(user: following) { (result) in
-                            DispatchQueue.main.async {
-                                switch result {
-                                case .success(_):
-                                    print("User's follower list updated.")
-                                case .failure(_):
-                                    print("Error updating following.")
-                                }
-                            }
-                        }
+                        UserController.shared.updateUser(user: following) { (result) in }
                     case .failure(_):
                         print("Could not fetch following.")
                     }
+                }
+            }
+        }
+    }
+    
+    func updateBookclubsAfterBlock(user: User, currentUser: User) {
+        BookclubController.shared.fetchUsersBookClubs(user: currentUser) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let fetchedBookclubs):
+                    for bookclub in fetchedBookclubs {
+                        if bookclub.admin == currentUser.appleUserRef && bookclub.members.contains(user.appleUserRef) {
+                            guard let index = bookclub.members.firstIndex(of: user.appleUserRef) else {return}
+                            bookclub.members.remove(at: index)
+                            BookclubController.shared.update(bookclub: bookclub) { (result) in }
+                        }
+                    }
+                case .failure(_):
+                    print("Unable to fetch user's bookclubs.")
                 }
             }
         }
@@ -430,6 +440,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             let confirmBlockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
                 currentUser.blockedUsers.append(user.username)
                 user.blockedUsers.append(currentUser.username)
+                self.updateBookclubsAfterBlock(user: user, currentUser: currentUser)
                 if user.followerList.contains(currentUser.username) {
                     guard let index = user.followerList.firstIndex(of: currentUser.username) else {return}
                     user.followerList.remove(at: index)

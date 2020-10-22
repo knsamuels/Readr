@@ -9,28 +9,28 @@
 import UIKit
 
 class PopUpBookSearchTableViewCell: UITableViewCell {
- 
+    
+    //MARK: - Properties
     var book: Book?  {
-           didSet {
-               updateViews()
-           }
+        didSet {
+            updateViews()
+        }
     }
     
-    //Mark: - Outlets
+    //MARK: - Outlets
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var bookAuthorLabel: UILabel!
     @IBOutlet weak var bookRatingLabel: UILabel!
-
-    //MARK: - Helper
-        func updateViews() {
-            guard let book = book else {return}
-            bookImageView.image = book.coverImage
-            bookTitleLabel.text = book.title
-            bookAuthorLabel.text = book.authors?.first
-            bookRatingLabel.text = " \(String(book.averageRating ?? 0))"
-        }
-
+    
+    //MARK: - Helpers
+    func updateViews() {
+        guard let book = book else {return}
+        bookImageView.image = book.coverImage
+        bookTitleLabel.text = book.title
+        bookAuthorLabel.text = book.authors?.first
+        bookRatingLabel.text = " \(String(book.averageRating ?? 0))"
+    }
     
 } //End of class
 

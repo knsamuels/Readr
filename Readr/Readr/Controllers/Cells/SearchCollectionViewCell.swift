@@ -10,13 +10,12 @@ import UIKit
 
 class SearchCollectionViewCell: UICollectionViewCell {
     
-    // MARK: - Outlets
+    //MARK: - Outlets
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var averageRating: UILabel!
     
-   
-    //Mark: Properties
+    //MARK: - Properties
     var volumeInfo: Book? {
         didSet {
             updateViews()
@@ -30,5 +29,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
         averageRating.text = " \(String(volumeInfo.averageRating ?? 0))"
         bookImageView.image = volumeInfo.coverImage ?? UIImage(named: "noImage")
     }
-}
+    
+} //End of class
 

@@ -10,30 +10,22 @@ import UIKit
 
 class MessageTableViewCell: UITableViewCell {
 
-    // MARK: - Outlets
+    //MARK: - Outlets
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
-    // MARK: - Properties
+    //MARK: - Properties
     var message: Message? {
         didSet {
             updateViews()
         }
     }
-    
-    // MARK: - Lifecycles
-    override func awakeFromNib() {
-        super.awakeFromNib()
-       
-    }
   
     //MARK: - Helper Methods
     func updateViews() {
         guard let message = message else {return}
-        
         messageLabel.text = message.text
         usernameLabel.text = message.user
-        
         if message.user == UserController.shared.currentUser?.username {
             messageLabel.textAlignment = .right
             usernameLabel.textAlignment = .right
@@ -45,5 +37,4 @@ class MessageTableViewCell: UITableViewCell {
         }
     }
    
-
-} //end class
+} //End of class
