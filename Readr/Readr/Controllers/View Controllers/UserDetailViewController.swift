@@ -326,6 +326,10 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                             }
                         }
                     }
+                } else {
+                    guard let index = bookclub.members.firstIndex(of: user.appleUserRef) else {return}
+                    bookclub.members.remove(at: index)
+                    BookclubController.shared.update(bookclub: bookclub) { (result) in }
                 }
             }
         }
