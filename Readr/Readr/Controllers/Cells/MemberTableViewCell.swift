@@ -15,7 +15,6 @@ protocol BlockMemberDelegate: AnyObject {
 class MemberTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
-    
     @IBOutlet weak var memberImage: UIImageView!
     @IBOutlet weak var memberName: UILabel!
     @IBOutlet weak var optionButton: UIButton!
@@ -37,7 +36,6 @@ class MemberTableViewCell: UITableViewCell {
     }
     
     //MARK: - Helper Methods
-    
     func updateViews() {
         guard let member = member else {return}
         memberName.text = "\(member.firstName) \(member.lastName)"
@@ -49,4 +47,5 @@ class MemberTableViewCell: UITableViewCell {
         memberImage.layer.cornerRadius = memberImage.frame.height / 2
         memberImage.clipsToBounds = true
     }
+    
 } //End of class

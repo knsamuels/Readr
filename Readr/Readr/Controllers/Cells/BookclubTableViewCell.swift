@@ -24,7 +24,6 @@ class BookclubTableViewCell: UITableViewCell {
     //MARK: - Helper Methods
     func updateViews() {
         guard let bookclub = bookclub else {return}
-//        bookclubImage.image = bookclub.profilePicture
         if let image1 = bookclub.profilePicture {
             self.bookclubImage.image = image1
         } else {
@@ -34,4 +33,5 @@ class BookclubTableViewCell: UITableViewCell {
         bookclubImage.clipsToBounds = true
         bookclubLabel.text = bookclub.name
     }
+    
 } //End of class

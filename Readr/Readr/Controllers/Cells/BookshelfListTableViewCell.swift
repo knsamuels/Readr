@@ -31,10 +31,22 @@ class BookshelfListTableViewCell: UITableViewCell {
         }
     }
     var books: [Book] = []
-    
     weak var spinnerDelegate: BookshelfSpinnerDelegate?
     
     //MARK: - Helper Methods
+    func fetchBooks() {
+        guard let bookshelf = bookshelf else {return}
+        BookController.shared.fetchFirstFiveBooks(bookshelf: bookshelf) { (result) in
+            switch result {
+            case .success(let books):
+                self.books = books
+                self.updateViews()
+            case .failure(_):
+                print("could not fetch 5 books for this bookshelf")
+            }
+        }
+    }
+    
     func updateViews() {
         guard let bookshelf = bookshelf else {return}
         titleOfBookShelfLabel.text = bookshelf.title
@@ -99,6 +111,7 @@ class BookshelfListTableViewCell: UITableViewCell {
             book4Label.text = books[3].title
             book5Label.text = books[4].title
         }
+        
         spinnerDelegate?.stopSpinning()
         
         backgroundColorView.layer.shadowColor = UIColor.gray.cgColor
@@ -109,18 +122,6 @@ class BookshelfListTableViewCell: UITableViewCell {
         backgroundColorView.layer.shadowPath = UIBezierPath(roundedRect: backgroundColorView.bounds, cornerRadius: backgroundColorView.layer.cornerRadius).cgPath
     }
     
-        func fetchBooks() {
-            guard let bookshelf = bookshelf else {return}
-            BookController.shared.fetchFirstFiveBooks(bookshelf: bookshelf) { (result) in
-                switch result {
-                case .success(let books):
-                    self.books = books
-                    self.updateViews()
-                case .failure(_):
-                    print("could not fetch 5 books for this bookshelf")
-                }
-            }
-        }
 }//End of class
 
 

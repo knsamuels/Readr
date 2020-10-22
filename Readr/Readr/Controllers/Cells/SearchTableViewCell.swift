@@ -10,12 +10,11 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
 
-    //Mark: Outlets
-    
+    //MARK: - Outlets
     @IBOutlet weak var personOrClubImage: UIImageView!
     @IBOutlet weak var personOrClubLabel: UILabel!
     
-    //Mark: Properties
+    //MARK: - Properties
     var user: User? {
         didSet {
             updateUserViews()
@@ -27,10 +26,10 @@ class SearchTableViewCell: UITableViewCell {
         }
     }
     
+    //MARK: - Helpers
     func updateUserViews() {
         guard let user = user else {return}
         personOrClubLabel.text = "\(user.firstName) \(user.lastName)"
-        
         if let image = user.profilePhoto {
             personOrClubImage.image = image
         } else {
@@ -38,11 +37,11 @@ class SearchTableViewCell: UITableViewCell {
         }
         personOrClubImage.layer.cornerRadius = personOrClubImage.frame.height / 2
         personOrClubImage.clipsToBounds = true
-        
     }
+    
     func updateBookclubViews() {
         guard let bookclub = bookclub else {return}
-//        personOrClubImage.image = bookclub.profilePicture
+        personOrClubLabel.text = bookclub.name
         if let image = bookclub.profilePicture {
             personOrClubImage.image = image
         } else {
@@ -50,7 +49,6 @@ class SearchTableViewCell: UITableViewCell {
         }
         personOrClubImage.layer.cornerRadius = personOrClubImage.frame.height / 2
         personOrClubImage.clipsToBounds = true
-        personOrClubLabel.text = bookclub.name
     }
 
 } //End of class

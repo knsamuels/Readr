@@ -11,7 +11,6 @@ import UIKit
 class FollowListTableViewCell: UITableViewCell {
 
     //MARK: - Outlets
-    
     @IBOutlet weak var followImage: UIImageView!
     @IBOutlet weak var followNameLabel: UILabel!
     
@@ -23,7 +22,6 @@ class FollowListTableViewCell: UITableViewCell {
     }
     
     //MARK: - Helper Methods
-    
     func updateViews() {
         guard let member = member else {return}
         followNameLabel.text = "\(member.firstName) \(member.lastName)"
@@ -35,4 +33,5 @@ class FollowListTableViewCell: UITableViewCell {
         followImage.layer.cornerRadius = followImage.frame.height / 2
         followImage.clipsToBounds = true
     }
+    
 } //End of class

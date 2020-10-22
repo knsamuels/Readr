@@ -7,12 +7,20 @@
 //
 
 import UIKit
+
 protocol BookshelfCellDelegate: AnyObject {
     func presentAlertController(user: User, isbn: String, bookshelf: Bookshelf, cell: BookshelfDetailTableViewCell)
 }
 
 class BookshelfDetailTableViewCell: UITableViewCell {
     
+    //MARK: - Outlets
+    @IBOutlet weak var bookImageView: UIImageView!
+    @IBOutlet weak var bookTitleLabel: UILabel!
+    @IBOutlet weak var bookAuthorLabel: UILabel!
+    @IBOutlet weak var bookRatingLabel: UILabel!
+    
+    //MARK: - Properties
     var book: Book? {
         didSet{
             updateViews()
@@ -21,28 +29,7 @@ class BookshelfDetailTableViewCell: UITableViewCell {
     var bookshelf: Bookshelf?
     weak var bookshelfDelegate: BookshelfCellDelegate?
     
-    @IBOutlet weak var bookImageView: UIImageView!
-    
-    @IBOutlet weak var bookTitleLabel: UILabel!
-    
-    @IBOutlet weak var bookAuthorLabel: UILabel!
-    
-    @IBOutlet weak var bookRatingLabel: UILabel!
-    
-    
-    // Mark: Helper functions
-    
-    func updateViews() {
-        guard let book = book else {return}
-        let rating = " \(String(book.averageRating ?? 0))"
-        bookImageView.image = book.coverImage
-        bookTitleLabel.text = book.title
-        bookAuthorLabel.text = book.authors?.first ?? "no author"
-        bookRatingLabel.text = rating
-    }
-    
     //MARK: - Actions
-    
     @IBAction func removeBookButtonTapped(_ sender: UIButton) {
         guard let user = UserController.shared.currentUser else {return}
         guard let industryIdentifiers = book?.industryIdentifiers else {return}
@@ -58,4 +45,15 @@ class BookshelfDetailTableViewCell: UITableViewCell {
         guard let bookshelf = bookshelf else {return}
         bookshelfDelegate?.presentAlertController(user: user, isbn: isbn, bookshelf: bookshelf, cell: self)
     }
-}
+    
+    //MARK: - Helper functions
+    func updateViews() {
+        guard let book = book else {return}
+        let rating = " \(String(book.averageRating ?? 0))"
+        bookImageView.image = book.coverImage
+        bookTitleLabel.text = book.title
+        bookAuthorLabel.text = book.authors?.first ?? "no author"
+        bookRatingLabel.text = rating
+    }
+    
+} //End of class

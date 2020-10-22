@@ -9,24 +9,18 @@
 import UIKit
 
 class PastReadsTableViewCell: UITableViewCell {
-   
-    // MARK: - Outlets
+    
+    //MARK: - Outlets
     @IBOutlet weak var pastReadsTitleLabel: UILabel!
     @IBOutlet weak var pastReadsImage: UIImageView!
     @IBOutlet weak var pastReadsAuthorLabel: UILabel!
     @IBOutlet weak var pastReadsRatingLabel: UILabel!
     
-    //Mark: Properties
-       var book: Book?{
-           didSet {
-               updateViews()
-           }
-       }
-    
-    // MARK: - Lifecycles
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    //MARK: Properties
+    var book: Book?{
+        didSet {
+            updateViews()
+        }
     }
     
     //MARK: - Helper Methods
@@ -37,4 +31,5 @@ class PastReadsTableViewCell: UITableViewCell {
         pastReadsAuthorLabel.text = book.authors?.first
         pastReadsRatingLabel.text = "\(book.averageRating ?? 0.0)"
     }
-}
+    
+} //End of class
