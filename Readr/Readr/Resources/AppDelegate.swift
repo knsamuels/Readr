@@ -23,9 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(fetchedUserStatment)
         }
         
-        //        UITabBar.appearance().tintColor = .black
-        //        print(CKContainer.default().publicCloudDatabase)
-        
         application.applicationIconBadgeNumber = 0
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
@@ -106,25 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NotificationCenter.default.post(name: Notification.Name("ReceiveData"), object: nil)
             
             print("iOS Notification: \(sub)")
-//            BookclubController.shared.fetchBookclubWithRecordName(recordName: sub) { (result) in
-//                DispatchQueue.main.async {
-//                    switch result {
-//                    case .success(let bookclub):
-//                        MessageController.shared.fetchMessages(for: bookclub) { (result) in
-//                            DispatchQueue.main.async {
-//                                switch result {
-//                                case .success(_):
-//                                    NotificationCenter.default.post(name: Notification.Name(rawValue: "reloadEventsTable"), object: nil)
-//                                case .failure(_):
-//                                    print("Did not get the messages")
-//                                }
-//                            }
-//                        }
-//                    case .failure(_):
-//                         print("We were NOT able to fetch bookclub with record name")
-//                    }
-//                }
-//            }
         }
         completionHandler(.newData)
     }

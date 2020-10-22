@@ -9,7 +9,6 @@
 import Foundation
 
 enum MessageError: LocalizedError {
-    
     case ckError(Error)
     case couldNotUnwrap
     case unableToDeleteRecord
@@ -30,4 +29,4 @@ enum MessageError: LocalizedError {
             return "There are no new messages"
         }
     }
-} //End enum
+} //End of enum

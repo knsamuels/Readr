@@ -46,9 +46,9 @@ class RLogoLoadingView: UIView {
             activityIndicator.topAnchor.constraint(equalTo: centerYAnchor, constant: 10)
         ])
         activityIndicator.startAnimating()
-        
     }
-}
+    
+} //End of class
 
 
 

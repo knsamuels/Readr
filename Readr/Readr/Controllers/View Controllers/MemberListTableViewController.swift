@@ -44,6 +44,10 @@ class MemberListTableViewController: UITableViewController {
             cell.dotsStackView.isHidden = false
         }
         let member = bookclubMembers[indexPath.row]
+        if member.appleUserRef == bookclub.admin {
+            cell.optionButton.isHidden = true
+            cell.dotsStackView.isHidden = true
+        }
         cell.member = member
         cell.blockDelegate = self
         return cell

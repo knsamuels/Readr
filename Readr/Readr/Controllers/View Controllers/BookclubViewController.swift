@@ -486,7 +486,7 @@ class BookclubViewController: UIViewController {
         self.adminStackView.isHidden = true
         self.pastReadsStakView.isHidden = true
         self.joinButton.isHidden = true
-        self.imageOfBookClub.image = UIImage(named: "ReadenLogoWhiteSpace")
+        self.imageOfBookClub.image = UIImage(named: "RLogoGray")
         self.memberCountLabel.text = "0"
     }
     

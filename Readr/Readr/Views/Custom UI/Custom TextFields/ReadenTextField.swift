@@ -9,7 +9,6 @@
 import UIKit
 
 class ReadenTextField: UITextField {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupViews()
@@ -19,5 +18,5 @@ class ReadenTextField: UITextField {
         self.layer.cornerRadius = 12.0
         self.layer.masksToBounds = true
     }
-}
+} //End of class
 
