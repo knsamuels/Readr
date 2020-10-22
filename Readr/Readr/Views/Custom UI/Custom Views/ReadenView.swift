@@ -9,15 +9,14 @@
 import UIKit
 
 class ReadenView: UIView {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
     }
+    
     func setupView() {
         self.layer.cornerRadius = 15.0
         self.clipsToBounds = true
     }
-    
 } //End of class
 

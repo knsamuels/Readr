@@ -9,63 +9,57 @@
 import UIKit
 
 class ReadenButton: UIButton {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
     }
+    
     func setupView() {
         self.layer.cornerRadius = 12.0
         self.clipsToBounds = true
     }
-    
 } //End of class
 
 class colorButton: UIButton {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
     }
+    
     func setupView() {
         self.layer.cornerRadius = self.frame.height / 2
         self.clipsToBounds = true
     }
-    
 } //End of class
 
 class circleButton: UIButton {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
     }
+    
     func setupView() {
         self.layer.cornerRadius = self.frame.height / 2
         self.clipsToBounds = true
         
         self.layer.borderWidth = 1.0
         self.layer.borderColor = UIColor.black.cgColor
-
     }
-    
 } //End of class
 
 class statusButton: UIButton {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
     }
+    
     func setupView() {
         self.layer.cornerRadius = 10.0
         self.clipsToBounds = true
         
         self.layer.borderWidth = 2.0
         self.layer.borderColor = UIColor.accentBlack.cgColor
-
     }
-    
 } //End of class
 
 

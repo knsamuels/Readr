@@ -65,7 +65,6 @@
 		C98FC7E624E1B49200C27CBF /* BookclubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E524E1B49200C27CBF /* BookclubError.swift */; };
 		C98FC7E824E1B4A300C27CBF /* MessageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E724E1B4A300C27CBF /* MessageError.swift */; };
 		C98FC7EA24E1B4BB00C27CBF /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7E924E1B4BB00C27CBF /* UserError.swift */; };
-		C98FC7EC24E1B4C900C27CBF /* ChatError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98FC7EB24E1B4C900C27CBF /* ChatError.swift */; };
 		C98FC7F424E3182600C27CBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98FC7F324E3182600C27CBF /* CloudKit.framework */; };
 		C9BFE4CA24F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFE4C924F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift */; };
 		C9BFE4CC24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BFE4CB24F5BAFB00242CE7 /* PopUpBookSearchTableViewCell.swift */; };
@@ -145,7 +144,6 @@
 		C98FC7E524E1B49200C27CBF /* BookclubError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookclubError.swift; sourceTree = "<group>"; };
 		C98FC7E724E1B4A300C27CBF /* MessageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageError.swift; sourceTree = "<group>"; };
 		C98FC7E924E1B4BB00C27CBF /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
-		C98FC7EB24E1B4C900C27CBF /* ChatError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatError.swift; sourceTree = "<group>"; };
 		C98FC7F124E3181F00C27CBF /* Readr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Readr.entitlements; sourceTree = "<group>"; };
 		C98FC7F324E3182600C27CBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C9BFE4C924F5BAA900242CE7 /* PopUpBooksSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBooksSearchTableViewController.swift; sourceTree = "<group>"; };
@@ -321,12 +319,11 @@
 		C98FC7D824DDD54300C27CBF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C98FC7E924E1B4BB00C27CBF /* UserError.swift */,
 				C98FC7D924DDD55700C27CBF /* BookError.swift */,
 				C98FC7E524E1B49200C27CBF /* BookclubError.swift */,
-				C98FC7E724E1B4A300C27CBF /* MessageError.swift */,
-				C98FC7E924E1B4BB00C27CBF /* UserError.swift */,
 				C98FC7DD24E1A0B900C27CBF /* BookshelfError.swift */,
-				C98FC7EB24E1B4C900C27CBF /* ChatError.swift */,
+				C98FC7E724E1B4A300C27CBF /* MessageError.swift */,
 				C938A39224EF2F200095AD50 /* SearchableRecord.swift */,
 				C9BFE4CF24F7106000242CE7 /* RLogoLoadingView.swift */,
 				C93A75CA24F87C820024F62D /* StyleGuide.swift */,
@@ -472,7 +469,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C98FC7EC24E1B4C900C27CBF /* ChatError.swift in Sources */,
 				9304463E24E1ABBC00FBEEF2 /* MessageController.swift in Sources */,
 				C9BFE4D024F7106000242CE7 /* RLogoLoadingView.swift in Sources */,
 				935DAEAE2517E9EC008BE502 /* ChatTableViewCell.swift in Sources */,

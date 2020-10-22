@@ -26,4 +26,4 @@ enum BookError: LocalizedError {
             return "The server responded with bad data"
         }
     }
-}
+} //End of enum

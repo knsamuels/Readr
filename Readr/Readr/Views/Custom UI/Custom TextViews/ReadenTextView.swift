@@ -9,7 +9,6 @@
 import UIKit
 
 class ReadenTextView: UITextView {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupViews()
@@ -19,4 +18,4 @@ class ReadenTextView: UITextView {
         self.layer.cornerRadius = 12.0
         self.layer.masksToBounds = true
     }
-}
+} //End of class

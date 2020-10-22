@@ -9,13 +9,12 @@
 import Foundation
 
 enum BookshelfError: LocalizedError {
-    
     case ckError(Error)
     case couldNotUnwrap
     case unableToDeleteRecord
     case noUserLoggedIn
     
-    var errorDescription: String {
+    var errorDescription: String? {
         switch self {
         case .ckError(let error):
             return error.localizedDescription
@@ -27,6 +26,6 @@ enum BookshelfError: LocalizedError {
             return "There is no user currently logged in."
         }
     }
-}
+} //End of enum
 
 

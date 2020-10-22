@@ -252,7 +252,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     }
     
     func updateBlockedViews() {
-        profilePic.image = UIImage(named: "ReadenLogoWhiteSpace")
+        profilePic.image = UIImage(named: "RLogoGray")
         followersCountLabel.text = "0"
         followingCountLabel.text = "0"
         self.favBookPic1.isHidden = true

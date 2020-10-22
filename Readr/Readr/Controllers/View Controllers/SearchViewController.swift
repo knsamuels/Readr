@@ -58,6 +58,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.addGestureRecognizer(tap)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+    }
+    
     //MARK: - Actions
     @IBAction func booksButtonTapped(_ sender: Any) {
         booksIsSelected = true

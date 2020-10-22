@@ -9,7 +9,6 @@
 import Foundation
 
 enum UserError: LocalizedError {
-   
     case ckError(Error)
     case couldNotUnwrap
     case unableToDeleteRecord
@@ -24,5 +23,4 @@ enum UserError: LocalizedError {
             return "Undable to delete a record from the cloud."
         }
     }
-    
-} //End enum
+} //End of enum
