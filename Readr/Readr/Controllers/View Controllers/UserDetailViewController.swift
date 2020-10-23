@@ -82,7 +82,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         } else {
             checkIfUserIsBlocked()
         }
-        guard let user = user else {return}
     }
     
     //MARK: - Actions
