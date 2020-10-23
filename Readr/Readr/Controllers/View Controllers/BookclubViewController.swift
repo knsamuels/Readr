@@ -69,8 +69,6 @@ class BookclubViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,17 +79,13 @@ class BookclubViewController: UIViewController {
         chainDelegate?.callDelegateFunc()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-//        print("run this shitttt")
-    }
-    
+    //MARK: - Actions
     @IBAction func unwindToBookclubVC(_ sender: UIStoryboardSegue) {}
     
     @IBAction func joinButtonTapped(_ sender: Any) {
         guard let user = UserController.shared.currentUser else {return}
         guard let bookclub = bookclub else {return}
         let userAppleRef = user.appleUserRef
-        //        let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
         if userAppleRef != bookclub.admin {
             if bookclub.members.contains(userAppleRef) {
                 guard let index = bookclub.members.firstIndex(of: userAppleRef) else {return}
@@ -117,29 +111,9 @@ class BookclubViewController: UIViewController {
                 self.joinButton.setTitleColor(.white, for: .normal)
                 self.joinButton.backgroundColor = .accentBlack
                 self.memberCountLabel.text = "\(bookclub.members.count)"
-                BookclubController.shared.addSubscriptionTo(messagesForBookclub: bookclub) { (result, error) in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case true:
-                            print("User is now subscribed to notifications")
-                        case false:
-                            print("Could not subscribe the user to notifications")
-                        }
-                    }
-                }
+                BookclubController.shared.addSubscriptionTo(messagesForBookclub: bookclub) { (result, error) in }
             }
-            //UserController.shared.updateUser(user: user) { (result) in
-            //}
-        }
-        BookclubController.shared.update(bookclub: bookclub) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(_):
-                    print("yes")
-                case .failure(_):
-                    print("no")
-                }
-            }
+            BookclubController.shared.update(bookclub: bookclub) { (result) in }
         }
     }
     
@@ -158,7 +132,6 @@ class BookclubViewController: UIViewController {
     }
     
     //MARK: - Helper functions
-    
     func setUpImage() {
         imageOfBookClub.layer.cornerRadius = imageOfBookClub.frame.height / 2
         imageOfBookClub.clipsToBounds = true
@@ -179,13 +152,12 @@ class BookclubViewController: UIViewController {
             guard let user = UserController.shared.currentUser else {return}
             guard let bookclub = self.bookclub else {return}
             guard let currentlyReading = self.currentlyReading else {return}
-            //            let userReference = CKRecord.Reference(recordID: user.recordID, action: .deleteSelf)
+            
             if bookclub.blockedUsers.contains(user.username) {
                 self.updateBlockedViews()
             } else {
                 let userAppleRef = user.appleUserRef
                 self.title = bookclub.name
-                //            self.imageOfBookClub.image = bookclub.profilePicture
                 if let image1 = bookclub.profilePicture {
                     self.imageOfBookClub.image = image1
                 } else {
@@ -336,9 +308,7 @@ class BookclubViewController: UIViewController {
                     self.fetchBook() {
                         self.fetchPastReads {
                             self.updateViews(admin: admin)
-                            //                            self.loadingScreen.removeFromSuperview()
                         }
-                        //fetchPastReads --- need to add call updateViews in PastReads closure
                     }
                 case .failure(_):
                     print("there was an error fetching the user")
@@ -413,16 +383,25 @@ class BookclubViewController: UIViewController {
         }
         
         let deleteAction = UIAlertAction(title: "Delete Bookclub", style: .default) { (_) in
-            BookclubController.shared.delete(bookclub: bookclub) { (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(_):
-                        self.navigationController?.popViewController(animated: true)
-                    case .failure(_):
-                        print("could not delete bookclub")
+            let confirmDeleteController = UIAlertController(title: "Delete Bookclub?", message: nil, preferredStyle: .alert)
+            let cancelDeleteAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let confirmDeleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+                BookclubController.shared.delete(bookclub: bookclub) { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(_):
+                            self.navigationController?.popViewController(animated: true)
+                        case .failure(_):
+                            print("could not delete bookclub")
+                        }
                     }
                 }
             }
+            confirmDeleteController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+            confirmDeleteController.view.tintColor = .accentBlack
+            confirmDeleteController.addAction(cancelDeleteAction)
+            confirmDeleteController.addAction(confirmDeleteAction)
+            self.present(confirmDeleteController, animated: true)
         }
         alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
         alertController.view.tintColor = .accentBlack
@@ -514,7 +493,7 @@ class BookclubViewController: UIViewController {
                 }
             }
         }
-
+        
         func checkBookclubs() {
             for bookclub in bookclubsToCheck {
                 if bookclub.admin == user.appleUserRef {
@@ -650,5 +629,5 @@ class BookclubViewController: UIViewController {
             destination.bookclub = bookclub
         }
     }
-}
+}// End of Class
 
