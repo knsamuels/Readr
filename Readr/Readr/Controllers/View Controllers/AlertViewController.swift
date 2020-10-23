@@ -209,7 +209,7 @@ class AlertViewController: UIViewController {
         guard let destination = segue.destination as? BookshelfListViewController else {return}
         destination.newColor = myColor
         destination.newTitle = myTitle
-        if let bookshelf = bookshelf {
+        if bookshelf != nil {
             destination.isNewBookshelf = false
         } else {
             destination.isNewBookshelf = true 

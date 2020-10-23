@@ -71,41 +71,6 @@
             </objects>
             <point key="canvasLocation" x="2081" y="5"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="m3J-4O-uE4">
-            <objects>
-                <viewController id="S3J-FL-i5J" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RLi-e4-p0B">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME BACK, " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lel-L6-V3z">
-                                <rect key="frame" x="106.5" y="438" width="201" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" name="accentBlack"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wk-Ch-ufX">
-                                <rect key="frame" x="172.5" y="478" width="69.5" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" name="accentBlack"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="i26-wN-BJI"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Lel-L6-V3z" firstAttribute="centerY" secondItem="i26-wN-BJI" secondAttribute="centerY" id="VI6-gR-I0x"/>
-                            <constraint firstItem="4Wk-Ch-ufX" firstAttribute="centerX" secondItem="i26-wN-BJI" secondAttribute="centerX" id="ZZU-Ru-Tvv"/>
-                            <constraint firstItem="4Wk-Ch-ufX" firstAttribute="top" secondItem="Lel-L6-V3z" secondAttribute="bottom" constant="10" id="h52-Es-FwD"/>
-                            <constraint firstItem="Lel-L6-V3z" firstAttribute="centerX" secondItem="i26-wN-BJI" secondAttribute="centerX" id="hCk-g4-XK1"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dOC-HM-WdY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="378" y="5"/>
-        </scene>
         <!--Log In View Controller-->
         <scene sceneID="a3c-rW-YBl">
             <objects>
@@ -933,7 +898,7 @@
         <!--Fav Author View Controller-->
         <scene sceneID="tbM-lJ-bA2">
             <objects>
-                <viewController storyboardIdentifier="favAuthorVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gTH-xt-Js0" customClass="FavAuthorViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gTH-xt-Js0" customClass="FavAuthorViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PGc-P1-cac">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1027,7 +992,7 @@
         <!--Navigation Controller-->
         <scene sceneID="lcD-bJ-RQO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Bk-eV-OCd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="favAuthorVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Bk-eV-OCd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nWq-3n-22w">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

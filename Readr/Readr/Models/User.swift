@@ -144,7 +144,6 @@ extension User {
         
         self.init(username: username, firstName: firstName, lastName: lastName, bio: bio, favoriteAuthor: favoriteAuthor, favoriteBooks: favoriteBooks, bookclubs: [], followingList: followingList, followerList: followerList, blockedUsers: blockedUsers, favoriteGenres: favoriteGenres, bookshelves: [], recordID: ckRecord.recordID, appleUserRef: appleUserRef, reportCount: reportCount, profilePhoto: foundPhoto)
     }
-    
 } //End of extension
 
 extension CKRecord {
@@ -157,7 +156,6 @@ extension CKRecord {
             UserStrings.bioKey : user.bio,
             UserStrings.favoriteAuthorKey : user.favoriteAuthor,
             UserStrings.appleUserRefKey : user.appleUserRef
-        
         ])
         self.setValue(user.followingList, forKey: UserStrings.followingListKey)
         self.setValue(user.followerList, forKey: UserStrings.followerListKey)
@@ -180,4 +178,4 @@ extension User: Equatable {
     static func == (lhs: User, rhs: User) -> Bool {
         return lhs.recordID == rhs.recordID
     }
-}
+} //End of extension 
