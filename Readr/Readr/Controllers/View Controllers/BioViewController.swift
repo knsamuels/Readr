@@ -9,13 +9,13 @@
 import UIKit
 
 class BioViewController: UIViewController  {
-
+    
     var activeTextView : UITextView? = nil
     
     //MARK: - Outlets
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var blackView: UIView!
-
+    
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,31 +34,31 @@ class BioViewController: UIViewController  {
         
         user.bio = bio
     }
-
-     @objc func keyboardWillShow(notification: NSNotification) {
-            guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-                   return
-                }
-            
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        
         if bioTextView.isEditable {
-                self.view.window?.frame.origin.y = -keyboardSize.height
-            }
+            self.view.window?.frame.origin.y = -keyboardSize.height
         }
-        
-        @objc func keyboardWillHide(notification: NSNotification) {
-            if self.view.window?.frame.origin.y != 0 {
-                self.view.window?.frame.origin.y = 0
-            }
-        }
-    } //End of class
-        
-    extension BioViewController: UITextViewDelegate {
-      func textViewWillBeginEditing( textView: UITextView) {
-        self.activeTextView = textView
-      }
-
-      func textViewDidEndEditing( textView: UITextView) {
-        self.activeTextView = nil
-      }
     }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.window?.frame.origin.y != 0 {
+            self.view.window?.frame.origin.y = 0
+        }
+    }
+} //End of class
+
+extension BioViewController: UITextViewDelegate {
+    func textViewDidBeginEditing( _ textView: UITextView) {
+        self.activeTextView = textView
+    }
+    
+    func textViewDidEndEditing( _ textView: UITextView) {
+        self.activeTextView = nil
+    }
+}
 

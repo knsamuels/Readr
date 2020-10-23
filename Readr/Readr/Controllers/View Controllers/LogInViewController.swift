@@ -101,12 +101,12 @@ class LogInViewController: UIViewController {
 } //End of class
 
 extension LogInViewController: UITextFieldDelegate {
-    func textFieldWillBeginEditing( textField: UITextField) {
+    func textFieldDidBeginEditing( _ textField: UITextField) {
         self.activeTextField = textField
         
     }
     
-    func textFieldDidEndEditing( textField: UITextField) {
+    func textFieldDidEndEditing( _ textField: UITextField) {
         self.activeTextField = nil
     }
 }

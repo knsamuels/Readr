@@ -17,7 +17,7 @@ class PlaceholderViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
         if let bookshelf = bookshelf {
-            print("we got a bookshelf-- placeholder")
+            print("we got a bookshelf (\(bookshelf.title))-- placeholder")
         }
     }
      

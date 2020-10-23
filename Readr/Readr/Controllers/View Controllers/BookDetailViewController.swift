@@ -52,7 +52,7 @@ class BookDetailViewController: UIViewController {
     @IBAction func deleteBookshelfButtonTapped(_ sender: Any) {
     }
     @IBAction func optionButton(_ sender: Any) {
-        guard let user = UserController.shared.currentUser else {return}
+//        guard let user = UserController.shared.currentUser else {return}
         guard let industryIdentifiers = book?.industryIdentifiers else {return}
         var isbn = ""
         for industryIdentifier in industryIdentifiers {

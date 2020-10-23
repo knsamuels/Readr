@@ -29,7 +29,7 @@ class MemberTableViewCell: UITableViewCell {
     var bookclub: Bookclub?
     weak var blockDelegate: BlockMemberDelegate?
     
-    //MARK: _ Actions
+    //MARK: - Actions
     @IBAction func optionButtonTapped(_ sender: Any) {
         guard let member = member else {return}
         blockDelegate?.presentBlockAlert(member: member)

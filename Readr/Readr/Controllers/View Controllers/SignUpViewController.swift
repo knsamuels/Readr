@@ -16,7 +16,7 @@ class SignUpViewController: UIViewController, UITextViewDelegate  {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var alreadyInUseLabel: UILabel!
-  
+    
     //MARK: Properties
     var activeTextField : UITextField? = nil
     
@@ -96,8 +96,8 @@ class SignUpViewController: UIViewController, UITextViewDelegate  {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-               return
-            }
+            return
+        }
         
         if usernameTextField.isEditing {
             self.view.window?.frame.origin.y = -keyboardSize.height
@@ -110,13 +110,13 @@ class SignUpViewController: UIViewController, UITextViewDelegate  {
         }
     }
 } //End of class
-    
-extension SignUpViewController: UITextFieldDelegate {
-  func textFieldWillBeginEditing( textField: UITextField) {
-    self.activeTextField = textField
-  }
 
-  func textFieldDidEndEditing( textField: UITextField) {
-    self.activeTextField = nil
-  }
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing( _ textField: UITextField) {
+        self.activeTextField = textField
+    }
+    
+    func textFieldDidEndEditing( _ textField: UITextField) {
+        self.activeTextField = nil
+    }
 }

@@ -175,7 +175,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageTableViewCell else {return UITableViewCell()}
         
         let message = messagesArray[indexPath.row]
-        print(message.text)
+        print(message.text ?? "")
         cell.message = message
         
         //        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
