@@ -15,7 +15,7 @@ struct MessageStrings {
     fileprivate static let userKey = "user"
     static let timestampKey = "timestamp"
     fileprivate static let photoAsset = "photoAsset"
-    fileprivate static let userReferenceKey = "userReference"
+    static let userReferenceKey = "userReference"
     fileprivate static let reportCountKey = "reportCount"
     static let bookclubReferenceKey = "bookclubReference"
 }
@@ -24,7 +24,6 @@ class Message {
     var text: String?
     var user: String
     var timestamp: Date
-//    var bookclub: Bookclub
     var bookclubReference: CKRecord.Reference?
     var reportCount: Int
     var image: UIImage? {

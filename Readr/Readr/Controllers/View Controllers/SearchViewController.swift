@@ -10,7 +10,6 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
     //MARK: - Properties
     var booksIsSelected = true
     var peopleIsSelected = false
@@ -27,8 +26,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var clubsCategoryLabel: UIButton!
     @IBOutlet weak var peopleCategoryLabel: UIButton!
     
-    
-    
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +41,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         booksCategoryLabel.setTitleColor(.readenBlue, for: .normal)
         
         booksCategoryLabel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        
-//        let attrs = [NSAttributedString.Key.underlineStyle: 1]
-//        let booksString = NSMutableAttributedString(string: "Books", attributes: attrs)
-//        booksCategoryLabel.setAttributedTitle(booksString, for: .normal)
-        
+  
         fetchBooksWithAuthor()
         self.title = "SEARCH"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
@@ -78,17 +71,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         booksCategoryLabel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         clubsCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         peopleCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        
-//        let attrs = [NSAttributedString.Key.underlineStyle: 1]
-//        let booksString = NSMutableAttributedString(string:"Books", attributes: attrs)
-//        booksCategoryLabel.setAttributedTitle(booksString, for: .normal)
-//
-//        let nonAttrs = [NSAttributedString.Key.underlineStyle: 0]
-//        let clubsString = NSMutableAttributedString(string:"Clubs", attributes: nonAttrs)
-//        let peopleString = NSMutableAttributedString(string:"People", attributes: nonAttrs)
-//        clubsCategoryLabel.setAttributedTitle(clubsString, for: .normal)
-//        peopleCategoryLabel.setAttributedTitle(peopleString, for: .normal)
-        
+
         search()
     }
     
@@ -106,16 +89,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         booksCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         clubsCategoryLabel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         peopleCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        
-//        let attrs = [NSAttributedString.Key.underlineStyle: 1]
-//        let clubsString = NSMutableAttributedString(string:"Clubs", attributes: attrs)
-//        clubsCategoryLabel.setAttributedTitle(clubsString, for: .normal)
-//
-//        let nonAttrs = [NSAttributedString.Key.underlineStyle: 0]
-//        let booksString = NSMutableAttributedString(string:"Books", attributes: nonAttrs)
-//        let peopleString = NSMutableAttributedString(string:"People", attributes: nonAttrs)
-//        booksCategoryLabel.setAttributedTitle(booksString, for: .normal)
-//        peopleCategoryLabel.setAttributedTitle(peopleString, for: .normal)
         
         tableView.reloadData()
         search()
@@ -135,16 +108,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         booksCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         clubsCategoryLabel.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         peopleCategoryLabel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        
-//        let attrs = [NSAttributedString.Key.underlineStyle: 1]
-//        let peopleString = NSMutableAttributedString(string:"People", attributes: attrs)
-//        peopleCategoryLabel.setAttributedTitle(peopleString, for: .normal)
-//
-//        let nonAttrs = [NSAttributedString.Key.underlineStyle: 0]
-//        let booksString = NSMutableAttributedString(string:"Books", attributes: nonAttrs)
-//        let clubsString = NSMutableAttributedString(string:"Clubs", attributes: nonAttrs)
-//        booksCategoryLabel.setAttributedTitle(booksString, for: .normal)
-//        clubsCategoryLabel.setAttributedTitle(clubsString, for: .normal)
         
         tableView.reloadData()
         search()
@@ -241,7 +204,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let bookclub = clubsArray[indexPath.row]
             cell.bookclub = bookclub
         }
-        
         return cell
     }
     
@@ -283,7 +245,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         15.0
     }
-    
     
     // MARK: - Navigation
     

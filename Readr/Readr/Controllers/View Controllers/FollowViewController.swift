@@ -11,18 +11,15 @@ import UIKit
 class FollowViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Outlets
-    
     @IBOutlet weak var followTableView: UITableView!
     @IBOutlet weak var followSegmentController: UISegmentedControl!
     
     // MARK: - Properties
-
     var user: User?
     var followArray: [User] = []
     var isFirstSegment = true 
     
     //MARK: Lifecycle Methods
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         followTableView.delegate = self
@@ -45,17 +42,9 @@ class FollowViewController: UIViewController, UITableViewDataSource, UITableView
         fetchFollowUsers()
         followTableView.reloadData()
     }
-    
 
     //MARK: - TableView Data Source
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let user = user else {return 0}
-//        if FollowSegmentController.selectedSegmentIndex == 0 {
-//            return user.followingList.count
-//        }  else {
-//            return user.followerList.count
-//        }
         return followArray.count
     }
     
@@ -67,13 +56,11 @@ class FollowViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     //MARK: - Action
-
     @IBAction func FollowSegmentControllerTapped(_ sender: Any) {
         fetchFollowUsers()
     }
     
     //MARK: - Helper Functions
-    
     func fetchFollowUsers() {
        guard let user = user else {return}
         if followSegmentController.selectedSegmentIndex == 0 {
@@ -120,12 +107,10 @@ class FollowViewController: UIViewController, UITableViewDataSource, UITableView
                 self.followArray = sortedUsers
                 self.followTableView.reloadData()
             }
-                  
         }
     }
     
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "followVCToUser" {
             guard let indexPath = followTableView.indexPathForSelectedRow else {return}

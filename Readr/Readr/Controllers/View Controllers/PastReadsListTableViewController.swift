@@ -9,16 +9,12 @@
 import UIKit
 
 class PastReadsListTableViewController: UITableViewController {
-    
-    //    var pastReads: [String]?
+   
+    //MARK: - Properties
     var books: [Book]?
     var bookclub: Bookclub?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //        fetchBooks()
-    }
-    
+    //MARK: - Lifecycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.title = "Past Reads"
@@ -27,37 +23,12 @@ class PastReadsListTableViewController: UITableViewController {
           self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
-    // MARK: - Helpers
-    
-    //    func fetchBooks() {
-    //        guard let pastReads = pastReads else {return}
-    //        let group = DispatchGroup()
-    //        for ISBN in pastReads {
-    //            group.enter()
-    //            BookController.fetchOneBookWith(ISBN: ISBN) { (result) in
-    //                DispatchQueue.main.async {
-    //                    switch result {
-    //                    case .success(let book):
-    //                        self.books.append(book)
-    //                    case .failure(_):
-    //                        print("we could not load pastreads")
-    //                    }
-    //                    group.leave()
-    //                }
-    //            }
-    //        }
-    //        group.notify(queue: .main) {
-    //            self.tableView.reloadData()
-    //        }
-    //    }
-    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let books = books else {return 0}
         return books.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookCell", for: indexPath) as? PastReadsTableViewCell else {return UITableViewCell()}
@@ -66,15 +37,7 @@ class PastReadsListTableViewController: UITableViewController {
         cell.book = book
         return cell
     }
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
+  
     public override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         guard let bookclub = bookclub else {return UITableViewCell.EditingStyle.none}
         if UserController.shared.currentUser?.appleUserRef != bookclub.admin {
@@ -89,7 +52,6 @@ class PastReadsListTableViewController: UITableViewController {
         guard let bookclub = bookclub else {return}
         var pastreads = bookclub.pastReads
         if editingStyle == .delete {
-//            tableView.deleteRows(at: [indexPath], with: .fade)
             let bookToDelete = books[indexPath.row]
             guard let index = books.firstIndex(of: bookToDelete) else {return}
             
@@ -119,22 +81,6 @@ class PastReadsListTableViewController: UITableViewController {
             }
         }
     }
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
     
     // MARK: - Navigation
     

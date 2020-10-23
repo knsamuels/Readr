@@ -40,8 +40,6 @@ class BookDetailViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
           self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         
-//        descriptionScrollView.layer.borderWidth = 0.25
-//        descriptionScrollView.layer.borderColor = UIColor.readenBlue.cgColor
         reviewWebView.layer.borderWidth = 0.25
         reviewWebView.layer.borderColor = UIColor.readenBlue.cgColor
     }
@@ -52,7 +50,6 @@ class BookDetailViewController: UIViewController {
     @IBAction func deleteBookshelfButtonTapped(_ sender: Any) {
     }
     @IBAction func optionButton(_ sender: Any) {
-//        guard let user = UserController.shared.currentUser else {return}
         guard let industryIdentifiers = book?.industryIdentifiers else {return}
         var isbn = ""
         for industryIdentifier in industryIdentifiers {
@@ -89,7 +86,6 @@ class BookDetailViewController: UIViewController {
     
     @IBAction func BC2ButtonTapped(_ sender: Any) {
     }
-    
     
     @IBAction func BC3ButtonTapped(_ sender: Any) {
     }

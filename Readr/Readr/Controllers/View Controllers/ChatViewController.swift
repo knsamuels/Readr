@@ -41,7 +41,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         fetchBookclubs()
-        
     }
     
     // MARK: - Helper Methods
@@ -74,7 +73,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - Table view data source
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookclubsArray.count
     }
@@ -90,7 +88,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - Navigation
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMessageVC" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
@@ -105,7 +102,7 @@ extension ChatViewController: ChatSpinnerDelegate {
     func stopSpinning() {
         self.loadingScreen.removeFromSuperview()
     }
-}
+} // End of extension 
 
 
 

@@ -10,17 +10,17 @@ import UIKit
 
 class PlaceholderViewController: UIViewController {
     
+    //MARK: - Properties
     var bookshelf: Bookshelf?
     
+    //MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
-        if let bookshelf = bookshelf {
-            print("we got a bookshelf (\(bookshelf.title))-- placeholder")
-        }
     }
      
+    //MARK: - Navigation 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let bookshelf = bookshelf else {return}
         if segue.identifier == "toAlertVC" {
@@ -28,5 +28,4 @@ class PlaceholderViewController: UIViewController {
             destination?.bookshelf = bookshelf
         }
     }
-    
 } //End of class

@@ -31,5 +31,4 @@ class PastReadsTableViewCell: UITableViewCell {
         pastReadsAuthorLabel.text = book.authors?.first
         pastReadsRatingLabel.text = "\(book.averageRating ?? 0.0)"
     }
-    
 } //End of class

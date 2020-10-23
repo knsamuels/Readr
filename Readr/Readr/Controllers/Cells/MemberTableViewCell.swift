@@ -47,5 +47,4 @@ class MemberTableViewCell: UITableViewCell {
         memberImage.layer.cornerRadius = memberImage.frame.height / 2
         memberImage.clipsToBounds = true
     }
-    
 } //End of class

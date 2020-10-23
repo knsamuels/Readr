@@ -33,5 +33,4 @@ class BookclubTableViewCell: UITableViewCell {
         bookclubImage.clipsToBounds = true
         bookclubLabel.text = bookclub.name
     }
-    
 } //End of class

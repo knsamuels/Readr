@@ -56,8 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     switch status {
                     case .available:
-                        tabBarController?.presentSimpleAlertWith(title: "Yayyy", message: ":) :) :) :) :)")
-                        print("MAAAADE ITTTTTT")
                         completion(true);
                         
                     case .noAccount:
@@ -79,20 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    
-    //    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    //        MessageController.shared.subscribeForRemoteNotifications { (error) in
-    //            if let error = error {
-    //                print("There was an error subscribing for remote notifications -- \(error) -- \(error.localizedDescription)")
-    //            }
-    //        }
-    //    }
-    
-    //        func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-    //            print("We failed to register for remote notifications. -- \(error) -- \(error.localizedDescription)")
-    //        }
-    
-    
+
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         debugPrint("Received: \(userInfo)")
         let dict = userInfo as! [String: NSObject]

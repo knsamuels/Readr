@@ -77,9 +77,6 @@ class BookclubController {
     
     //fetch current user or other users
     func fetchUsersBookClubs(user: User, completion: @escaping(Result<[Bookclub], BookclubError>) -> Void) {
-        //guard let userReference = UserController.shared.currentUser else {return completion(.failure(.couldNotUnwrap))}
-        
-        // come back and check this
         let predicate = NSPredicate(format: "%K CONTAINS %@", argumentArray: [BookclubConstants.membersKey, user.appleUserRef])
         
         let query = CKQuery(recordType: BookclubConstants.recordTypeKey, predicate: predicate)
@@ -105,8 +102,7 @@ class BookclubController {
     
     //fetch with currently reading book
     func fetchBookClubWithSameCurrentlyReading(book: String, completion: @escaping(Result<[Bookclub], BookclubError>) -> Void) {
-        
-        // COME BACK AND CHECK THIS
+  
         let predicate = NSPredicate(format: "%K == %@", argumentArray: [BookclubConstants.currentlyReadingKey, book])
         
         let query = CKQuery(recordType: BookclubConstants.recordTypeKey, predicate: predicate)

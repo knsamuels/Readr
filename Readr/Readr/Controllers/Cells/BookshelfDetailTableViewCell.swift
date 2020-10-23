@@ -55,5 +55,4 @@ class BookshelfDetailTableViewCell: UITableViewCell {
         bookAuthorLabel.text = book.authors?.first ?? "no author"
         bookRatingLabel.text = rating
     }
-    
 } //End of class

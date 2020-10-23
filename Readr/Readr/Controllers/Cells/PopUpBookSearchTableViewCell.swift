@@ -31,6 +31,5 @@ class PopUpBookSearchTableViewCell: UITableViewCell {
         bookAuthorLabel.text = book.authors?.first
         bookRatingLabel.text = " \(String(book.averageRating ?? 0))"
     }
-    
 } //End of class
 

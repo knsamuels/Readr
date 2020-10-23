@@ -66,8 +66,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         meetingInfoForBookBlub.delegate = self
         doneReadingButton.isHidden = true
         if let bookclub = bookclub {
-//            imageOfBookClub.layer.borderWidth = 1.0
-//            imageOfBookClub.layer.borderColor = UIColor.black.cgColor
             cancelButtonToBC.isHidden = false
             cancelButtonToUser.isHidden = true
             updateViews(bookclub: bookclub)
@@ -80,7 +78,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             cancelButtonToBC.isHidden = true
             cancelButtonToUser.isHidden = false
         }
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
     }
     
     // MARK: - Actions
@@ -103,7 +100,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             self.present(imagePickerController, animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
         alertController.addAction(cameraAction)
         alertController.addAction(libraryAction)
         alertController.addAction(cancelAction)
@@ -114,7 +110,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         guard let name = nameOfBookClub.text, !name.isEmpty else {return}
         guard let description = descriptionOfBookClub.text, !description.isEmpty else {return}
         guard let meetingInfo = meetingInfoForBookBlub.text, !meetingInfo.isEmpty else {return}
-            //let isbn = currentlyReadingBook?.industryIdentifiers?.first?.identifier else {return}
         guard let industryIdentifiers = currentlyReadingBook?.industryIdentifiers else {return}
         createBookclubButton.isEnabled = false
         createBookclubButton.setTitleColor(.gray, for: .normal)
@@ -146,7 +141,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
                 DispatchQueue.main.async {
                     switch result {
                     case .success(_):
-                        print("this worked")
                         self.dismiss(animated: true)
                     case .failure(_):
                         print("could not update the bookclub")
@@ -159,16 +153,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
                     switch result {
                     case .success(let bookclub):
                         self.bookclub = bookclub
-                        BookclubController.shared.addSubscriptionTo(messagesForBookclub: bookclub) { (result, error) in
-                            DispatchQueue.main.async {
-                                switch result {
-                                case true:
-                                    print("Bookclub creator added to subscriptions")
-                                case false:
-                                    print("Could not add bookclub creator to subscriptions")
-                                }
-                            }
-                        }
+                        BookclubController.shared.addSubscriptionTo(messagesForBookclub: bookclub) { (result, error) in }
                         self.performSegue(withIdentifier:
                             "toBookclubVC", sender: self)
                         self.navigationController?.popViewController(animated: true)
@@ -178,7 +163,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
                 }
             }
         }
-        print("hiya!")
     }
     
     @IBAction func currentlyReadingButtonTapped(_ sender: Any) {
@@ -240,7 +224,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        //self.dismiss(animated: true)
     }
     
     @IBAction func doneReadingTapped(_ sender: UIButton) {
@@ -360,7 +343,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             twentyFiveButton.layer.borderColor = UIColor.readenBlue.cgColor
             twentyFiveButton.setTitleColor(.readenBlue, for: .normal)
             twentyFiveButton.layer.borderWidth = 3.0
-            
             twentyFiveButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         }
     }
@@ -373,8 +355,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     func setupTextViews() {
-//        nameOfBookClub.layer.borderWidth = 1.0
-//        nameOfBookClub.layer.borderColor = UIColor.white.cgColor
         meetingInfoForBookBlub.layer.borderWidth = 1.0
         meetingInfoForBookBlub.layer.borderColor = UIColor.black.cgColor
         
@@ -413,7 +393,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
-        
         if meetingInfoForBookBlub.isEditing {
             self.view.window?.frame.origin.y = -keyboardSize.height
         }
@@ -444,8 +423,6 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             imageOfBookClub.image = image
         } else {
             imageOfBookClub.image = UIImage(named: "ReadenLogoWhiteSpace")
-//            imageOfBookClub.layer.borderWidth = 0.25
-//            imageOfBookClub.layer.borderColor = UIColor.black.cgColor
         }
         imageOfBookClub.layer.cornerRadius = imageOfBookClub.frame.height / 2
         imageOfBookClub.clipsToBounds = true
@@ -510,7 +487,6 @@ extension CreateBCViewController: UIImagePickerControllerDelegate {
 extension CreateBCViewController: PopUpBookSearchDelegate {
     func didSelectBook(book: Book) {
         currentlyReadingBook = book
-        
     }
 } //End of extension
 
@@ -528,4 +504,4 @@ extension CreateBCViewController: ReloadBCChainDelegate {
     func callDelegateFunc() {
         self.reloadBCDelegate?.reloadUserBookclubs()
     }
-}
+} //End of extension

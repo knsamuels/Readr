@@ -39,7 +39,6 @@ class GenresViewController: UIViewController {
     
     //MARK: - Properties
     var favGenres: [String] = []
-    
     var fantasyIsSelected = false
     var adventureIsSelected = false
     var romanceIsSelected = false
@@ -79,6 +78,7 @@ class GenresViewController: UIViewController {
         UserController.shared.updateUser(user: user) { (result) in
         }
     }
+    
     @IBAction func fantasyButtonTapped(_ sender: Any) {
         fantasyIsSelected.toggle()
         if fantasyIsSelected {
@@ -92,6 +92,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func adventureButtonTapped(_ sender: Any) {
         adventureIsSelected.toggle()
         if adventureIsSelected {
@@ -105,6 +106,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func romanceButtonTapped(_ sender: Any) {
         romanceIsSelected.toggle()
         if romanceIsSelected {
@@ -118,6 +120,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func contemporaryButtonTapped(_ sender: Any) {
         contemporaryIsSelected.toggle()
         if contemporaryIsSelected {
@@ -131,6 +134,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func dypostianButtonTapped(_ sender: Any) {
         dypostianIsSelected.toggle()
         if dypostianIsSelected {
@@ -144,6 +148,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func mysteryButtonTapped(_ sender: Any) {
         mysteryIsSelected.toggle()
         if mysteryIsSelected {
@@ -157,6 +162,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func horrorButtonTapped(_ sender: Any) {
         horrorIsSelected.toggle()
         if horrorIsSelected {
@@ -170,6 +176,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func thrillerButtonTapped(_ sender: Any) {
         thrillerIsSelected.toggle()
         if thrillerIsSelected {
@@ -183,6 +190,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func paranormalButtonTapped(_ sender: Any) {
         paranormalIsSelected.toggle()
         if paranormalIsSelected {
@@ -196,6 +204,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func historicalFictionButtonTapped(_ sender: Any) {
         historicalFictionIsSelected.toggle()
         if historicalFictionIsSelected {
@@ -209,6 +218,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func scienceFictionButtonTapped(_ sender: Any) {
         scienceFictionIsSelected.toggle()
         if scienceFictionIsSelected {
@@ -222,6 +232,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func memoirButtonTapped(_ sender: Any) {
         memoirIsSelected.toggle()
         if memoirIsSelected {
@@ -235,6 +246,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func cookingButtonTapped(_ sender: Any) {
         cookingIsSelected.toggle()
         if cookingIsSelected {
@@ -248,6 +260,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func artButtonTapped(_ sender: Any) {
         artIsSelected.toggle()
         if artIsSelected {
@@ -261,6 +274,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func selfHelpPersonalButtonTapped(_ sender: Any) {
         selfHelpPersonalIsSelected.toggle()
         if selfHelpPersonalIsSelected {
@@ -274,6 +288,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func developmentButtonTapped(_ sender: Any) {
         developmentIsSelected.toggle()
         if developmentIsSelected {
@@ -287,6 +302,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func motivationalButtonTapped(_ sender: Any) {
         motivationalIsSelected.toggle()
         if motivationalIsSelected {
@@ -300,6 +316,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func healthButtonTapped(_ sender: Any) {
         healthIsSelected.toggle()
         if healthIsSelected {
@@ -313,6 +330,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func historyButtonTapped(_ sender: Any) {
         historyIsSelected.toggle()
         if historyIsSelected {
@@ -326,6 +344,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func travelButtonTapped(_ sender: Any) {
         travelIsSelected.toggle()
         if travelIsSelected {
@@ -339,6 +358,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func guideHowToButtonTapped(_ sender: Any) {
         guideHowToIsSelected.toggle()
         if guideHowToIsSelected {
@@ -352,6 +372,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func relationshipsButtonTapped(_ sender: Any) {
         relationshipsIsSelected.toggle()
         if relationshipsIsSelected {
@@ -365,6 +386,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func humorButtonTapped(_ sender: Any) {
         humorIsSelected.toggle()
         if humorIsSelected {
@@ -378,6 +400,7 @@ class GenresViewController: UIViewController {
             minusCount()
         }
     }
+    
     @IBAction func childrensButtonTapped(_ sender: Any) {
         childrensIsSelected.toggle()
         if childrensIsSelected {
@@ -531,5 +554,4 @@ class GenresViewController: UIViewController {
         humorButton.isEnabled = true
         childrensButton.isEnabled = true
     }
-    
 } //End of class

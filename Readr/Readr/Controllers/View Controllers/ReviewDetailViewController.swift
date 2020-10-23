@@ -11,13 +11,16 @@ import WebKit
 
 class ReviewDetailViewController: UIViewController {
     
+    //MARK: - Properties
     var bookISBN: String?
     var book: Book?
     
+    //MARK: - Outlets
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var reviewsWebView: WKWebView!
     @IBOutlet weak var goodReadsLabel: UILabel!
     
+    //MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchReview()
@@ -27,6 +30,7 @@ class ReviewDetailViewController: UIViewController {
           self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
+    //MARK: - Helper Methods
     func fetchReview() {
         guard let industryIdentifiers = book?.industryIdentifiers else {return}
         var isbn = ""

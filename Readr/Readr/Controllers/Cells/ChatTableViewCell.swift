@@ -64,5 +64,4 @@ class ChatTableViewCell: UITableViewCell {
         bookclubImageView.clipsToBounds = true
         chatSpinnerDelegate?.stopSpinning()
     }
-
 } //End of class

@@ -199,5 +199,4 @@ class UserController {
             completion(.success(fetchedUser))
         }
     }
-    
 } //End class
