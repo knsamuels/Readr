@@ -518,16 +518,7 @@ class BookclubViewController: UIViewController {
         func checkBookclubs() {
             for bookclub in bookclubsToCheck {
                 if bookclub.admin == user.appleUserRef {
-                    BookclubController.shared.delete(bookclub: bookclub) { (result) in
-                        DispatchQueue.main.async {
-                            switch result {
-                            case .success(_):
-                                print("Successfully deleted bookclub")
-                            case .failure(_):
-                                print("Could not delete bookclub")
-                            }
-                        }
-                    }
+                    BookclubController.shared.delete(bookclub: bookclub) { (result) in }
                 } else {
                     guard let index = bookclub.members.firstIndex(of: user.appleUserRef) else {return}
                     bookclub.members.remove(at: index)
@@ -566,16 +557,7 @@ class BookclubViewController: UIViewController {
                     case .success(let follower):
                         guard let index = follower.followingList.firstIndex(of: user.username) else {return}
                         follower.followingList.remove(at: index)
-                        UserController.shared.updateUser(user: follower) { (result) in
-                            DispatchQueue.main.async {
-                                switch result {
-                                case .success(_):
-                                    print("User's following list updated.")
-                                case .failure(_):
-                                    print("Error updating follower.")
-                                }
-                            }
-                        }
+                        UserController.shared.updateUser(user: follower) { (result) in }
                     case .failure(_):
                         print("Could not fetch follower.")
                     }

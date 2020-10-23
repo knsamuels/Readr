@@ -40,12 +40,6 @@ class LogInViewController: UIViewController {
                 case .success(let user):
                     self.incorrectLabel.isHidden = true
                     self.checkAppleRef(user: user)
-//                    if  {
-//                        UserController.shared.currentUser = user
-//                        self.presentBookshelfVC()
-//                    } else {
-//                        self.incorrectLabel.isHidden = false
-//                    }
                 case .failure(_):
                     self.incorrectLabel.text = "**Could not find user with that username**"
                     self.incorrectLabel.isHidden = false
@@ -97,13 +91,11 @@ class LogInViewController: UIViewController {
             self.present(viewController, animated: true)
         }
     }
-    
 } //End of class
 
 extension LogInViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing( _ textField: UITextField) {
         self.activeTextField = textField
-        
     }
     
     func textFieldDidEndEditing( _ textField: UITextField) {

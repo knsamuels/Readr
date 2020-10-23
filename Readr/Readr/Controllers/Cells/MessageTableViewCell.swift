@@ -36,5 +36,4 @@ class MessageTableViewCell: UITableViewCell {
             usernameLabel.textColor = .red
         }
     }
-   
 } //End of class

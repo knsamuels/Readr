@@ -37,8 +37,6 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         NotificationCenter.default.addObserver(self, selector: #selector(MessageViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onReloadEventsTable), name: Notification.Name(rawValue: "reloadEventsTable"), object: nil)
-        
-        //        NotificationCenter.default.addObserver(self, selector: #selector(onReceiveData(_:)), name: NSNotification.Name(rawValue: "ReceiveData"), object: nil)
     }
     
     // MARK: - Actions
@@ -63,10 +61,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     // MARK: - Helper Methods
-    
     func updateViews() {
         guard let bookclub = bookclub else {return}
-        //self.title = bookclub.name
         if let image = bookclub.profilePicture {
             bookclubImageView.image = image
         } else {
@@ -89,8 +85,6 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
                     case .success(let messages):
                         strongSelf.messagesArray = messages
                         strongSelf.tableView.reloadData()
-                        print("testing to see if we can fetch messages")
-                        print(strongSelf.messagesArray.count)
                         if strongSelf.messagesArray.count > 0 {
                             let indexPath = IndexPath(row: strongSelf.messagesArray.count - 1, section: 0)
                             strongSelf.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
@@ -149,23 +143,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     @objc func onReloadEventsTable() {
         fetchMessages()
     }
-    
-    //    @objc func onReceiveData(_ notification:Notification) {
-    //        guard let bookclub = bookclub else {return}
-    //        MessageController.shared.fetchNewMessages(for: bookclub, existingMessages: messagesArray) { (result) in
-    //            DispatchQueue.main.async {
-    //                switch result {
-    //                case .success(let messages):
-    //                    self.messagesArray.append(contentsOf: messages)
-    //                    print("We made it this far")
-    //                    self.tableView.reloadData()
-    //                case .failure(_):
-    //                    print("Could not fetch new messages")
-    //                }
-    //            }
-    //        }
-    //    }
-    
+   
     // MARK: - Table View Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messagesArray.count
@@ -183,29 +161,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
-    
-    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    //        if editingStyle == .delete {
-    //            let messageToDelete = messagesArray[indexPath.row]
-    //            guard let index = messagesArray.firstIndex(of: messageToDelete) else {return}
-    //            guard let user = UserController.shared.currentUser else {return}
-    //
-    //            if messageToDelete.user == user.username {
-    //                MessageController.shared.deleteMessage(message: messageToDelete) { (result) in
-    //                    DispatchQueue.main.async {
-    //                        switch result {
-    //                        case .success(_):
-    //                            self.messagesArray.remove(at: index)
-    //                            self.tableView.reloadData()
-    //                        case .failure(_):
-    //                            print("Error deleting message")
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-    
+   
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let user = UserController.shared.currentUser else {return nil}
         
@@ -294,6 +250,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
                     user.reportCount += 1
                     if user.reportCount == 2 {
                         self.deleteAllBookclubs(user: user)
+                        self.deleteAllMessages(user: user)
                         self.removeAllFollows(user: user)
                         UserController.shared.deleteUser(user: user) { (result) in }
                     } else {
@@ -314,16 +271,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
                     case .success(let follower):
                         guard let index = follower.followingList.firstIndex(of: user.username) else {return}
                         follower.followingList.remove(at: index)
-                        UserController.shared.updateUser(user: follower) { (result) in
-                            DispatchQueue.main.async {
-                                switch result {
-                                case .success(_):
-                                    print("User's following list updated.")
-                                case .failure(_):
-                                    print("Error updating follower.")
-                                }
-                            }
-                        }
+                        UserController.shared.updateUser(user: follower) { (result) in }
                     case .failure(_):
                         print("Could not fetch follower.")
                     }
@@ -363,16 +311,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         func checkBookclubs() {
             for bookclub in bookclubsToCheck {
                 if bookclub.admin == user.appleUserRef {
-                    BookclubController.shared.delete(bookclub: bookclub) { (result) in
-                        DispatchQueue.main.async {
-                            switch result {
-                            case .success(_):
-                                print("Successfully deleted bookclub")
-                            case .failure(_):
-                                print("Could not delete bookclub")
-                            }
-                        }
-                    }
+                    BookclubController.shared.delete(bookclub: bookclub) { (result) in }
                 } else {
                     guard let index = bookclub.members.firstIndex(of: user.appleUserRef) else {return}
                     bookclub.members.remove(at: index)
@@ -381,16 +320,29 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
+    
+    func deleteAllMessages(user: User) {
+        MessageController.shared.fetchAllMessagesfrom(user: user) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let messages):
+                    for message in messages {
+                        MessageController.shared.deleteMessage(message: message) { (result) in }
+                    }
+                case .failure(_):
+                    print("Could not fetch messages")
+                }
+            }
+        }
+    }
 
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "messagesToBCVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
             let bookclubToSend = bookclub
             destination.bookclub = bookclubToSend
-            
         }
     }
 }

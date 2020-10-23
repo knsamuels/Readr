@@ -29,6 +29,5 @@ class SearchCollectionViewCell: UICollectionViewCell {
         averageRating.text = " \(String(volumeInfo.averageRating ?? 0))"
         bookImageView.image = volumeInfo.coverImage ?? UIImage(named: "noImage")
     }
-    
 } //End of class
 

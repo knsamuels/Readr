@@ -15,12 +15,10 @@ class AppleIDViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     iCloudStackView.isHidden = true
-    //fetchAppleUser()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-
     NotificationCenter.default.removeObserver(self)
   }
 
@@ -52,5 +50,4 @@ class AppleIDViewController: UIViewController {
     logIn.modalPresentationStyle = .fullScreen
     self.present(logIn, animated: true, completion: nil)
   }
-
 }  //End of class

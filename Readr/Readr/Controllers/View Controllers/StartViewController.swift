@@ -54,5 +54,4 @@ class StartViewController: UIViewController, UITextViewDelegate {
             self.present(viewController, animated: true)
         }
     }
-    
 } //End of class

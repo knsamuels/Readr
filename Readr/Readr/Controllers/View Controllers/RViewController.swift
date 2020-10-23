@@ -27,5 +27,4 @@ class RViewController: UIViewController {
             self.present(viewController, animated: true)
         }
     }
-    
 } //End of class

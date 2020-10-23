@@ -70,9 +70,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        
-        //        NotificationCenter.default.addObserver(self, selector: #selector(self.updateBookclubs), name: NSNotification.Name(rawValue: "NotificationID"), object: nil)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,8 +83,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             checkIfUserIsBlocked()
         }
         guard let user = user else {return}
-        print("FOLLOWING: \(user.followingList.count)")
-        print("FOLLOWERS: \(user.followerList.count)")
     }
     
     //MARK: - Actions
@@ -123,7 +118,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         guard let user = user else {return}
         guard let currentUser = UserController.shared.currentUser else {return}
         
-        if user.followerList.contains(currentUser.username) {
+        if user.followerList.contains(currentUser.username) && currentUser.followingList.contains(user.username){
             guard let followerIndex = user.followerList.firstIndex(of: currentUser.username) else {return}
             user.followerList.remove(at: followerIndex)
             guard let followingIndex = currentUser.followingList.firstIndex(of: user.username) else {return}
@@ -162,7 +157,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     func setUpImage() {
         profilePic.layer.cornerRadius = profilePic.frame.height / 2
         profilePic.clipsToBounds = true
-        
         bookclubImage1.layer.cornerRadius = bookclubImage1.frame.width / 2
         bookclubImage1.clipsToBounds = true
         bookclubImage2.layer.cornerRadius = bookclubImage2.frame.height / 2
@@ -188,7 +182,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             switch result {
             case .success(let user):
                 self.user = user
-                print("we fetched a user")
                 self.fetchUserBooks()
             case .failure(_):
                 print("We did not get a user")
@@ -236,7 +229,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                 }
             }
         }
-        //        self.getUsersBookclubs()
     }
     
     func checkIfUserIsBlocked() {
@@ -316,16 +308,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         func checkBookclubs() {
             for bookclub in bookclubsToCheck {
                 if bookclub.admin == user.appleUserRef {
-                    BookclubController.shared.delete(bookclub: bookclub) { (result) in
-                        DispatchQueue.main.async {
-                            switch result {
-                            case .success(_):
-                                print("Successfully deleted bookclub")
-                            case .failure(_):
-                                print("Could not delete bookclub")
-                            }
-                        }
-                    }
+                    BookclubController.shared.delete(bookclub: bookclub) { (result) in }
                 } else {
                     guard let index = bookclub.members.firstIndex(of: user.appleUserRef) else {return}
                     bookclub.members.remove(at: index)
@@ -344,16 +327,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     case .success(let follower):
                         guard let index = follower.followingList.firstIndex(of: user.username) else {return}
                         follower.followingList.remove(at: index)
-                        UserController.shared.updateUser(user: follower) { (result) in
-                            DispatchQueue.main.async {
-                                switch result {
-                                case .success(_):
-                                    print("User's following list updated.")
-                                case .failure(_):
-                                    print("Error updating follower.")
-                                }
-                            }
-                        }
+                        UserController.shared.updateUser(user: follower) { (result) in }
                     case .failure(_):
                         print("Could not fetch follower.")
                     }
@@ -641,8 +615,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     } else {
                         self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
                     }
-                    
-                    //self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                     self.bookclubName1.text = self.userBookClubs[0].name
                     self.bookclub1ButtonLabel.isHidden = false
                     self.bookclubImage2.isHidden = true
@@ -660,7 +632,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     } else {
                         self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
                     }
-                    //self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                     self.bookclubName1.text = self.userBookClubs[0].name
                     self.bookclub1ButtonLabel.isHidden = false
                     
@@ -669,7 +640,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     } else {
                         self.bookclubImage2.image = UIImage(named: "ReadenLogoWhiteSpace")
                     }
-                    //self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                     self.bookclubName2.text = self.userBookClubs[1].name
                     self.bookclub2ButtonLabel.isHidden = false
                     self.bookclubImage3.isHidden = true
@@ -684,7 +654,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     } else {
                         self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
                     }
-                    //                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                     self.bookclubName1.text = self.userBookClubs[0].name
                     self.bookclub1ButtonLabel.isHidden = false
                     if let image2 = self.userBookClubs[1].profilePicture {
@@ -692,7 +661,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     } else {
                         self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
                     }
-                    //                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                     self.bookclubName2.text = self.userBookClubs[1].name
                     self.bookclub2ButtonLabel.isHidden = false
                     if let image3 = self.userBookClubs[2].profilePicture {
@@ -700,7 +668,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     } else {
                         self.bookclubImage3.image = UIImage(named: "ReadenLogoWhiteSpace")
                     }
-                    //                self.bookclubImage3.image = self.userBookClubs[2].profilePicture
                     self.bookclubName3.text = self.userBookClubs[2].name
                     self.bookclub3ButtonLabel.isHidden = false
                     self.bookclubImage4.isHidden = true
@@ -712,7 +679,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     } else {
                         self.bookclubImage1.image = UIImage(named: "ReadenLogoWhiteSpace")
                     }
-                    //                self.bookclubImage1.image = self.userBookClubs[0].profilePicture
                     self.bookclubName1.text = self.userBookClubs[0].name
                     self.bookclub1ButtonLabel.isHidden = false
                     if let image2 = self.userBookClubs[1].profilePicture {
@@ -720,7 +686,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     } else {
                         self.bookclubImage2.image = UIImage(named: "ReadenLogoWhiteSpace")
                     }
-                    //                self.bookclubImage2.image = self.userBookClubs[1].profilePicture
                     self.bookclubName2.text = self.userBookClubs[1].name
                     self.bookclub2ButtonLabel.isHidden = false
                     if let image3 = self.userBookClubs[2].profilePicture {
@@ -728,7 +693,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     } else {
                         self.bookclubImage3.image = UIImage(named: "ReadenLogoWhiteSpace")
                     }
-                    //                self.bookclubImage3.image = self.userBookClubs[2].profilePicture
                     self.bookclubName3.text = self.userBookClubs[2].name
                     self.bookclub3ButtonLabel.isHidden = false
                     if let image4 = self.userBookClubs[3].profilePicture {
@@ -736,7 +700,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     } else {
                         self.bookclubImage4.image = UIImage(named: "ReadenLogoWhiteSpace")
                     }
-                    //                self.bookclubImage4.image = self.userBookClubs[3].profilePicture
                     self.bookclubName4.text = self.userBookClubs[3].name
                     self.bookclub4ButtonLabel.isHidden = false
                 }
@@ -744,6 +707,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             }
         }
     }
+    
     @objc func getUsersBookclubs() {
         guard let user = self.user else {return}
         BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
@@ -759,8 +723,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     
     @objc func updateBookclubs() {
         Timer.scheduledTimer(timeInterval: 3.0, target:self, selector: #selector(getUsersBookclubs), userInfo:nil, repeats: false)
-        //        sleep(5)
-        //        getUsersBookclubs()
     }
     
     // MARK: - Navigation

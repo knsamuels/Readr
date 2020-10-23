@@ -16,7 +16,6 @@ class FavAuthorViewController: UIViewController, UITextViewDelegate  {
     @IBOutlet weak var favAuthorTextField: UITextField!
     @IBOutlet weak var blackView: UIView!
     
-    
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()

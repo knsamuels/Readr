@@ -36,7 +36,6 @@ class Bookclub {
     var members: [CKRecord.Reference]
     var currentlyReading: String
     var pastReads: [String]
-    //    var pastReadBooks: [Book]
     var meetingInfo: String
     var memberCapacity: Int
     var recordID: CKRecord.ID
@@ -97,7 +96,6 @@ extension CKRecord {
             BookclubConstants.adminContactInfoKey: bookclub.adminContactInfo,
             BookclubConstants.membersKey : bookclub.members,
             BookclubConstants.descriptionKey : bookclub.description,
-            //BookclubConstants.profilePictureKey : bookclub.profilePicture,
             BookclubConstants.currentlyReadingKey : bookclub.currentlyReading,
             BookclubConstants.meetingInfoKey : bookclub.meetingInfo,
             BookclubConstants.memberCapacityKey : bookclub.memberCapacity

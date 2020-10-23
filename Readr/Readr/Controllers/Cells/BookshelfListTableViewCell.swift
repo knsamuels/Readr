@@ -121,7 +121,6 @@ class BookshelfListTableViewCell: UITableViewCell {
         backgroundColorView.layer.masksToBounds = false
         backgroundColorView.layer.shadowPath = UIBezierPath(roundedRect: backgroundColorView.bounds, cornerRadius: backgroundColorView.layer.cornerRadius).cgPath
     }
-    
 }//End of class
 
 

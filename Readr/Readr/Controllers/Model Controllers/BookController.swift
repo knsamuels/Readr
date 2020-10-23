@@ -14,8 +14,6 @@ struct StringConstants {
     fileprivate static let baseURLString = "https://www.googleapis.com/books/v1"
     fileprivate static let volumeComponentString = "volumes"
     fileprivate static let queryKey = "q"
-    //    fileprivate static let apiKey = "key"
-    //   fileprivate static let apiValue = "AIzaSyB7OAyL1j0A0g4HxGjDzY78c3Qz9dcuEzU"
 }
 
 class BookController {
@@ -28,7 +26,6 @@ class BookController {
         let volumeURL = baseURL.appendingPathComponent(StringConstants.volumeComponentString)
         
         var compnents = URLComponents(url: volumeURL, resolvingAgainstBaseURL: true)
-        //let apiQuery = URLQueryItem(name: StringConstants.apiKey, value: StringConstants.apiValue)
         let searchQuery = URLQueryItem(name: StringConstants.queryKey, value: searchTerm)
         
         compnents?.queryItems = [searchQuery]
@@ -85,7 +82,6 @@ class BookController {
         let volumeURL = baseURL.appendingPathComponent(StringConstants.volumeComponentString)
         
         var compnents = URLComponents(url: volumeURL, resolvingAgainstBaseURL: true)
-        //let apiQuery = URLQueryItem(name: StringConstants.apiKey, value: StringConstants.apiValue)
         let searchQuery = URLQueryItem(name: StringConstants.queryKey, value: ISBN)
         
         compnents?.queryItems = [searchQuery]
@@ -112,7 +108,6 @@ class BookController {
                     if itemIsbn == "" {
                         itemIsbn = industryIdentifiers.first?.identifier ?? ""
                     }
-                    
                     if itemIsbn == ISBN {
                         var book = item.book
                         guard let imageLinks = book.imageLinks else {
@@ -130,8 +125,6 @@ class BookController {
                         }
                     }
                 }
-                //                guard let item = topLevelObject.items.first else {return completion(.failure(.unableToDecode))}
-                
             } catch {
                 print(error.localizedDescription)
                 print(error)
@@ -160,7 +153,6 @@ class BookController {
         for i in user.favoriteBooks {
             group.enter()
             BookController.fetchOneBookWith(ISBN: i) { (result) in
-                print("yeah the book is back!")
                 switch result {
                 case .success(let book):
                     books.append(book)
@@ -182,7 +174,6 @@ class BookController {
             for i in 0...4 {
                 group.enter()
                 BookController.fetchOneBookWith(ISBN: bookshelf.books[i]) { (result) in
-                    print("yeah the book is back!")
                     switch result {
                     case .success(let book):
                         books.append(book)
@@ -196,7 +187,6 @@ class BookController {
             for i in bookshelf.books {
                 group.enter()
                 BookController.fetchOneBookWith(ISBN: i) { (result) in
-                    print("yeah the book is back!")
                     switch result {
                     case .success(let book):
                         books.append(book)

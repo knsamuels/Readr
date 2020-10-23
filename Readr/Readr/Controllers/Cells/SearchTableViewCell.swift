@@ -50,5 +50,4 @@ class SearchTableViewCell: UITableViewCell {
         personOrClubImage.layer.cornerRadius = personOrClubImage.frame.height / 2
         personOrClubImage.clipsToBounds = true
     }
-
 } //End of class

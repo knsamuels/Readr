@@ -11,7 +11,6 @@ import UIKit
 class BookshelfListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Outlets
-    
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties
@@ -30,7 +29,6 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
     }()
     
     // MARK: - Lifecycles
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -104,7 +102,6 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
     func presentCustomAlert() {
         guard let customAlert = UIStoryboard(name: "Alert", bundle: .main).instantiateViewController(withIdentifier: "AlertVC") as? PlaceholderViewController else
         {return}
-        
         present(customAlert, animated: true)
     }
     
@@ -112,7 +109,6 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
         guard let customAlert = UIStoryboard.init(name: "Alert", bundle: .main).instantiateViewController(withIdentifier: "AlertVC") as? PlaceholderViewController else
         {return}
         customAlert.bookshelf = bookshelf
-        
         present(customAlert, animated: true)
     }
     
@@ -127,7 +123,6 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     //MARK: Tableview Data Source
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userBookshelves.count
     }
@@ -206,4 +201,4 @@ extension BookshelfListViewController: BookshelfSpinnerDelegate {
             self.loadingScreen.removeFromSuperview()
         }
     }
-}
+} //End of extension 

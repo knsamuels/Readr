@@ -27,5 +27,4 @@ class CustomizeViewController: UIViewController {
             self.present(authorVC, animated: true, completion: nil)
         }
     }
-    
 } //End of class

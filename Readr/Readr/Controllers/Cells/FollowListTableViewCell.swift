@@ -33,5 +33,4 @@ class FollowListTableViewCell: UITableViewCell {
         followImage.layer.cornerRadius = followImage.frame.height / 2
         followImage.clipsToBounds = true
     }
-    
 } //End of class

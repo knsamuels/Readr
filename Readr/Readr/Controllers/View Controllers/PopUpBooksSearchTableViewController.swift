@@ -14,20 +14,21 @@ protocol PopUpBookSearchDelegate: class {
 
 class PopUpBooksSearchTableViewController: UITableViewController  {
     
+    //MARK: - Properties
     weak var bookDelegate: PopUpBookSearchDelegate?
     var books: [Book] = []
     
+    //MARK: - Outlets
     @IBOutlet weak var bookSearchBar: UISearchBar!
     
+    //MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         bookSearchBar.delegate = self
         bookSearchBar.placeholder = "Search Book Title here..."
-
     }
     
     // MARK: - Helper functions
-    
     func search() {
         guard let searchTerm = bookSearchBar.text else {return}
             BookController.fetchBooksWith(searchTerm: searchTerm) { (result) in
@@ -42,6 +43,7 @@ class PopUpBooksSearchTableViewController: UITableViewController  {
             }
         }
     }
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return books.count
@@ -59,17 +61,6 @@ class PopUpBooksSearchTableViewController: UITableViewController  {
         bookDelegate?.didSelectBook(book: book)
         dismiss(animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension PopUpBooksSearchTableViewController: UISearchBarDelegate {

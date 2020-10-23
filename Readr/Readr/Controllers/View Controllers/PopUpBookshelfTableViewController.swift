@@ -10,8 +10,10 @@ import UIKit
 
 class PopUpBookshelfTableViewController: UITableViewController {
     
+    //MARK: - Properties
     var bookISBN: String?
     
+    //MARK: - Lifecycle methods 
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchBookshelves()

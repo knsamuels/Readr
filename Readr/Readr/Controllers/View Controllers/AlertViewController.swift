@@ -215,5 +215,4 @@ class AlertViewController: UIViewController {
             destination.isNewBookshelf = true 
         }
     }
-    
 } //End of class

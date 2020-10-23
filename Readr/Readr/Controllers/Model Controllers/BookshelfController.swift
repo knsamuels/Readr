@@ -11,13 +11,11 @@ import CloudKit
 
 class BookshelfController {
     
-    
     static let shared = BookshelfController()
     
     var bookshelf: [Bookshelf] = []
     
     let publicDB = CKContainer.default().publicCloudDatabase
-    
     
     func createBookshelf(title: String, color: String, completion: @escaping (Result<Bookshelf, BookshelfError>) -> Void ) {
         
@@ -36,14 +34,12 @@ class BookshelfController {
             
             UserController.shared.currentUser?.bookshelves.append(savedBookshelf)
             completion(.success(savedBookshelf))
-            
         }
     }
     
     func fetchAllBookshelves(completion: @escaping (Result<[Bookshelf], BookshelfError>) -> Void) {
         guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
         let userRef = user.recordID
-        //let userRef = CKRecord.Reference(recordID: user.recordID, action: .none)
         let predicate = NSPredicate(format: "%K == %@", BookshelfStrings.userRefKey, userRef)
         let query = CKQuery(recordType: BookshelfStrings.recordTypeKey, predicate: predicate)
         publicDB.perform(query, inZoneWith: nil) { (records, error) in
@@ -52,7 +48,6 @@ class BookshelfController {
                 completion(.failure(.ckError(error)))
             }
             guard let records = records else {return completion(.failure(.couldNotUnwrap))}
-            
             let bookshelf: [Bookshelf] = records.compactMap { Bookshelf(ckRecord: $0)}
             let sortedBookshelves = bookshelf.sorted(by: {$0.timestamp < $1.timestamp})
             self.bookshelf = sortedBookshelves
@@ -85,7 +80,6 @@ class BookshelfController {
             
             return completion(.success(fetchedFav))
         }
-        
     }
 
     func updateBookshelf(bookshelf: Bookshelf, title: String, color: String, completion: @escaping (Result<Bookshelf, BookshelfError>) -> Void) {
@@ -131,5 +125,4 @@ class BookshelfController {
         }
         publicDB.add(operation)
     }
-    
 }
