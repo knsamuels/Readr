@@ -37,7 +37,7 @@ class ChatTableViewCell: UITableViewCell {
                 switch result {
                 case .success(let messages):
                     self.clubMessages = messages
-                    self.recentMessage = messages.last
+                    self.recentMessage = messages.first
                     self.updateViews()
                 case .failure(_):
                     print("Unable to fetch messages for this bookclub.")

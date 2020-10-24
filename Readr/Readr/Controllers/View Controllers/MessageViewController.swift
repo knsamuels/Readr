@@ -41,7 +41,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             DispatchQueue.main.async {
                 switch result {
                 case .success(let message):
-                    self.messagesArray.append(message)
+//                    self.messagesArray.append(message)
+                    self.messagesArray.insert(message, at: 0)
                     self.tableView.reloadData()
                 case .failure(_):
                     print("Error saving message.")
@@ -72,11 +73,11 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
                     case .success(let messages):
                         strongSelf.messagesArray = messages
                         strongSelf.tableView.reloadData()
-                        if strongSelf.messagesArray.count > 0 {
-                            let indexPath = IndexPath(row: strongSelf.messagesArray.count - 1, section: 0)
-                            strongSelf.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                            return
-                        }
+//                        if strongSelf.messagesArray.count > 0 {
+//                            let indexPath = IndexPath(row: strongSelf.messagesArray.count - 1, section: 0)
+//                            strongSelf.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+//                            return
+//                        }
                     case .failure(_):
                         print("Error fetching messages")
                     }
@@ -124,13 +125,14 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             textView.textColor = UIColor.black
         }
     }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "Message..."
             textView.textColor = UIColor.lightGray
         }
     }
-    
+        
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {return}
         
@@ -257,11 +259,10 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageTableViewCell else {return UITableViewCell()}
         
         let message = messagesArray[indexPath.row]
-        print(message.text ?? "")
         cell.message = message
         
-//        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
-//        cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
+        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
+        cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
         
         return cell
     }
@@ -327,6 +328,14 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         if messagesArray[indexPath.row].user == user.username {
+            deleteAction.backgroundColor = .red
+            
+            guard let trashImage = UIImage(named: "swipeDelete") else {return nil}
+            guard let reportImage = UIImage(named: "swipeReport") else {return nil}
+//            guard let trashImage = UIImage(systemName: "trash") else {return nil}
+//            let flippedTrash = UIImage(cgImage: trashImage.cgImage!, scale: trashImage.scale, orientation: UIImage.Orientation.downMirrored)
+            deleteAction.image = trashImage.withHorizontallyFlippedOrientation()
+            reportAction.image = reportImage.withHorizontallyFlippedOrientation()
             let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
             configuration.performsFirstActionWithFullSwipe = false
             return configuration

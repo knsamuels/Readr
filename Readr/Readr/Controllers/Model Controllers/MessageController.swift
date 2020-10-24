@@ -56,7 +56,7 @@ class MessageController {
             
             guard let records = records else {return completion(.failure(.couldNotUnwrap))}
             let fetchedMessages = records.compactMap { Message(ckRecord: $0) }
-            let sortedMessages = fetchedMessages.sorted(by: { $0.timestamp < $1.timestamp })
+            let sortedMessages = fetchedMessages.sorted(by: { $0.timestamp > $1.timestamp })
     
             completion(.success(sortedMessages))
         }
