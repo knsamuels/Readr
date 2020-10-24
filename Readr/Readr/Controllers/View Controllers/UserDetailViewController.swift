@@ -10,30 +10,14 @@ import UIKit
 
 class UserDetailViewController: UIViewController, UINavigationControllerDelegate {
     
-    // MARK: Properties:
-    var userFavBooks: [Book] = []
-    var userBookClubs: [Bookclub] = []
-    var favBookISBNs: [String] = []
-    var user: User?
-    
-    private lazy var loadingScreen: RLogoLoadingView = {
-        let view = RLogoLoadingView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     //MARK: - Outlets
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var favBookPic1: UIImageView!
     @IBOutlet weak var titleLabel1: UILabel!
-    @IBOutlet weak var authorLabel1: UILabel!
     @IBOutlet weak var favBookPic2: UIImageView!
     @IBOutlet weak var titleLabel2: UILabel!
-    @IBOutlet weak var authorLabel2: UILabel!
     @IBOutlet weak var favBookPic3: UIImageView!
     @IBOutlet weak var titleLabel3: UILabel!
-    @IBOutlet weak var authorLabel3: UILabel!
     @IBOutlet weak var favGenreName1: UILabel!
     @IBOutlet weak var favGenreName2: UILabel!
     @IBOutlet weak var favGenreName3: UILabel!
@@ -63,13 +47,24 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var favoriteGenresLabel: UILabel!
     @IBOutlet weak var bookclubLabelStackView: UIStackView!
     
+    //MARK: - Properties:
+    var userFavBooks: [Book] = []
+    var userBookClubs: [Bookclub] = []
+    var favBookISBNs: [String] = []
+    var user: User?
     
+    private lazy var loadingScreen: RLogoLoadingView = {
+        let view = RLogoLoadingView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoadingScreen()
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-        self.navigationController?.navigationBar.tintColor = .black
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        setUpViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,32 +81,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
     
     //MARK: - Actions
     @IBAction func unwindToUserDetail(_ sender: UIStoryboardSegue) {}
-    
-    @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "Select an image", message: "From where would you like to select an image?", preferredStyle: .alert)
-        
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.delegate = self
-            imagePickerController.sourceType = .camera
-            imagePickerController.allowsEditing = true
-            self.present(imagePickerController, animated: true, completion: nil)
-        }
-        
-        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.delegate = self
-            imagePickerController.sourceType = .photoLibrary
-            imagePickerController.allowsEditing = true
-            self.present(imagePickerController, animated: true, completion: nil)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alertController.addAction(cameraAction)
-        alertController.addAction(libraryAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true)
-    }
     
     @IBAction func followButtonTapped(_ sender: Any) {
         guard let user = user else {return}
@@ -152,7 +121,39 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         presentOptionAlert()
     }
     
+    @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Select an image", message: "From where would you like to select an image?", preferredStyle: .alert)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .camera
+            imagePickerController.allowsEditing = true
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+        
+        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.allowsEditing = true
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addAction(cameraAction)
+        alertController.addAction(libraryAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+    
     //MARK: - Helper Methods
+    private func setUpViews() {
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+    }
+    
     func setUpImage() {
         profilePic.layer.cornerRadius = profilePic.frame.height / 2
         profilePic.clipsToBounds = true
@@ -174,6 +175,18 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
             loadingScreen.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             loadingScreen.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    func checkIfUserIsBlocked() {
+        guard let user = user else {return}
+        guard let currentUser = UserController.shared.currentUser else {return}
+        
+        if user.blockedUsers.contains(currentUser.username) {
+            self.loadingScreen.removeFromSuperview()
+            updateBlockedViews()
+        } else {
+            fetchUserBooks()
+        }
     }
     
     func fetchUser() {
@@ -230,16 +243,21 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
-    func checkIfUserIsBlocked() {
-        guard let user = user else {return}
-        guard let currentUser = UserController.shared.currentUser else {return}
-        
-        if user.blockedUsers.contains(currentUser.username) {
-            self.loadingScreen.removeFromSuperview()
-            updateBlockedViews()
-        } else {
-            fetchUserBooks()
+    @objc func getUsersBookclubs() {
+        guard let user = self.user else {return}
+        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
+            switch result {
+            case .success(let bookclubs):
+                self.userBookClubs = bookclubs.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
+                self.updateViews()
+            case .failure(_):
+                print("we could not get the user's bookclubs")
+            }
         }
+    }
+    
+    @objc func updateBookclubs() {
+        Timer.scheduledTimer(timeInterval: 3.0, target:self, selector: #selector(getUsersBookclubs), userInfo:nil, repeats: false)
     }
     
     func updateBlockedViews() {
@@ -277,194 +295,7 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         self.favoriteBooksLabel.isHidden = true
         self.favoriteGenresLabel.isHidden = true
         self.bookclubLabelStackView.isHidden = true
-        self.selectProfileImage.isHidden = true 
-    }
-    
-    func reportConfirm() {
-        let alertController = UIAlertController(title: nil, message: "User has been reported", preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "Okay", style: .cancel)
-        alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
-        alertController.view.tintColor = .accentBlack
-        alertController.addAction(confirmAction)
-        self.present(alertController, animated: true)
-    }
-    
-    func deleteAllBookclubs() {
-        guard let user = user else {return}
-        var bookclubsToCheck: [Bookclub] = []
-        BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let bookclubs):
-                    bookclubsToCheck = bookclubs
-                    checkBookclubs()
-                case .failure(_):
-                    print("Could not fetch bookclubs.")
-                }
-            }
-        }
-        
-        func checkBookclubs() {
-            for bookclub in bookclubsToCheck {
-                if bookclub.admin == user.appleUserRef {
-                    BookclubController.shared.delete(bookclub: bookclub) { (result) in }
-                } else {
-                    guard let index = bookclub.members.firstIndex(of: user.appleUserRef) else {return}
-                    bookclub.members.remove(at: index)
-                    BookclubController.shared.update(bookclub: bookclub) { (result) in }
-                }
-            }
-        }
-    }
-    
-    func removeAllFollows() {
-        guard let user = user else {return}
-        for followerUsername in user.followerList {
-            UserController.shared.fetchUsername(username: followerUsername) { (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let follower):
-                        guard let index = follower.followingList.firstIndex(of: user.username) else {return}
-                        follower.followingList.remove(at: index)
-                        UserController.shared.updateUser(user: follower) { (result) in }
-                    case .failure(_):
-                        print("Could not fetch follower.")
-                    }
-                }
-            }
-        }
-        for followingUsername in user.followingList {
-            UserController.shared.fetchUsername(username: followingUsername) { (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let following):
-                        guard let index = following.followerList.firstIndex(of: user.username) else {return}
-                        following.followerList.remove(at: index)
-                        UserController.shared.updateUser(user: following) { (result) in }
-                    case .failure(_):
-                        print("Could not fetch following.")
-                    }
-                }
-            }
-        }
-    }
-    
-    func updateBookclubsAfterBlock(user: User, currentUser: User) {
-        BookclubController.shared.fetchUsersBookClubs(user: currentUser) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let fetchedBookclubs):
-                    for bookclub in fetchedBookclubs {
-                        if bookclub.admin == currentUser.appleUserRef && bookclub.members.contains(user.appleUserRef) {
-                            guard let index = bookclub.members.firstIndex(of: user.appleUserRef) else {return}
-                            bookclub.members.remove(at: index)
-                            BookclubController.shared.update(bookclub: bookclub) { (result) in }
-                        }
-                    }
-                case .failure(_):
-                    print("Unable to fetch user's bookclubs.")
-                }
-            }
-        }
-    }
-    
-    func presentOptionAlert() {
-        guard let user = user else {return}
-        guard let currentUser = UserController.shared.currentUser else {return}
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        let reportAction = UIAlertAction(title: "Report User", style: .destructive) { (_) in
-            let confirmReportController = UIAlertController(title: "Report User?", message: nil, preferredStyle: .alert)
-            let cancelReportAction = UIAlertAction(title: "Cancel", style: .cancel)
-            let confirmReportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
-                user.reportCount += 1
-                if user.reportCount == 2 {
-                    self.deleteAllBookclubs()
-                    self.removeAllFollows()
-                    UserController.shared.deleteUser(user: user) { (result) in
-                        DispatchQueue.main.async {
-                            switch result{
-                            case .success(_):
-                                self.reportConfirm()
-                            case .failure(_):
-                                print("Could not delete User")
-                            }
-                        }
-                    }
-                } else {
-                    UserController.shared.updateUser(user: user) { (result) in
-                        DispatchQueue.main.async {
-                            switch result{
-                            case .success(_):
-                                self.reportConfirm()
-                            case .failure(_):
-                                print("Could not update User")
-                            }
-                        }
-                    }
-                }
-            }
-            confirmReportController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
-            confirmReportController.view.tintColor = .accentBlack
-            confirmReportController.addAction(cancelReportAction)
-            confirmReportController.addAction(confirmReportAction)
-            self.present(confirmReportController, animated: true)
-        }
-        let blockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
-            let confirmBlockController = UIAlertController(title: "Block User?", message: "You will never be able to unblock once you block.", preferredStyle: .alert)
-            let cancelBlockAction = UIAlertAction(title: "Cancel", style: .cancel)
-            let confirmBlockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
-                currentUser.blockedUsers.append(user.username)
-                user.blockedUsers.append(currentUser.username)
-                self.updateBookclubsAfterBlock(user: user, currentUser: currentUser)
-                if user.followerList.contains(currentUser.username) {
-                    guard let index = user.followerList.firstIndex(of: currentUser.username) else {return}
-                    user.followerList.remove(at: index)
-                }
-                if user.followingList.contains(currentUser.username) {
-                    guard let index = user.followingList.firstIndex(of: currentUser.username) else {return}
-                    user.followingList.remove(at: index)
-                }
-                if currentUser.followerList.contains(user.username) {
-                    guard let index = currentUser.followerList.firstIndex(of: user.username) else {return}
-                    currentUser.followerList.remove(at: index)
-                }
-                if currentUser.followingList.contains(user.username) {
-                    guard let index = currentUser.followingList.firstIndex(of: user.username) else {return}
-                    currentUser.followingList.remove(at: index)
-                }
-                UserController.shared.updateUser(user: currentUser) { (result) in
-                    switch result {
-                    case .success(_):
-                        UserController.shared.updateUser(user: user) { (result) in
-                            DispatchQueue.main.async {
-                                switch result {
-                                case .success(_):
-                                    self.updateBlockedViews()
-                                case .failure(_):
-                                    print("could not update block lists")
-                                }
-                            }
-                        }
-                    case .failure(_):
-                        print("could not update block user list")
-                    }
-                }
-            }
-            confirmBlockController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
-            confirmBlockController.view.tintColor = .accentBlack
-            confirmBlockController.addAction(cancelBlockAction)
-            confirmBlockController.addAction(confirmBlockAction)
-            self.present(confirmBlockController, animated: true)
-        }
-        alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
-        alertController.view.tintColor = .accentBlack
-        alertController.addAction(cancelAction)
-        alertController.addAction(blockAction)
-        alertController.addAction(reportAction)
-        
-        self.present(alertController, animated: true)
+        self.selectProfileImage.isHidden = true
     }
     
     func updateViews() {
@@ -608,7 +439,6 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
                     self.bookclubName4.isHidden = true
                     self.bookclub4ButtonLabel.isHidden = true
                 case 1:
-                    
                     if let image1 = self.userBookClubs[0].profilePicture {
                         self.bookclubImage1.image = image1
                     } else {
@@ -707,24 +537,194 @@ class UserDetailViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
-    @objc func getUsersBookclubs() {
-        guard let user = self.user else {return}
+    func presentOptionAlert() {
+        guard let user = user else {return}
+        guard let currentUser = UserController.shared.currentUser else {return}
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let reportAction = UIAlertAction(title: "Report User", style: .destructive) { (_) in
+            let confirmReportController = UIAlertController(title: "Report User?", message: nil, preferredStyle: .alert)
+            let cancelReportAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let confirmReportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
+                user.reportCount += 1
+                if user.reportCount == 2 {
+                    self.deleteAllBookclubs()
+                    self.removeAllFollows()
+                    UserController.shared.deleteUser(user: user) { (result) in
+                        DispatchQueue.main.async {
+                            switch result{
+                            case .success(_):
+                                self.reportConfirm()
+                            case .failure(_):
+                                print("Could not delete User")
+                            }
+                        }
+                    }
+                } else {
+                    UserController.shared.updateUser(user: user) { (result) in
+                        DispatchQueue.main.async {
+                            switch result{
+                            case .success(_):
+                                self.reportConfirm()
+                            case .failure(_):
+                                print("Could not update User")
+                            }
+                        }
+                    }
+                }
+            }
+            confirmReportController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+            confirmReportController.view.tintColor = .accentBlack
+            confirmReportController.addAction(cancelReportAction)
+            confirmReportController.addAction(confirmReportAction)
+            self.present(confirmReportController, animated: true)
+        }
+        let blockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
+            let confirmBlockController = UIAlertController(title: "Block User?", message: "You will never be able to unblock once you block.", preferredStyle: .alert)
+            let cancelBlockAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let confirmBlockAction = UIAlertAction(title: "Block", style: .destructive) { (_) in
+                currentUser.blockedUsers.append(user.username)
+                user.blockedUsers.append(currentUser.username)
+                self.updateBookclubsAfterBlock(user: user, currentUser: currentUser)
+                if user.followerList.contains(currentUser.username) {
+                    guard let index = user.followerList.firstIndex(of: currentUser.username) else {return}
+                    user.followerList.remove(at: index)
+                }
+                if user.followingList.contains(currentUser.username) {
+                    guard let index = user.followingList.firstIndex(of: currentUser.username) else {return}
+                    user.followingList.remove(at: index)
+                }
+                if currentUser.followerList.contains(user.username) {
+                    guard let index = currentUser.followerList.firstIndex(of: user.username) else {return}
+                    currentUser.followerList.remove(at: index)
+                }
+                if currentUser.followingList.contains(user.username) {
+                    guard let index = currentUser.followingList.firstIndex(of: user.username) else {return}
+                    currentUser.followingList.remove(at: index)
+                }
+                UserController.shared.updateUser(user: currentUser) { (result) in
+                    switch result {
+                    case .success(_):
+                        UserController.shared.updateUser(user: user) { (result) in
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success(_):
+                                    self.updateBlockedViews()
+                                case .failure(_):
+                                    print("could not update block lists")
+                                }
+                            }
+                        }
+                    case .failure(_):
+                        print("could not update block user list")
+                    }
+                }
+            }
+            confirmBlockController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+            confirmBlockController.view.tintColor = .accentBlack
+            confirmBlockController.addAction(cancelBlockAction)
+            confirmBlockController.addAction(confirmBlockAction)
+            self.present(confirmBlockController, animated: true)
+        }
+        alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alertController.view.tintColor = .accentBlack
+        alertController.addAction(cancelAction)
+        alertController.addAction(blockAction)
+        alertController.addAction(reportAction)
+        
+        self.present(alertController, animated: true)
+    }
+    
+    func reportConfirm() {
+        let alertController = UIAlertController(title: nil, message: "User has been reported", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Okay", style: .cancel)
+        alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alertController.view.tintColor = .accentBlack
+        alertController.addAction(confirmAction)
+        self.present(alertController, animated: true)
+    }
+    
+    func deleteAllBookclubs() {
+        guard let user = user else {return}
+        var bookclubsToCheck: [Bookclub] = []
         BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
-            switch result {
-            case .success(let bookclubs):
-                self.userBookClubs = bookclubs.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
-                self.updateViews()
-            case .failure(_):
-                print("we could not get the user's bookclubs")
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let bookclubs):
+                    bookclubsToCheck = bookclubs
+                    checkBookclubs()
+                case .failure(_):
+                    print("Could not fetch bookclubs.")
+                }
+            }
+        }
+        
+        func checkBookclubs() {
+            for bookclub in bookclubsToCheck {
+                if bookclub.admin == user.appleUserRef {
+                    BookclubController.shared.delete(bookclub: bookclub) { (result) in }
+                } else {
+                    guard let index = bookclub.members.firstIndex(of: user.appleUserRef) else {return}
+                    bookclub.members.remove(at: index)
+                    BookclubController.shared.update(bookclub: bookclub) { (result) in }
+                }
             }
         }
     }
     
-    @objc func updateBookclubs() {
-        Timer.scheduledTimer(timeInterval: 3.0, target:self, selector: #selector(getUsersBookclubs), userInfo:nil, repeats: false)
+    func removeAllFollows() {
+        guard let user = user else {return}
+        for followerUsername in user.followerList {
+            UserController.shared.fetchUsername(username: followerUsername) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let follower):
+                        guard let index = follower.followingList.firstIndex(of: user.username) else {return}
+                        follower.followingList.remove(at: index)
+                        UserController.shared.updateUser(user: follower) { (result) in }
+                    case .failure(_):
+                        print("Could not fetch follower.")
+                    }
+                }
+            }
+        }
+        for followingUsername in user.followingList {
+            UserController.shared.fetchUsername(username: followingUsername) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let following):
+                        guard let index = following.followerList.firstIndex(of: user.username) else {return}
+                        following.followerList.remove(at: index)
+                        UserController.shared.updateUser(user: following) { (result) in }
+                    case .failure(_):
+                        print("Could not fetch following.")
+                    }
+                }
+            }
+        }
     }
     
-    // MARK: - Navigation
+    func updateBookclubsAfterBlock(user: User, currentUser: User) {
+        BookclubController.shared.fetchUsersBookClubs(user: currentUser) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let fetchedBookclubs):
+                    for bookclub in fetchedBookclubs {
+                        if bookclub.admin == currentUser.appleUserRef && bookclub.members.contains(user.appleUserRef) {
+                            guard let index = bookclub.members.firstIndex(of: user.appleUserRef) else {return}
+                            bookclub.members.remove(at: index)
+                            BookclubController.shared.update(bookclub: bookclub) { (result) in }
+                        }
+                    }
+                case .failure(_):
+                    print("Unable to fetch user's bookclubs.")
+                }
+            }
+        }
+    }
+    
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "bioFavBook1toBDVC" {
             guard let destination = segue.destination as? BookDetailViewController else {return}

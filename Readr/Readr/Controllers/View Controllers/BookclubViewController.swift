@@ -65,10 +65,7 @@ class BookclubViewController: UIViewController {
         super.viewDidLoad()
         showLoadingScreen()
         loadDataForUser()
-        self.title = bookclub?.name
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-        self.navigationController?.navigationBar.tintColor = .black
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        setUpViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,10 +125,14 @@ class BookclubViewController: UIViewController {
         }
     }
     
-    @IBAction func viewAllMembersButtonTapped(_ sender: UIButton) {
+    //MARK: - Helper functions
+    private func setUpViews() {
+        self.title = bookclub?.name
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
-    //MARK: - Helper functions
     func setUpImage() {
         imageOfBookClub.layer.cornerRadius = imageOfBookClub.frame.height / 2
         imageOfBookClub.clipsToBounds = true
@@ -145,6 +146,104 @@ class BookclubViewController: UIViewController {
             loadingScreen.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             loadingScreen.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    func checkIfUserIsBlocked() {
+        guard let user = UserController.shared.currentUser else {return}
+        guard let bookclub = bookclub else {return}
+        if bookclub.blockedUsers.contains(user.username) {
+            self.loadingScreen.removeFromSuperview()
+            updateBlockedViews()
+        } else {
+            loadDataForUser()
+        }
+    }
+    
+    private func loadDataForUser() {
+        guard let adminReference = bookclub?.admin else {return}
+        UserController.shared.fetchUser(withReference: adminReference) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let admin):
+                    self.fetchBook() {
+                        self.fetchPastReads {
+                            self.updateViews(admin: admin)
+                        }
+                    }
+                case .failure(_):
+                    print("there was an error fetching the user")
+                }
+            }
+        }
+    }
+    
+    func fetchPastReads(completion: @escaping() -> Void) {
+        guard let bookclub = bookclub else {return}
+        var tempPastReads: [Book] = []
+        let group = DispatchGroup()
+        for isbn in bookclub.pastReads {
+            group.enter()
+            BookController.fetchOneBookWith(ISBN: isbn) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let book):
+                        tempPastReads.append(book)
+                    case .failure(_):
+                        print("error fetching past reads book")
+                    }
+                    group.leave()
+                }
+            }
+        }
+        group.notify(queue: .main) {
+            let sortedPastReads = tempPastReads.sorted(by: {$0.title < $1.title})
+            self.pastReads = sortedPastReads
+            completion()
+        }
+    }
+    
+    func fetchBook(completion: @escaping() -> Void) {
+        guard let bookclub = bookclub else {return}
+        BookController.fetchOneBookWith(ISBN: bookclub.currentlyReading) {
+            (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let book):
+                    self.currentlyReading = book
+                    completion()
+                case .failure(_):
+                    completion()
+                    print("error fetching book")
+                }
+            }
+        }
+    }
+    
+    func updateBlockedViews() {
+        self.image1ForPastReads.isHidden = true
+        self.title1ForPastReads.isHidden = true
+        self.rating1ForPastReads.isHidden = true
+        self.pastReads1Button.isHidden = true
+        self.image2ForPastReads.isHidden = true
+        self.title2ForPastReads.isHidden = true
+        self.rating2ForPastReads.isHidden = true
+        self.pastReads2Button.isHidden = true
+        self.image3ForPastReads.isHidden = true
+        self.title3ForPastReads.isHidden = true
+        self.rating3ForPastReads.isHidden = true
+        self.pastReads3Button.isHidden = true
+        self.pastReadsRatingStar1.isHidden = true
+        self.pastReadsRatingStar2.isHidden = true
+        self.pastReadsRatingStar3.isHidden = true
+        self.descriptionOfBookClub.isHidden = true
+        self.meetingInfoForBookClub.isHidden = true
+        self.currentlyReadingLabel.isHidden = true
+        self.currentlyReadingStackView.isHidden = true
+        self.adminStackView.isHidden = true
+        self.pastReadsStakView.isHidden = true
+        self.joinButton.isHidden = true
+        self.imageOfBookClub.image = UIImage(named: "RLogoGray")
+        self.memberCountLabel.text = "0"
     }
     
     func updateViews(admin: User) {
@@ -299,73 +398,6 @@ class BookclubViewController: UIViewController {
         }
     }
     
-    private func loadDataForUser() {
-        guard let adminReference = bookclub?.admin else {return}
-        UserController.shared.fetchUser(withReference: adminReference) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let admin):
-                    self.fetchBook() {
-                        self.fetchPastReads {
-                            self.updateViews(admin: admin)
-                        }
-                    }
-                case .failure(_):
-                    print("there was an error fetching the user")
-                }
-            }
-        }
-    }
-    
-    func fetchPastReads(completion: @escaping() -> Void) {
-        guard let bookclub = bookclub else {return}
-        var tempPastReads: [Book] = []
-        let group = DispatchGroup()
-        for isbn in bookclub.pastReads {
-            group.enter()
-            BookController.fetchOneBookWith(ISBN: isbn) { (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let book):
-                        tempPastReads.append(book)
-                    case .failure(_):
-                        print("error fetching past reads book")
-                    }
-                    group.leave()
-                }
-            }
-        }
-        group.notify(queue: .main) {
-            let sortedPastReads = tempPastReads.sorted(by: {$0.title < $1.title})
-            self.pastReads = sortedPastReads
-            completion()
-        }
-    }
-    
-    func fetchBook(completion: @escaping() -> Void) {
-        guard let bookclub = bookclub else {return}
-        BookController.fetchOneBookWith(ISBN: bookclub.currentlyReading) {
-            (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let book):
-                    self.currentlyReading = book
-                    completion()
-                case .failure(_):
-                    completion()
-                    print("error fetching book")
-                }
-            }
-        }
-    }
-    
-    func presentShare(bookclub: Bookclub) {
-        let title = " Please open Readen, search \(bookclub.name) under clubs tab and join this bookclub!"
-        let shareSheet = UIActivityViewController(activityItems: [title], applicationActivities: nil)
-        
-        self.present(shareSheet, animated: true, completion: nil)
-    }
-    
     func presentEditAlert(bookclub: Bookclub?) {
         guard let bookclub = bookclub else {return}
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -411,6 +443,13 @@ class BookclubViewController: UIViewController {
         alertController.addAction(shareAction)
         
         self.present(alertController, animated: true)
+    }
+    
+    func presentShare(bookclub: Bookclub) {
+        let title = " Please open Readen, search \(bookclub.name) under clubs tab and join this bookclub!"
+        let shareSheet = UIActivityViewController(activityItems: [title], applicationActivities: nil)
+        
+        self.present(shareSheet, animated: true, completion: nil)
     }
     
     func presentShareAlert(bookclub: Bookclub?) {
@@ -559,45 +598,7 @@ class BookclubViewController: UIViewController {
         }
     }
     
-    func checkIfUserIsBlocked() {
-        guard let user = UserController.shared.currentUser else {return}
-        guard let bookclub = bookclub else {return}
-        if bookclub.blockedUsers.contains(user.username) {
-            self.loadingScreen.removeFromSuperview()
-            updateBlockedViews()
-        } else {
-            loadDataForUser()
-        }
-    }
-    
-    func updateBlockedViews() {
-        self.image1ForPastReads.isHidden = true
-        self.title1ForPastReads.isHidden = true
-        self.rating1ForPastReads.isHidden = true
-        self.pastReads1Button.isHidden = true
-        self.image2ForPastReads.isHidden = true
-        self.title2ForPastReads.isHidden = true
-        self.rating2ForPastReads.isHidden = true
-        self.pastReads2Button.isHidden = true
-        self.image3ForPastReads.isHidden = true
-        self.title3ForPastReads.isHidden = true
-        self.rating3ForPastReads.isHidden = true
-        self.pastReads3Button.isHidden = true
-        self.pastReadsRatingStar1.isHidden = true
-        self.pastReadsRatingStar2.isHidden = true
-        self.pastReadsRatingStar3.isHidden = true
-        self.descriptionOfBookClub.isHidden = true
-        self.meetingInfoForBookClub.isHidden = true
-        self.currentlyReadingLabel.isHidden = true
-        self.currentlyReadingStackView.isHidden = true
-        self.adminStackView.isHidden = true
-        self.pastReadsStakView.isHidden = true
-        self.joinButton.isHidden = true
-        self.imageOfBookClub.image = UIImage(named: "RLogoGray")
-        self.memberCountLabel.text = "0"
-    }
-    
-    // MARK: - Navigation
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "bcCurrentlyReadingImageToBDVC" {
             guard let destination = segue.destination as? BookDetailViewController else {return}
@@ -629,5 +630,4 @@ class BookclubViewController: UIViewController {
             destination.bookclub = bookclub
         }
     }
-}// End of Class
-
+} // End of Class

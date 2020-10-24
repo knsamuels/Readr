@@ -18,8 +18,24 @@ class PopUpBookshelfTableViewController: UITableViewController {
         super.viewDidLoad()
         fetchBookshelves()
     }
+    
+    //MARK: - Helpers
+    func fetchBookshelves() {
+        guard let user = UserController.shared.currentUser else {return}
+        BookshelfController.shared.fetchAllBookshelves { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let bookshelves):
+                    user.bookshelves = bookshelves
+                    self.tableView.reloadData()
+                case .failure(_):
+                    print("could not fetch user's bookshelves")
+                }
+            }
+        }
+    }
 
-    // MARK: - Table view data source
+    //MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let user = UserController.shared.currentUser else {return 0}
         return user.bookshelves.count
@@ -50,20 +66,4 @@ class PopUpBookshelfTableViewController: UITableViewController {
             }
         }
     }
-       
-    //Mark: Helpers
-    func fetchBookshelves() {
-        guard let user = UserController.shared.currentUser else {return}
-        BookshelfController.shared.fetchAllBookshelves { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let bookshelves):
-                    user.bookshelves = bookshelves
-                    self.tableView.reloadData()
-                case .failure(_):
-                    print("could not fetch user's bookshelves")
-                }
-            }
-        }
-    }
-}
+} //End of class

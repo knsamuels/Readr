@@ -10,15 +10,17 @@ import UIKit
 
 class RViewController: UIViewController {
     
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        Timer.scheduledTimer(timeInterval: 3.0, target:self, selector: #selector(self.presentBookshelfVC), userInfo:nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 2.5, target:self, selector: #selector(self.presentBookshelfVC), userInfo:nil, repeats: false)
     }
     
+    //MARK: - Helpers
     @objc func presentBookshelfVC() {
         DispatchQueue.main.async {
             let storyboard = UIStoryboard(name: "Readen", bundle: nil)

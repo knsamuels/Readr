@@ -14,12 +14,12 @@ protocol PopUpBookSearchDelegate: class {
 
 class PopUpBooksSearchTableViewController: UITableViewController  {
     
-    //MARK: - Properties
-    weak var bookDelegate: PopUpBookSearchDelegate?
-    var books: [Book] = []
-    
     //MARK: - Outlets
     @IBOutlet weak var bookSearchBar: UISearchBar!
+    
+    //MARK: - Properties
+    var books: [Book] = []
+    weak var bookDelegate: PopUpBookSearchDelegate?
     
     //MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -28,27 +28,27 @@ class PopUpBooksSearchTableViewController: UITableViewController  {
         bookSearchBar.placeholder = "Search Book Title here..."
     }
     
-    // MARK: - Helper functions
+    //MARK: - Helper functions
     func search() {
         guard let searchTerm = bookSearchBar.text else {return}
-            BookController.fetchBooksWith(searchTerm: searchTerm) { (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let books):
-                        self.books = books
-                        self.tableView.reloadData()
-                    case .failure(let error):
-                        print(error.errorDescription ?? "Unable to fetch books.")
+        BookController.fetchBooksWith(searchTerm: searchTerm) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let books):
+                    self.books = books
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print(error.errorDescription ?? "Unable to fetch books.")
                 }
             }
         }
     }
     
-    // MARK: - Table view data source
+    //MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return books.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookCell", for: indexPath) as? PopUpBookSearchTableViewCell else {return UITableViewCell()}
         let book = books[indexPath.row]
@@ -61,10 +61,10 @@ class PopUpBooksSearchTableViewController: UITableViewController  {
         bookDelegate?.didSelectBook(book: book)
         dismiss(animated: true, completion: nil)
     }
-}
+} //End of class
 
 extension PopUpBooksSearchTableViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         search()
     }
-}
+} //End of extension

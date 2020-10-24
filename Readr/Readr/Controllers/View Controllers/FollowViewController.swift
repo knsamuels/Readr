@@ -10,21 +10,37 @@ import UIKit
 
 class FollowViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    // MARK: - Outlets
+    //MARK: - Outlets
     @IBOutlet weak var followTableView: UITableView!
     @IBOutlet weak var followSegmentController: UISegmentedControl!
     
-    // MARK: - Properties
+    //MARK: - Properties
     var user: User?
     var followArray: [User] = []
     var isFirstSegment = true 
     
-    //MARK: Lifecycle Methods
+    //MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         followTableView.delegate = self
         followTableView.dataSource = self
-        
+        setUpViews()
+        fetchFollowUsers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        fetchFollowUsers()
+        followTableView.reloadData()
+    }
+    
+    //MARK: - Action
+    @IBAction func followSegmentControllerTapped(_ sender: Any) {
+        fetchFollowUsers()
+    }
+    
+    //MARK: - Helper Functions
+    private func setUpViews() {
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         followSegmentController.setTitleTextAttributes(titleTextAttributes, for: .normal)
         followSegmentController.setTitleTextAttributes(titleTextAttributes, for: .selected)
@@ -34,33 +50,8 @@ class FollowViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             followSegmentController.selectedSegmentIndex = 1
         }
-        fetchFollowUsers()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        fetchFollowUsers()
-        followTableView.reloadData()
-    }
-
-    //MARK: - TableView Data Source
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return followArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "followCell", for: indexPath) as? FollowListTableViewCell else {return UITableViewCell()}
-        let user = followArray[indexPath.row]
-        cell.member = user
-        return cell
-    }
-    
-    //MARK: - Action
-    @IBAction func FollowSegmentControllerTapped(_ sender: Any) {
-        fetchFollowUsers()
-    }
-    
-    //MARK: - Helper Functions
     func fetchFollowUsers() {
        guard let user = user else {return}
         if followSegmentController.selectedSegmentIndex == 0 {
@@ -110,7 +101,19 @@ class FollowViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    // MARK: - Navigation
+    //MARK: - TableView Data Source
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return followArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "followCell", for: indexPath) as? FollowListTableViewCell else {return UITableViewCell()}
+        let user = followArray[indexPath.row]
+        cell.member = user
+        return cell
+    }
+    
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "followVCToUser" {
             guard let indexPath = followTableView.indexPathForSelectedRow else {return}
@@ -119,4 +122,4 @@ class FollowViewController: UIViewController, UITableViewDataSource, UITableView
             destination.user = userToSend
         }
     }
-}
+} //End of class

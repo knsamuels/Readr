@@ -9,31 +9,24 @@
 import UIKit
 
 class LogInViewController: UIViewController {
-
+    
     //MARK: - Outlets
     @IBOutlet weak var usernameTextField: ReadenTextField!
     @IBOutlet weak var incorrectLabel: UILabel!
     
-    // MARK: -Properties
-       var activeTextField : UITextField? = nil
+    //MARK: - Properties
+    var activeTextField : UITextField? = nil
     
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         incorrectLabel.isHidden = true
-        
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        setUpViews()
     }
     
     //MARK: - Actions
     @IBAction func continueButtonTapped(_ sender: Any) {
         guard let username = usernameTextField.text, !username.isEmpty else {return}
-        
         UserController.shared.fetchUsername(username: username) { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -50,11 +43,19 @@ class LogInViewController: UIViewController {
     }
     
     //MARK: - Helper functions
+    private func setUpViews() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
-        
         if usernameTextField.isEditing {
             self.view.window?.frame.origin.y = -keyboardSize.height
         }
@@ -65,7 +66,7 @@ class LogInViewController: UIViewController {
             self.view.window?.frame.origin.y = 0
         }
     }
-
+    
     func checkAppleRef(user: User) {
         UserController.shared.fetchAppleUserReference { (result) in
             switch result {
@@ -101,4 +102,4 @@ extension LogInViewController: UITextFieldDelegate {
     func textFieldDidEndEditing( _ textField: UITextField) {
         self.activeTextField = nil
     }
-}
+} //End of extension

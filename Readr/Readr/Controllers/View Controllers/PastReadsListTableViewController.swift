@@ -17,14 +17,18 @@ class PastReadsListTableViewController: UITableViewController {
     //MARK: - Lifecycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        setUpViews()
+    }
+    
+    //MARK: - Helper Methods
+    private func setUpViews() {
         self.title = "Past Reads"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
                    self.navigationController?.navigationBar.tintColor = .black
           self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
-    // MARK: - Table view data source
-    
+    //MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let books = books else {return 0}
         return books.count
@@ -82,8 +86,7 @@ class PastReadsListTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Navigation
-    
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pastReadsToBookDetail" {
             guard let books = books else {return}
@@ -94,6 +97,4 @@ class PastReadsListTableViewController: UITableViewController {
             destination.book = bookToSend
         }
     }
-}
-
-
+} //End of class

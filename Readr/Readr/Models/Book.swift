@@ -43,18 +43,6 @@ struct IndustryIdentifiers: Decodable {
     let identifier: String
 }
 
-extension Book: SearchableRecord {
-
-    func matches(searchTerm: String) -> Bool {
-
-        if title.lowercased().contains(searchTerm.lowercased()) {
-            return true
-        } else {
-            return false
-        }
-    }
-}//End of extension
-
 extension Book: Equatable {
     static func == (lhs: Book, rhs: Book) -> Bool {
         return lhs.industryIdentifiers == rhs.industryIdentifiers

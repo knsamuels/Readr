@@ -10,40 +10,33 @@ import UIKit
 
 class MessageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
     
-    // MARK: - Outlets
+    //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var bookclubImageView: UIImageView!
     @IBOutlet weak var bookclubTitleLabel: UILabel!
     @IBOutlet weak var memberCountLabel: UILabel!
     
-    // MARK: - Properties
+    //MARK: - Properties
     var bookclub: Bookclub?
     var messagesArray: [Message] = []
     
-    // MARK: - Lifecycles
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupTextViews()
         fetchMessages()
         updateViews()
-        
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(MessageViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(MessageViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        setUpViews()
         
         NotificationCenter.default.addObserver(self, selector: #selector(onReloadEventsTable), name: Notification.Name(rawValue: "reloadEventsTable"), object: nil)
     }
     
-    // MARK: - Actions
+    //MARK: - Actions
     @IBAction func sendButtonTapped(_ sender: Any) {
         guard let text = messageTextView.text, !text.isEmpty else {return}
         guard let bookclub = bookclub else {return}
-        
         MessageController.shared.saveMessage(text: text, image: nil, bookclub: bookclub) { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -59,20 +52,14 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         messageTextView.resignFirstResponder()
     }
     
-    
-    // MARK: - Helper Methods
-    func updateViews() {
-        guard let bookclub = bookclub else {return}
-        if let image = bookclub.profilePicture {
-            bookclubImageView.image = image
-        } else {
-            bookclubImageView.image = UIImage(named: "ReadenLogoWhiteSpace")
-        }
-        bookclubTitleLabel.text = bookclub.name
-        memberCountLabel.text = "\(bookclub.members.count) people"
+    //MARK: - Helper Methods
+    private func setUpViews() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
         
-        bookclubImageView.layer.cornerRadius = bookclubImageView.frame.width / 2
-        bookclubImageView.clipsToBounds = true
+        NotificationCenter.default.addObserver(self, selector: #selector(MessageViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(MessageViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func fetchMessages() {
@@ -96,6 +83,20 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
             }
         })
+    }
+    
+    func updateViews() {
+        guard let bookclub = bookclub else {return}
+        if let image = bookclub.profilePicture {
+            bookclubImageView.image = image
+        } else {
+            bookclubImageView.image = UIImage(named: "ReadenLogoWhiteSpace")
+        }
+        bookclubTitleLabel.text = bookclub.name
+        memberCountLabel.text = "\(bookclub.members.count) people"
+        
+        bookclubImageView.layer.cornerRadius = bookclubImageView.frame.width / 2
+        bookclubImageView.clipsToBounds = true
     }
     
     func setupTableView() {
@@ -142,95 +143,6 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @objc func onReloadEventsTable() {
         fetchMessages()
-    }
-   
-    // MARK: - Table View Data Source
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messagesArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageTableViewCell else {return UITableViewCell()}
-        
-        let message = messagesArray[indexPath.row]
-        print(message.text ?? "")
-        cell.message = message
-        
-        //        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
-        //        cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
-        
-        return cell
-    }
-   
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        guard let user = UserController.shared.currentUser else {return nil}
-        
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, actionPerformed) in
-            let messageToDelete = self.messagesArray[indexPath.row]
-            guard let index = self.messagesArray.firstIndex(of: messageToDelete) else {return}
-            if messageToDelete.user == user.username {
-                MessageController.shared.deleteMessage(message: messageToDelete) { (result) in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success(_):
-                            self.messagesArray.remove(at: index)
-                            self.tableView.reloadData()
-                        case .failure(_):
-                            print("Error deleting message")
-                        }
-                    }
-                }
-            }
-        }
-        let reportAction = UIContextualAction(style: .normal, title: "Report") { (action, view, actionPerformed) in
-            let message = self.messagesArray[indexPath.row]
-            let confirmReportController = UIAlertController(title: "Report Message?", message: nil, preferredStyle: .alert)
-            let cancelReportAction = UIAlertAction(title: "Cancel", style: .cancel)
-            let confirmReportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
-                message.reportCount += 1
-                if message.reportCount == 2 {
-                    MessageController.shared.deleteMessage(message: message) { (result) in
-                        DispatchQueue.main.async {
-                            switch result {
-                            case .success(_):
-                                self.fetchMessages()
-                                self.reportConfirm()
-                                self.userReportIncrease(username: message.user)
-                            case .failure(_):
-                                print("could not delete bookclub")
-                            }
-                        }
-                    }
-                } else {
-                    MessageController.shared.updateMessage(message: message) { (result) in
-                        DispatchQueue.main.async {
-                            switch result {
-                            case .success(_):
-                                self.reportConfirm()
-                            case .failure(_):
-                                print("could not update bookclub")
-                            }
-                        }
-                    }
-                }
-            }
-            confirmReportController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
-            confirmReportController.view.tintColor = .accentBlack
-            confirmReportController.addAction(cancelReportAction)
-            confirmReportController.addAction(confirmReportAction)
-            
-            self.present(confirmReportController, animated: true)
-        }
-        
-        if messagesArray[indexPath.row].user == user.username {
-            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-            configuration.performsFirstActionWithFullSwipe = false
-            return configuration
-        } else {
-            let configuration = UISwipeActionsConfiguration(actions: [reportAction])
-            configuration.performsFirstActionWithFullSwipe = false
-            return configuration
-        }
     }
     
     func reportConfirm() {
@@ -335,9 +247,97 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-
-    // MARK: - Navigation
+   
+    //MARK: - Table View Data Source
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messagesArray.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageTableViewCell else {return UITableViewCell()}
+        
+        let message = messagesArray[indexPath.row]
+        print(message.text ?? "")
+        cell.message = message
+        
+//        tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
+//        cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
+        
+        return cell
+    }
+   
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let user = UserController.shared.currentUser else {return nil}
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, actionPerformed) in
+            let messageToDelete = self.messagesArray[indexPath.row]
+            guard let index = self.messagesArray.firstIndex(of: messageToDelete) else {return}
+            if messageToDelete.user == user.username {
+                MessageController.shared.deleteMessage(message: messageToDelete) { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(_):
+                            self.messagesArray.remove(at: index)
+                            self.tableView.reloadData()
+                        case .failure(_):
+                            print("Error deleting message")
+                        }
+                    }
+                }
+            }
+        }
+        let reportAction = UIContextualAction(style: .normal, title: "Report") { (action, view, actionPerformed) in
+            let message = self.messagesArray[indexPath.row]
+            let confirmReportController = UIAlertController(title: "Report Message?", message: nil, preferredStyle: .alert)
+            let cancelReportAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let confirmReportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
+                message.reportCount += 1
+                if message.reportCount == 2 {
+                    MessageController.shared.deleteMessage(message: message) { (result) in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(_):
+                                self.fetchMessages()
+                                self.reportConfirm()
+                                self.userReportIncrease(username: message.user)
+                            case .failure(_):
+                                print("could not delete bookclub")
+                            }
+                        }
+                    }
+                } else {
+                    MessageController.shared.updateMessage(message: message) { (result) in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(_):
+                                self.reportConfirm()
+                            case .failure(_):
+                                print("could not update bookclub")
+                            }
+                        }
+                    }
+                }
+            }
+            confirmReportController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+            confirmReportController.view.tintColor = .accentBlack
+            confirmReportController.addAction(cancelReportAction)
+            confirmReportController.addAction(confirmReportAction)
+            
+            self.present(confirmReportController, animated: true)
+        }
+        
+        if messagesArray[indexPath.row].user == user.username {
+            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+            configuration.performsFirstActionWithFullSwipe = false
+            return configuration
+        } else {
+            let configuration = UISwipeActionsConfiguration(actions: [reportAction])
+            configuration.performsFirstActionWithFullSwipe = false
+            return configuration
+        }
+    }
+
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "messagesToBCVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}
@@ -345,4 +345,4 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             destination.bookclub = bookclubToSend
         }
     }
-}
+} //End of class

@@ -65,7 +65,6 @@ class Message {
 } //End of class
 
 extension Message {
-    
     convenience init?(ckRecord: CKRecord){
         guard let user = ckRecord[MessageStrings.userKey] as? String,
             let timestamp = ckRecord[MessageStrings.timestampKey] as? Date else {return nil}
@@ -96,7 +95,6 @@ extension Message {
 } //End of extension
 
 extension CKRecord {
-    
     convenience init(message: Message) {
         self.init(recordType: MessageStrings.recordTypeKey, recordID: message.recordID)
         
@@ -109,15 +107,12 @@ extension CKRecord {
         if let text = message.text {
             self.setValue(text, forKey: MessageStrings.textKey)
         }
-        
         if let photoAsset = message.photoAsset {
             self.setValue(photoAsset, forKey: MessageStrings.photoAsset)
         }
-        
         if let userRef = message.userReference {
             self.setValue(userRef, forKey: MessageStrings.userReferenceKey)
         }
-        
         if let clubRef = message.bookclubReference {
             self.setValue(clubRef, forKey: MessageStrings.bookclubReferenceKey)
         }
@@ -128,4 +123,4 @@ extension Message: Equatable {
     static func == (lhs: Message, rhs: Message) -> Bool {
         return lhs.recordID == rhs.recordID
     }
-}
+} //End of extension

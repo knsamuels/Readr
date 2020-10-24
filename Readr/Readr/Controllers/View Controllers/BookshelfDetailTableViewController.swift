@@ -14,14 +14,11 @@ class BookshelfDetailTableViewController: UITableViewController {
     var bookshelf: Bookshelf?
     var bookshelfBooks: [Book] = []
     
-    // Mark Outlets
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchBooks()
-        tableView.separatorColor = .clear
-        self.title = bookshelf?.title
-               self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        setUpViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,7 +26,14 @@ class BookshelfDetailTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    //Mark - Helper function
+    //MARK: - Helper functions
+    private func setUpViews() {
+        tableView.separatorColor = .clear
+        self.title = bookshelf?.title
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+    }
+    
     func fetchBooks() {
         guard let bookshelf = bookshelf else {return}
         bookshelfBooks = []
@@ -52,11 +56,7 @@ class BookshelfDetailTableViewController: UITableViewController {
         }
     }
     
-    //Mark - Actions
-    @IBAction func removeBookshelfButtonTapped(_ sender: UIBarButtonItem) {
-    }
-    
-    // MARK: - Table view data source
+    //MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookshelfBooks.count
     }
@@ -71,15 +71,15 @@ class BookshelfDetailTableViewController: UITableViewController {
         return cell
     }
     
-     // MARK: - Navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "BookshelfSearchToBookDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
             guard let destination = segue.destination as? BookDetailViewController else {return}
             let bookToSend = bookshelfBooks[indexPath.row]
             destination.book = bookToSend
         }
-     }
+    }
 } //End of class
 
 extension BookshelfDetailTableViewController: BookshelfCellDelegate {
@@ -108,7 +108,7 @@ extension BookshelfDetailTableViewController: BookshelfCellDelegate {
             popUpTBVC.bookISBN = isbn
             self.present(popUpTBVC, animated: true, completion: nil)
         }
-     alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alertController.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
         alertController.view.tintColor = .accentBlack
         alertController.addAction(cancelAction)
         alertController.addAction(removeAction)

@@ -92,7 +92,6 @@ class User {
 } //End of class
 
 extension User {
-    
     convenience init?(ckRecord: CKRecord) {
         guard let username = ckRecord[UserStrings.usernameKey] as? String,
             let firstName = ckRecord[UserStrings.firstNameKey] as? String,

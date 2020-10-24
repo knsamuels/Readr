@@ -10,21 +10,17 @@ import UIKit
 
 class BioViewController: UIViewController  {
     
-    var activeTextView : UITextView? = nil
-    
     //MARK: - Outlets
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var blackView: UIView!
     
+    //MARK: - Properties
+    var activeTextView : UITextView? = nil
+    
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        setUpViews()
     }
     
     //MARK: - Actions
@@ -35,11 +31,20 @@ class BioViewController: UIViewController  {
         user.bio = bio
     }
     
+    //MARK: - Helper Methods
+    private func setUpViews() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
-        
         if bioTextView.isEditable {
             self.view.window?.frame.origin.y = -keyboardSize.height
         }
@@ -60,5 +65,5 @@ extension BioViewController: UITextViewDelegate {
     func textViewDidEndEditing( _ textView: UITextView) {
         self.activeTextView = nil
     }
-}
+} //End of extension
 

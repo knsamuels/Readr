@@ -24,13 +24,7 @@ class SignUpViewController: UIViewController, UITextViewDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         alreadyInUseLabel.isHidden = true
-        
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        setUpViews()
     }
     
     //MARK: - Actions
@@ -43,6 +37,15 @@ class SignUpViewController: UIViewController, UITextViewDelegate  {
     }
     
     //MARK: - Helper Methods
+    private func setUpViews() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     func checkUsername(username: String) {
         UserController.shared.fetchUsername(username: username) { (result) in
             DispatchQueue.main.async {
@@ -119,4 +122,4 @@ extension SignUpViewController: UITextFieldDelegate {
     func textFieldDidEndEditing( _ textField: UITextField) {
         self.activeTextField = nil
     }
-}
+} //End of extension
