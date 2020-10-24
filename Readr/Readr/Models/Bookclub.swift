@@ -83,10 +83,9 @@ class Bookclub {
         self.reportCount = reportCount
         self.profilePicture = profilePicture
     }
-}
+} //End of class
 
 extension CKRecord {
-    
     convenience init(bookclub: Bookclub)  {
         self.init(recordType: BookclubConstants.recordTypeKey, recordID: bookclub.recordID)
         
@@ -109,10 +108,9 @@ extension CKRecord {
             self.setValue(photoAsset, forKey: BookclubConstants.photoAssetKey)
         }
     }
-}
+} //End of extension
 
 extension Bookclub {
-    
     convenience init?(ckRecord: CKRecord) {
         guard let name = ckRecord[BookclubConstants.nameKey] as? String,
             let admin = ckRecord[BookclubConstants.adminKey] as? CKRecord.Reference,
@@ -135,7 +133,6 @@ extension Bookclub {
         if let result = ckRecord[BookclubConstants.reportCountKey] as? Int {
             reportCount = result
         }
-        
         var foundPhoto: UIImage?
         if let photoAsset = ckRecord[BookclubConstants.photoAssetKey] as? CKAsset {
             do {
@@ -148,10 +145,10 @@ extension Bookclub {
         
         self.init(name: name, admin: admin, adminContactInfo: adminContactInfo, members: members, description: description, profilePicture: foundPhoto, currentlyReading: currentlyReading, pastReads: pastReads, meetingInfo: meetingInfo, memberCapacity: memberCapacity, blockedUsers: blockedUsers, reportCount: reportCount, recordID: ckRecord.recordID)
     }
-}
+} //End of extension
 
 extension Bookclub: Equatable {
     static func == (lhs: Bookclub, rhs: Bookclub) -> Bool {
         return lhs.recordID == rhs.recordID
     }
-}
+} //End of extension 

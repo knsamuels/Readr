@@ -19,10 +19,7 @@ class StartViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         fetchUser()
         signInButton.isHidden = true
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UITabBar.appearance().tintColor = .black
-        UITabBar.appearance().shadowImage = UIImage()
-        UITabBar.appearance().backgroundImage = UIImage()
+        setUpViews()
     }
     
     //MARK: - Actions
@@ -34,6 +31,13 @@ class StartViewController: UIViewController, UITextViewDelegate {
     }
     
     //MARK: - Helper Methods
+    private func setUpViews() {
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().tintColor = .black
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+    }
+    
     func fetchUser() {
         UserController.shared.fetchUser { (result) in
             switch result {

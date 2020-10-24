@@ -11,12 +11,9 @@ import WebKit
 
 class BookDetailViewController: UIViewController {
     
-    var book: Book?
-    var BCCurrentlyReading: [Bookclub] = []
-    
+    //MARK: - Outlets
     @IBOutlet weak var bookAuthorLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
-    @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var averageRatingLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var reviewWebView: WKWebView!
@@ -32,23 +29,19 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var BC3Button: UIButton!
     @IBOutlet weak var descriptionScrollView: UIScrollView!
     
+    //MARK: - Properties
+    var book: Book?
+    var BCCurrentlyReading: [Bookclub] = []
+    
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchReview()
         fetchBookClubsReadingThisBook()
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        
-        reviewWebView.layer.borderWidth = 0.25
-        reviewWebView.layer.borderColor = UIColor.readenBlue.cgColor
+        setUpViews()
     }
     
-    //Mark- Actions
-    @IBAction func viewAllButtonTapped(_ sender: Any) {
-    }
-    @IBAction func deleteBookshelfButtonTapped(_ sender: Any) {
-    }
+    //MARK: - Actions
     @IBAction func optionButton(_ sender: Any) {
         guard let industryIdentifiers = book?.industryIdentifiers else {return}
         var isbn = ""
@@ -78,19 +71,15 @@ class BookDetailViewController: UIViewController {
         self.present(alertController, animated: true)
     }
     
-    @IBAction func ViewAllBookClubsButtonTapped(_ sender: Any) {
+    //MARK: - Helper functions
+    private func setUpViews() {
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        
+        reviewWebView.layer.borderWidth = 0.25
+        reviewWebView.layer.borderColor = UIColor.readenBlue.cgColor
     }
     
-    @IBAction func BC1ButtonTapped(_ sender: Any) {
-    }
-    
-    @IBAction func BC2ButtonTapped(_ sender: Any) {
-    }
-    
-    @IBAction func BC3ButtonTapped(_ sender: Any) {
-    }
-    
-    //Mark: Helper functions
     func fetchReview() {
          guard let industryIdentifiers = book?.industryIdentifiers else {return}
          var isbn = ""
@@ -170,7 +159,11 @@ class BookDetailViewController: UIViewController {
             BC3Image.isHidden = true
             BC3Label.isHidden = true
             BC3Button.isHidden = true
-            BC1Image.image = BCCurrentlyReading[0].profilePicture
+            if let image1 = self.BCCurrentlyReading[0].profilePicture {
+                self.BC1Image.image = image1
+            } else {
+                self.BC1Image.image = UIImage(named: "ReadenLogoWhiteSpace")
+            }
             BC1Label.text = BCCurrentlyReading[0].name
         case 2:
             BC1Image.isHidden = false
@@ -182,9 +175,17 @@ class BookDetailViewController: UIViewController {
             BC3Image.isHidden = true
             BC3Label.isHidden = true
             BC3Button.isHidden = true
-            BC1Image.image = BCCurrentlyReading[0].profilePicture
+            if let image1 = self.BCCurrentlyReading[0].profilePicture {
+                self.BC1Image.image = image1
+            } else {
+                self.BC1Image.image = UIImage(named: "ReadenLogoWhiteSpace")
+            }
             BC1Label.text = BCCurrentlyReading[0].name
-            BC2Image.image = BCCurrentlyReading[1].profilePicture
+            if let image2 = self.BCCurrentlyReading[1].profilePicture {
+                self.BC2Image.image = image2
+            } else {
+                self.BC2Image.image = UIImage(named: "ReadenLogoWhiteSpace")
+            }
             BC2Label.text = BCCurrentlyReading[1].name
          default:
             BC1Image.isHidden = false
@@ -196,16 +197,28 @@ class BookDetailViewController: UIViewController {
             BC3Image.isHidden = false
             BC3Label.isHidden = false
             BC3Button.isHidden = false
-            BC1Image.image = BCCurrentlyReading[0].profilePicture
+            if let image1 = self.BCCurrentlyReading[0].profilePicture {
+                self.BC1Image.image = image1
+            } else {
+                self.BC1Image.image = UIImage(named: "ReadenLogoWhiteSpace")
+            }
             BC1Label.text = BCCurrentlyReading[0].name
-            BC2Image.image = BCCurrentlyReading[1].profilePicture
+            if let image2 = self.BCCurrentlyReading[1].profilePicture {
+                self.BC2Image.image = image2
+            } else {
+                self.BC2Image.image = UIImage(named: "ReadenLogoWhiteSpace")
+            }
             BC2Label.text = BCCurrentlyReading[1].name
-            BC3Image.image = BCCurrentlyReading[2].profilePicture
+            if let image3 = self.BCCurrentlyReading[2].profilePicture {
+                self.BC3Image.image = image3
+            } else {
+                self.BC3Image.image = UIImage(named: "ReadenLogoWhiteSpace")
+            }
             BC3Label.text = BCCurrentlyReading[2].name
         }
     }
     
-    // MARK: - Navigation
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "BookshelfDetailToReviewDetailVC" {
             guard let destination = segue.destination as? ReviewDetailViewController else {return}
@@ -229,4 +242,4 @@ class BookDetailViewController: UIViewController {
             destination.bookclubs = bookclubsToSend
         }
     }
-}
+} //End of class

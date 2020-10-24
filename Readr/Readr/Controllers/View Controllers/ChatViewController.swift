@@ -10,10 +10,10 @@ import UIKit
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    // MARK: - Outlets
+    //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: - Properties
+    //MARK: - Properties
     var bookclubsArray: [Bookclub] = []
     var recentMessage: Message?
     
@@ -24,17 +24,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         return view
     }()
     
-    // MARK: - Lifecycles
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        self.title = "Chat"
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-        self.navigationController?.navigationBar.tintColor = .black
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        
+        setUpViews()
         showLoadingScreen()
     }
     
@@ -43,7 +38,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         fetchBookclubs()
     }
     
-    // MARK: - Helper Methods
+    //MARK: - Helper Methods
+    private func setUpViews() {
+        self.title = "Chat"
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+    }
+    
     func fetchBookclubs() {
         guard let user = UserController.shared.currentUser else {return}
         BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
@@ -72,7 +74,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         ])
     }
     
-    // MARK: - Table view data source
+    //MARK: - Table View Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookclubsArray.count
     }
@@ -87,7 +89,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    // MARK: - Navigation
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMessageVC" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
@@ -96,21 +98,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             destinationVC?.bookclub = bookclub
         }
     }
-} // End of class
+} //End of class
 
 extension ChatViewController: ChatSpinnerDelegate {
     func stopSpinning() {
         self.loadingScreen.removeFromSuperview()
     }
-} // End of extension 
-
-
-
-
-
-
-
-
-
-
-
+} //End of extension

@@ -22,13 +22,35 @@ class MemberListTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        setUpViews()
+    }
+    
+    //MARK: - Helper Functions
+    private func setUpViews() {
         self.title = "Members"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
-    // MARK: - Table view data source
+    func fetchUsers() {
+        guard let bookclub = bookclub else {return}
+        for reference in bookclub.members {
+            UserController.shared.fetchUser(withReference: reference) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let member):
+                        self.bookclubMembers.append(member)
+                        self.tableView.reloadData()
+                    case .failure(_):
+                        print("Could not fetch member")
+                    }
+                }
+            }
+        }
+    }
+    
+    //MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookclubMembers.count
     }
@@ -53,26 +75,8 @@ class MemberListTableViewController: UITableViewController {
         cell.blockDelegate = self
         return cell
     }
-
-    //MARK: - Helper Functions
-    func fetchUsers() {
-        guard let bookclub = bookclub else {return}
-        for reference in bookclub.members {
-            UserController.shared.fetchUser(withReference: reference) { (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let member):
-                        self.bookclubMembers.append(member)
-                        self.tableView.reloadData()
-                    case .failure(_):
-                        print("Could not fetch member")
-                    }
-                }
-            }
-        }
-    }
     
-    // MARK: - Navigation
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "memberListToUser" {
             guard let destination = segue.destination as?
@@ -82,7 +86,7 @@ class MemberListTableViewController: UITableViewController {
             destination.user = userToSend
         }
     }
-}
+} //End of class
 
 extension MemberListTableViewController: BlockMemberDelegate {
     func presentBlockAlert(member: User) {
@@ -146,4 +150,4 @@ extension MemberListTableViewController: BlockMemberDelegate {
         alertController.addAction(blockAction)
         self.present(alertController, animated: true)
     }
-}
+} //End of extension

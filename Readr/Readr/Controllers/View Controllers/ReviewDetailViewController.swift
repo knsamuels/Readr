@@ -23,14 +23,18 @@ class ReviewDetailViewController: UIViewController {
     //MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpViews()
         fetchReview()
         updateViews()
-        self.title = "REVIEWS"
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
     //MARK: - Helper Methods
+    private func setUpViews() {
+        self.title = "REVIEWS"
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+    }
+    
     func fetchReview() {
         guard let industryIdentifiers = book?.industryIdentifiers else {return}
         var isbn = ""
@@ -49,4 +53,4 @@ class ReviewDetailViewController: UIViewController {
         guard let book = book else {return}
         bookTitleLabel.text = "Title: \(book.title)"
     }
-}
+} //End of class

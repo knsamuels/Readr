@@ -54,33 +54,10 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         super.viewDidLoad()
         setupTextViews()
         updateButtonColor()
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        
-        nameOfBookClub.delegate = self
-        meetingInfoForBookBlub.delegate = self
-        doneReadingButton.isHidden = true
-        if let bookclub = bookclub {
-            cancelButtonToBC.isHidden = false
-            cancelButtonToUser.isHidden = true
-            updateViews(bookclub: bookclub)
-            updateButtonColor()
-            doneReadingButton.isHidden = false
-            currentlyReadingButton.isHidden = true
-        } else {
-            tenSelected = true
-            updateButtonColor()
-            cancelButtonToBC.isHidden = true
-            cancelButtonToUser.isHidden = false
-        }
+        setUpViews()
     }
     
-    // MARK: - Actions
+    //MARK: - Actions
     @IBAction func selectProfileImageButtonTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Select an image", message: "From where would you like to select an image?", preferredStyle: .alert)
         
@@ -165,12 +142,24 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         }
     }
     
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+    }
+    
     @IBAction func currentlyReadingButtonTapped(_ sender: Any) {
         currentlyReadingButton.isHidden = true
         guard let bookPopUpTBVC = UIStoryboard(name: "Readen", bundle: nil).instantiateViewController(withIdentifier: "PopUpBookSearch") as? PopUpBooksSearchTableViewController else {return}
         bookPopUpTBVC.modalPresentationStyle = .automatic
         bookPopUpTBVC.bookDelegate = self
         self.present(bookPopUpTBVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func doneReadingTapped(_ sender: UIButton) {
+        guard let bookclub = bookclub else {return}
+        pastReads.append(bookclub.currentlyReading)
+        currentlyReadingBook = nil
+        currentlyReadingImage.image = UIImage(named: "RLogo")
+        doneReadingButton.isEnabled = false
+        currentlyReadingButton.isHidden = false
     }
     
     @IBAction func fiveMembersTapped(_ sender: Any) {
@@ -223,19 +212,132 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         updateButtonColor()
     }
     
-    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+    //MARK: - Helper Methods
+    private func setUpViews() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateBCViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        nameOfBookClub.delegate = self
+        meetingInfoForBookBlub.delegate = self
+        doneReadingButton.isHidden = true
+        if let bookclub = bookclub {
+            cancelButtonToBC.isHidden = false
+            cancelButtonToUser.isHidden = true
+            updateViews(bookclub: bookclub)
+            updateButtonColor()
+            doneReadingButton.isHidden = false
+            currentlyReadingButton.isHidden = true
+        } else {
+            tenSelected = true
+            updateButtonColor()
+            cancelButtonToBC.isHidden = true
+            cancelButtonToUser.isHidden = false
+        }
     }
     
-    @IBAction func doneReadingTapped(_ sender: UIButton) {
-        guard let bookclub = bookclub else {return}
-        pastReads.append(bookclub.currentlyReading)
-        currentlyReadingBook = nil
-        currentlyReadingImage.image = UIImage(named: "RLogo")
-        doneReadingButton.isEnabled = false
-        currentlyReadingButton.isHidden = false 
+    func setupTextViews() {
+        meetingInfoForBookBlub.layer.borderWidth = 1.0
+        meetingInfoForBookBlub.layer.borderColor = UIColor.black.cgColor
+        
+        descriptionOfBookClub.delegate = self
+        descriptionOfBookClub.layer.borderWidth = 1.0
+        descriptionOfBookClub.layer.borderColor = UIColor.black.cgColor
+        
+        if descriptionOfBookClub.text.isEmpty {
+            descriptionOfBookClub.text = "Introduce your bookclub!"
+            descriptionOfBookClub.textColor = UIColor.black
+        }
     }
     
-    //MARK: - Helpers
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Introduce your bookclub!" {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            if textView == descriptionOfBookClub {
+                textView.text = "Introduce your bookclub!"
+            }
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        if meetingInfoForBookBlub.isEditing {
+            self.view.window?.frame.origin.y = -keyboardSize.height
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.window?.frame.origin.y != 0 {
+            self.view.window?.frame.origin.y = 0
+        }
+    }
+    
+    func fetchCurrentlyReadingBook(bookclub: Bookclub){
+        let isbn = bookclub.currentlyReading
+        BookController.fetchOneBookWith(ISBN: isbn) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let book):
+                    self.currentlyReadingBook = book
+                case .failure(_):
+                    print("could not fetch the bookclub for that isbn")
+                }
+            }
+        }
+    }
+    
+    func updateCurrentlyReading() {
+        guard let book = currentlyReadingBook else {return}
+        currentlyReadingImage.image = book.coverImage
+    }
+    
+    func updateViews(bookclub: Bookclub) {
+        if let image = bookclub.profilePicture {
+            imageOfBookClub.image = image
+        } else {
+            imageOfBookClub.image = UIImage(named: "ReadenLogoWhiteSpace")
+        }
+        imageOfBookClub.layer.cornerRadius = imageOfBookClub.frame.height / 2
+        imageOfBookClub.clipsToBounds = true
+        selectProfileImage.setTitle("", for: .normal)
+        
+        nameOfBookClub.text = bookclub.name
+        descriptionOfBookClub.text = bookclub.description
+        meetingInfoForBookBlub.text = bookclub.meetingInfo
+        createBookclubButton.setTitle("Save", for: .normal)
+        fetchCurrentlyReadingBook(bookclub: bookclub)
+        pastReads = bookclub.pastReads
+        
+        if bookclub.memberCapacity == 5 {
+            fiveSelected = true
+            memberCapacity = 5
+        } else if bookclub.memberCapacity == 10 {
+            tenSelected = true
+            memberCapacity = 10
+        } else if bookclub.memberCapacity == 15 {
+            fifteenSelected = true
+            memberCapacity = 15
+        } else if bookclub.memberCapacity == 20 {
+            twentySelected = true
+            memberCapacity = 20
+        } else if bookclub.memberCapacity == 100 {
+            twentyFiveSelected = true
+            memberCapacity = 100
+        }
+        updateButtonColor()
+    }
     
     func updateButtonColor() {
         if fiveSelected {
@@ -281,6 +383,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             twentyFiveButton.setTitleColor(.black, for: .normal)
             twentyFiveButton.layer.borderWidth = 1.0
             twentyFiveButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            
         } else if fifteenSelected {
             fiveButton.layer.borderColor = UIColor.black.cgColor
             fiveButton.setTitleColor(.black, for: .normal)
@@ -302,6 +405,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             twentyFiveButton.setTitleColor(.black, for: .normal)
             twentyFiveButton.layer.borderWidth = 1.0
             twentyFiveButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            
         } else if twentySelected {
             fiveButton.layer.borderColor = UIColor.black.cgColor
             fiveButton.setTitleColor(.black, for: .normal)
@@ -323,6 +427,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
             twentyFiveButton.setTitleColor(.black, for: .normal)
             twentyFiveButton.layer.borderWidth = 1.0
             twentyFiveButton.titleLabel?.font = UIFont(name: "Cochin", size: 17)
+            
         } else if twentyFiveSelected {
             fiveButton.layer.borderColor = UIColor.black.cgColor
             fiveButton.setTitleColor(.black, for: .normal)
@@ -354,108 +459,7 @@ class CreateBCViewController: UIViewController, UINavigationControllerDelegate, 
         self.present(bookclubVC, animated: true, completion: nil)
     }
     
-    func setupTextViews() {
-        meetingInfoForBookBlub.layer.borderWidth = 1.0
-        meetingInfoForBookBlub.layer.borderColor = UIColor.black.cgColor
-        
-        descriptionOfBookClub.delegate = self
-        descriptionOfBookClub.layer.borderWidth = 1.0
-        descriptionOfBookClub.layer.borderColor = UIColor.black.cgColor
-        
-        if descriptionOfBookClub.text.isEmpty {
-            descriptionOfBookClub.text = "Introduce your bookclub!"
-            descriptionOfBookClub.textColor = UIColor.black
-        }
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Introduce your bookclub!" {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            if textView == descriptionOfBookClub {
-                textView.text = "Introduce your bookclub!"
-            }
-            textView.textColor = UIColor.black
-        }
-    }
-    
-    func updateCurrentlyReading() {
-        guard let book = currentlyReadingBook else {return}
-        currentlyReadingImage.image = book.coverImage
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            return
-        }
-        if meetingInfoForBookBlub.isEditing {
-            self.view.window?.frame.origin.y = -keyboardSize.height
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.window?.frame.origin.y != 0 {
-            self.view.window?.frame.origin.y = 0
-        }
-    }
-    
-    func fetchCurrentlyReadingBook(bookclub: Bookclub){
-        let isbn = bookclub.currentlyReading
-        BookController.fetchOneBookWith(ISBN: isbn) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let book):
-                    self.currentlyReadingBook = book
-                case .failure(_):
-                    print("could not fetch the bookclub for that isbn")
-                }
-            }
-        }
-    }
-    
-    func updateViews(bookclub: Bookclub) {
-        if let image = bookclub.profilePicture {
-            imageOfBookClub.image = image
-        } else {
-            imageOfBookClub.image = UIImage(named: "ReadenLogoWhiteSpace")
-        }
-        imageOfBookClub.layer.cornerRadius = imageOfBookClub.frame.height / 2
-        imageOfBookClub.clipsToBounds = true
-        selectProfileImage.setTitle("", for: .normal)
-        
-        nameOfBookClub.text = bookclub.name
-        descriptionOfBookClub.text = bookclub.description
-        meetingInfoForBookBlub.text = bookclub.meetingInfo
-        createBookclubButton.setTitle("Save", for: .normal)
-        fetchCurrentlyReadingBook(bookclub: bookclub)
-        pastReads = bookclub.pastReads
-        
-        if bookclub.memberCapacity == 5 {
-            fiveSelected = true
-            memberCapacity = 5
-        } else if bookclub.memberCapacity == 10 {
-            tenSelected = true
-            memberCapacity = 10
-        } else if bookclub.memberCapacity == 15 {
-            fifteenSelected = true
-            memberCapacity = 15
-        } else if bookclub.memberCapacity == 20 {
-            twentySelected = true
-            memberCapacity = 20
-        } else if bookclub.memberCapacity == 100 {
-            twentyFiveSelected = true
-            memberCapacity = 100
-        }
-        updateButtonColor()
-    }
-    
-    // MARK: - Navigation
-    
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toBookclubVC" {
             guard let destination = segue.destination as? BookclubViewController else {return}

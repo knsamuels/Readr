@@ -17,7 +17,6 @@ class MessageController {
     let publicDB = CKContainer.default().publicCloudDatabase
     
     //MARK: - CRUD Methods
-    
     //Create
     func saveMessage(text: String?, image: UIImage?, bookclub: Bookclub, completion: @escaping (Result<Message, MessageError>) -> Void) {
         
@@ -63,6 +62,30 @@ class MessageController {
         }
     }
     
+    func fetchAllMessagesfrom(user: User, completion: @escaping (Result<[Message], MessageError>) -> Void) {
+        let userReference = user.recordID
+        
+        let predicate = NSPredicate(format: "%K == %@", MessageStrings.userReferenceKey, userReference)
+        
+        let query = CKQuery(recordType: MessageStrings.recordTypeKey, predicate: predicate)
+        
+        publicDB.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print("There was an error fetching messagesL:  \(error) -- \(error.localizedDescription)")
+                completion(.failure(.ckError(error)))
+            }
+            
+            guard let records = records else {return completion(.failure(.couldNotUnwrap))}
+            
+            print("Fetched Message Records Successfully")
+            
+            let fetchedMessages = records.compactMap { Message(ckRecord: $0) }
+            let sortedMessages = fetchedMessages.sorted(by: { $0.timestamp < $1.timestamp })
+         
+            completion(.success(sortedMessages))
+        }
+    }
+    
     //Update
     func updateMessage(message: Message, completion: @escaping (Result<Message, MessageError>) -> Void) {
         
@@ -86,7 +109,6 @@ class MessageController {
         }
         publicDB.add(operation)
     }
-    
     
     //Delete
     func deleteMessage(message: Message, completion: @escaping (Result<Bool, MessageError>) -> Void) {
@@ -112,6 +134,7 @@ class MessageController {
         publicDB.add(operation)
     }
     
+    //MARK: - Subscriptions
     func subscribeForRemoteNotifications(completion: @escaping (Error?) -> Void) {
         let predicate = NSPredicate(value: true)
         
@@ -131,57 +154,6 @@ class MessageController {
                 return completion(error)
             }
             completion(nil)
-        }
-    }
-    
-    func fetchNewMessages(for bookclub: Bookclub, existingMessages: [Message], completion: @escaping (Result<[Message], MessageError>) -> Void){
-        
-        let bookclubRefence = bookclub.recordID
-        
-        let predicate = NSPredicate(format: "%K == %@", MessageStrings.bookclubReferenceKey, bookclubRefence)
-        
-        let messageIDs = existingMessages.compactMap({$0.recordID})
-        
-        let predicate2 = NSPredicate(format: "NOT(recordID IN %@)", messageIDs)
-        
-        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, predicate2])
-        
-        let query = CKQuery(recordType: "Message", predicate: compoundPredicate)
-        
-        publicDB.perform(query, inZoneWith: nil) { (records, error) in
-            
-            if let error = error {
-                return completion(.failure(.ckError(error)))
-            }
-            guard let records = records else { return completion(.failure(.noRecord)) }
-            
-            let newMessages = records.compactMap{ Message(ckRecord: $0) }
-            
-            completion(.success(newMessages))
-        }
-    }
-    
-    func fetchAllMessagesfrom(user: User, completion: @escaping (Result<[Message], MessageError>) -> Void) {
-        let userReference = user.recordID
-        
-        let predicate = NSPredicate(format: "%K == %@", MessageStrings.userReferenceKey, userReference)
-        
-        let query = CKQuery(recordType: MessageStrings.recordTypeKey, predicate: predicate)
-        
-        publicDB.perform(query, inZoneWith: nil) { (records, error) in
-            if let error = error {
-                print("There was an error fetching messagesL:  \(error) -- \(error.localizedDescription)")
-                completion(.failure(.ckError(error)))
-            }
-            
-            guard let records = records else {return completion(.failure(.couldNotUnwrap))}
-            
-            print("Fetched Message Records Successfully")
-            
-            let fetchedMessages = records.compactMap { Message(ckRecord: $0) }
-            let sortedMessages = fetchedMessages.sorted(by: { $0.timestamp < $1.timestamp })
-         
-            completion(.success(sortedMessages))
         }
     }
 } //End class

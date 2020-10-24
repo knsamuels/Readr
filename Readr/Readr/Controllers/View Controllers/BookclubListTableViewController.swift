@@ -10,12 +10,12 @@ import UIKit
 
 class BookclubListTableViewController: UITableViewController {
     
-    //MARK: - Properties
-    var bookclubs: [Bookclub] = []
-    var user: User?
-    
     //MARK: - Outlets
     @IBOutlet weak var createNewBookclubButton: UIBarButtonItem!
+    
+    //MARK: - Properties
+    var user: User?
+    var bookclubs: [Bookclub] = []
     
     //MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -31,13 +31,17 @@ class BookclubListTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         fetchBookclubs()
+        setUpViews()
+    }
+    
+    //MARK: - Helpers:
+    private func setUpViews() {
         self.title = "Bookclubs"
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
         self.navigationController?.navigationBar.tintColor = .black
           self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
-    // Mark: Helpers:
     func fetchBookclubs() {
         guard let user = user else {return}
         BookclubController.shared.fetchUsersBookClubs(user: user) { (result) in
@@ -53,7 +57,7 @@ class BookclubListTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table view data source
+    //MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookclubs.count
     }
@@ -65,7 +69,7 @@ class BookclubListTableViewController: UITableViewController {
         return cell
     }
 
-    // MARK: - Navigation
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if segue.identifier == "bookclubListToVC" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
@@ -74,4 +78,4 @@ class BookclubListTableViewController: UITableViewController {
             destination.bookclub = bookclubToSend
         }
     }
-}
+} //End of class

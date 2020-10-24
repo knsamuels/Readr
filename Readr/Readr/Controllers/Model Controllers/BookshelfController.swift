@@ -11,12 +11,13 @@ import CloudKit
 
 class BookshelfController {
     
+    //MARK: - Properties
     static let shared = BookshelfController()
-    
     var bookshelf: [Bookshelf] = []
-    
     let publicDB = CKContainer.default().publicCloudDatabase
     
+    //MARK: - CRUD
+    //Create
     func createBookshelf(title: String, color: String, completion: @escaping (Result<Bookshelf, BookshelfError>) -> Void ) {
         
         guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
@@ -37,6 +38,7 @@ class BookshelfController {
         }
     }
     
+    //Read
     func fetchAllBookshelves(completion: @escaping (Result<[Bookshelf], BookshelfError>) -> Void) {
         guard let user = UserController.shared.currentUser else {return completion(.failure(.noUserLoggedIn))}
         let userRef = user.recordID
@@ -81,7 +83,8 @@ class BookshelfController {
             return completion(.success(fetchedFav))
         }
     }
-
+ 
+    //Update
     func updateBookshelf(bookshelf: Bookshelf, title: String, color: String, completion: @escaping (Result<Bookshelf, BookshelfError>) -> Void) {
         
         bookshelf.title = title
@@ -105,6 +108,7 @@ class BookshelfController {
         publicDB.add(operation)
     }
     
+    //Delete
     func deleteBookshelf(bookshelf: Bookshelf, completion: @escaping (Result<Bool, BookshelfError>) -> Void) {
         
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [bookshelf.recordID])
@@ -125,4 +129,4 @@ class BookshelfController {
         }
         publicDB.add(operation)
     }
-}
+} //End of class

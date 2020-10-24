@@ -10,10 +10,10 @@ import UIKit
 
 class BookshelfListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    // MARK: - Outlets
+    //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: - Properties
+    //MARK: - Properties
     var userBookshelves: [Bookshelf] = []
     var newColor = ""
     var newTitle = ""
@@ -28,21 +28,13 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
         return view
     }()
     
-    // MARK: - Lifecycles
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        self.title = "Bookshelves"
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
-        self.navigationController?.navigationBar.tintColor = .black
-          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-      
-        tableView.separatorColor = .clear
+        setUpViews()
         showLoadingScreen()
-        UITabBar.appearance().tintColor = .black
-        UITabBar.appearance().shadowImage = UIImage()
-        UITabBar.appearance().backgroundImage = UIImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +43,11 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
         fetchAllUsersBookshelves()
     }
     
-    // MARK: - Actions
+    //MARK: - Actions
+    @IBAction func optionButtonTapped(_ sender: Any) {
+        presentCustomAlert()
+    }
+    
     @IBAction func unwindToShelfList( sender: UIStoryboardSegue) {
         if isNewBookshelf == true {
             BookshelfController.shared.createBookshelf(title: newTitle, color: newColor) { (result) in
@@ -80,11 +76,19 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    @IBAction func optionButtonTapped(_ sender: Any) {
-        presentCustomAlert()
+    //MARK: - Helper Functions
+    private func setUpViews() {
+        tableView.separatorColor = .clear
+        UITabBar.appearance().tintColor = .black
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+        
+        self.title = "Bookshelves"
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Cochin", size: 20.0)!]
+        self.navigationController?.navigationBar.tintColor = .black
+          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
-    //Mark: - Helper Functions
     func fetchAllUsersBookshelves() {
         BookshelfController.shared.fetchAllBookshelves { (result) in
             DispatchQueue.main.async {
@@ -144,7 +148,6 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
             let alertController = UIAlertController(title: "Delete Shelf?", message: nil, preferredStyle: .alert)
             let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel)
             let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
-                
                 let bookshelfToDelete = self.userBookshelves[indexPath.row]
                 guard let index = self.userBookshelves.firstIndex(of: bookshelfToDelete) else { return}
                 if bookshelfToDelete.title != "Favorites" {
@@ -183,7 +186,7 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    // MARK: - Navigation
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "BookshelfListToBookShelf" {
             guard let indexPath = tableView.indexPathForSelectedRow else {return}

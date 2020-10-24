@@ -22,16 +22,15 @@ class AlertViewController: UIViewController {
     @IBOutlet weak var favoritesLabel: UILabel!
     
     //MARK: - Properties
+    var bookshelf: Bookshelf?
+    var myColor = ""
+    var myTitle = ""
     var blueIsSelected = false
     var greenIsSelected = false
     var yellowIsSelected = false
     var orangeIsSelected = false
     var brownIsSelected = false
     var purpleIsSelected = false
-    
-    var bookshelf: Bookshelf?
-    var myColor = ""
-    var myTitle = ""
     
     //MARK: - Lifecycles
     override func viewDidLoad() {
@@ -88,6 +87,7 @@ class AlertViewController: UIViewController {
         brownIsSelected = false
         purpleIsSelected = false
     }
+    
     @IBAction func greenButtonTapped(_ sender: Any) {
         blueButton.setImage(nil, for: .normal)
         greenButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
@@ -102,6 +102,7 @@ class AlertViewController: UIViewController {
         brownIsSelected = false
         purpleIsSelected = false
     }
+    
     @IBAction func yellowButtonTapped(_ sender: Any) {
         blueButton.setImage(nil, for: .normal)
         greenButton.setImage(nil, for: .normal)
@@ -116,6 +117,7 @@ class AlertViewController: UIViewController {
         brownIsSelected = false
         purpleIsSelected = false
     }
+    
     @IBAction func orangeButtonTapped(_ sender: Any) {
         blueButton.setImage(nil, for: .normal)
         greenButton.setImage(nil, for: .normal)
@@ -130,6 +132,7 @@ class AlertViewController: UIViewController {
         brownIsSelected = false
         purpleIsSelected = false
     }
+    
     @IBAction func brownButtonTapped(_ sender: Any) {
         blueButton.setImage(nil, for: .normal)
         greenButton.setImage(nil, for: .normal)
@@ -144,6 +147,7 @@ class AlertViewController: UIViewController {
         brownIsSelected = true
         purpleIsSelected = false
     }
+    
     @IBAction func purpleButtonTapped(_ sender: Any) {
         blueButton.setImage(nil, for: .normal)
         greenButton.setImage(nil, for: .normal)
@@ -158,7 +162,6 @@ class AlertViewController: UIViewController {
         brownIsSelected = false
         purpleIsSelected = true 
     }
-    
     
     //MARK: - Helper Methods
     func updateViews(with bookshelf: Bookshelf) {
