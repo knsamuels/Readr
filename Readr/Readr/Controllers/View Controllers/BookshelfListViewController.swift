@@ -20,6 +20,7 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
     var isNewBookshelf = false
     var bookshelfToUpdate: Bookshelf?
     let group = DispatchGroup()
+    let defaults = UserDefaults.standard
 
     private lazy var loadingScreen: RLogoLoadingView = {
         let view = RLogoLoadingView()
@@ -35,12 +36,21 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         setUpViews()
         showLoadingScreen()
+//        defaults.set(false, forKey: "DidPresentTermsAlert")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
           self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         fetchAllUsersBookshelves()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if defaults.bool(forKey: "DidPresentTermsAlert") == false {
+            presentTermsAlert()
+            defaults.set(true, forKey: "DidPresentTermsAlert")
+        }
     }
     
     //MARK: - Actions
@@ -77,6 +87,13 @@ class BookshelfListViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     //MARK: - Helper Functions
+    func presentTermsAlert() {
+        let alertController = UIAlertController(title: "Terms of Service", message: "Hate speech is prohibited on Readen. We define hate speech as a direct attack on people bases on race, ethnicity, national origin, religious affilation, sexual orientation, gender or disability. Readen also has a zero tolerance for inappropriate or adult images in Bookclubs or Bios. Users are given the ability to block or report a User or Bookclub that is violating this policy. Violation of these policies will result in removal from the app.", preferredStyle: .alert)
+        let acceptAction = UIAlertAction(title: "Accept", style: .default)
+        alertController.addAction(acceptAction)
+        self.present(alertController, animated: true)
+    }
+    
     private func setUpViews() {
         tableView.separatorColor = .clear
         UITabBar.appearance().tintColor = .black
