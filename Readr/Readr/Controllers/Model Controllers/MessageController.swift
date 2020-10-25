@@ -133,27 +133,4 @@ class MessageController {
         }
         publicDB.add(operation)
     }
-    
-    //MARK: - Subscriptions
-    func subscribeForRemoteNotifications(completion: @escaping (Error?) -> Void) {
-        let predicate = NSPredicate(value: true)
-        
-        let subscription = CKQuerySubscription(recordType: MessageStrings.recordTypeKey, predicate: predicate, options: .firesOnRecordCreation)
-        
-        let notificationInfo = CKQuerySubscription.NotificationInfo()
-        notificationInfo.title = "Readen"
-        notificationInfo.alertBody = "New bookclub message."
-        notificationInfo.shouldBadge = true
-        notificationInfo.soundName = "default"
-        
-        subscription.notificationInfo = notificationInfo
-        
-        publicDB.save(subscription) { (_, error) in
-            if let error = error {
-                print("There was an error subscribing to message creations -- \(error) -- \(error.localizedDescription)")
-                return completion(error)
-            }
-            completion(nil)
-        }
-    }
 } //End class
