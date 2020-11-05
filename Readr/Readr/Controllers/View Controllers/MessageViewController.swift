@@ -329,7 +329,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if messagesArray[indexPath.row].user == user.username {
             deleteAction.backgroundColor = .red
-            guard let trashImage = UIImage(named: "swipeDelete") else {return nil}
+            guard let trashImage = UIImage(named: "bigDelete") else {return nil}
 //            guard let trashImage = UIImage(systemName: "trash") else {return nil}
 //            let flippedTrash = UIImage(cgImage: trashImage.cgImage!, scale: trashImage.scale, orientation: UIImage.Orientation.downMirrored)
             deleteAction.image = trashImage.withHorizontallyFlippedOrientation()
@@ -337,7 +337,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             configuration.performsFirstActionWithFullSwipe = false
             return configuration
         } else {
-            guard let reportImage = UIImage(named: "swipeReport") else {return nil}
+            guard let reportImage = UIImage(named: "bigReport") else {return nil}
             reportAction.image = reportImage.withHorizontallyFlippedOrientation()
             let configuration = UISwipeActionsConfiguration(actions: [reportAction])
             configuration.performsFirstActionWithFullSwipe = false

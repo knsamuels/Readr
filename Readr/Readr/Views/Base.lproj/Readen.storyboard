@@ -386,11 +386,11 @@
             <objects>
                 <viewController storyboardIdentifier="BookclubVC" id="ZEJ-Jj-dV8" customClass="BookclubViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VQs-3E-Ioz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gx-mJ-QgY">
-                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6AR-Rn-zzP">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="790"/>
@@ -937,7 +937,7 @@
             <objects>
                 <tableViewController id="Em1-qk-fIc" customClass="PastReadsListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5fA-Jg-7kV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="offWhite"/>
                         <prototypes>
@@ -1050,7 +1050,7 @@
             <objects>
                 <tableViewController id="olf-St-n1g" customClass="MemberListTableViewController" customModule="Readen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IkP-RT-d1p">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="offWhite"/>
                         <prototypes>
@@ -3428,7 +3428,7 @@
         <segue reference="I22-a6-LKA"/>
         <segue reference="WCX-X9-RAT"/>
         <segue reference="cVK-gp-z3w"/>
-        <segue reference="XkH-si-XHh"/>
+        <segue reference="4Pb-cf-ugE"/>
         <segue reference="d4d-j6-Xm7"/>
     </inferredMetricsTieBreakers>
     <resources>
