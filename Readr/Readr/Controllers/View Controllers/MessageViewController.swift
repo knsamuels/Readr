@@ -329,16 +329,27 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if messagesArray[indexPath.row].user == user.username {
             deleteAction.backgroundColor = .red
-            guard let trashImage = UIImage(named: "bigDelete") else {return nil}
+            guard var deleteImage = UIImage(named: "bigDelete") else {return nil}
+            deleteImage = deleteImage.withHorizontallyFlippedOrientation()
+//            guard let deleteImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image {_ in
+//                   UIImage(named: "bigDelete")?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
+//            } else {return nil}
 //            guard let trashImage = UIImage(systemName: "trash") else {return nil}
 //            let flippedTrash = UIImage(cgImage: trashImage.cgImage!, scale: trashImage.scale, orientation: UIImage.Orientation.downMirrored)
-            deleteAction.image = trashImage.withHorizontallyFlippedOrientation()
+            
+            deleteAction.image = UIGraphicsImageRenderer(size: CGSize(width: 60, height: 60)).image { _ in
+                deleteImage.draw(in: CGRect(x: 0, y: 0, width: 60, height: 60))
+            }
+//            deleteAction.image = deleteImage.withHorizontallyFlippedOrientation()
             let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
             configuration.performsFirstActionWithFullSwipe = false
             return configuration
         } else {
-            guard let reportImage = UIImage(named: "bigReport") else {return nil}
-            reportAction.image = reportImage.withHorizontallyFlippedOrientation()
+            guard var reportImage = UIImage(named: "bigReport") else {return nil}
+            reportImage = reportImage.withHorizontallyFlippedOrientation()
+            reportAction.image = UIGraphicsImageRenderer(size: CGSize(width: 60, height: 60)).image { _ in
+                reportImage.draw(in: CGRect(x: 0, y: 0, width: 60, height: 60))
+            }
             let configuration = UISwipeActionsConfiguration(actions: [reportAction])
             configuration.performsFirstActionWithFullSwipe = false
             return configuration
